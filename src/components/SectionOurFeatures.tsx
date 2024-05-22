@@ -39,7 +39,7 @@ const SectionOurFeatures: FC<SectionOurFeaturesProps> = ({
               Ubicación ideal
             </span>
             <span className="block mt-5 text-neutral-500 dark:text-neutral-400">
-              Situadas en un encantador paseo junto a la costa de Arinaga, rodeadas de una gran variedad de restaurantes y bares.
+              Situados en un encantador paseo junto a la costa de Arinaga, rodeados de una gran variedad de restaurantes y bares.
             </span>
           </li>
           <li className="space-y-4 bg-blue-border">
