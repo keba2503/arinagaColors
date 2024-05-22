@@ -132,7 +132,7 @@ const StaySearchForm = () => {
     <div>
       <div className="w-full space-y-5">
         {/*  */}
-        {renderInputLocation()}
+
         {/*  */}
         {renderInputDates()}
         {/*  */}
