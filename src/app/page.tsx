@@ -157,8 +157,6 @@ function PageHome() {
         <SectionHero className="pt-10 lg:pt-16 lg:pb-16" />
 
         {/* SECTION 1 */}
-        <SectionSliderNewCategories categories={DEMO_CATS} />
-
         <SectionOurFeatures />
 
         <SectionGridFeaturePlaces cardType="card2" />

@@ -29,42 +29,38 @@ const SectionOurFeatures: FC<SectionOurFeaturesProps> = ({
           type === "type1" ? "lg:pl-16" : "lg:pr-16"
         }`}
       >
-        <span className="uppercase text-sm text-gray-400 tracking-widest">
-          BENnefits
+         <span className="uppercase text-sm text-gray-400 tracking-widest">
+          BENEFICIOS
         </span>
-        <h2 className="font-semibold text-4xl mt-5">Happening cities </h2>
-
         <ul className="space-y-10 mt-16">
-          <li className="space-y-4">
-            <Badge name="Advertising" />
-            <span className="block text-xl font-semibold">
-              Cost-effective advertising
+          <li className="space-y-4 bg-white-border">
+            <Badge name="Ubicación Perfecta" />
+            <span className="block text-xl font-semibold text-gray-dark">
+              Ubicación ideal
             </span>
             <span className="block mt-5 text-neutral-500 dark:text-neutral-400">
-              With a free listing, you can advertise your rental with no upfront
-              costs
+              Situadas en un encantador paseo junto a la costa de Arinaga, rodeadas de una gran variedad de restaurantes y bares.
             </span>
           </li>
-          <li className="space-y-4">
-            <Badge color="green" name="Exposure " />
-            <span className="block text-xl font-semibold">
-              Reach millions with Chisfis
+          <li className="space-y-4 bg-blue-border">
+            <Badge name="Estancia Acogedora" />
+            <span className="block text-xl font-semibold text-gray-dark">
+              Disfruta de una estancia acogedora
             </span>
             <span className="block mt-5 text-neutral-500 dark:text-neutral-400">
-              Millions of people are searching for unique places to stay around
-              the world
+              En nuestras viviendas vacacionales ubicadas en la Playa de Arinaga, con impresionantes vistas al mar y encantadoras terrazas o balcones.
             </span>
           </li>
-          <li className="space-y-4">
-            <Badge color="red" name="Secure" />
-            <span className="block text-xl font-semibold">
-              Secure and simple
+          <li className="space-y-4 bg-yellow-border">
+            <Badge name="Equipamiento Completo" />
+            <span className="block text-xl font-semibold text-gray-dark">
+              Todo lo que necesitas
             </span>
             <span className="block mt-5 text-neutral-500 dark:text-neutral-400">
-              A Holiday Lettings listing gives you a secure and easy way to take
-              bookings and payments online
+              Nuestras viviendas están completamente equipadas con todas las comodidades modernas, incluyendo lavadora, acceso a Internet de alta velocidad, y más.
             </span>
           </li>
+
         </ul>
       </div>
     </div>
