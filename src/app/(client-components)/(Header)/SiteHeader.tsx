@@ -36,23 +36,23 @@ const PAGES_HIDE_HEADER_BORDER: PathName[] = [
 const SiteHeader = () => {
   const anchorRef = useRef<HTMLDivElement>(null);
 
-  let [headers] = useState<SiteHeaders[]>(["Header 1", "Header 2", "Header 3"]);
+  let [headers] = useState<SiteHeaders[]>(["Header 1"]);
 
   let [homePages] = useState<HomePageItem[]>([
     { name: "Home Main", slug: "/" },
     { name: "Real Estate", slug: "/home-2" },
     { name: "Home 3", slug: "/home-3" },
   ]);
-  const [headerSelected, setHeaderSelected] = useState<SiteHeaders>("Header 2");
+  const [headerSelected, setHeaderSelected] = useState<SiteHeaders>("Header 1");
 
   const [isTopOfPage, setIsTopOfPage] = useState(true);
 
   useEffect(() => {
     setIsTopOfPage(window.pageYOffset < 5);
   }, []);
-  //
+
   useThemeMode();
-  //
+
   const pathname = usePathname();
 
   const intersectionCallback = (entries: IntersectionObserverEntry[]) => {
