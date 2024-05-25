@@ -26,14 +26,8 @@ const BlogPage: React.FC = () => {
           <SectionMagazine5 posts={MAGAZINE1_POSTS} />
         </div>
 
-        {/* === SECTION 1 === */}
-        <SectionAds />
-
         {/* === SECTION 8 === */}
         <SectionLatestPosts className="py-16 lg:py-28" />
-
-        {/* === SECTION 1 === */}
-        <SectionSubscribe2 className="pb-16 lg:pb-28" />
       </div>
     </div>
   );
