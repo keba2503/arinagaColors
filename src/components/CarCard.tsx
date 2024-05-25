@@ -57,7 +57,7 @@ const CarCard: FC<CarCardProps> = ({
       <div className={size === "default" ? "p-5  space-y-4" : "p-3  space-y-2"}>
         <div className="space-y-2">
           <div className="flex items-center space-x-2">
-            {isAds && <Badge name="ADS" color="green" />}
+
             <h2
               className={`  capitalize ${
                 size === "default"

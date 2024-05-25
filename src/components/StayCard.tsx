@@ -4,7 +4,6 @@ import { StayDataType } from "@/data/types";
 import StartRating from "@/components/StartRating";
 import BtnLikeIcon from "@/components/BtnLikeIcon";
 import SaleOffBadge from "@/components/SaleOffBadge";
-import Badge from "@/shared/Badge";
 import Link from "next/link";
 import GallerySlider from "./GallerySlider";
 
@@ -61,7 +60,6 @@ const StayCard: FC<StayCardProps> = ({
             {listingCategory.name} · {bedrooms} beds
           </span>
           <div className="flex items-center space-x-2">
-            {isAds && <Badge name="ADS" color="green" />}
             <h2
               className={`font-semibold capitalize text-neutral-900 dark:text-white ${
                 size === "default" ? "text-base" : "text-base"

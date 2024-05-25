@@ -1,7 +1,6 @@
 import React, { FC, ReactNode } from "react";
 import { DEMO_STAY_LISTINGS } from "@/data/listings";
 import { StayDataType } from "@/data/types";
-import ButtonPrimary from "@/shared/ButtonPrimary";
 import HeaderFilter from "./HeaderFilter";
 import StayCard from "./StayCard";
 import StayCard2 from "./StayCard2";
@@ -23,10 +22,10 @@ export interface SectionGridFeaturePlacesProps {
 const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
   stayListings = DEMO_DATA,
   gridClass = "",
-  heading = "Featured places to stay",
-  subHeading = "Popular places to stay that Chisfis recommends for you",
+  heading = "Nuestros apartamentos",
+  subHeading = "Disfruta de nuestros acogedores apartamentos junto al mar",
   headingIsCenter,
-  tabs = ["New York", "Tokyo", "Paris", "London"],
+  tabs = ["Playa Arinaga"],
   cardType = "card2",
 }) => {
   const renderCard = (stay: StayDataType) => {
@@ -49,18 +48,15 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
   return (
     <div className="nc-SectionGridFeaturePlaces relative">
       <HeaderFilter
-        tabActive={"New York"}
+        tabActive={"Playa Arinaga"}
         subHeading={subHeading}
         tabs={tabs}
         heading={heading}
       />
       <div
-        className={`grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ${gridClass}`}
+        className={`grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 ${gridClass}`}
       >
         {stayListings.map((stay) => renderCard(stay))}
-      </div>
-      <div className="flex mt-16 justify-center items-center">
-        <ButtonPrimary loading>Show me more</ButtonPrimary>
       </div>
     </div>
   );

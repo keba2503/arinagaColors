@@ -109,7 +109,6 @@ const PropertyCardH: FC<PropertyCardHProps> = ({
             />
           </div>
           <div className="flex items-center space-x-2">
-            {isAds && <Badge name="ADS" color="green" />}
             <h2 className="text-lg font-medium capitalize">
               <span className="line-clamp-2">{title}</span>
             </h2>

@@ -108,7 +108,6 @@ const StayCardH: FC<StayCardHProps> = ({
             </span>
           </div>
           <div className="flex items-center space-x-2">
-            {isAds && <Badge name="ADS" color="green" />}
             <h2 className="text-lg font-medium capitalize">
               <span className="line-clamp-1">{title}</span>
             </h2>

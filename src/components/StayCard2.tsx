@@ -47,8 +47,6 @@ const StayCard2: FC<StayCard2Props> = ({
           imageClass="rounded-lg"
           href={href}
         />
-        <BtnLikeIcon isLiked={like} className="absolute right-3 top-3 z-[1]" />
-        {saleOff && <SaleOffBadge className="absolute left-3 top-3" />}
       </div>
     );
   };
@@ -61,7 +59,6 @@ const StayCard2: FC<StayCard2Props> = ({
             {listingCategory.name} · {bedrooms} beds
           </span>
           <div className="flex items-center space-x-2">
-            {isAds && <Badge name="ADS" color="green" />}
             <h2
               className={`font-semibold capitalize text-neutral-900 dark:text-white ${
                 size === "default" ? "text-base" : "text-base"
@@ -106,9 +103,6 @@ const StayCard2: FC<StayCard2Props> = ({
               </span>
             )}
           </span>
-          {!!reviewStart && (
-            <StartRating reviewCount={reviewCount} point={reviewStart} />
-          )}
         </div>
       </div>
     );
