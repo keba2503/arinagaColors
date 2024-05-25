@@ -169,7 +169,7 @@ export const NAVIGATION_DEMO: NavItemType[] = [
   },
   {
     id: ncNanoId(),
-    href: "/",
+    href: "/service",
     name: "Servicios"
   },
   {
