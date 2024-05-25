@@ -19,7 +19,7 @@ const PageAbout: FC<PageAboutProps> = ({}) => {
             <div className="container py-16 lg:py-28 space-y-16 lg:space-y-28">
                 <SectionHero
                     rightImg={rightImg}
-                    heading="Nosotros."
+                    heading="Nosotros"
                     btnText=""
                     subHeading="¡Bienvenido a Arinaga Colors!
           Disfruta de una estancia acogedora en nuestras viviendas
