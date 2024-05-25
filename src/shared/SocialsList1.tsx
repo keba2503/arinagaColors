@@ -7,6 +7,7 @@ export interface SocialsList1Props {
 
 const socials: SocialType[] = [
   { name: "Youtube", icon: "lab la-youtube", href: "#" },
+  { name: "Whatsapp", icon: "lab la-whatsapp", href: "#" },
   { name: "Instagram", icon: "lab la-instagram", href: "#" },
 ];
 

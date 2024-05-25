@@ -8,6 +8,7 @@ export interface SocialsListProps {
 }
 
 const socialsDemo: SocialType[] = [
+  { name: "Youtube", icon: "lab la-whatsapp", href: "#" },
   { name: "Youtube", icon: "lab la-youtube", href: "#" },
   { name: "Instagram", icon: "lab la-instagram", href: "#" },
 ];
@@ -18,7 +19,7 @@ const SocialsList: FC<SocialsListProps> = ({
   socials = socialsDemo,
 }) => {
   return (
-    <nav className={`self-center text-2xl md:text-3xl w-12 h-12 rounded-full text-neutral-700 dark:text-neutral-300 focus:outline-none flex items-center justify-center ${className}`}
+    <nav className={`self-center text-2xl md:text-3xl w-12 h-12 rounded-full text-neutral-700 dark:text-neutral-300 focus:outline-none flex items-center justify-center pr-4 ${className}`}
       data-nc-id="SocialsList"
     >
       {socials.map((item, i) => (
