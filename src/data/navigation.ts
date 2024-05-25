@@ -159,7 +159,7 @@ export const NAVIGATION_DEMO: NavItemType[] = [
   },
   {
     id: ncNanoId(),
-    href: "/listing-car",
+    href: "/guide",
     name: "Guía de usuario"
   },
   {
@@ -205,7 +205,7 @@ export const NAVIGATION_DEMO: NavItemType[] = [
       },
       {
         id: ncNanoId(),
-        href: "/listing-flights",
+        href: "/contact",
         name: "Contacto",
       },
     ],
