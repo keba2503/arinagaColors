@@ -190,8 +190,8 @@ export const NAVIGATION_DEMO: NavItemType[] = [
     children: [
       {
         id: ncNanoId(),
-        href: "/listing-stay",
-        name: "Galería"
+        href: "/about",
+        name: "Nosotros",
       },
       {
         id: ncNanoId(),
@@ -200,8 +200,8 @@ export const NAVIGATION_DEMO: NavItemType[] = [
       },
       {
         id: ncNanoId(),
-        href: "/listing-flights",
-        name: "Nosotros",
+        href: "/listing-stay",
+        name: "Galería"
       },
       {
         id: ncNanoId(),
