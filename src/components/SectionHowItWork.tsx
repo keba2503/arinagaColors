@@ -21,20 +21,20 @@ const DEMO_DATA: SectionHowItWorkProps["data"] = [
   {
     id: 1,
     img: HIW1img,
-    title: "Book & relax",
-    desc: "Let each trip be an inspirational journey, each room a peaceful space",
+    title: "Reserva y relájate",
+    desc: "Deja que el viaje sea una inspiración y cada habitación un espacio de paz",
   },
   {
     id: 2,
     img: HIW2img,
-    title: "Smart checklist",
-    desc: "Let each trip be an inspirational journey, each room a peaceful space",
+    title: "Alojamiento perfecto\n",
+    desc: "Descubre el confort de nuestros apartamentos vacacionales totalmente equipados"
   },
   {
     id: 3,
     img: HIW3img,
-    title: "Save more",
-    desc: "Let each trip be an inspirational journey, each room a peaceful space",
+    title: "Ahorra más",
+    desc: "Disfruta de nuestras ofertas y haz de tu estancia una experiencia única",
   },
 ];
 
@@ -47,8 +47,8 @@ const SectionHowItWork: FC<SectionHowItWorkProps> = ({
       className={`nc-SectionHowItWork  ${className}`}
       data-nc-id="SectionHowItWork"
     >
-      <Heading isCenter desc="Keep calm & travel on">
-        How it work
+      <Heading isCenter desc="Relájate y disfruta de la estadia">
+        Con Arinaga Colors
       </Heading>
       <div className="mt-20 relative grid md:grid-cols-3 gap-20">
         <Image

@@ -18,10 +18,6 @@ const widgetMenus: WidgetFooterMenu[] = [
     title: "Getting started",
     menus: [
       { href: "#", label: "Installation" },
-      { href: "#", label: "Release Notes" },
-      { href: "#", label: "Upgrade Guide" },
-      { href: "#", label: "Browser Support" },
-      { href: "#", label: "Editor Support" },
     ],
   },
   {
@@ -29,10 +25,6 @@ const widgetMenus: WidgetFooterMenu[] = [
     title: "Explore",
     menus: [
       { href: "#", label: "Design features" },
-      { href: "#", label: "Prototyping" },
-      { href: "#", label: "Design systems" },
-      { href: "#", label: "Pricing" },
-      { href: "#", label: "Security" },
     ],
   },
   {
@@ -40,10 +32,6 @@ const widgetMenus: WidgetFooterMenu[] = [
     title: "Resources",
     menus: [
       { href: "#", label: "Best practices" },
-      { href: "#", label: "Support" },
-      { href: "#", label: "Developers" },
-      { href: "#", label: "Learn design" },
-      { href: "#", label: "Releases" },
     ],
   },
   {
@@ -51,10 +39,6 @@ const widgetMenus: WidgetFooterMenu[] = [
     title: "Community",
     menus: [
       { href: "#", label: "Discussion Forums" },
-      { href: "#", label: "Code of Conduct" },
-      { href: "#", label: "Community Resources" },
-      { href: "#", label: "Contributing" },
-      { href: "#", label: "Concurrent Mode" },
     ],
   },
 ];
