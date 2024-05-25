@@ -10,9 +10,7 @@ const Home: React.FC = () => {
                 <ServiceGallery />
             </div>
             <div className="container relative space-y-24 mb-24 lg:space-y-28 lg:mb-28">
-
                 <SectionSubscribe2 />
-
             </div>
         </>
 

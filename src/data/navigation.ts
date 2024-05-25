@@ -200,7 +200,7 @@ export const NAVIGATION_DEMO: NavItemType[] = [
       },
       {
         id: ncNanoId(),
-        href: "/listing-stay",
+        href: "/gallery",
         name: "Galería"
       },
       {
