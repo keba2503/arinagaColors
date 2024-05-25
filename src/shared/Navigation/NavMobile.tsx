@@ -109,8 +109,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
         <Logo />
         <div className="flex flex-col mt-5 text-neutral-700 dark:text-neutral-300 text-sm">
           <span>
-            Discover the most outstanding articles on all topics of life. Write
-            your stories and share them
+            ¡Bienvenido a Arinaga Colors! Disfruta de una estancia acogedora en nuestras viviendas vacacionales.
           </span>
 
           <div className="flex justify-between items-center mt-4">
@@ -134,7 +133,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
           target="_blank"
           rel="noopener noreferrer"
         >
-          <ButtonPrimary>Get Template</ButtonPrimary>
+          <ButtonPrimary>Reserva con nosotros</ButtonPrimary>
         </a>
 
         <LangDropdown

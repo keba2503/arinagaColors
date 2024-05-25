@@ -5,7 +5,6 @@ import {
   ChevronDownIcon,
 } from "@heroicons/react/24/outline";
 import { FC, Fragment } from "react";
-import { headerCurrency } from "./CurrencyDropdown";
 
 export const headerLanguage = [
   {
@@ -84,25 +83,7 @@ const LangDropdown: FC<LangDropdownProps> = ({
     );
   };
 
-  const renderCurr = (close: () => void) => {
-    return (
-      <div className="grid gap-7 lg:grid-cols-2">
-        {headerCurrency.map((item, index) => (
-          <a
-            key={index}
-            href={item.href}
-            onClick={() => close()}
-            className={`flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 ${
-              item.active ? "bg-gray-100 dark:bg-gray-700" : "opacity-80"
-            }`}
-          >
-            <item.icon className="w-[18px] h-[18px] " />
-            <p className="ml-2 text-sm font-medium ">{item.name}</p>
-          </a>
-        ))}
-      </div>
-    );
-  };
+
 
   return (
     <>
@@ -115,8 +96,6 @@ const LangDropdown: FC<LangDropdownProps> = ({
              group self-center h-10 sm:h-12 px-3 py-1.5 inline-flex items-center text-sm text-gray-800 dark:text-neutral-200 font-medium hover:text-opacity-100 focus:outline-none `}
             >
               <GlobeAltIcon className="w-5 h-5 opacity-80" />
-              <span className="mx-1">/</span>
-              <BanknotesIcon className="w-5 h-5 opacity-80" />
               <ChevronDownIcon
                 className={`${open ? "-rotate-180" : "text-opacity-70"}
                   ml-1 h-4 w-4  group-hover:text-opacity-80 transition ease-in-out duration-150`}
@@ -136,7 +115,7 @@ const LangDropdown: FC<LangDropdownProps> = ({
                 <div className="p-3 sm:p-6 rounded-2xl bg-white dark:bg-neutral-800 shadow-lg ring-1 ring-black ring-opacity-5">
                   <Tab.Group>
                     <Tab.List className="flex space-x-1 rounded-full bg-gray-100 dark:bg-slate-700 p-1">
-                      {["Language", "Currency"].map((category) => (
+                      {["Language"].map((category) => (
                         <Tab
                           key={category}
                           className={({ selected }) =>
@@ -168,7 +147,6 @@ const LangDropdown: FC<LangDropdownProps> = ({
                           "focus:outline-none focus:ring-0"
                         )}
                       >
-                        {renderCurr(close)}
                       </Tab.Panel>
                     </Tab.Panels>
                   </Tab.Group>
