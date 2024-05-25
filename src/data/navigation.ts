@@ -195,7 +195,7 @@ export const NAVIGATION_DEMO: NavItemType[] = [
       },
       {
         id: ncNanoId(),
-        href: "/listing-real-estate",
+        href: "/faq",
         name: "FAQ",
       },
       {

@@ -1,7 +1,7 @@
 import Heading from "@/shared/Heading";
 import Image, {StaticImageData} from "next/image";
 import React from "react";
-import avatar from "../../images/avatar.png";
+import avatar from "@/images/avatar.png";
 
 export interface People {
     id: string;
