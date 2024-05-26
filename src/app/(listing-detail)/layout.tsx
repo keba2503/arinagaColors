@@ -9,6 +9,7 @@ import React, { ReactNode } from "react";
 import MobileFooterSticky from "./(components)/MobileFooterSticky";
 import { imageGallery as listingStayImageGallery } from "./listing-stay-detail/constant";
 import { imageGallery as listingYellowImageGallery } from "./yellow/constant";
+import { imageGallery as listingBlueImageGallery } from "./blue/constant";
 import { Route } from "next";
 
 const DetailtLayout = ({ children }: { children: ReactNode }) => {
@@ -29,6 +30,9 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
         }
         if (thisPathname?.includes("/yellow")) {
             return listingYellowImageGallery;
+        }
+        if (thisPathname?.includes("/blue")) {
+            return listingBlueImageGallery;
         }
 
         return [];
