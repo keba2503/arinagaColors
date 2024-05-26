@@ -96,7 +96,7 @@ const StayCard2: FC<StayCard2Props> = ({
             {` `}
             {size === "default" && (
               <span className="text-sm text-neutral-500 dark:text-neutral-400 font-normal">
-                /night
+                /noche
               </span>
             )}
           </span>
