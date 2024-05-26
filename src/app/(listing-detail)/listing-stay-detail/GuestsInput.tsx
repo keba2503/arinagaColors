@@ -56,10 +56,10 @@ const GuestsInput: FC<GuestsInputProps> = ({ className = "flex-1" }) => {
               </div>
               <div className="flex-grow">
                 <span className="block xl:text-lg font-semibold">
-                  {totalGuests || ""} Guests
+                  {totalGuests || ""} Huespedes
                 </span>
                 <span className="block mt-1 text-sm text-neutral-400 leading-none font-light">
-                  {totalGuests ? "Guests" : "Add guests"}
+                  {totalGuests ? "Huespedes" : "Añadir huesped"}
                 </span>
               </div>
 

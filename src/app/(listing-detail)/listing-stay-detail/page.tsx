@@ -19,7 +19,6 @@ import { usePathname, useRouter } from "next/navigation";
 import { Amenities_demos, PHOTOS } from "./constant";
 import StayDatesRangeInput from "./StayDatesRangeInput";
 import GuestsInput from "./GuestsInput";
-import SectionDateRange from "../SectionDateRange";
 import { Route } from "next";
 
 export interface ListingStayDetailPageProps {}
@@ -50,34 +49,12 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
         {/* 1 */}
         <div className="flex justify-between items-center">
           <Badge name="Wooden house" />
-          <LikeSaveBtns />
         </div>
 
         {/* 2 */}
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
           Beach House in Collingwood
         </h2>
-
-        {/* 3 */}
-        <div className="flex items-center space-x-4">
-          <StartRating />
-          <span>·</span>
-          <span>
-            <i className="las la-map-marker-alt"></i>
-            <span className="ml-1"> Tokyo, Jappan</span>
-          </span>
-        </div>
-
-        {/* 4 */}
-        <div className="flex items-center">
-          <Avatar hasChecked sizeClass="h-10 w-10" radius="rounded-full" />
-          <span className="ml-2.5 text-neutral-500 dark:text-neutral-400">
-            Hosted by{" "}
-            <span className="text-neutral-900 dark:text-neutral-200 font-medium">
-              Kevin Francis
-            </span>
-          </span>
-        </div>
 
         {/* 5 */}
         <div className="w-full border-b border-neutral-100 dark:border-neutral-700" />
@@ -87,25 +64,25 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
           <div className="flex items-center space-x-3 ">
             <i className=" las la-user text-2xl "></i>
             <span className="">
-              6 <span className="hidden sm:inline-block">guests</span>
+              4 <span className="hidden sm:inline-block">huespedes</span>
             </span>
           </div>
           <div className="flex items-center space-x-3">
             <i className=" las la-bed text-2xl"></i>
             <span className=" ">
-              6 <span className="hidden sm:inline-block">beds</span>
+              2 <span className="hidden sm:inline-block">camas</span>
             </span>
           </div>
           <div className="flex items-center space-x-3">
             <i className=" las la-bath text-2xl"></i>
             <span className=" ">
-              3 <span className="hidden sm:inline-block">baths</span>
+              1 <span className="hidden sm:inline-block">baños</span>
             </span>
           </div>
           <div className="flex items-center space-x-3">
             <i className=" las la-door-open text-2xl"></i>
             <span className=" ">
-              2 <span className="hidden sm:inline-block">bedrooms</span>
+              2 <span className="hidden sm:inline-block">habitaciones</span>
             </span>
           </div>
         </div>
@@ -116,7 +93,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
   const renderSection2 = () => {
     return (
       <div className="listingSection__wrap">
-        <h2 className="text-2xl font-semibold">Stay information</h2>
+        <h2 className="text-2xl font-semibold">Información del apartamento</h2>
         <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
         <div className="text-neutral-6000 dark:text-neutral-300">
           <span>
@@ -145,9 +122,10 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
     return (
       <div className="listingSection__wrap">
         <div>
-          <h2 className="text-2xl font-semibold">Amenities </h2>
+          <h2 className="text-2xl font-semibold">Comodidades
+          </h2>
           <span className="block mt-2 text-neutral-500 dark:text-neutral-400">
-            {` About the property's amenities and services`}
+            {` Acerca de los servicios y comodidades de la propiedad`}
           </span>
         </div>
         <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
@@ -165,7 +143,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
         <div className="w-14 border-b border-neutral-200"></div>
         <div>
           <ButtonSecondary onClick={openModalAmenities}>
-            View more 20 amenities
+           Ver más
           </ButtonSecondary>
         </div>
         {renderMotalAmenities()}
@@ -217,7 +195,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
                       className="text-lg font-medium leading-6 text-gray-900"
                       id="headlessui-dialog-title-70"
                     >
-                      Amenities
+                      Comodidades
                     </h3>
                     <span className="absolute left-3 top-3">
                       <ButtonClose onClick={closeModalAmenities} />
@@ -245,174 +223,12 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
     );
   };
 
-  const renderSection4 = () => {
-    return (
-      <div className="listingSection__wrap">
-        {/* HEADING */}
-        <div>
-          <h2 className="text-2xl font-semibold">Room Rates </h2>
-          <span className="block mt-2 text-neutral-500 dark:text-neutral-400">
-            Prices may increase on weekends or holidays
-          </span>
-        </div>
-        <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
-        {/* CONTENT */}
-        <div className="flow-root">
-          <div className="text-sm sm:text-base text-neutral-6000 dark:text-neutral-300 -mb-4">
-            <div className="p-4 bg-neutral-100 dark:bg-neutral-800 flex justify-between items-center space-x-4 rounded-lg">
-              <span>Monday - Thursday</span>
-              <span>$199</span>
-            </div>
-            <div className="p-4  flex justify-between items-center space-x-4 rounded-lg">
-              <span>Monday - Thursday</span>
-              <span>$199</span>
-            </div>
-            <div className="p-4 bg-neutral-100 dark:bg-neutral-800 flex justify-between items-center space-x-4 rounded-lg">
-              <span>Friday - Sunday</span>
-              <span>$219</span>
-            </div>
-            <div className="p-4 flex justify-between items-center space-x-4 rounded-lg">
-              <span>Rent by month</span>
-              <span>-8.34 %</span>
-            </div>
-            <div className="p-4 bg-neutral-100 dark:bg-neutral-800 flex justify-between items-center space-x-4 rounded-lg">
-              <span>Minimum number of nights</span>
-              <span>1 night</span>
-            </div>
-            <div className="p-4 flex justify-between items-center space-x-4 rounded-lg">
-              <span>Max number of nights</span>
-              <span>90 nights</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  const renderSection5 = () => {
-    return (
-      <div className="listingSection__wrap">
-        {/* HEADING */}
-        <h2 className="text-2xl font-semibold">Host Information</h2>
-        <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
-
-        {/* host */}
-        <div className="flex items-center space-x-4">
-          <Avatar
-            hasChecked
-            hasCheckedClass="w-4 h-4 -top-0.5 right-0.5"
-            sizeClass="h-14 w-14"
-            radius="rounded-full"
-          />
-          <div>
-            <a className="block text-xl font-medium" href="##">
-              Kevin Francis
-            </a>
-            <div className="mt-1.5 flex items-center text-sm text-neutral-500 dark:text-neutral-400">
-              <StartRating />
-              <span className="mx-2">·</span>
-              <span> 12 places</span>
-            </div>
-          </div>
-        </div>
-
-        {/* desc */}
-        <span className="block text-neutral-6000 dark:text-neutral-300">
-          Providing lake views, The Symphony 9 Tam Coc in Ninh Binh provides
-          accommodation, an outdoor swimming pool, a bar, a shared lounge, a
-          garden and barbecue facilities...
-        </span>
-
-        {/* info */}
-        <div className="block text-neutral-500 dark:text-neutral-400 space-y-2.5">
-          <div className="flex items-center space-x-3">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.5}
-                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-              />
-            </svg>
-            <span>Joined in March 2016</span>
-          </div>
-          <div className="flex items-center space-x-3">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.5}
-                d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
-              />
-            </svg>
-            <span>Response rate - 100%</span>
-          </div>
-          <div className="flex items-center space-x-3">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.5}
-                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-
-            <span>Fast response - within a few hours</span>
-          </div>
-        </div>
-
-        {/* == */}
-        <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
-        <div>
-          <ButtonSecondary href="/author">See host profile</ButtonSecondary>
-        </div>
-      </div>
-    );
-  };
-
   const renderSection6 = () => {
     return (
       <div className="listingSection__wrap">
         {/* HEADING */}
-        <h2 className="text-2xl font-semibold">Reviews (23 reviews)</h2>
+        <h2 className="text-2xl font-semibold">Reseñas</h2>
         <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
-
-        {/* Content */}
-        <div className="space-y-5">
-          <FiveStartIconForRate iconClass="w-6 h-6" className="space-x-0.5" />
-          <div className="relative">
-            <Input
-              fontClass=""
-              sizeClass="h-16 px-4 py-3"
-              rounded="rounded-3xl"
-              placeholder="Share your thoughts ..."
-            />
-            <ButtonCircle
-              className="absolute right-2 top-1/2 transform -translate-y-1/2"
-              size=" w-12 h-12 "
-            >
-              <ArrowRightIcon className="w-5 h-5" />
-            </ButtonCircle>
-          </div>
-        </div>
 
         {/* comment */}
         <div className="divide-y divide-neutral-100 dark:divide-neutral-800">
@@ -420,9 +236,6 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
           <CommentListing className="py-8" />
           <CommentListing className="py-8" />
           <CommentListing className="py-8" />
-          <div className="pt-8">
-            <ButtonSecondary>View more 20 reviews</ButtonSecondary>
-          </div>
         </div>
       </div>
     );
@@ -433,9 +246,9 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
       <div className="listingSection__wrap">
         {/* HEADING */}
         <div>
-          <h2 className="text-2xl font-semibold">Location</h2>
+          <h2 className="text-2xl font-semibold">Dirección</h2>
           <span className="block mt-2 text-neutral-500 dark:text-neutral-400">
-            San Diego, CA, United States of America (SAN-San Diego Intl.)
+            Playa Arinaga
           </span>
         </div>
         <div className="w-14 border-b border-neutral-200 dark:border-neutral-700" />
@@ -449,7 +262,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
               loading="lazy"
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAGVJfZMAKYfZ71nzL_v5i3LjTTWnCYwTY&q=Eiffel+Tower,Paris+France"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7054.876212217358!2d-15.399634054591269!3d27.8578093898816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc40a1cff7f0ef39%3A0x85d47346438b7645!2sArinaga%2C%20Las%20Palmas!5e0!3m2!1ses!2ses!4v1716713774623!5m2!1ses!2ses"
             ></iframe>
           </div>
         </div>
@@ -461,20 +274,22 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
     return (
       <div className="listingSection__wrap">
         {/* HEADING */}
-        <h2 className="text-2xl font-semibold">Things to know</h2>
+        <h2 className="text-2xl font-semibold">Cosas que debes saber</h2>
         <div className="w-14 border-b border-neutral-200 dark:border-neutral-700" />
 
         {/* CONTENT */}
         <div>
-          <h4 className="text-lg font-semibold">Cancellation policy</h4>
+          <h4 className="text-lg font-semibold">Política de cancelación</h4>
           <span className="block mt-3 text-neutral-500 dark:text-neutral-400">
-            Refund 50% of the booking value when customers cancel the room
-            within 48 hours after successful booking and 14 days before the
-            check-in time. <br />
-            Then, cancel the room 14 days before the check-in time, get a 50%
-            refund of the total amount paid (minus the service fee).
-          </span>
+              Reembolso del 50% del valor de la reserva cuando los clientes cancelen la habitación
+              dentro de las 48 horas posteriores a la reserva exitosa y 14 días antes de la
+              hora de check-in.
+              <br />
+              Luego, si cancelan la habitación 14 días antes de la hora de check-in, obtienen un
+              reembolso del 50% del monto total pagado (menos la tarifa de servicio).
+         </span>
         </div>
+
         <div className="w-14 border-b border-neutral-200 dark:border-neutral-700" />
 
         {/* CONTENT */}
@@ -492,21 +307,6 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
           </div>
         </div>
         <div className="w-14 border-b border-neutral-200 dark:border-neutral-700" />
-
-        {/* CONTENT */}
-        <div>
-          <h4 className="text-lg font-semibold">Special Note</h4>
-          <div className="prose sm:prose">
-            <ul className="mt-3 text-neutral-500 dark:text-neutral-400 space-y-2">
-              <li>
-                Ban and I will work together to keep the landscape and
-                environment green and clean by not littering, not using
-                stimulants and respecting people around.
-              </li>
-              <li>Do not sing karaoke past 11:30</li>
-            </ul>
-          </div>
-        </div>
       </div>
     );
   };
@@ -517,12 +317,11 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
         {/* PRICE */}
         <div className="flex justify-between">
           <span className="text-3xl font-semibold">
-            $119
+            €119
             <span className="ml-1 text-base font-normal text-neutral-500 dark:text-neutral-400">
-              /night
+              /noche
             </span>
           </span>
-          <StartRating />
         </div>
 
         {/* FORM */}
@@ -535,17 +334,14 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
         {/* SUM */}
         <div className="flex flex-col space-y-4">
           <div className="flex justify-between text-neutral-6000 dark:text-neutral-300">
-            <span>$119 x 3 night</span>
-            <span>$357</span>
+            <span>€119 x 3 noche</span>
+            <span>€357</span>
           </div>
-          <div className="flex justify-between text-neutral-6000 dark:text-neutral-300">
-            <span>Service charge</span>
-            <span>$0</span>
-          </div>
+
           <div className="border-b border-neutral-200 dark:border-neutral-700"></div>
           <div className="flex justify-between font-semibold">
             <span>Total</span>
-            <span>$199</span>
+            <span>€357</span>
           </div>
         </div>
 
@@ -604,7 +400,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
           >
             <Squares2X2Icon className="w-5 h-5" />
             <span className="ml-2 text-neutral-800 text-sm font-medium">
-              Show all photos
+              Ver todas las fotos
             </span>
           </button>
         </div>
@@ -617,9 +413,6 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
           {renderSection1()}
           {renderSection2()}
           {renderSection3()}
-          {renderSection4()}
-          <SectionDateRange />
-          {renderSection5()}
           {renderSection6()}
           {renderSection7()}
           {renderSection8()}

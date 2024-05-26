@@ -35,12 +35,6 @@ const CommentListing: FC<CommentListingProps> = ({
       data-nc-id="CommentListing"
     >
       <div className="pt-0.5">
-        <Avatar
-          sizeClass="h-10 w-10 text-lg"
-          radius="rounded-full"
-          userName={data.name}
-          imgUrl={data.avatar}
-        />
       </div>
       <div className="flex-grow">
         <div className="flex justify-between space-x-3">
