@@ -15,10 +15,10 @@ import StayDatesRangeInput from "./StayDatesRangeInput";
 import GuestsInput from "./GuestsInput";
 import {Route} from "next";
 
-export interface BlueDetailPageProps {
+export interface YellowDetailPageProps {
 }
 
-const BlueDetailPage: FC<BlueDetailPageProps> = ({}) => {
+const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
     //
 
     let [isOpenModalAmenities, setIsOpenModalAmenities] = useState(false);
@@ -43,12 +43,13 @@ const BlueDetailPage: FC<BlueDetailPageProps> = ({}) => {
             <div className="listingSection__wrap !space-y-6">
                 {/* 1 */}
                 <div className="flex justify-between items-center">
-                    <Badge name="Blue - Playa Arinaga"/>
+                    <Badge className="bg-white"
+                           name="White - Playa Arinaga"/>
                 </div>
 
                 {/* 2 */}
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
-                    The Blue House
+                    The White House
                 </h2>
 
                 {/* 5 */}
@@ -418,4 +419,4 @@ const BlueDetailPage: FC<BlueDetailPageProps> = ({}) => {
     );
 };
 
-export default BlueDetailPage;
+export default YellowDetailPage;

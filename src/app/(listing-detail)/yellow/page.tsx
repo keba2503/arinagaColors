@@ -43,7 +43,8 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
             <div className="listingSection__wrap !space-y-6">
                 {/* 1 */}
                 <div className="flex justify-between items-center">
-                    <Badge name="Yellow - Playa Arinaga"/>
+                    <Badge className="bg-yellow-200"
+                           name="Yellow - Playa Arinaga"/>
                 </div>
 
                 {/* 2 */}
