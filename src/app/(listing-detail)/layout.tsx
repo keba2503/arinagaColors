@@ -8,6 +8,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { ReactNode } from "react";
 import MobileFooterSticky from "./(components)/MobileFooterSticky";
 import { imageGallery as listingStayImageGallery } from "./listing-stay-detail/constant";
+import { imageGallery as listingYellowImageGallery } from "./yellow/constant";
 import { Route } from "next";
 
 const DetailtLayout = ({ children }: { children: ReactNode }) => {
@@ -22,12 +23,16 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
     router.push(`${thisPathname}/?${params.toString()}` as Route);
   };
 
-  const getImageGalleryListing = () => {
-    if (thisPathname?.includes("/listing-stay-detail")) {
-      return listingStayImageGallery;
-    }
-    return [];
-  };
+    const getImageGalleryListing = () => {
+        if (thisPathname?.includes("/listing-stay-detail")) {
+            return listingStayImageGallery;
+        }
+        if (thisPathname?.includes("/yellow")) {
+            return listingYellowImageGallery;
+        }
+
+        return [];
+    };
 
   return (
     <div className="ListingDetailPage">

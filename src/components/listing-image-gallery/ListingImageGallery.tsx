@@ -12,7 +12,6 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Route } from "next";
 
 const PHOTOS: string[] = [
-
 ];
 
 export const DEMO_IMAGE: ListingGalleryImage[] = [...PHOTOS].map(
@@ -55,7 +54,6 @@ const ListingImageGallery: FC<Props> = ({
   const lastViewedPhotoRef = useRef<HTMLDivElement>(null);
   const thisPathname = usePathname();
   useEffect(() => {
-    // This effect keeps track of the last viewed photo in the modal to keep the index page in sync when the user navigates back
     if (lastViewedPhoto && !photoId) {
       lastViewedPhotoRef.current?.scrollIntoView({ block: "center" });
       setLastViewedPhoto(null);

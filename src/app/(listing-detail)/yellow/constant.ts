@@ -32,9 +32,9 @@ import img30 from '@/images/Exteriores/Yellow/30.jpg';
 
 // Agrega todas las imágenes importadas a una matriz
 export const PHOTOS = [
-  img1.src,
-  img2.src,
-  img3.src,
+  img1,
+  img2,
+  img3,
   img4,
   img5,
   img6,
@@ -98,7 +98,7 @@ export const imageGallery: ListingGalleryImage[] = [...PHOTOS].map(
   (item, index): ListingGalleryImage => {
     return {
       id: index,
-      url: item,
+      url: item.src,
     };
   }
 );
