@@ -184,7 +184,7 @@ export const NAVIGATION_DEMO: NavItemType[] = [
   },
   {
     id: ncNanoId(),
-    href: "/listing-stay",
+    href: "/",
     name: "Más",
     type: "dropdown",
     children: [
