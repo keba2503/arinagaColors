@@ -16,7 +16,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Chisfis - Booking online React Next Template",
+  title: "Arinaga Colors - Booking online",
   description: "Booking online & rental online React Next Template",
   keywords: "Chisfis, Booking online, React Next Template",
   viewport:
