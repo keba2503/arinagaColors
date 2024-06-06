@@ -1,9 +1,9 @@
 "use client";
 
-import React, {FC, Fragment, useState} from "react";
+import React, {FC, Fragment, useEffect, useState} from "react";
 import {Dialog, Transition} from "@headlessui/react";
 import {Squares2X2Icon} from "@heroicons/react/24/outline";
-import CommentListing from "@/components/CommentListing";;
+import CommentListing from "@/components/CommentListing";
 import Badge from "@/shared/Badge";
 import ButtonPrimary from "@/shared/ButtonPrimary";
 import ButtonSecondary from "@/shared/ButtonSecondary";
@@ -18,13 +18,21 @@ import {Route} from "next";
 export interface YellowDetailPageProps {
 }
 
-const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
-    //
-
+const WhiteDetailPage: FC<YellowDetailPageProps> = ({}) => {
     let [isOpenModalAmenities, setIsOpenModalAmenities] = useState(false);
 
     const thisPathname = usePathname();
     const router = useRouter();
+
+    useEffect(() => {
+        const script = document.createElement("script");
+        script.src = "https://bookonline.pro/widgets/search/dist/index.js";
+        script.defer = true;
+        document.body.appendChild(script);
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, []);
 
     function closeModalAmenities() {
         setIsOpenModalAmenities(false);
@@ -61,25 +69,25 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
                     <div className="flex items-center space-x-3 ">
                         <i className=" las la-user text-2xl "></i>
                         <span className="">
-              4 <span className="hidden sm:inline-block">huespedes</span>
+              6 <span className="hidden sm:inline-block">huespedes</span>
             </span>
                     </div>
                     <div className="flex items-center space-x-3">
                         <i className=" las la-bed text-2xl"></i>
                         <span className=" ">
-              2 <span className="hidden sm:inline-block">camas</span>
+              5 <span className="hidden sm:inline-block">camas</span>
             </span>
                     </div>
                     <div className="flex items-center space-x-3">
                         <i className=" las la-bath text-2xl"></i>
                         <span className=" ">
-              1 <span className="hidden sm:inline-block">baños</span>
+              1 <span className="hidden sm:inline-block">baño</span>
             </span>
                     </div>
                     <div className="flex items-center space-x-3">
                         <i className=" las la-door-open text-2xl"></i>
                         <span className=" ">
-              2 <span className="hidden sm:inline-block">habitaciones</span>
+              3 <span className="hidden sm:inline-block">habitaciones</span>
             </span>
                     </div>
                 </div>
@@ -92,14 +100,19 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
             <div className="listingSection__wrap">
                 <h2 className="text-2xl font-semibold">Información del apartamento</h2>
                 <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
-                <div className="text-neutral-6000 dark:text-neutral-300">
-                  <span>
-                    Te recomendamos que te sumerjas en la relajante experiencia de contemplar el mar mientras te relajas con una bebida en la mano,
-                      acompañado del suave sonido de las olas. Nuestras viviendas son ideales para parejas en busca de un refugio romántico,
-                      así como para grupos de hasta 5 personas. Además, si viajas con una familia más grande, también podemos combinar varios
-                      apartamentos para acomodarlos a todos.
-                  </span>
-            <br/>
+                <div className="text-neutral-6000 dark:text-neutral-300 text-justify">
+                <span className="block mb-4">
+                    Acogedora vivienda vacacional en Arinaga con vistas al mar, que consta de 3 dormitorios dobles, con capacidad para 6 personas y con pequeña terraza y balcón, ideal para tomar algo y relajarse contemplando y escuchando el sonido del mar.
+                </span>
+                    <span className="block mb-4">
+                    El alojamiento tiene una superficie de 85 m², exterior con mucha luz y está situado en primera línea de playa. Está totalmente equipado con lavadora, plancha, acceso ilimitado a Internet (wifi), secador de pelo y 1 TV. La cocina, de estilo americana, cuenta con placa vitrocerámica, nevera, microondas, horno, congelador, vajilla/cubertería, utensilios/cocina, cafetera, tostadora, hervidor de agua y exprimidor. Ofrecemos cuna bajo petición, de manera gratuita.
+                </span>
+                    <span className="block mb-4">
+                    A lo largo de la costa de Arinaga, hay un paseo de aproximadamente 2 kilómetros que recorre el pueblo de un extremo a otro. La vivienda se encuentra en el propio paseo, Hay una gran variedad de restaurantes y bares en el paseo. La playa se divide en varias zonas de baño. La gran parte es de piedra, pero hay zonas con arena. Cuenta con una piscina natural en la zona del Soco Negro, con plataformas de madera para tomar el sol. Al final del paseo se encuentra la zona del Risco Verde, ideal para tomar un baño con marea alta. También tiene plataformas de madera para tomar el sol. La playa posee la Bandera Azul desde el año 2017.
+                </span>
+                    <span className="block mb-4">
+                    La temperatura media es de 25º a lo largo del año. Se puede practicar variedad de deportes, como ciclismo, kitesurf, windsurf, paddle surf y submarinismo. Además, la vivienda se encuentra a 5 minutos de la reserva natural "Playa de Cabrón". Es de arena rubia, aunque también cuenta con algunas formaciones rocosas volcánicas. El Cabrón es uno de los enclaves favoritos para practicar el buceo en Gran Canaria, una de las actividades en Gran Canaria que te recomendamos realizar.
+                </span>
                 </div>
             </div>
         );
@@ -109,24 +122,20 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
         return (
             <div className="listingSection__wrap">
                 <div>
-                    <h2 className="text-2xl font-semibold">Comodidades
-                    </h2>
+                    <h2 className="text-2xl font-semibold">Comodidades</h2>
                     <span className="block mt-2 text-neutral-500 dark:text-neutral-400">
-            {` Acerca de los servicios y comodidades de la propiedad`}
-          </span>
+                        {`Acerca de los servicios y comodidades de la propiedad`}
+                    </span>
                 </div>
                 <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
-                {/* 6 */}
-                <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 text-sm text-neutral-700 dark:text-neutral-300 ">
+                <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 text-sm text-neutral-700 dark:text-neutral-300">
                     {Amenities_demos.filter((_, i) => i < 12).map((item) => (
                         <div key={item.name} className="flex items-center space-x-3">
                             <i className={`text-3xl las ${item.icon}`}></i>
-                            <span className=" ">{item.name}</span>
+                            <span className="">{item.name}</span>
                         </div>
                     ))}
                 </div>
-
-                {/* ----- */}
                 <div className="w-14 border-b border-neutral-200"></div>
                 <div>
                     <ButtonSecondary onClick={openModalAmenities}>
@@ -164,8 +173,8 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
                             className="inline-block h-screen align-middle"
                             aria-hidden="true"
                         >
-              &#8203;
-            </span>
+                            &#8203;
+                        </span>
                         <Transition.Child
                             as={Fragment}
                             enter="ease-out duration-300"
@@ -176,30 +185,19 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
                             leaveTo="opacity-0 scale-95"
                         >
                             <div className="inline-block py-8 h-screen w-full max-w-4xl">
-                                <div
-                                    className="inline-flex pb-2 flex-col w-full text-left align-middle transition-all transform overflow-hidden rounded-2xl bg-white dark:bg-neutral-900 dark:border dark:border-neutral-700 dark:text-neutral-100 shadow-xl h-full">
-                                    <div
-                                        className="relative flex-shrink-0 px-6 py-4 border-b border-neutral-200 dark:border-neutral-800 text-center">
-                                        <h3
-                                            className="text-lg font-medium leading-6 text-gray-900"
-                                            id="headlessui-dialog-title-70"
-                                        >
+                                <div className="inline-flex pb-2 flex-col w-full text-left align-middle transition-all transform overflow-hidden rounded-2xl bg-white dark:bg-neutral-900 dark:border dark:border-neutral-700 dark:text-neutral-100 shadow-xl h-full">
+                                    <div className="relative flex-shrink-0 px-6 py-4 border-b border-neutral-200 dark:border-neutral-800 text-center">
+                                        <h3 className="text-lg font-medium leading-6 text-gray-900">
                                             Comodidades
                                         </h3>
                                         <span className="absolute left-3 top-3">
-                      <ButtonClose onClick={closeModalAmenities}/>
-                    </span>
+                                            <ButtonClose onClick={closeModalAmenities}/>
+                                        </span>
                                     </div>
-                                    <div
-                                        className="px-8 overflow-auto text-neutral-700 dark:text-neutral-300 divide-y divide-neutral-200">
+                                    <div className="px-8 overflow-auto text-neutral-700 dark:text-neutral-300 divide-y divide-neutral-200">
                                         {Amenities_demos.filter((_, i) => i < 1212).map((item) => (
-                                            <div
-                                                key={item.name}
-                                                className="flex items-center py-2.5 sm:py-4 lg:py-5 space-x-5 lg:space-x-8"
-                                            >
-                                                <i
-                                                    className={`text-4xl text-neutral-6000 las ${item.icon}`}
-                                                ></i>
+                                            <div key={item.name} className="flex items-center py-2.5 sm:py-4 lg:py-5 space-x-5 lg:space-x-8">
+                                                <i className={`text-4xl text-neutral-6000 las ${item.icon}`}></i>
                                                 <span>{item.name}</span>
                                             </div>
                                         ))}
@@ -220,13 +218,14 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
                 <h2 className="text-2xl font-semibold">Reseñas</h2>
                 <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
 
-                {/* comment */}
+                {/* comment
                 <div className="divide-y divide-neutral-100 dark:divide-neutral-800">
                     <CommentListing className="py-8"/>
                     <CommentListing className="py-8"/>
                     <CommentListing className="py-8"/>
                     <CommentListing className="py-8"/>
                 </div>
+                */}
             </div>
         );
     };
@@ -238,7 +237,7 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
                 <div>
                     <h2 className="text-2xl font-semibold">Dirección</h2>
                     <span className="block mt-2 text-neutral-500 dark:text-neutral-400">
-            Playa Arinaga
+            Calle Domingo de Nava, 1 2º planta, 35118 - Arinaga
           </span>
                 </div>
                 <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"/>
@@ -252,7 +251,7 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
                             loading="lazy"
                             allowFullScreen
                             referrerPolicy="no-referrer-when-downgrade"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7054.876212217358!2d-15.399634054591269!3d27.8578093898816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc40a1cff7f0ef39%3A0x85d47346438b7645!2sArinaga%2C%20Las%20Palmas!5e0!3m2!1ses!2ses!4v1716713774623!5m2!1ses!2ses"
+                            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3527.4659727211942!2d-15.398423824527264!3d27.856952976097137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjfCsDUxJzI1LjAiTiAxNcKwMjMnNDUuMSJX!5e0!3m2!1ses!2ses!4v1717691223359!5m2!1ses!2ses"
                         ></iframe>
                     </div>
                 </div>
@@ -267,7 +266,7 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
                 <h2 className="text-2xl font-semibold">Cosas que debes saber</h2>
                 <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"/>
 
-                {/* CONTENT */}
+                {/* CONTENT
                 <div>
                     <h4 className="text-lg font-semibold">Política de cancelación</h4>
                     <span className="block mt-3 text-neutral-500 dark:text-neutral-400">
@@ -279,6 +278,7 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
               reembolso del 50% del monto total pagado (menos la tarifa de servicio).
          </span>
                 </div>
+                */}
 
                 <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"/>
 
@@ -288,12 +288,12 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
                     <div className="mt-3 text-neutral-500 dark:text-neutral-400 max-w-md text-sm sm:text-base">
                         <div
                             className="flex space-x-10 justify-between p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
-                            <span>Check-in</span>
-                            <span>08:00 am - 12:00 am</span>
+                            <span>Llegada</span>
+                            <span>14:00</span>
                         </div>
                         <div className="flex space-x-10 justify-between p-3">
-                            <span>Check-out</span>
-                            <span>02:00 pm - 04:00 pm</span>
+                            <span>Salida</span>
+                            <span>11:00</span>
                         </div>
                     </div>
                 </div>
@@ -304,40 +304,12 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
 
     const renderSidebar = () => {
         return (
-            <div className="listingSectionSidebar__wrap shadow-xl">
-                {/* PRICE */}
-                <div className="flex justify-between">
-          <span className="text-3xl font-semibold">
-            €119
-            <span className="ml-1 text-base font-normal text-neutral-500 dark:text-neutral-400">
-              /noche
-            </span>
-          </span>
-                </div>
-
-                {/* FORM */}
-                <form className="flex flex-col border border-neutral-200 dark:border-neutral-700 rounded-3xl ">
-                    <StayDatesRangeInput className="flex-1 z-[11]"/>
-                    <div className="w-full border-b border-neutral-200 dark:border-neutral-700"></div>
-                    <GuestsInput className="flex-1"/>
-                </form>
-
-                {/* SUM */}
-                <div className="flex flex-col space-y-4">
-                    <div className="flex justify-between text-neutral-6000 dark:text-neutral-300">
-                        <span>€119 x 3 noche</span>
-                        <span>€357</span>
-                    </div>
-
-                    <div className="border-b border-neutral-200 dark:border-neutral-700"></div>
-                    <div className="flex justify-between font-semibold">
-                        <span>Total</span>
-                        <span>€357</span>
-                    </div>
-                </div>
-
-                {/* SUBMIT */}
-                <ButtonPrimary href={"/checkout"}>Reserve</ButtonPrimary>
+            <div className="listingSectionSidebar__wrap shadow-xl p-4 lg:p-6">
+                <div data-accommodation-id="357517" data-target="_blank"
+                     className="avaibook-search-widget" data-widget-id="92477"
+                     data-widget-token="h5SwvFQFMU/hiog6gT4HMw==" data-background-color="#FFFFFF"
+                     data-main-color="#F0F0F0" data-border-radius="3px" data-shadow="0 2px 20px rgb(0 0 0 / 16%)"
+                     data-padding="1rem" data-language="es"></div>
             </div>
         );
     };
@@ -358,20 +330,17 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
                             alt=""
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
                         />
-                        <div
-                            className="absolute inset-0 bg-neutral-900 bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity"></div>
+                        <div className="absolute inset-0 bg-neutral-900 bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity"></div>
                     </div>
                     {PHOTOS.filter((_, i) => i >= 1 && i < 5).map((item, index) => (
                         <div
                             key={index}
-                            className={`relative rounded-md sm:rounded-xl overflow-hidden ${
-                                index >= 3 ? "hidden sm:block" : ""
-                            }`}
+                            className={`relative rounded-md sm:rounded-xl overflow-hidden ${index >= 3 ? "hidden sm:block" : ""}`}
                         >
                             <div className="aspect-w-4 aspect-h-3 sm:aspect-w-6 sm:aspect-h-5">
                                 <Image
                                     fill
-                                    className="object-cover rounded-md sm:rounded-xl "
+                                    className="object-cover rounded-md sm:rounded-xl"
                                     src={item || ""}
                                     alt=""
                                     sizes="400px"
@@ -379,10 +348,7 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
                             </div>
 
                             {/* OVERLAY */}
-                            <div
-                                className="absolute inset-0 bg-neutral-900 bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity cursor-pointer"
-                                onClick={handleOpenModalImageGallery}
-                            />
+                            <div className="absolute inset-0 bg-neutral-900 bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity cursor-pointer" onClick={handleOpenModalImageGallery}/>
                         </div>
                     ))}
 
@@ -392,14 +358,14 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
                     >
                         <Squares2X2Icon className="w-5 h-5"/>
                         <span className="ml-2 text-neutral-800 text-sm font-medium">
-              Ver todas las fotos
-            </span>
+                            Ver todas las fotos
+                        </span>
                     </button>
                 </div>
             </header>
 
             {/* MAIN */}
-            <main className=" relative z-10 mt-11 flex flex-col lg:flex-row ">
+            <main className="relative z-10 mt-11 flex flex-col lg:flex-row">
                 {/* CONTENT */}
                 <div className="w-full lg:w-3/5 xl:w-2/3 space-y-8 lg:space-y-10 lg:pr-10">
                     {renderSection1()}
@@ -411,7 +377,7 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
                 </div>
 
                 {/* SIDEBAR */}
-                <div className="hidden lg:block flex-grow mt-14 lg:mt-0">
+                <div className="hidden lg:block lg:w-1/4 flex-grow mt-14 lg:mt-0">
                     <div className="sticky top-28">{renderSidebar()}</div>
                 </div>
             </main>
@@ -419,4 +385,4 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
     );
 };
 
-export default YellowDetailPage;
+export default WhiteDetailPage;
