@@ -75,13 +75,13 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
                     <div className="flex items-center space-x-3">
                         <i className=" las la-bed text-2xl"></i>
                         <span className=" ">
-              2 <span className="hidden sm:inline-block">camas</span>
+              3 <span className="hidden sm:inline-block">camas</span>
             </span>
                     </div>
                     <div className="flex items-center space-x-3">
                         <i className=" las la-bath text-2xl"></i>
                         <span className=" ">
-              1 <span className="hidden sm:inline-block">baños</span>
+              1 <span className="hidden sm:inline-block">baño</span>
             </span>
                     </div>
                     <div className="flex items-center space-x-3">
