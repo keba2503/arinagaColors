@@ -1,19 +1,17 @@
 "use client";
 
-import React, {FC, Fragment, useState} from "react";
+import React, {FC, Fragment, useEffect, useState} from "react";
 import {Dialog, Transition} from "@headlessui/react";
 import {Squares2X2Icon} from "@heroicons/react/24/outline";
-import CommentListing from "@/components/CommentListing";;
 import Badge from "@/shared/Badge";
-import ButtonPrimary from "@/shared/ButtonPrimary";
 import ButtonSecondary from "@/shared/ButtonSecondary";
 import ButtonClose from "@/shared/ButtonClose";
 import Image from "next/image";
 import {usePathname, useRouter} from "next/navigation";
 import {Amenities_demos, PHOTOS} from "./constant";
-import StayDatesRangeInput from "./StayDatesRangeInput";
-import GuestsInput from "./GuestsInput";
 import {Route} from "next";
+
+;
 
 export interface YellowDetailPageProps {
 }
@@ -25,6 +23,16 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
 
     const thisPathname = usePathname();
     const router = useRouter();
+
+    useEffect(() => {
+        const script = document.createElement("script");
+        script.src = "https://bookonline.pro/widgets/search/dist/index.js";
+        script.defer = true;
+        document.body.appendChild(script);
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, []);
 
     function closeModalAmenities() {
         setIsOpenModalAmenities(false);
@@ -92,14 +100,33 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
             <div className="listingSection__wrap">
                 <h2 className="text-2xl font-semibold">Información del apartamento</h2>
                 <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
-                <div className="text-neutral-6000 dark:text-neutral-300">
-                  <span>
-                    Te recomendamos que te sumerjas en la relajante experiencia de contemplar el mar mientras te relajas con una bebida en la mano,
-                      acompañado del suave sonido de las olas. Nuestras viviendas son ideales para parejas en busca de un refugio romántico,
-                      así como para grupos de hasta 5 personas. Además, si viajas con una familia más grande, también podemos combinar varios
-                      apartamentos para acomodarlos a todos.
-                  </span>
-            <br/>
+                <div className="text-neutral-6000 dark:text-neutral-300 text-justify">
+                <span className="block mb-4">
+                    Preciosa y acogedora vivienda vacacional en la Playa de Arinaga,
+                    en primera línea de playa con impresionantes vistas al mar y a toda la bahía. Consta de 2 dormitorios dobles, con capacidad para 4 personas.
+                </span>
+                    <span className="block mb-4">
+                    La vivienda tiene una superficie de 91 m², es exterior con mucha luz y está situada en primera línea de playa, con vistas al mar.
+                    Dispone de pequeña terraza y balcón, ideal para relajarse contemplando y escuchando el sonido del mar.
+                    Está totalmente equipada con lavadora, plancha, acceso ilimitado a Internet (wifi), secador de pelo y Televisor.
+                    La cocina de estilo americana cuenta con placa vitrocerámica, nevera, microondas, horno, congelador, vajilla/cubertería,
+                    utensilios/cocina, cafetera, tostadora, hervidor de agua y exprimidor. Ofrecemos cuna bajo petición, de manera gratuita.
+                </span>
+                    <span className="block mb-4">
+                    A lo largo de la costa de Arinaga, hay un paseo de aproximadamente 2 kilómetros que recorre el pueblo de un extremo a otro.
+                    La vivienda se encuentra en el propio paseo, Hay una gran variedad de restaurantes y bares en el paseo.
+                    La playa se divide en varias zonas de baño. La gran parte es de piedra, pero hay zonas con arena.
+                    Cuenta con una piscina natural en la zona del Soco Negro, con plataformas de madera para tomar el sol.
+                    Al final del paseo se encuentra la zona del Risco Verde, ideal para tomar un baño con marea alta.
+                    También tiene plataformas de madera para tomar el sol. La playa posee la Bandera Azul desde el año 2017.
+                </span>
+                    <span className="block mb-4">
+                    La temperatura media es de 25º a lo largo del año.
+                    Se puede practicar variedad de deportes, como ciclismo, kitesurf, windsurf, paddle surf y submarinismo.
+                    Además, la vivienda se encuentra a 5 minutos de la reserva natural "Playa de Cabrón".
+                    Es de arena rubia, aunque también cuenta con algunas formaciones rocosas volcánicas.
+                    El Cabrón es uno de los enclaves favoritos para practicar el buceo en Gran Canaria, una de las actividades en Gran Canaria que te recomendamos realizar.
+                </span>
                 </div>
             </div>
         );
@@ -220,13 +247,14 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
                 <h2 className="text-2xl font-semibold">Reseñas</h2>
                 <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
 
-                {/* comment */}
+                {/* comment
                 <div className="divide-y divide-neutral-100 dark:divide-neutral-800">
                     <CommentListing className="py-8"/>
                     <CommentListing className="py-8"/>
                     <CommentListing className="py-8"/>
                     <CommentListing className="py-8"/>
                 </div>
+                */}
             </div>
         );
     };
@@ -238,7 +266,7 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
                 <div>
                     <h2 className="text-2xl font-semibold">Dirección</h2>
                     <span className="block mt-2 text-neutral-500 dark:text-neutral-400">
-            Playa Arinaga
+            Calle Domingo de Nava, 1 2º planta, 35118 - Arinaga
           </span>
                 </div>
                 <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"/>
@@ -252,7 +280,7 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
                             loading="lazy"
                             allowFullScreen
                             referrerPolicy="no-referrer-when-downgrade"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7054.876212217358!2d-15.399634054591269!3d27.8578093898816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc40a1cff7f0ef39%3A0x85d47346438b7645!2sArinaga%2C%20Las%20Palmas!5e0!3m2!1ses!2ses!4v1716713774623!5m2!1ses!2ses"
+                            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3527.4659727211942!2d-15.398423824527264!3d27.856952976097137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjfCsDUxJzI1LjAiTiAxNcKwMjMnNDUuMSJX!5e0!3m2!1ses!2ses!4v1717691223359!5m2!1ses!2ses"
                         ></iframe>
                     </div>
                 </div>
@@ -267,7 +295,7 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
                 <h2 className="text-2xl font-semibold">Cosas que debes saber</h2>
                 <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"/>
 
-                {/* CONTENT */}
+                {/* CONTENT
                 <div>
                     <h4 className="text-lg font-semibold">Política de cancelación</h4>
                     <span className="block mt-3 text-neutral-500 dark:text-neutral-400">
@@ -279,6 +307,7 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
               reembolso del 50% del monto total pagado (menos la tarifa de servicio).
          </span>
                 </div>
+                */}
 
                 <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"/>
 
@@ -288,12 +317,12 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
                     <div className="mt-3 text-neutral-500 dark:text-neutral-400 max-w-md text-sm sm:text-base">
                         <div
                             className="flex space-x-10 justify-between p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
-                            <span>Check-in</span>
-                            <span>08:00 am - 12:00 am</span>
+                            <span>Llegada</span>
+                            <span>14:00</span>
                         </div>
                         <div className="flex space-x-10 justify-between p-3">
-                            <span>Check-out</span>
-                            <span>02:00 pm - 04:00 pm</span>
+                            <span>Salida</span>
+                            <span>11:00</span>
                         </div>
                     </div>
                 </div>
@@ -304,40 +333,14 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
 
     const renderSidebar = () => {
         return (
-            <div className="listingSectionSidebar__wrap shadow-xl">
-                {/* PRICE */}
-                <div className="flex justify-between">
-          <span className="text-3xl font-semibold">
-            €119
-            <span className="ml-1 text-base font-normal text-neutral-500 dark:text-neutral-400">
-              /noche
-            </span>
-          </span>
-                </div>
-
-                {/* FORM */}
-                <form className="flex flex-col border border-neutral-200 dark:border-neutral-700 rounded-3xl ">
-                    <StayDatesRangeInput className="flex-1 z-[11]"/>
-                    <div className="w-full border-b border-neutral-200 dark:border-neutral-700"></div>
-                    <GuestsInput className="flex-1"/>
-                </form>
-
-                {/* SUM */}
-                <div className="flex flex-col space-y-4">
-                    <div className="flex justify-between text-neutral-6000 dark:text-neutral-300">
-                        <span>€119 x 3 noche</span>
-                        <span>€357</span>
-                    </div>
-
-                    <div className="border-b border-neutral-200 dark:border-neutral-700"></div>
-                    <div className="flex justify-between font-semibold">
-                        <span>Total</span>
-                        <span>€357</span>
-                    </div>
-                </div>
-
-                {/* SUBMIT */}
-                <ButtonPrimary href={"/checkout"}>Reserve</ButtonPrimary>
+            <div className="listingSectionSidebar__wrap shadow-xl p-4 lg:p-6">
+                <div
+                    data-accommodation-id="357516" data-target="_blank"
+                    className="avaibook-search-widget"
+                    data-widget-id="92477" data-widget-token="h5SwvFQFMU/hiog6gT4HMw=="
+                    data-background-color="#FFFFFF" data-main-color="#E6C40A"
+                    data-border-radius="3px" data-shadow="0 2px 20px rgb(0 0 0 / 16%)"
+                    data-padding="1rem" data-language="es"></div>
             </div>
         );
     };
@@ -411,7 +414,7 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
                 </div>
 
                 {/* SIDEBAR */}
-                <div className="hidden lg:block flex-grow mt-14 lg:mt-0">
+                <div className="hidden lg:block lg:w-1/4 flex-grow mt-14 lg:mt-0">
                     <div className="sticky top-28">{renderSidebar()}</div>
                 </div>
             </main>
