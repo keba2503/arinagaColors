@@ -19,7 +19,7 @@ const Booking: FC<BookingPageProps> = () => {
                         <div className="flex-shrink-0 lg:w-1/2 flex flex-col items-start space-y-8 sm:space-y-10 pb-14 lg:pb-64 xl:pr-14 lg:mr-10 xl:mr-0">
                         </div>
                     </div>
-                    <div className="hidden lg:block z-10 mb-12 lg:mb-0 lg:-mt-40 w-full">
+                    <div className="lg:block z-10 mb-12 lg:mb-0 lg:-mt-40 w-full">
                         <HeroSearchForm/>
                     </div>
                 </div>

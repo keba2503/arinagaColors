@@ -23,7 +23,7 @@ const SectionHero: FC<SectionHeroProps> = ({ className = "" }) => {
       apartamentos situados en la hermosa Playa Arinaga, Gran Canaria. Vive una experiencia única
       con acceso directo a la playa y cerca de las mejores atracciones de la isla.
     </span>
-          <ButtonPrimary href="/listing-stay-map" sizeClass="px-5 py-4 sm:px-7">
+          <ButtonPrimary href="/booking" sizeClass="px-5 py-4 sm:px-7">
             Reserva Ahora
           </ButtonPrimary>
         </div>

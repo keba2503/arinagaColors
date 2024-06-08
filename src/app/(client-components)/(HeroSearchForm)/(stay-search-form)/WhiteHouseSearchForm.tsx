@@ -20,7 +20,7 @@ const WhiteHouseSearchForm: FC = () => {
                     className="avaibook-search-widget"
                     data-widget-id="92477"
                     data-widget-token="h5SwvFQFMU/hiog6gT4HMw=="
-                    data-background-color="#FFFFFF"
+                    data-background-color="none"
                     data-main-color="#F0F0F0"
                     data-border-radius="30px"
                     data-shadow="none"

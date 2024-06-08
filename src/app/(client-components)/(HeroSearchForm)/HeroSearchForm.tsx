@@ -5,20 +5,20 @@ import WhiteHouseSearchForm from "./(stay-search-form)/WhiteHouseSearchForm";
 import BlueHouseSearchForm from "./(stay-search-form)/BlueHouseSearchForm";
 import YellowHouseSearchForm from "./(stay-search-form)/YellowHouseSearchForm";
 
-export type SearchTab = "White" | "Blue" | "Yellow";
+export type SearchTab = "The White House" | "The Blue House" | "The Yellow House";
 
 export interface HeroSearchFormProps {
     className?: string;
     currentTab?: SearchTab;
-    currentPage?: "White" | "Blue" | "Yellow";
+    currentPage?: "The White House" | "The Blue House" | "The Yellow House";
 }
 
 const HeroSearchForm: FC<HeroSearchFormProps> = ({
                                                      className = "",
-                                                     currentTab = "White",
+                                                     currentTab = "The White House",
                                                      currentPage,
                                                  }) => {
-    const tabs: SearchTab[] = ["White", "Blue", "Yellow"];
+    const tabs: SearchTab[] = ["The White House", "The Blue House", "The Yellow House"];
     const [tabActive, setTabActive] = useState<SearchTab>(currentTab);
 
     const renderTab = () => {
@@ -50,11 +50,11 @@ const HeroSearchForm: FC<HeroSearchFormProps> = ({
     const renderForm = () => {
         console.log("Active Tab: ", tabActive); // Log the active tab
         switch (tabActive) {
-            case "White":
+            case "The White House":
                 return <WhiteHouseSearchForm />;
-            case "Blue":
+            case "The Blue House":
                 return <BlueHouseSearchForm />;
-            case "Yellow":
+            case "The Yellow House":
                 return <YellowHouseSearchForm />;
             default:
                 return null;

@@ -13,19 +13,20 @@ const YellowHouseSearchForm: FC = () => {
 
     return (
         <form className="w-full relative mt-8 flex rounded-full bg-white dark:bg-neutral-800">
-            <div className="px-4 py-4 mx-auto max-w-screen-xl">
+            <div className="px-4 py-4 mx-auto max-w-screen-xl bg-transparent">
                 <div
                     data-accommodation-id="357516"
                     data-target="_blank"
                     className="avaibook-search-widget"
                     data-widget-id="92477"
                     data-widget-token="h5SwvFQFMU/hiog6gT4HMw=="
-                    data-background-color="#FFFFFF"
+                    data-background-color="none"
                     data-main-color="#E6C40A"
                     data-border-radius="30px"
                     data-shadow="none"
                     data-padding="1rem"
                     data-language="es"
+
                 ></div>
             </div>
         </form>
