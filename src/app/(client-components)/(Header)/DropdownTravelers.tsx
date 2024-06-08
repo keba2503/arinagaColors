@@ -31,13 +31,13 @@ const solutions: SolutionItem[] = [
   {
     name: "Cars",
     description: "Car rental description",
-    href: "/listing-car",
+    href: "/",
     icon: IconThree,
   },
   {
     name: "Experiences",
     description: "Tour and experiences",
-    href: "/listing-experiences",
+    href: "/",
     icon: IconFour,
   },
 ];

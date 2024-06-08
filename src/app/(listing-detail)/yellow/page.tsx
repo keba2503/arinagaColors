@@ -123,7 +123,7 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
                     <span className="block mb-4">
                     La temperatura media es de 25º a lo largo del año.
                     Se puede practicar variedad de deportes, como ciclismo, kitesurf, windsurf, paddle surf y submarinismo.
-                    Además, la vivienda se encuentra a 5 minutos de la reserva natural "Playa de Cabrón".
+                    Además, la vivienda se encuentra a 5 minutos de la reserva natural Playa de Cabrón.
                     Es de arena rubia, aunque también cuenta con algunas formaciones rocosas volcánicas.
                     El Cabrón es uno de los enclaves favoritos para practicar el buceo en Gran Canaria, una de las actividades en Gran Canaria que te recomendamos realizar.
                 </span>
