@@ -167,21 +167,21 @@ export const NAVIGATION_DEMO: NavItemType[] = [
     href: "/",
     name: "Reservar"
   },
-  {
-    id: ncNanoId(),
-    href: "/service",
-    name: "Servicios"
-  },
-  {
-    id: ncNanoId(),
-    href: "/offer",
-    name: "Ofertas"
-  },
-  {
-    id: ncNanoId(),
-    href: "/blog",
-    name: "Blog"
-  },
+  //{
+    //id: ncNanoId(),
+    //href: "/service",
+   // name: "Servicios"
+  //},
+  //{
+  //  id: ncNanoId(),
+ //   href: "/offer",
+ //   name: "Ofertas"
+//  },
+  // {
+  //   id: ncNanoId(),
+  //  href: "/blog",
+  //   name: "Blog"
+// },
   {
     id: ncNanoId(),
     href: "/",
@@ -198,11 +198,11 @@ export const NAVIGATION_DEMO: NavItemType[] = [
         href: "/faq",
         name: "FAQ",
       },
-      {
-        id: ncNanoId(),
-        href: "/gallery",
-        name: "Galería"
-      },
+      // {
+    //   id: ncNanoId(),
+        //     href: "/gallery",
+        //     name: "Galería"
+      //  },
       {
         id: ncNanoId(),
         href: "/contact",

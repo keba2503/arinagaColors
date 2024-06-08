@@ -116,16 +116,7 @@ const StayCardH: FC<StayCardHProps> = ({
         <div className="hidden sm:block w-14 border-b border-neutral-100 dark:border-neutral-800 my-4"></div>
         {renderTienIch()}
         <div className="w-14 border-b border-neutral-100 dark:border-neutral-800 my-4"></div>
-        <div className="flex justify-between items-end">
-          <StartRating reviewCount={reviewCount} point={reviewStart} />
-          <span className="text-base font-semibold text-secondary-500">
-            {price}
-            {` `}
-            <span className="text-sm text-neutral-500 dark:text-neutral-400 font-normal">
-              /noche
-            </span>
-          </span>
-        </div>
+
       </div>
     );
   };

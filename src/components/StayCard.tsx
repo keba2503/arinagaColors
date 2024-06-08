@@ -95,15 +95,7 @@ const StayCard: FC<StayCardProps> = ({
         </div>
         <div className="w-14 border-b border-neutral-100 dark:border-neutral-800"></div>
         <div className="flex justify-between items-center">
-          <span className="text-base font-semibold">
-            {price}
-            {` `}
-            {size === "default" && (
-              <span className="text-sm text-neutral-500 dark:text-neutral-400 font-normal">
-                /noche
-              </span>
-            )}
-          </span>
+
           {!!reviewStart && (
             <StartRating reviewCount={reviewCount} point={reviewStart} />
           )}

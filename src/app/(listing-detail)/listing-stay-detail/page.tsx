@@ -319,7 +319,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
           <span className="text-3xl font-semibold">
             €119
             <span className="ml-1 text-base font-normal text-neutral-500 dark:text-neutral-400">
-              /noche
+
             </span>
           </span>
         </div>
