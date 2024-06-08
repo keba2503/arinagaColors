@@ -164,7 +164,7 @@ export const NAVIGATION_DEMO: NavItemType[] = [
   },
   {
     id: ncNanoId(),
-    href: "/",
+    href: "/booking",
     name: "Reservar"
   },
   //{

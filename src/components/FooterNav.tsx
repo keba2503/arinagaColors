@@ -2,8 +2,8 @@
 
 import {
   HeartIcon,
-  MagnifyingGlassIcon,
   UserCircleIcon,
+  HomeIcon, CalendarIcon,
 } from "@heroicons/react/24/outline";
 import React, { useEffect, useRef } from "react";
 import { PathName } from "@/routers/types";
@@ -25,19 +25,14 @@ interface NavItem {
 
 const NAV: NavItem[] = [
   {
-    name: "Explore",
+    name: "Inicio",
     link: "/",
-    icon: MagnifyingGlassIcon,
+    icon: HomeIcon,
   },
   {
-    name: "Wishlists",
-    link: "/account-savelists",
-    icon: HeartIcon,
-  },
-  {
-    name: "Log in",
-    link: "/account",
-    icon: UserCircleIcon,
+    name: "Reservar",
+    link: "/booking",
+    icon: CalendarIcon,
   },
   {
     name: "Menu",

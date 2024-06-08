@@ -11,15 +11,11 @@ export interface PageContactProps {}
 const info = [
   {
     title: "🗺 Dirección",
-    desc: "Photo booth tattooed prism, portland taiyaki hoodie neutra typewriter",
+    desc: "Arinaga, Las Palmas, España",
   },
   {
     title: "💌 Correo electrónico",
-    desc: "nc.example@example.com",
-  },
-  {
-    title: "☎ Teléfono",
-    desc: "000-123-456-7890",
+    desc: "arinagacolors@gmail.com",
   },
 ];
 
@@ -34,20 +30,20 @@ const PageContact: FC<PageContactProps> = ({}) => {
           <div className="flex-shrink-0 grid grid-cols-1 sm:grid-cols-2 gap-12 ">
             <div className="max-w-sm space-y-8">
               {info.map((item, index) => (
-                <div key={index}>
-                  <h3 className="uppercase font-semibold text-sm dark:text-neutral-200 tracking-wider">
-                    {item.title}
-                  </h3>
-                  <span className="block mt-2 text-neutral-500 dark:text-neutral-400">
+                  <div key={index}>
+                    <h3 className="uppercase font-semibold text-sm dark:text-neutral-200 tracking-wider">
+                      {item.title}
+                    </h3>
+                    <span className="block mt-2 text-neutral-500 dark:text-neutral-400">
                     {item.desc}
                   </span>
-                </div>
+                  </div>
               ))}
-              <div>
+              <div className="pl-4">
                 <h3 className="uppercase font-semibold text-sm dark:text-neutral-200 tracking-wider">
                   🌏 Redes sociales
                 </h3>
-                <SocialsList className="mt-2" />
+                <SocialsList className="mt-2"/>
               </div>
             </div>
             <div>
@@ -56,7 +52,7 @@ const PageContact: FC<PageContactProps> = ({}) => {
                   <Label>Nombre completo</Label>
 
                   <Input
-                    placeholder="Example Doe"
+                    placeholder=""
                     type="text"
                     className="mt-1"
                   />
@@ -66,7 +62,7 @@ const PageContact: FC<PageContactProps> = ({}) => {
 
                   <Input
                     type="email"
-                    placeholder="example@example.com"
+                    placeholder=""
                     className="mt-1"
                   />
                 </label>
