@@ -263,7 +263,7 @@ const BlueDetailPage: FC<BlueDetailPageProps> = ({}) => {
                             loading="lazy"
                             allowFullScreen
                             referrerPolicy="no-referrer-when-downgrade"
-                            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3527.4659727211942!2d-15.398423824527264!3d27.856952976097137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjfCsDUxJzI1LjAiTiAxNcKwMjMnNDUuMSJX!5e0!3m2!1ses!2ses!4v1717692918943!5m2!1ses!2ses"                        ></iframe>
+                            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3527.4659727211942!2d-15.398423824527264!3d27.856952976097137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjfCsDUxJzI1LjAiTiAxNcKwMjMnNDUuMSJX!5e0!3m2!1ses!2ses!4v1717692918943!5m2!1ses!2ses"></iframe>
                     </div>
                 </div>
             </div>
@@ -277,24 +277,19 @@ const BlueDetailPage: FC<BlueDetailPageProps> = ({}) => {
                 <h2 className="text-2xl font-semibold">Cosas que debes saber</h2>
                 <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"/>
 
-                {/* CONTENT
                 <div>
                     <h4 className="text-lg font-semibold">Política de cancelación</h4>
                     <span className="block mt-3 text-neutral-500 dark:text-neutral-400">
-              Reembolso del 50% del valor de la reserva cuando los clientes cancelen la habitación
-              dentro de las 48 horas posteriores a la reserva exitosa y 14 días antes de la
-              hora de check-in.
+           Cancelación flexible, si anulas 7 días antes de la entrada al alojamiento.
               <br/>
-              Luego, si cancelan la habitación 14 días antes de la hora de check-in, obtienen un
-              reembolso del 50% del monto total pagado (menos la tarifa de servicio).
          </span>
-                </div>*/}
+                </div>
 
                 <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"/>
 
                 {/* CONTENT */}
                 <div>
-                    <h4 className="text-lg font-semibold">Check-in time</h4>
+                    <h4 className="text-lg font-semibold"></h4>
                     <div className="mt-3 text-neutral-500 dark:text-neutral-400 max-w-md text-sm sm:text-base">
                         <div
                             className="flex space-x-10 justify-between p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg">

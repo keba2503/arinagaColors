@@ -294,26 +294,20 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
                 {/* HEADING */}
                 <h2 className="text-2xl font-semibold">Cosas que debes saber</h2>
                 <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"/>
-
-                {/* CONTENT
                 <div>
                     <h4 className="text-lg font-semibold">Política de cancelación</h4>
                     <span className="block mt-3 text-neutral-500 dark:text-neutral-400">
-              Reembolso del 50% del valor de la reserva cuando los clientes cancelen la habitación
-              dentro de las 48 horas posteriores a la reserva exitosa y 14 días antes de la
-              hora de check-in.
+           Cancelación flexible, si anulas 7 días antes de la entrada al alojamiento.
               <br/>
-              Luego, si cancelan la habitación 14 días antes de la hora de check-in, obtienen un
-              reembolso del 50% del monto total pagado (menos la tarifa de servicio).
          </span>
                 </div>
-                */}
+
 
                 <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"/>
 
                 {/* CONTENT */}
                 <div>
-                    <h4 className="text-lg font-semibold">Check-in time</h4>
+                    <h4 className="text-lg font-semibold"></h4>
                     <div className="mt-3 text-neutral-500 dark:text-neutral-400 max-w-md text-sm sm:text-base">
                         <div
                             className="flex space-x-10 justify-between p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
