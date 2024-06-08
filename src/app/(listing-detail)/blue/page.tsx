@@ -377,7 +377,12 @@ const BlueDetailPage: FC<BlueDetailPageProps> = ({}) => {
             </header>
 
             {/* MAIN */}
-            <main className=" relative z-10 mt-11 flex flex-col lg:flex-row ">
+            <main className="relative z-10 mt-11 flex flex-col lg:flex-row-reverse">
+                {/* SIDEBAR */}
+                <div className="lg:block lg:w-1/4 flex-grow mt-14 lg:mt-0 mb-8 lg:ml-8">
+                    <div className="sticky top-28">{renderSidebar()}</div>
+                </div>
+
                 {/* CONTENT */}
                 <div className="w-full lg:w-3/5 xl:w-2/3 space-y-8 lg:space-y-10 lg:pr-10">
                     {renderSection1()}
@@ -386,11 +391,6 @@ const BlueDetailPage: FC<BlueDetailPageProps> = ({}) => {
                     {renderSection6()}
                     {renderSection7()}
                     {renderSection8()}
-                </div>
-
-                {/* SIDEBAR */}
-                <div className="hidden lg:block lg:w-1/4 flex-grow mt-14 lg:mt-0">
-                    <div className="sticky top-28">{renderSidebar()}</div>
                 </div>
             </main>
         </div>
