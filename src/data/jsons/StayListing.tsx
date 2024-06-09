@@ -1,36 +1,36 @@
-import imgYellow1 from '@/images/Exteriores/Yellow/1.jpg';
-import imgYellow2 from '@/images/Exteriores/Yellow/2.jpg';
-import imgYellow3 from '@/images/Exteriores/Yellow/3.jpg';
-import imgYellow4 from '@/images/Exteriores/Yellow/4.jpg';
-import imgYellow5 from '@/images/Exteriores/Yellow/5.jpg';
+import imgInikdark1 from '@/images/Exteriores/inikdark/1.png';
+import imgInikdark2 from '@/images/inikdark/2.png';
+import imgInikdark3 from '@/images/inikdark/3.png';
+import imgInikdark4 from '@/images/inikdark/4.png';
+import imgInikdark5 from '@/images/inikdark/5.png';
 
-import imgBlue1 from '@/images/Exteriores/Blue/1.jpg';
-import imgBlue2 from '@/images/Exteriores/Blue/2.jpg';
-import imgBlue3 from '@/images/Exteriores/Blue/3.jpg';
-import imgBlue4 from '@/images/Exteriores/Blue/4.jpg';
-import imgBlue5 from '@/images/Exteriores/Blue/5.jpg';
+import imgIniklight1 from '@/images/iniklight/1.png';
+import imgIniklight2 from '@/images/iniklight/2.png';
+import imgIniklight3 from '@/images/iniklight/3.png';
+import imgIniklight4 from '@/images/iniklight/4.png';
+import imgIniklight5 from '@/images/iniklight/5.png';
 
-import imgWhite1 from '@/images/Exteriores/White/1.jpg';
-import imgWhite2 from '@/images/Exteriores/White/2.jpg';
-import imgWhite3 from '@/images/Exteriores/White/3.jpg';
-import imgWhite4 from '@/images/Exteriores/White/4.jpg';
-import imgWhite5 from '@/images/Exteriores/White/5.jpg';
+import imgInikcar1 from '@/images/inikcar/1.jpg';
+import imgInikcar2 from '@/images/inikcar/2.jpg';
+import imgInikcar3 from '@/images/inikcar/3.jpg';
+import imgInikcar4 from '@/images/inikcar/4.jpg';
+import imgInikcar5 from '@/images/inikcar/5.jpg';
 
 const listings = [
     {
         id: "id_1",
         authorId: 6,
         date: "May 20, 2021",
-        href: "/yellow",
+        href: "/inikdark",
         listingCategoryId: 11,
-        title: "The Yellow house",
-        featuredImage: imgYellow1.src,
+        title: "The Inikdark house",
+        featuredImage: imgInikdark1.src,
         galleryImgs: [
-            imgYellow1.src,
-            imgYellow2.src,
-            imgYellow3.src,
-            imgYellow4.src,
-            imgYellow5.src,
+            imgInikdark1.src,
+            imgInikdark2.src,
+            imgInikdark3.src,
+            imgInikdark4.src,
+            imgInikdark5.src,
         ],
         commentCount: 47,
         viewCount: 843,
@@ -50,16 +50,16 @@ const listings = [
         id: "id_2",
         authorId: 6,
         date: "May 20, 2021",
-        href: "/blue",
+        href: "/iniklight",
         listingCategoryId: 11,
-        title: "The Blue house",
-        featuredImage: imgBlue1.src,
+        title: "The Iniklight house",
+        featuredImage: imgIniklight1.src,
         galleryImgs: [
-            imgBlue1.src,
-            imgBlue2.src,
-            imgBlue3.src,
-            imgBlue4.src,
-            imgBlue5.src,
+            imgIniklight1.src,
+            imgIniklight2.src,
+            imgIniklight3.src,
+            imgIniklight4.src,
+            imgIniklight5.src,
         ],
         commentCount: 47,
         viewCount: 843,
@@ -79,16 +79,16 @@ const listings = [
         id: "id_3",
         authorId: 6,
         date: "May 20, 2021",
-        href: "/white",
+        href: "/inikcar",
         listingCategoryId: 11,
-        title: "The White house",
-        featuredImage: imgWhite1.src,
+        title: "The Inikcar house",
+        featuredImage: imgInikcar1.src,
         galleryImgs: [
-            imgWhite1.src,
-            imgWhite2.src,
-            imgWhite3.src,
-            imgWhite4.src,
-            imgWhite5.src,
+            imgInikcar1.src,
+            imgInikcar2.src,
+            imgInikcar3.src,
+            imgInikcar4.src,
+            imgInikcar5.src,
         ],
         commentCount: 47,
         viewCount: 843,
