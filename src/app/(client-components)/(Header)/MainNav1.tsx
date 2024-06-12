@@ -20,7 +20,6 @@ const MainNav1: FC<MainNav1Props> = ({ className = "" }) => {
         <div className="hidden md:flex flex-shrink-0 justify-end flex-1 lg:flex-none text-neutral-700 dark:text-neutral-100">
           <div className="hidden xl:flex space-x-0.5">
             <SocialsList />
-            <SwitchDarkMode />
             <div className="px-1" />
           </div>
           <div className="flex xl:hidden items-center">

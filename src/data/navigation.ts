@@ -159,58 +159,78 @@ export const NAVIGATION_DEMO: NavItemType[] = [
   },
   {
     id: ncNanoId(),
-    href: "/guide",
-    name: "Guía de usuario"
-  },
-  {
-    id: ncNanoId(),
     href: "/booking",
     name: "Reservar"
   },
-  //{
-    //id: ncNanoId(),
-    //href: "/service",
-   // name: "Servicios"
-  //},
-  //{
-  //  id: ncNanoId(),
- //   href: "/offer",
- //   name: "Ofertas"
-//  },
-  // {
-  //   id: ncNanoId(),
-  //  href: "/blog",
-  //   name: "Blog"
-// },
+  {
+    id: ncNanoId(),
+    href: "/offer",
+    name: "Ofertas"
+  },
+  {
+    id: ncNanoId(),
+    href: "/service",
+    name: "Servicios",
+    type: "dropdown",
+    children: [
+      {
+        id: ncNanoId(),
+        href: "/",
+        name: "Sostenibilidad",
+      }
+    ]
+  },
   {
     id: ncNanoId(),
     href: "/",
-    name: "Más",
+    name: "Entorno",
+    type: "dropdown",
+    children: [
+      {
+        id: ncNanoId(),
+        href: "/",
+        name: "Playa de Arinaga",
+      },
+      {
+        id: ncNanoId(),
+        href: "/",
+        name: "Explora Gran Canaria",
+      }
+    ]
+  },
+  {
+    id: ncNanoId(),
+    href: "/gallery",
+    name: "Galería"
+  },
+  {
+    id: ncNanoId(),
+    href: "/guide",
+    name: "Guía del huésped"
+  },
+  {
+    id: ncNanoId(),
+    href: "/",
+    name: "Descubre más",
     type: "dropdown",
     children: [
       {
         id: ncNanoId(),
         href: "/about",
-        name: "Nosotros",
+        name: "Quiénes somos",
       },
       {
         id: ncNanoId(),
         href: "/faq",
         name: "FAQ",
       },
-      // {
-    //   id: ncNanoId(),
-        //     href: "/gallery",
-        //     name: "Galería"
-      //  },
       {
         id: ncNanoId(),
         href: "/contact",
         name: "Contacto",
       },
-    ],
-  },
-
+    ]
+  }
 ];
 
 export const NAVIGATION_DEMO_2: NavItemType[] = [
