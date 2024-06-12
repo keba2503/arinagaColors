@@ -12,7 +12,7 @@ const StaySearchForm: FC = () => {
     }, []);
 
     return (
-        <form className="w-full relative mt-8 flex rounded-full bg-white dark:bg-neutral-800">
+        <form className="w-full relative mt-8 flex rounded-full dark:bg-neutral-800">
             <div className="px-4 py-4 mx-auto max-w-screen-xl">
                 <div
                     data-accommodations-filter="accommodations"
@@ -20,10 +20,10 @@ const StaySearchForm: FC = () => {
                     className="avaibook-search-widget"
                     data-widget-id="92477"
                     data-widget-token="h5SwvFQFMU/hiog6gT4HMw=="
-                    data-background-color="none"
+                    data-background-color="F0F0F0"
                     data-main-color="#F0F0F0"
                     data-border-radius="30px"
-                    data-shadow="none"
+                    data-shadow="0 2px 20px rgb(0 0 0 / 16%)"
                     data-padding="1rem"
                     data-language="es"
                 ></div>

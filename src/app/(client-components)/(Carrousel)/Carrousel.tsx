@@ -1,21 +1,26 @@
 'use client'
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import img1 from '../../../images/Exteriores/1.jpg';
 import img2 from '../../../images/Exteriores/2.jpg';
 import img3 from '../../../images/Exteriores/3.jpg';
-import img4 from '../../../images/Exteriores/4.jpg';
 
 const images = [
     { src: img1, caption: "EXPERIENCIA INOLVIDABLE. Modernos y confortables apartamentos ubicados en la. idílica Playa de Arinaga, Gran Canaria." },
     { src: img2, caption: "COMODIDAD. Acceso directo a la playa y a un paso de los mejores. restaurantes, tiendas y actividades de la isla." },
     { src: img3, caption: "RECUERDO IMBORRABLE. Despierta cada mañana con la brisa marina y relájate al. atardecer con vistas espectaculares." },
-    { src: img4, caption: "" }
 ];
 
 const CarouselBackground: React.FC = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            nextSlide();
+        }, 5000);
+        return () => clearInterval(interval);
+    }, []);
 
     const prevSlide = () => {
         setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
@@ -43,10 +48,10 @@ const CarouselBackground: React.FC = () => {
                             priority
                         />
                         {currentIndex === index && image.caption && (
-                            <div className="absolute top-1/4 left-10 text-white text-xl font-semibold text-left">
-                                <h2 className="uppercase text-6xl">{image.caption.split('.')[0]}</h2>
-                                <h2 className="text-3xl">{image.caption.split('.')[1].trim()}</h2>
-                                <h2 className="text-3xl">{image.caption.split('.').slice(2).join('.').trim()}</h2>
+                            <div className="absolute top-1/4 left-10 text-white text-xl font-semibold text-left animate__animated animate__fadeIn">
+                                <p className="uppercase text-6xl animate__animated animate__fadeIn animate__delay-1s">{image.caption.split('.')[0]}</p>
+                                <p className="text-3xl animate__animated animate__fadeIn animate__delay-1s">{image.caption.split('.')[1].trim()}</p>
+                                <p className="text-3xl animate__animated animate__fadeIn animate__delay-1s">{image.caption.split('.').slice(2).join('.').trim()}</p>
                             </div>
                         )}
                     </div>
