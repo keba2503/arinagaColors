@@ -23,9 +23,9 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
   stayListings = DEMO_DATA,
   gridClass = "",
   heading = "Nuestros apartamentos",
-  subHeading = "Disfruta de nuestros acogedores apartamentos junto al mar",
+  subHeading = "Descansa y disfruta junto al mar.",
   headingIsCenter,
-  tabs = ["Playa Arinaga"],
+  tabs = [],
   cardType = "card2",
 }) => {
   const renderCard = (stay: StayDataType) => {

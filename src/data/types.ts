@@ -66,6 +66,7 @@ export interface StayDataType {
   id: string | number;
   author: AuthorType;
   date: string;
+  description: string;
   href: Route<string>;
   title: string;
   featuredImage: StaticImageData | string;
