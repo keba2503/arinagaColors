@@ -1,21 +1,35 @@
-import React, { FC } from "react";
-import LocationInput from "../LocationInput";
-import GuestsInput from "../GuestsInput";
-import StayDatesRangeInput from "./StayDatesRangeInput";
+import React, { FC, useEffect } from "react";
 
-const StaySearchForm: FC<{}> = ({}) => {
-  const renderForm = () => {
+const StaySearchForm: FC = () => {
+    useEffect(() => {
+        const script = document.createElement("script");
+        script.src = "https://bookonline.pro/widgets/search/dist/index.js";
+        script.defer = true;
+        document.body.appendChild(script);
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, []);
+
     return (
-      <form className="w-full relative mt-8 flex rounded-full shadow-xl dark:shadow-2xl bg-white dark:bg-neutral-800 ">
-        <div className="self-center border-r border-slate-200 dark:border-slate-700 h-8"></div>
-        <StayDatesRangeInput className="flex-1" />
-        <div className="self-center border-r border-slate-200 dark:border-slate-700 h-8"></div>
-        <GuestsInput className="flex-1" />
-      </form>
+        <form className="w-full relative mt-8 flex rounded-full bg-white dark:bg-neutral-800">
+            <div className="px-4 py-4 mx-auto max-w-screen-xl">
+                <div
+                    data-accommodations-filter="accommodations"
+                    data-show-accommodation-units="1"
+                    className="avaibook-search-widget"
+                    data-widget-id="92477"
+                    data-widget-token="h5SwvFQFMU/hiog6gT4HMw=="
+                    data-background-color="none"
+                    data-main-color="#F0F0F0"
+                    data-border-radius="30px"
+                    data-shadow="none"
+                    data-padding="1rem"
+                    data-language="es"
+                ></div>
+            </div>
+        </form>
     );
-  };
-
-  return renderForm();
 };
 
 export default StaySearchForm;
