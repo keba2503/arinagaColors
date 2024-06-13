@@ -14,6 +14,9 @@ const StaySearchForm: FC = () => {
     return (
         <form className="w-full relative mt-8 flex rounded-full dark:bg-neutral-800">
             <div className="px-4 py-4 mx-auto max-w-screen-xl">
+                <h2 className="block sm:hidden text-center text-lg font-semibold p-4 bg-gray-200 rounded-lg mx-4">
+                    Planifica tu Estancia
+                </h2>
                 <div
                     data-accommodations-filter="accommodations"
                     data-show-accommodation-units="1"

@@ -48,7 +48,7 @@ const CarouselBackground: React.FC = () => {
                             priority
                         />
                         {currentIndex === index && image.caption && (
-                            <div className="absolute top-1/4 left-10 text-white text-xl font-semibold text-left animate__animated animate__fadeIn">
+                            <div className="absolute top-1/4 left-10 text-white text-xl font-semibold text-left animate__animated animate__fadeIn hidden sm:block">
                                 <p className="uppercase text-6xl animate__animated animate__fadeIn animate__delay-1s">{image.caption.split('.')[0]}</p>
                                 <p className="text-3xl animate__animated animate__fadeIn animate__delay-1s">{image.caption.split('.')[1].trim()}</p>
                                 <p className="text-3xl animate__animated animate__fadeIn animate__delay-1s">{image.caption.split('.').slice(2).join('.').trim()}</p>
