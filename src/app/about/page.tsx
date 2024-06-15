@@ -56,7 +56,6 @@ const PageAbout: FC<PageAboutProps> = ({}) => {
                      </span>
                 </div>
                 {/*  <SectionFounder/>  */}
-                <SectionSubscribe2/>
             </div>
         </div>
     );

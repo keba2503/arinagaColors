@@ -16,7 +16,7 @@ const Page = ({params, searchParams,}:
                         className="text-neutral-900 font-semibold text-3xl md:text-4xl md:!leading-[120%] lg:text-4xl dark:text-neutral-100 max-w-4xl"
                         title="Preguntas frecuentes sobre el alquiler de apartamentos vacacionales"
                     >
-                       Guía de usuario
+                       Guía del huesped
                     </h1>
                     <span className="block text-base text-neutral-500 md:text-lg dark:text-neutral-400 pb-1 text-justify">
                         Bienvenido a nuestra guía de usuario. Aquí encontrarás toda
