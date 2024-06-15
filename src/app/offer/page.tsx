@@ -16,9 +16,6 @@ const Page = ({params, searchParams,}:
 
                 </div>
                 <Promotions />
-                <div className="container relative space-y-24 mb-24 lg:space-y-28 lg:mb-28 pt-20">
-                    <SectionSubscribe2 />
-                </div>
             </header>
         );
     };
