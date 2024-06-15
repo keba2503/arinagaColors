@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React from 'react';
 import ServiceCard from "@/app/service/Service";
 
 // Importar las imágenes
@@ -40,18 +40,17 @@ const ServiceGallery: React.FC = () => {
     return (
         <div className="relative py-16 px-4 sm:px-6 lg:py-24 lg:px-8">
             <h2 className="text-2xl font-bold tracking-tight text-gray-900 text-center">Servicios Disponibles</h2>
-            <div className="mt-6 flex items-center relative">
-                <div className="flex overflow-hidden space-x-6 p-4">
-                    {serviceList.map((service, index) => (
+            <div className="mt-6 flex flex-col sm:flex-row flex-wrap items-center justify-center">
+                {serviceList.map((service, index) => (
+                    <div key={index} className="mb-6 sm:mb-6 sm:mx-3">
                         <ServiceCard
-                            key={index}
                             title={service.title}
                             description={service.description}
                             icon={service.icon}
                             imageUrl={service.imageUrl}
                         />
-                    ))}
-                </div>
+                    </div>
+                ))}
             </div>
         </div>
     );
