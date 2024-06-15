@@ -1,66 +1,57 @@
-'use client'
+'use client';
 
 import React, { useRef } from 'react';
 import ServiceCard from "@/app/service/Service";
 
-const services = [
+// Importar las imágenes
+import bebeImage from '../../images/bebe.png';
+import limpiezaImage from '../../images/limpieza.png';
+import amenitiesImage from '../../images/amenites.png';
+import almohadaImage from '../../images/almohada.png';
+
+const serviceList = [
     {
-        title: 'Búsqueda en el Aeropuerto',
-        description: 'Ofrecemos un servicio de búsqueda en el aeropuerto para su comodidad.',
-        icon: '✈️',
-    },
-    {
-        title: 'Sillas de Bebés',
-        description: 'Proveemos sillas de bebés para la seguridad de sus pequeños.',
+        title: 'Para los más pequeños',
+        description: 'Para los más pequeños, disponemos de cuna, trona y bañera. Solicítalo en la reserva sin coste adicional.',
         icon: '👶',
+        imageUrl: bebeImage,
     },
     {
-        title: 'Limpieza del Apartamento',
-        description: 'Servicio de limpieza del apartamento disponible bajo petición.',
+        title: 'Limpieza extra',
+        description: 'Servicio de limpieza del apartamento disponible bajo petición. Solicítalo en la reserva sin coste adicional.',
         icon: '🧹',
+        imageUrl: limpiezaImage,
     },
     {
-        title: 'Alquiler de Kayaks',
-        description: 'Disfrute de la aventura alquilando nuestros kayaks.',
-        icon: '🛶',
+        title: 'Amenities',
+        description: 'Ofrecemos una variedad de amenities para su comodidad. Solicítalo en la reserva sin coste adicional.',
+        icon: '🛁',
+        imageUrl: amenitiesImage,
     },
     {
-        title: 'Tablas de Paddle',
-        description: 'Disponemos de tablas de paddle para su diversión en el agua.',
-        icon: '🏄‍♂️',
+        title: 'Almohadas extra',
+        description: 'Proveemos almohadas extra para su confort. Solicítalo en la reserva sin coste adicional.',
+        icon: '🛌',
+        imageUrl: almohadaImage,
     },
 ];
 
 const ServiceGallery: React.FC = () => {
-    const galleryRef = useRef<HTMLDivElement>(null);
-
-    const scrollLeft = () => {
-        if (galleryRef.current) {
-            galleryRef.current.scrollBy({ left: -300, behavior: 'smooth' });
-        }
-    };
-
-    const scrollRight = () => {
-        if (galleryRef.current) {
-            galleryRef.current.scrollBy({ left: 300, behavior: 'smooth' });
-        }
-    };
-
     return (
-        <div className="relative  py-16 px-4 sm:px-6 lg:py-24 lg:px-8">
+        <div className="relative py-16 px-4 sm:px-6 lg:py-24 lg:px-8">
             <h2 className="text-2xl font-bold tracking-tight text-gray-900 text-center">Servicios Disponibles</h2>
             <div className="mt-6 flex items-center relative">
-                <div ref={galleryRef} className="flex overflow-hidden space-x-6 p-4">
-                    {services.map((service, index) => (
+                <div className="flex overflow-hidden space-x-6 p-4">
+                    {serviceList.map((service, index) => (
                         <ServiceCard
                             key={index}
                             title={service.title}
                             description={service.description}
                             icon={service.icon}
+                            imageUrl={service.imageUrl}
                         />
                     ))}
                 </div>
-
             </div>
         </div>
     );
