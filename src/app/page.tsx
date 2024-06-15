@@ -155,7 +155,6 @@ function PageHome() {
                     <SectionOurFeatures/>
                     <SectionGridFeaturePlaces cardType="card2"/>
                     <SectionHowItWork/>
-                    <SectionSubscribe2/>
                 </div>
             </div>
         </main>
