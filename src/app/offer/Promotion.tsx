@@ -64,9 +64,6 @@ const Promotions: React.FC = () => {
                         <p className="text-gray-900 font-semibold mb-4">Apartamento: {promotion.apartment}</p>
                         <a href="#" className="inline-flex font-medium items-center hover:underline" style={{color: 'rgb(73, 155, 200)'}}>
                             Solicitar Oferta
-                            <svg className="w-3 h-3 ms-2.5 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 2a2 2 0 00-2 2v1.085a1.5 1.5 0 000 2.83V10a2 2 0 002 2h1.085a1.5 1.5 0 002.83 0H10a2 2 0 002-2V8.915a1.5 1.5 0 002.83 0H15a2 2 0 002-2V4.915a1.5 1.5 0 000-2.83V2a2 2 0 00-2-2h-1.085a1.5 1.5 0 00-2.83 0H10a2 2 0 00-2-2H8.915a1.5 1.5 0 00-2.83 0H5a2 2 0 00-2-2H4.915a1.5 1.5 0 00-2.83 0H2z"/>
-                            </svg>
                         </a>
                     </div>
                 ))}
