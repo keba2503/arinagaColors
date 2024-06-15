@@ -8,6 +8,7 @@ import bebeImage from '../../images/bebe.png';
 import limpiezaImage from '../../images/limpieza.png';
 import amenitiesImage from '../../images/amenites.png';
 import almohadaImage from '../../images/almohada.png';
+import Heading from "@/shared/Heading";
 
 const serviceList = [
     {
@@ -39,8 +40,12 @@ const serviceList = [
 const ServiceGallery: React.FC = () => {
     return (
         <div className="relative py-16 px-4 sm:px-6 lg:py-24 lg:px-8">
-            <h2 className="text-2xl font-bold tracking-tight text-gray-900 text-center">Servicios Disponibles</h2>
-            <div className="mt-6 flex flex-col sm:flex-row flex-wrap items-center justify-center">
+            <Heading
+                className='pb-20'
+                desc="Servicios pensados para mejorar la calidad en su estancia."
+            >
+                ⛱ Servicios disponibles
+            </Heading>        <div className="mt-6 flex flex-col sm:flex-row flex-wrap items-center justify-center">
                 {serviceList.map((service, index) => (
                     <div key={index} className="mb-6 sm:mb-6 sm:mx-3">
                         <ServiceCard

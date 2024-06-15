@@ -169,10 +169,15 @@ export const NAVIGATION_DEMO: NavItemType[] = [
   },
   {
     id: ncNanoId(),
-    href: "/service",
+    href: "/",
     name: "Servicios",
     type: "dropdown",
     children: [
+      {
+        id: ncNanoId(),
+        href: "/service",
+        name: "Nuestros servicios",
+      },
       {
         id: ncNanoId(),
         href: "/",
