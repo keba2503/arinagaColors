@@ -1,4 +1,6 @@
-// pages/faq.js
+// src/app/dashboard/faq/page.tsx
+'use client';
+
 import FaqForm from "@/components/FaqForm";
 import FaqTable from "@/components/FaqTable";
 
@@ -19,13 +21,3 @@ const FAQPage = () => {
 };
 
 export default FAQPage;
-
-export const metadata = {
-    title: 'Preguntas Frecuentes',
-    description: 'Encuentra respuestas a las preguntas más frecuentes',
-};
-
-export const viewport = {
-    width: 'device-width',
-    initialScale: 1.0,
-};

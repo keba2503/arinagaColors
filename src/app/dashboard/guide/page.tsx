@@ -1,4 +1,6 @@
-// pages/guide.js
+// src/app/dashboard/guide/page.tsx
+'use client';
+
 import GuideForm from '@/components/GuideForm';
 import GuideTable from '@/components/GuideTable';
 
@@ -19,13 +21,3 @@ const GuidePage = () => {
 };
 
 export default GuidePage;
-
-export const metadata = {
-    title: 'Guía del huésped',
-    description: 'Información importante para nuestros huéspedes',
-};
-
-export const viewport = {
-    width: 'device-width',
-    initialScale: 1.0,
-};
