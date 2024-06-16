@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, {FC, useEffect} from "react";
 
 const StaySearchForm: FC = () => {
     useEffect(() => {
@@ -18,9 +18,9 @@ const StaySearchForm: FC = () => {
                     Planifica tu Estancia
                 </h2>
                 <div
-                    data-accommodations-filter="accommodations"
-                    data-show-accommodation-units="1"
+                    data-show-accommodation-units="none"
                     className="avaibook-search-widget"
+                    data-target="_self"
                     data-widget-id="92477"
                     data-widget-token="h5SwvFQFMU/hiog6gT4HMw=="
                     data-background-color="F0F0F0"
