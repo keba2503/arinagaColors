@@ -19,8 +19,8 @@ const SectionHero: React.FC = () => {
                 <a
                     className="weatherwidget-io"
                     href="https://forecast7.com/es/27d86n15d39/arinaga/"
-                    data-label_1="Playa"
-                    data-label_2="Arinaga"
+                    data-label_1="Playa de Arinaga"
+                    data-label_2=""
                     data-icons="Climacons Animated"
                     data-mode="Current"
                     data-days="3"
