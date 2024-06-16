@@ -1,8 +1,8 @@
 // src/app/dashboard/faq/page.tsx
 'use client';
 
-import FaqForm from "@/components/FaqForm";
-import FaqTable from "@/components/FaqTable";
+import FaqForm from "../../../components/FaqForm";
+import FaqTable from "../../../components/FaqTable";
 
 const FAQPage = () => {
     return (

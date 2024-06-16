@@ -7,13 +7,14 @@ export async function DELETE(request, { params }) {
     const { id } = params;
 
     try {
-        await prisma.faq.delete({
-            where: { id: parseInt(id) },  
+        await prisma.fAQ.delete({
+            where: { id: parseInt(id) },
         });
 
         return NextResponse.json({}, { status: 204 });
     } catch (error) {
-        return NextResponse.json({ error: 'Error deleting guide' }, { status: 500 });
+        console.error(error); // Log the actual error
+        return NextResponse.json({ error: 'Error deleting FAQ' }, { status: 500 });
     }
 }
 
@@ -21,17 +22,18 @@ export async function GET(request, { params }) {
     const { id } = params;
 
     try {
-        const FAQ = await prisma.FAQ.findUnique({
+        const faq = await prisma.fAQ.findUnique({
             where: { id: parseInt(id) },
         });
 
-        if (!FAQ) {
-            return NextResponse.json({ error: 'Guide not found' }, { status: 404 });
+        if (!faq) {
+            return NextResponse.json({ error: 'FAQ not found' }, { status: 404 });
         } else {
-            return NextResponse.json(FAQ, { status: 200 });
+            return NextResponse.json(faq, { status: 200 });
         }
     } catch (error) {
-        return NextResponse.json({ error: 'Error fetching guide' }, { status: 500 });
+        console.error(error); // Log the actual error
+        return NextResponse.json({ error: 'Error fetching FAQ' }, { status: 500 });
     }
 }
 
@@ -40,13 +42,14 @@ export async function PUT(request, { params }) {
     const { question, answer } = await request.json();
 
     try {
-        const FAQ = await prisma.FAQ.update({
+        const faq = await prisma.fAQ.update({
             where: { id: parseInt(id) },
             data: { question, answer },
         });
 
-        return NextResponse.json(FAQ, { status: 200 });
+        return NextResponse.json(faq, { status: 200 });
     } catch (error) {
-        return NextResponse.json({ error: 'Error updating guide' }, { status: 500 });
+        console.error(error); // Log the actual error
+        return NextResponse.json({ error: 'Error updating FAQ' }, { status: 500 });
     }
 }
