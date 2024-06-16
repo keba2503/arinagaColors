@@ -1,17 +1,37 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const GalleryAdmin = ({ images }) => {
-    const [gallery, setGallery] = useState(images);
+const GalleryAdmin = () => {
+    const [gallery, setGallery] = useState([]);
+
+    useEffect(() => {
+        const fetchImages = async () => {
+            try {
+                const res = await axios.get('/api/cloudinary');
+                setGallery(res.data);
+            } catch (error) {
+                console.error('Error fetching images:', error);
+            }
+        };
+
+        fetchImages();
+    }, []);
 
     const handleDelete = async (imageId) => {
-        const res = await fetch(`/api/delete/${imageId}`, {
-            method: 'DELETE',
-        });
+        try {
+            const res = await axios.delete('/api/cloudinary', {
+                data: { public_id: imageId }
+            });
 
-        if (res.ok) {
-            setGallery(gallery.filter(image => image.id !== imageId));
+            if (res.data.result === 'ok') {
+                setGallery(gallery.filter(image => image.id !== imageId));
+            } else {
+                console.error('Error deleting image:', res.data);
+            }
+        } catch (error) {
+            console.error('Error deleting image:', error);
         }
     };
 

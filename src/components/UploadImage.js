@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const UploadImage = () => {
     const [image, setImage] = useState(null);
-    const [url, setUrl] = useState('');
+    const [message, setMessage] = useState('');
 
     const handleFileChange = (e) => {
         setImage(e.target.files[0]);
@@ -19,16 +19,18 @@ const UploadImage = () => {
 
         const formData = new FormData();
         formData.append('file', image);
-        formData.append('upload_preset', 'ml_default'); // Asegúrate de que este sea el nombre correcto del preset
+        formData.append('upload_preset', 'ml_default');
+        formData.append('folder', 'arinagacolors/gallery');
 
         try {
             const res = await axios.post(
                 `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
                 formData
             );
-            setUrl(res.data.secure_url);
+            setMessage('Su imagen se ha subido exitosamente');
         } catch (error) {
             console.error('Error uploading the image:', error);
+            setMessage('Hubo un error al subir la imagen');
         }
     };
 
@@ -68,7 +70,7 @@ const UploadImage = () => {
             >
                 Subir
             </button>
-            {url && <img className="mt-4 rounded-lg" src={url} alt="Uploaded Image" />}
+            {message && <p className="mt-4 text-green-500">{message}</p>}
         </form>
     );
 };
