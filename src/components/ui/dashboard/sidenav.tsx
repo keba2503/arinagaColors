@@ -6,18 +6,50 @@ import { signOut } from 'next-auth/react';
 
 export default function SideNav() {
     return (
-        <div className="flex h-full flex-col px-3 py-4 md:px-2">
-            <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
-                <NavLinks />
-                <div className="hidden h-auto w-full grow rounded-md bg-gray-50 md:block"></div>
-                <button
-                    onClick={() => signOut({ callbackUrl: '/' })}
-                    className="flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3"
+        <>
+            <button
+                data-drawer-target="default-sidebar"
+                data-drawer-toggle="default-sidebar"
+                aria-controls="default-sidebar"
+                type="button"
+                className="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            >
+                <span className="sr-only">Open sidebar</span>
+                <svg
+                    className="w-6 h-6"
+                    aria-hidden="true"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
                 >
-                    <PowerIcon className="w-6" />
-                    <div className="hidden md:block">Sign Out</div>
-                </button>
-            </div>
-        </div>
+                    <path
+                        clipRule="evenodd"
+                        fillRule="evenodd"
+                        d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+                    ></path>
+                </svg>
+            </button>
+
+            <aside
+                id="default-sidebar"
+                className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+                aria-label="Sidebar"
+            >
+                <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+                    <ul className="space-y-2 font-medium">
+                        <NavLinks />
+                        <li>
+                            <button
+                                onClick={() => signOut({ callbackUrl: '/' })}
+                                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                            >
+                                <PowerIcon className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+                                <span className="ms-3 flex-1 whitespace-nowrap">Sign Out</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </>
     );
 }

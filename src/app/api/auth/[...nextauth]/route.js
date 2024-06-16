@@ -12,7 +12,6 @@ const authOptions = {
                 password: { label: "Password", type: "password", placeholder: "*****" },
             },
             async authorize(credentials, req) {
-                console.log(credentials);
 
                 const userFound = await prisma.user.findUnique({
                     where: {
@@ -21,8 +20,6 @@ const authOptions = {
                 });
 
                 if (!userFound) throw new Error('No user found');
-
-                console.log(userFound);
 
                 const matchPassword = await bcrypt.compare(credentials.password, userFound.password);
 
