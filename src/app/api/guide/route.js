@@ -30,25 +30,6 @@ export async function GET() {
     }
 }
 
-// Get a guide by ID
-export async function GET_BY_ID(request) {
-    const { id } = request.params;
-
-    try {
-        const guide = await prisma.guide.findUnique({
-            where: { id: parseInt(id) },
-        });
-
-        if (!guide) {
-            return NextResponse.json({ error: 'Guide not found' }, { status: 404 });
-        } else {
-            return NextResponse.json(guide, { status: 200 });
-        }
-    } catch (error) {
-        return NextResponse.json({ error: 'Error fetching guide' }, { status: 500 });
-    }
-}
-
 // Update a guide by ID
 export async function PUT(request) {
     const { id } = request.params;
