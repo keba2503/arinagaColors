@@ -1,24 +1,20 @@
 "use client";
-import { useForm } from "react-hook-form";
-import { signIn } from "next-auth/react";
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import {useForm} from "react-hook-form";
+import {signIn} from "next-auth/react";
+import {useRouter} from 'next/navigation';
+import {useState} from 'react';
 
 function LoginPage() {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const {register, handleSubmit, formState: {errors}} = useForm();
     const router = useRouter();
     const [error, setError] = useState(null);
 
     const onSubmit = handleSubmit(async (data) => {
-        console.log(data);
-
         const res = await signIn("credentials", {
             email: data.email,
             password: data.password,
             redirect: false,
         });
-
-        console.log(res);
         if (res.error) {
             setError(res.error);
         } else {
