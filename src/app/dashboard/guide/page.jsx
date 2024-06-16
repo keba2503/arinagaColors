@@ -1,8 +1,8 @@
-// src/app/dashboard/guide/page.tsx
+// src/app/dashboard/guide/page.jsx
 'use client';
 
-import GuideForm from '@/components/GuideForm';
-import GuideTable from '@/components/GuideTable';
+import GuideForm from '../../../components/GuideForm';
+import GuideTable from '../../../components/GuideTable';
 
 const GuidePage = () => {
     return (

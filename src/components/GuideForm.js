@@ -1,46 +1,56 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
 const RichTextEditor = dynamic(() => import('@/components/RichTextEditor'), { ssr: false });
 
-const GuideForm = () => {
+const GuideForm = ({ guide }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
+
+    useEffect(() => {
+        if (guide) {
+            setTitle(guide.title);
+            setDescription(guide.description);
+        }
+    }, [guide]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         setIsSubmitting(true);
         setSuccessMessage('');
 
-        const newGuide = {
+        const guideData = {
             title,
             description
         };
 
         try {
-            const response = await fetch('/api/guide', {
-                method: 'POST',
+            const response = await fetch(`/api/guide/${guide ? guide.id : ''}`, {
+                method: guide ? 'PUT' : 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(newGuide),
+                body: JSON.stringify(guideData),
             });
 
             if (response.ok) {
                 const data = await response.json();
-                console.log('Guide created successfully:', data);
-                setTitle('');
-                setDescription('');
-                setSuccessMessage('¡Creada correctamente!');
+                console.log('Guide saved successfully:', data);
+                setSuccessMessage('¡Guía guardada correctamente!');
+                if (!guide) {
+                    setTitle('');
+                    setDescription('');
+                }
             } else {
-                console.error('Error creating guide:', response.statusText);
+                console.error('Error saving guide:', response.statusText);
             }
         } catch (error) {
-            console.error('Error creating guide:', error);
+            console.error('Error saving guide:', error);
         } finally {
             setIsSubmitting(false);
         }
@@ -75,8 +85,11 @@ const GuideForm = () => {
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     disabled={isSubmitting}
                 >
-                    {isSubmitting ? 'Añadiendo...' : 'Añadir'}
+                    {isSubmitting ? 'Guardando...' : 'Guardar'}
                 </button>
+                <Link className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" href="/dashboard/guide">
+                        Volver
+                </Link>
             </div>
             {successMessage && (
                 <div className="mt-4 text-green-500">
