@@ -14,7 +14,7 @@ const FeaturedImageGallery: React.FC = () => {
                 const res = await axios.get('/api/cloudinary');
                 setGallery(res.data);
                 if (res.data.length > 0) {
-                    setActive(res.data[0].url); 
+                    setActive(res.data[0].url);
                 }
             } catch (error) {
                 console.error('Error fetching images:', error);
