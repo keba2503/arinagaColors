@@ -1,32 +1,31 @@
-// components/GuideForm.js
-'use client'; // Esta línea indica que este archivo se ejecuta en el cliente
+// components/FaqForm.js
+'use client';
 
 import React, { useState } from 'react';
 import RichTextEditor from '@/components/RichTextEditor';
 
-const GuideForm = () => {
-    const [description, setDescription] = useState('');
+const FaqForm = () => {
+    const [question, setQuestion] = useState('');
     const [answer, setAnswer] = useState('');
-
 
     return (
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <div className="mb-5">
-                <label htmlFor="description-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <label htmlFor="question-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                     Pregunta
+                </label>
+                <RichTextEditor
+                    value={question}
+                    onChange={setQuestion}
+                />
+            </div>
+            <div className="mb-5">
+                <label htmlFor="answer-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Respuesta
                 </label>
                 <RichTextEditor
                     value={answer}
                     onChange={setAnswer}
-                />
-            </div>
-            <div className="mb-5">
-                <label htmlFor="description-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Respuesta
-                </label>
-                <RichTextEditor
-                    value={description}
-                    onChange={setDescription}
                 />
             </div>
             <div className="flex items-center justify-between">
@@ -41,4 +40,4 @@ const GuideForm = () => {
     );
 };
 
-export default GuideForm;
+export default FaqForm;

@@ -1,5 +1,5 @@
 // components/GuideForm.js
-'use client'; // Esta línea indica que este archivo se ejecuta en el cliente
+'use client';
 
 import React, { useState } from 'react';
 import RichTextEditor from '@/components/RichTextEditor';
