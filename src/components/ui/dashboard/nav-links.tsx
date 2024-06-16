@@ -1,6 +1,6 @@
 'use client';
 
-import { QuestionMarkCircleIcon ,BookOpenIcon ,HomeIcon } from '@heroicons/react/24/outline';
+import { QuestionMarkCircleIcon ,BookOpenIcon ,HomeIcon, PhotoIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -8,6 +8,7 @@ const links = [
     { name: 'Home', href: '/dashboard', icon: HomeIcon },
     { name: 'Guía del huésped', href: '/dashboard/guide', icon: BookOpenIcon },
     { name: 'FAQ', href: '/dashboard/faq', icon: QuestionMarkCircleIcon },
+    { name: 'Gallery', href: '/dashboard/gallery', icon: PhotoIcon },
 ];
 
 export default function NavLinks() {
