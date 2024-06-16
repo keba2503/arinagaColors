@@ -1,8 +1,9 @@
-// components/GuideForm.js
 'use client';
 
 import React, { useState } from 'react';
-import RichTextEditor from '@/components/RichTextEditor';
+import dynamic from 'next/dynamic';
+
+const RichTextEditor = dynamic(() => import('@/components/RichTextEditor'), { ssr: false });
 
 const GuideForm = () => {
     const [description, setDescription] = useState('');
