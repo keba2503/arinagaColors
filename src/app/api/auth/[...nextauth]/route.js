@@ -1,10 +1,9 @@
-// src/app/api/auth/[...nextauth]/route.js
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import prisma from '../../../../lib/db'; // Ensure this path is correct
+import prisma from '../../../../lib/db'; // Asegúrate de que esta ruta sea correcta
 import bcrypt from 'bcrypt';
 
-export const authOptions = {
+const authOptions = {
     providers: [
         CredentialsProvider({
             name: "Credentials",
