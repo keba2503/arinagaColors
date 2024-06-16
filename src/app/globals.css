@@ -3,3 +3,37 @@
 @tailwind utilities;
 
 
+.custom-html-styles p {
+    margin: 0 0 1em;
+    line-height: 1.6;
+}
+
+.custom-html-styles a {
+    color: blue;
+    text-decoration: underline;
+}
+
+.custom-html-styles ul,
+.custom-html-styles ol {
+    margin: 1em 0;
+    padding-left: 2em;
+    list-style: initial;
+}
+
+.custom-html-styles ul {
+    list-style-type: disc;
+}
+
+.custom-html-styles ol {
+    list-style-type: decimal;
+}
+
+.custom-html-styles li {
+    margin-bottom: 0.5em;
+}
+
+.custom-html-styles strong {
+    font-weight: bold;
+}
+
+    
