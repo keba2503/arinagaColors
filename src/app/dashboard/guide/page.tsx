@@ -1,10 +1,8 @@
-import { fetchRevenue } from "@/lib/data";
 import { lusitana } from '@/components/ui/fonts';
 import GuideForm from '@/components/GuideForm';
 import GuideTable from '@/components/GuideTable';
 
 export default async function Page() {
-    const revenue = await fetchRevenue();
 
     return (
         <main className="flex flex-col items-center p-2 md:p-4 lg:p-6 min-h-screen">
