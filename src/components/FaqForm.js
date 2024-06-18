@@ -60,7 +60,7 @@ const GuideForm = ({ faq }) => {
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
             <div className="mb-5">
                 <label htmlFor="question-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Título
+                    Pregunta
                 </label>
                 <input
                     type="text"
@@ -72,7 +72,7 @@ const GuideForm = ({ faq }) => {
             </div>
             <div className="mb-5">
                 <label htmlFor="description-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Descripción
+                    Respuesta
                 </label>
                 <RichTextEditor
                     value={answer}

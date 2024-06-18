@@ -64,6 +64,11 @@ export default function SideNav() {
                     className="fixed inset-0 z-30 bg-black opacity-50 sm:hidden"
                 ></div>
             )}
+
+            {/* Main content */}
+            <main className="ml-64">
+                {/* Contenido principal */}
+            </main>
         </>
     );
 }
