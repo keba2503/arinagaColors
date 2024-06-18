@@ -32,7 +32,7 @@ const GuideClient = ({ id }) => {
     }, [id]);
 
     const handleBack = () => {
-        router.push('/dashboard/guide');
+        router.push('/admin/guide');
     };
 
     return (

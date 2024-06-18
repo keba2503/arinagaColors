@@ -64,7 +64,7 @@ const FaqTable = () => {
                         <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{faq.question}</th>
                         <td className="px-6 py-4" dangerouslySetInnerHTML={{ __html: faq.answer }} />
                         <td className="px-6 py-4 flex space-x-2">
-                            <Link  className="font-medium text-blue-600 dark:text-blue-500 hover:underline" href={`/dashboard/faq/${faq.id}`}>
+                            <Link  className="font-medium text-blue-600 dark:text-blue-500 hover:underline" href={`/admin/faq/${faq.id}`}>
                                 Edit
                             </Link>
                             <button onClick={() => handleDelete(faq.id)} className="text-red-600 hover:text-red-800">

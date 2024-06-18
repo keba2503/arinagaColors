@@ -5,10 +5,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const links = [
-    { name: 'Home', href: '/dashboard', icon: HomeIcon },
-    { name: 'Guía del huésped', href: '/dashboard/guide', icon: BookOpenIcon },
-    { name: 'FAQ', href: '/dashboard/faq', icon: QuestionMarkCircleIcon },
-    { name: 'Gallery', href: '/dashboard/gallery', icon: PhotoIcon },
+    { name: 'Home', href: '/admin', icon: HomeIcon },
+    { name: 'Guía del huésped', href: '/admin/guide', icon: BookOpenIcon },
+    { name: 'FAQ', href: '/admin/faq', icon: QuestionMarkCircleIcon },
+    { name: 'Gallery', href: '/admin/gallery', icon: PhotoIcon },
     { name: 'Vista del cliente', href: '/', icon: ArrowLeftOnRectangleIcon }
 ];
 

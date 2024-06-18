@@ -87,7 +87,7 @@ const GuideForm = ({ faq }) => {
                 >
                     {isSubmitting ? 'Guardando...' : 'Guardar'}
                 </button>
-                <Link className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" href="/dashboard/faq">
+                <Link className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" href="/admin/faq">
                     Volver
                 </Link>
             </div>

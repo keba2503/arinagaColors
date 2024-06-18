@@ -32,7 +32,7 @@ const FaqClient = ({ id }) => {
     }, [id]);
 
     const handleBack = () => {
-        router.push('/dashboard/faq');
+        router.push('/admin/faq');
     };
 
     return (
