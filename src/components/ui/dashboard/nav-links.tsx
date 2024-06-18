@@ -1,11 +1,12 @@
 'use client';
 
-import { QuestionMarkCircleIcon ,BookOpenIcon ,HomeIcon, PhotoIcon, ArrowLeftOnRectangleIcon } from '@heroicons/react/24/outline';
+import { QuestionMarkCircleIcon ,BookOpenIcon ,HomeIcon, PhotoIcon, ArrowLeftOnRectangleIcon, CogIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const links = [
     { name: 'Home', href: '/admin', icon: HomeIcon },
+    { name: 'Textos configurables', href: '/admin/config', icon: CogIcon },
     { name: 'Guía del huésped', href: '/admin/guide', icon: BookOpenIcon },
     { name: 'FAQ', href: '/admin/faq', icon: QuestionMarkCircleIcon },
     { name: 'Gallery', href: '/admin/gallery', icon: PhotoIcon },

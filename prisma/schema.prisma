@@ -34,3 +34,24 @@ model Guide {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+model Scope {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  configs Config[]
+}
+
+model Config {
+  id               Int      @id @default(autoincrement())
+  scope_id         Int
+  title            String?  @db.Text // Renamed and made Text
+  subtitle         String?  @db.Text // Renamed and made Text
+  description      String?  @db.Text // Renamed and made Text
+  additional_text  String?  @db.Text // Renamed and made Text
+  updated_at       DateTime @updatedAt
+
+  scope            Scope    @relation(fields: [scope_id], references: [id])
+
+  @@index([scope_id])
+}
+
