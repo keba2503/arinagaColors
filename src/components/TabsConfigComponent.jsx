@@ -8,6 +8,7 @@ import SectionOurFeatures from './admin/Forms/SectionOurFeatures';
 import SectionService from './admin/Forms/SectionService';
 import TableTextConfig from "./admin/Tables/TableTextConfig";
 import SectionCardService from "./admin/Forms/SectionCardService";
+import SectionCardOffer from "./admin/Forms/SectionCardOffer";
 
 const TabsComponent = () => {
     const [scopes, setScopes] = useState([]);
@@ -37,6 +38,7 @@ const TabsComponent = () => {
         3: SectionOurFeatures,
         7: SectionService,
         11: SectionCardService,
+        12: SectionCardOffer
     };
 
     const ActiveComponent = componentMapping[activeTab] || null;

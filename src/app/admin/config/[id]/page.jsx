@@ -9,6 +9,7 @@ import SectionHero from '../../../../components/admin/Forms/SectionHero';
 import SectionService from '../../../../components/admin/Forms/SectionService';
 import SectionCardService from '../../../../components/admin/Forms/SectionCardService';
 import SectionOurFeatures from '../../../../components/admin/Forms/SectionOurFeatures';
+import SectionCardOffer from "../../../../components/admin/Forms/SectionCardOffer";
 
 // Mapeo de componentes según scope
 const componentMapping = {
@@ -19,6 +20,7 @@ const componentMapping = {
     3: SectionOurFeatures,
     7: SectionService,
     11: SectionCardService,
+    12: SectionCardOffer,
 };
 
 const ConfigIdPage = ({ params }) => {
