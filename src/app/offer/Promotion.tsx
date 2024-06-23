@@ -1,52 +1,47 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
+import parse from 'html-react-parser';
 import Heading from "@/shared/Heading";
 
 interface Promotion {
     title: string;
     description: string;
-    apartment: string;
+    subtitle: string; // Cambiado de apartment a subtitle para recibir los datos de la API
 }
 
-const promotions: Promotion[] = [
-    {
-        title: '¡Descuento del 10% por Estancias Prolongadas!',
-        description: 'Aprovecha un 10% de descuento al quedarte más de una semana en nuestro apartamento The Yellow House.',
-        apartment: 'The Yellow House'
-    },
-    {
-        title: 'Reserva Anticipada: 15% de Descuento',
-        description: 'Reserva con antelación y obtén un 15% de descuento en nuestro apartamento The Blue House.',
-        apartment: 'The Blue House'
-    },
-    {
-        title: 'Escapada de Fin de Semana',
-        description: 'Disfruta de una oferta especial para estancias de fin de semana en el apartamento The White House.',
-        apartment: 'The White House'
-    },
-    {
-        title: 'Estancias Largas: 20% de Descuento',
-        description: 'Disfruta de un 20% de descuento por estancias largas en el apartamento The Yellow House.',
-        apartment: 'The Yellow House'
-    },
-    {
-        title: 'Paquete de Bienvenida Gratis',
-        description: 'Recibe un paquete de bienvenida gratuito al reservar nuestro apartamento The Blue House.',
-        apartment: 'The Blue House'
-    },
-    {
-        title: 'Descuento Familiar',
-        description: 'Aprovecha nuestro descuento especial para familias en el apartamento The White House.',
-        apartment: 'The White House'
-    },
-];
+const RichTextEditor = dynamic(() => import('@/components/RichTextEditor'), { ssr: false });
 
 const Promotions: React.FC = () => {
+    const [promotions, setPromotions] = useState<Promotion[]>([]);
+    const scopeId = 12;
+
+    useEffect(() => {
+        const fetchPromotions = async () => {
+            try {
+                const response = await fetch('/api/config');
+                const configData = await response.json();
+
+                const filteredPromotions = configData.filter((item: any) => item.scope_id === scopeId);
+                const headerData = configData.find((item: any) => item.scope_id === 7);
+
+                setPromotions(filteredPromotions);
+            } catch (error) {
+                console.error('Error fetching promotions:', error);
+            }
+        };
+
+        fetchPromotions();
+    }, []);
+
     return (
         <div className="container mx-auto p-4 pb-32">
             <div className="relative bg-gradient-to-r from-blue-400 via-white to-yellow-400 text-white p-12 rounded-lg mb-12 max-w-full overflow-hidden mx-4">
                 <div className="absolute inset-0 bg-black opacity-25 rounded-lg"></div>
                 <div className="relative z-10">
-                <h2 className="text-4xl font-bold mb-4">¡Descubre Nuestras Ofertas Especiales!</h2>
+                    <h2 className="text-4xl font-bold mb-4">¡Descubre Nuestras Ofertas Especiales!</h2>
                     <p className="text-lg">Aprovecha descuentos y promociones exclusivas.</p>
                 </div>
             </div>
@@ -60,8 +55,8 @@ const Promotions: React.FC = () => {
                         <a href="#">
                             <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{promotion.title}</h5>
                         </a>
-                        <p className="mb-3 font-normal text-gray-500 dark:text-gray-400">{promotion.description}</p>
-                        <p className="text-gray-900 font-semibold mb-4">Apartamento: {promotion.apartment}</p>
+                        <p className="mb-3 font-normal text-gray-500 dark:text-gray-400">{parse(promotion.description)}</p>
+                        <p className="text-gray-900 font-semibold mb-4">Apartamento: {promotion.subtitle}</p> {/* Usamos subtitle en lugar de apartment */}
                         <a href="#" className="inline-flex font-medium items-center hover:underline" style={{color: 'rgb(73, 155, 200)'}}>
                             Solicitar Oferta
                         </a>
