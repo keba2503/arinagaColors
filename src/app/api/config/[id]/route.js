@@ -26,12 +26,18 @@ export async function GET(request, { params }) {
 // Actualizar un config por ID
 export async function PUT(request, { params }) {
     const { id } = params;
-    const { scope_id, path, value } = await request.json();
+    const { scope_id, title, subtitle, description, additional_text } = await request.json();
 
     try {
         const config = await prisma.config.update({
             where: { id: parseInt(id) },
-            data: { scope_id: parseInt(scope_id, 10), path, value }, // Asegurarse de que scope_id sea un entero
+            data: {
+                scope_id: parseInt(scope_id, 10),
+                title,
+                subtitle,
+                description,
+                additional_text,
+            },
         });
 
         return NextResponse.json(config, { status: 200 });
