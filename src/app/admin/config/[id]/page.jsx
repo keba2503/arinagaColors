@@ -10,6 +10,7 @@ import SectionService from '../../../../components/admin/Forms/SectionService';
 import SectionCardService from '../../../../components/admin/Forms/SectionCardService';
 import SectionOurFeatures from '../../../../components/admin/Forms/SectionOurFeatures';
 import SectionCardOffer from "../../../../components/admin/Forms/SectionCardOffer";
+import SectionOffer from "../../../../components/admin/Forms/SectionOffer";
 
 // Mapeo de componentes según scope
 const componentMapping = {
@@ -21,6 +22,7 @@ const componentMapping = {
     7: SectionService,
     11: SectionCardService,
     12: SectionCardOffer,
+    13: SectionOffer,
 };
 
 const ConfigIdPage = ({ params }) => {

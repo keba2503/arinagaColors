@@ -9,14 +9,17 @@ import Heading from "@/shared/Heading";
 interface Promotion {
     title: string;
     description: string;
-    subtitle: string; // Cambiado de apartment a subtitle para recibir los datos de la API
+    subtitle: string;
 }
 
 const RichTextEditor = dynamic(() => import('@/components/RichTextEditor'), { ssr: false });
 
 const Promotions: React.FC = () => {
     const [promotions, setPromotions] = useState<Promotion[]>([]);
-    const scopeId = 12;
+    const [headerTitle, setHeaderTitle] = useState('');
+    const [headerDescription, setHeaderDescription] = useState('');
+    const promotionScopeId = 12;
+    const headerScopeId = 13;
 
     useEffect(() => {
         const fetchPromotions = async () => {
@@ -24,12 +27,17 @@ const Promotions: React.FC = () => {
                 const response = await fetch('/api/config');
                 const configData = await response.json();
 
-                const filteredPromotions = configData.filter((item: any) => item.scope_id === scopeId);
-                const headerData = configData.find((item: any) => item.scope_id === 7);
+                const filteredPromotions = configData.filter((item: any) => item.scope_id === promotionScopeId);
+                const headerData = configData.find((item: any) => item.scope_id === headerScopeId);
 
                 setPromotions(filteredPromotions);
+
+                if (headerData) {
+                    setHeaderTitle(headerData.title);
+                    setHeaderDescription(headerData.description);
+                }
             } catch (error) {
-                console.error('Error fetching promotions:', error);
+                console.error('Error fetching data:', error);
             }
         };
 
@@ -41,8 +49,8 @@ const Promotions: React.FC = () => {
             <div className="relative bg-gradient-to-r from-blue-400 via-white to-yellow-400 text-white p-12 rounded-lg mb-12 max-w-full overflow-hidden mx-4">
                 <div className="absolute inset-0 bg-black opacity-25 rounded-lg"></div>
                 <div className="relative z-10">
-                    <h2 className="text-4xl font-bold mb-4">¡Descubre Nuestras Ofertas Especiales!</h2>
-                    <p className="text-lg">Aprovecha descuentos y promociones exclusivas.</p>
+                    <h2 className="text-4xl font-bold mb-4">{headerTitle}</h2>
+                    <p className="text-lg">{parse(headerDescription)}</p>
                 </div>
             </div>
 
@@ -56,7 +64,7 @@ const Promotions: React.FC = () => {
                             <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{promotion.title}</h5>
                         </a>
                         <p className="mb-3 font-normal text-gray-500 dark:text-gray-400">{parse(promotion.description)}</p>
-                        <p className="text-gray-900 font-semibold mb-4">Apartamento: {promotion.subtitle}</p> {/* Usamos subtitle en lugar de apartment */}
+                        <p className="text-gray-900 font-semibold mb-4">Apartamento: {promotion.subtitle}</p>
                         <a href="#" className="inline-flex font-medium items-center hover:underline" style={{color: 'rgb(73, 155, 200)'}}>
                             Solicitar Oferta
                         </a>
