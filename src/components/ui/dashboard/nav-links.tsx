@@ -10,6 +10,7 @@ const links = [
     { name: 'Guía del huésped', href: '/admin/guide', icon: BookOpenIcon },
     { name: 'FAQ', href: '/admin/faq', icon: QuestionMarkCircleIcon },
     { name: 'Gallery', href: '/admin/gallery', icon: PhotoIcon },
+    { name: 'Imagenes Home', href: '/admin/hero', icon: PhotoIcon },
     { name: 'Vista del cliente', href: '/', icon: ArrowLeftOnRectangleIcon }
 ];
 
