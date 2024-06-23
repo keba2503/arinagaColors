@@ -1,19 +1,40 @@
-'use client'
+'use client';
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import parse from 'html-react-parser';
 import img1 from '../../../images/Exteriores/1.jpg';
 import img2 from '../../../images/Exteriores/2.jpg';
 import img3 from '../../../images/Exteriores/3.jpg';
 
-const images = [
-    { src: img1, caption: "EXPERIENCIA INOLVIDABLE. Modernos y confortables apartamentos ubicados en la. idílica Playa de Arinaga, Gran Canaria." },
-    { src: img2, caption: "COMODIDAD. Acceso directo a la playa y a un paso de los mejores. restaurantes, tiendas y actividades de la isla." },
-    { src: img3, caption: "RECUERDO IMBORRABLE. Despierta cada mañana con la brisa marina y relájate al. atardecer con vistas espectaculares." },
-];
+const localImages = [img1, img2, img3];
+
+interface ApiResponse {
+    scope_id: number;
+    title: string;
+    subtitle: string;
+    description: string;
+    additional_text: string;
+}
 
 const CarouselBackground: React.FC = () => {
+    const [data, setData] = useState<ApiResponse[]>([]);
+    const [loading, setLoading] = useState(true);
     const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        fetch('/api/config')
+            .then(response => response.json())
+            .then(data => {
+                const filteredData = data.filter((item: ApiResponse) => item.scope_id === 2);
+                setData(filteredData);
+                setLoading(false);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                setLoading(false);
+            });
+    }, []);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -23,43 +44,52 @@ const CarouselBackground: React.FC = () => {
     }, []);
 
     const prevSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+        setCurrentIndex((prevIndex) => (prevIndex === 0 ? localImages.length - 1 : prevIndex - 1));
     };
 
     const nextSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+        setCurrentIndex((prevIndex) => (prevIndex === localImages.length - 1 ? 0 : prevIndex + 1));
     };
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="relative w-full h-screen" data-carousel="slide">
             <div className="relative h-full overflow-hidden">
-                {images.map((image, index) => (
-                    <div
-                        key={index}
-                        className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${currentIndex === index ? 'opacity-100' : 'opacity-0'}`}
-                        data-carousel-item
-                    >
-                        <Image
-                            src={image.src}
-                            alt={`Slide ${index}`}
-                            layout="fill"
-                            objectFit="cover"
-                            quality={100}
-                            priority
-                        />
-                        {currentIndex === index && image.caption && (
-                            <div className="absolute top-1/4 left-10 text-white text-xl font-semibold text-left animate__animated animate__fadeIn hidden sm:block">
-                                <p className="uppercase text-6xl animate__animated animate__fadeIn animate__delay-1s">{image.caption.split('.')[0]}</p>
-                                <p className="text-3xl animate__animated animate__fadeIn animate__delay-1s">{image.caption.split('.')[1].trim()}</p>
-                                <p className="text-3xl animate__animated animate__fadeIn animate__delay-1s">{image.caption.split('.').slice(2).join('.').trim()}</p>
-                            </div>
-                        )}
-                    </div>
-                ))}
+                {localImages.map((image, index) => {
+                    const apiData = data[index] || { title: "", subtitle: "" };
+                    const title = parse(apiData.title);
+                    const subtitle = parse(apiData.subtitle);
+
+                    return (
+                        <div
+                            key={index}
+                            className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${currentIndex === index ? 'opacity-100' : 'opacity-0'}`}
+                            data-carousel-item
+                        >
+                            <Image
+                                src={image}
+                                alt={`Slide ${index}`}
+                                layout="fill"
+                                objectFit="cover"
+                                quality={100}
+                                priority
+                            />
+                            {currentIndex === index && (
+                                <div className="absolute top-1/4 left-10 text-white text-xl font-semibold text-left animate__animated animate__fadeIn hidden sm:block">
+                                    <p className="uppercase text-6xl animate__animated animate__fadeIn animate__delay-1s">{title}</p>
+                                    <p className="text-3xl animate__animated animate__fadeIn animate__delay-1s">{subtitle}</p>
+                                </div>
+                            )}
+                        </div>
+                    );
+                })}
             </div>
 
             <div className="absolute z-50 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3">
-                {images.map((_, index) => (
+                {localImages.map((_, index) => (
                     <button
                         key={index}
                         type="button"
