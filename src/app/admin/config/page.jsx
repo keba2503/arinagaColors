@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import TabsComponent from '../../../components/TabsConfigComponent';
-import TableTextConfig from '../../../components/TableTextConfig';
-import FormTextConfig from '../../../components/FormTextConfig';
+import TableTextConfig from '../../../components/admin/Tables/TableTextConfig';
+import FormTextConfig from '../../../components/admin/Forms/FormTextConfig';
 
 const Config = () => {
     const [scopeId, setScopeId] = useState('');
