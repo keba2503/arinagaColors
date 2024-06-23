@@ -1,34 +1,58 @@
 'use client';
 
-import React, {useState} from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 
-const RichTextEditor = dynamic(() => import('@/components/RichTextEditor'), {ssr: false});
+const RichTextEditor = dynamic(() => import('@/components/RichTextEditor'), { ssr: false });
 
-const SectionService = ({scope}) => {
+const SectionService = ({ scope, data }) => {
     const [title, setTitle] = useState('');
-    const [subtitle, setSubtitle] = useState('');
     const [description, setDescription] = useState('');
-    const [additionalText, setAdditionalText] = useState('');
     const [feedbackMessage, setFeedbackMessage] = useState('');
+
+    const isEditMode = !!data;
+
+    useEffect(() => {
+        if (data) {
+            setTitle(data.title);
+            setDescription(data.description);
+        }
+    }, [data]);
 
     const handleSave = async (e) => {
         e.preventDefault();
+        const payload = {
+            scope_id: parseInt(scope, 10),
+            title,
+            description,
+        };
+
         try {
-            const response = await axios.post('/api/config', {
-                scope_id: scope,
-                title,
-                subtitle,
-                description,
-                additional_text: additionalText
-            });
+            const response = isEditMode
+                ? await fetch(`/api/config/${data.id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload),
+                })
+                : await fetch('/api/config', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload),
+                });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
 
             setFeedbackMessage('Se ha guardado correctamente, actualiza para ver los cambios.');
-            setTitle('');
-            setSubtitle('');
-            setDescription('');
-            setAdditionalText('');
+            if (!isEditMode) {
+                setTitle('');
+                setDescription('');
+            }
             setTimeout(() => setFeedbackMessage(''), 5000);
         } catch (error) {
             console.error('Error saving data:', error);

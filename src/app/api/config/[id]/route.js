@@ -31,7 +31,7 @@ export async function PUT(request, { params }) {
     try {
         const config = await prisma.config.update({
             where: { id: parseInt(id) },
-            data: { scope_id, path, value },
+            data: { scope_id: parseInt(scope_id, 10), path, value }, // Asegurarse de que scope_id sea un entero
         });
 
         return NextResponse.json(config, { status: 200 });
@@ -63,4 +63,3 @@ export async function DELETE(request, { params }) {
         return NextResponse.json({ error: 'Error deleting config' }, { status: 500 });
     }
 }
-

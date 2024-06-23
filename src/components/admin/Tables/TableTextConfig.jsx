@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from 'react';
-import {ArrowPathIcon, TrashIcon} from "@heroicons/react/24/solid";
+import React, { useEffect, useState } from 'react';
+import { ArrowPathIcon, TrashIcon } from "@heroicons/react/24/solid";
+import Link from "next/link";
 
-const TableTextConfig = ({scope}) => {
+const TableTextConfig = ({ scope }) => {
     const [data, setData] = useState([]);
     const [feedbackMessage, setFeedbackMessage] = useState('');
 
@@ -19,7 +20,7 @@ const TableTextConfig = ({scope}) => {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`/api/config/${id}`, {method: 'DELETE'});
+            const response = await fetch(`/api/config/${id}`, { method: 'DELETE' });
             if (response.ok) {
                 setFeedbackMessage('Se ha eliminado correctamente.');
                 fetchData();
@@ -45,7 +46,7 @@ const TableTextConfig = ({scope}) => {
                     onClick={fetchData}
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 >
-                    <ArrowPathIcon className="h-5 w-5"/>
+                    <ArrowPathIcon className="h-5 w-5" />
                 </button>
             </div>
             {feedbackMessage && (
@@ -73,8 +74,11 @@ const TableTextConfig = ({scope}) => {
                         <td className="px-6 py-4">{item.description}</td>
                         <td className="px-6 py-4">{item.additional_text}</td>
                         <td className="flex items-center px-6 py-4">
+                            <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline" href={`/admin/config/${item.id}?scope=${item.scope_id}`}>
+                                Editar
+                            </Link>
                             <button onClick={() => handleDelete(item.id)} className="text-red-600 hover:text-red-800">
-                                <TrashIcon className="h-5 w-5"/>
+                                <TrashIcon className="h-5 w-5" />
                             </button>
                         </td>
                     </tr>
