@@ -311,7 +311,7 @@ const BlueDetailPage: FC<BlueDetailPageProps> = ({}) => {
         return (
             <div className="listingSectionSidebar__wrap shadow-xl p-4 lg:p-6">
                 <div
-                    data-accommodation-id="357500" data-target="_blank"
+                    data-accommodation-id="357500" data-target="_self"
                     className="avaibook-search-widget" data-widget-id="92477"
                     data-widget-token="h5SwvFQFMU/hiog6gT4HMw=="
                     data-background-color="#FFFFFF" data-main-color="#499BC8"

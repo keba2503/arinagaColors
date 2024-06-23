@@ -299,10 +299,15 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = ({}) => {
     const renderSidebar = () => {
         return (
             <div className="listingSectionSidebar__wrap shadow-xl p-4 lg:p-6">
-                <div data-accommodation-id="357517" data-target="_blank"
-                     className="avaibook-search-widget" data-widget-id="92477"
-                     data-widget-token="h5SwvFQFMU/hiog6gT4HMw==" data-background-color="#FFFFFF"
-                     data-main-color="#F0F0F0" data-border-radius="3px" data-shadow="0 2px 20px rgb(0 0 0 / 16%)"
+                <div data-accommodation-id="357517"
+                     data-target="_self"
+                     className="avaibook-search-widget"
+                     data-widget-id="92477"
+                     data-widget-token="h5SwvFQFMU/hiog6gT4HMw=="
+                     data-background-color="#FFFFFF"
+                     data-main-color="#F0F0F0"
+                     data-border-radius="3px"
+                     data-shadow="0 2px 20px rgb(0 0 0 / 16%)"
                      data-padding="1rem" data-language="es"></div>
             </div>
         );
