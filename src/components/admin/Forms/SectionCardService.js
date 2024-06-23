@@ -8,6 +8,7 @@ const RichTextEditor = dynamic(() => import('@/components/RichTextEditor'), { ss
 
 const SectionCardService = ({ scope, data }) => {
     const [title, setTitle] = useState('');
+    const [subtitle, setSubTitle] = useState('');
     const [description, setDescription] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
@@ -15,6 +16,7 @@ const SectionCardService = ({ scope, data }) => {
     useEffect(() => {
         if (data) {
             setTitle(data.title || '');
+            setSubTitle(data.subtitle || '');
             setDescription(data.description || '');
         }
     }, [data]);
@@ -27,6 +29,7 @@ const SectionCardService = ({ scope, data }) => {
         const payload = {
             scope_id: parseInt(scope, 10),
             title,
+            subtitle,
             description,
         };
 
@@ -84,6 +87,16 @@ const SectionCardService = ({ scope, data }) => {
                 <RichTextEditor
                     value={description}
                     onChange={setDescription}
+                />
+            </div>
+            <div className="mb-5">
+                <label htmlFor="title-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre de la imagen asociada</label>
+                <input
+                    type="text"
+                    id="title-input"
+                    value={subtitle}
+                    onChange={(e) => setSubTitle(e.target.value)}
+                    className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
             </div>
             <div className="flex items-center justify-between">
