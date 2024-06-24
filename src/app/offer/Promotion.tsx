@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import parse from 'html-react-parser';
@@ -12,7 +12,7 @@ interface Promotion {
     subtitle: string;
 }
 
-const RichTextEditor = dynamic(() => import('@/components/RichTextEditor'), { ssr: false });
+const RichTextEditor = dynamic(() => import('@/components/RichTextEditor'), {ssr: false});
 
 const Promotions: React.FC = () => {
     const [promotions, setPromotions] = useState<Promotion[]>([]);
@@ -64,10 +64,6 @@ const Promotions: React.FC = () => {
                             <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{promotion.title}</h5>
                         </a>
                         <p className="mb-3 font-normal text-gray-500 dark:text-gray-400">{parse(promotion.description)}</p>
-                        <p className="text-gray-900 font-semibold mb-4">Apartamento: {promotion.subtitle}</p>
-                        <a href="#" className="inline-flex font-medium items-center hover:underline" style={{color: 'rgb(73, 155, 200)'}}>
-                            Solicitar Oferta
-                        </a>
                     </div>
                 ))}
             </div>
