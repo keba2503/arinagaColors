@@ -2,12 +2,10 @@ import React from "react";
 import SectionHero from "@/app/(server-components)/SectionHero";
 import BgGlassmorphism from "@/components/BgGlassmorphism";
 import {TaxonomyType} from "@/data/types";
-import SectionSliderNewCategories from "@/components/SectionSliderNewCategories";
 import SectionOurFeatures from "@/components/SectionOurFeatures";
 import SectionGridFeaturePlaces from "@/components/SectionGridFeaturePlaces";
 import SectionHowItWork from "@/components/SectionHowItWork";
-import SectionSubscribe2 from "@/components/SectionSubscribe2";
-import SectionVideos from "@/components/SectionVideos";
+
 
 const DEMO_CATS: TaxonomyType[] = [
     {
