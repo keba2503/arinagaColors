@@ -1,162 +1,108 @@
-// FONT FACE --INTER
+/* FONT FACE -- DOSIS */
 @font-face {
-  font-family: Inter;
+  font-family: 'Dosis';
+  font-weight: 200;
+  src: url('https://fonts.gstatic.com/s/dosis/v16/HhyFslEN3kFh8FJ0CwNaaEE.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Dosis';
   font-weight: 300;
-  src: url("../fonts/Inter/static/Inter-Light.ttf");
+  src: url('https://fonts.gstatic.com/s/dosis/v16/HhyFslEN3kFh8FJ0CwNaaEE.woff2') format('woff2');
 }
 @font-face {
-  font-family: Inter;
+  font-family: 'Dosis';
   font-weight: 400;
-  src: url("../fonts/Inter/static/Inter-Regular.ttf");
+  src: url('https://fonts.gstatic.com/s/dosis/v16/HhyFslEN3kFh8FJ0CwNaaEE.woff2') format('woff2');
 }
 @font-face {
-  font-family: Inter;
+  font-family: 'Dosis';
   font-weight: 500;
-  src: url("../fonts/Inter/static/Inter-Medium.ttf");
+  src: url('https://fonts.gstatic.com/s/dosis/v16/HhyFslEN3kFh8FJ0CwNaaEE.woff2') format('woff2');
 }
 @font-face {
-  font-family: Inter;
+  font-family: 'Dosis';
   font-weight: 600;
-  src: url("../fonts/Inter/static/Inter-SemiBold.ttf");
+  src: url('https://fonts.gstatic.com/s/dosis/v16/HhyFslEN3kFh8FJ0CwNaaEE.woff2') format('woff2');
 }
 @font-face {
-  font-family: Inter;
+  font-family: 'Dosis';
   font-weight: 700;
-  src: url("../fonts/Inter/static/Inter-Bold.ttf");
+  src: url('https://fonts.gstatic.com/s/dosis/v16/HhyFslEN3kFh8FJ0CwNaaEE.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Dosis';
+  font-weight: 800;
+  src: url('https://fonts.gstatic.com/s/dosis/v16/HhyFslEN3kFh8FJ0CwNaaEE.woff2') format('woff2');
 }
 
-// POPPINS
-@font-face {
-  font-family: Poppins;
+/* Uso de clases con la fuente Dosis */
+.dosis-unique-200 {
+  font-family: "Dosis", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.dosis-unique-300 {
+  font-family: "Dosis", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 300;
-  src: url("../fonts/Poppins/Poppins-Light.ttf");
+  font-style: normal;
 }
-@font-face {
-  font-family: Poppins;
+
+.dosis-unique-400 {
+  font-family: "Dosis", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 400;
-  src: url("../fonts/Poppins/Poppins-Regular.ttf");
+  font-style: normal;
 }
-@font-face {
-  font-family: Poppins;
+
+.dosis-unique-500 {
+  font-family: "Dosis", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 500;
-  src: url("../fonts/Poppins/Poppins-Medium.ttf");
+  font-style: normal;
 }
-@font-face {
-  font-family: Poppins;
+
+.dosis-unique-600 {
+  font-family: "Dosis", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 600;
-  src: url("../fonts/Poppins/Poppins-SemiBold.ttf");
+  font-style: normal;
 }
-@font-face {
-  font-family: Poppins;
+
+.dosis-unique-700 {
+  font-family: "Dosis", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 700;
-  src: url("../fonts/Poppins/Poppins-Bold.ttf");
+  font-style: normal;
 }
 
-//
-// FONT FACE --MerriweatherSans
-@font-face {
-  font-family: MerriweatherSans;
-  font-weight: 300;
-  src: url("../fonts/Merriweather_Sans/static/MerriweatherSans-Light.ttf");
-}
-@font-face {
-  font-family: MerriweatherSans;
-  font-weight: 400;
-  src: url("../fonts/Merriweather_Sans/static/MerriweatherSans-Regular.ttf");
-}
-@font-face {
-  font-family: MerriweatherSans;
-  font-weight: 500;
-  src: url("../fonts/Merriweather_Sans/static/MerriweatherSans-Medium.ttf");
-}
-@font-face {
-  font-family: MerriweatherSans;
-  font-weight: 600;
-  src: url("../fonts/Merriweather_Sans/static/MerriweatherSans-SemiBold.ttf");
-}
-@font-face {
-  font-family: MerriweatherSans;
-  font-weight: 700;
-  src: url("../fonts/Merriweather_Sans/static/MerriweatherSans-Bold.ttf");
-}
-//
-// FONT FACE --Kodchasan
-@font-face {
-  font-family: Kodchasan;
-  font-weight: 300;
-  src: url("../fonts/Kodchasan/Kodchasan-Light.ttf");
-}
-@font-face {
-  font-family: Kodchasan;
-  font-weight: 400;
-  src: url("../fonts/Kodchasan/Kodchasan-Regular.ttf");
-}
-@font-face {
-  font-family: Kodchasan;
-  font-weight: 500;
-  src: url("../fonts/Kodchasan/Kodchasan-Medium.ttf");
-}
-@font-face {
-  font-family: Kodchasan;
-  font-weight: 600;
-  src: url("../fonts/Kodchasan/Kodchasan-SemiBold.ttf");
-}
-@font-face {
-  font-family: Kodchasan;
-  font-weight: 700;
-  src: url("../fonts/Kodchasan/Kodchasan-Bold.ttf");
+.dosis-unique-800 {
+  font-family: "Dosis", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
 }
 
-// FONT FACE --BeVietnam
-@font-face {
-  font-family: BeVietnam;
-  font-weight: 300;
-  src: url("../fonts/Be_Vietnam/BeVietnam-Light.ttf");
-}
-@font-face {
-  font-family: BeVietnam;
-  font-weight: 400;
-  src: url("../fonts/Be_Vietnam/BeVietnam-Regular.ttf");
-}
-@font-face {
-  font-family: BeVietnam;
-  font-weight: 500;
-  src: url("../fonts/Be_Vietnam/BeVietnam-Medium.ttf");
-}
-@font-face {
-  font-family: BeVietnam;
-  font-weight: 600;
-  src: url("../fonts/Be_Vietnam/BeVietnam-SemiBold.ttf");
-}
-@font-face {
-  font-family: BeVietnam;
-  font-weight: 700;
-  src: url("../fonts/Be_Vietnam/BeVietnam-Bold.ttf");
+
+html, body {
+  font-family: "Dosis", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-//
-html body {
-  @apply font-body antialiased;
+h1, h2, h3, h4, h5, h6, p, a, span, div {
+  font-family: "Dosis", sans-serif;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  @apply font-display;
-}
-
+/* Aplicando variables de fuente */
 :root {
-  --font-display: Poppins;
-  --font-body: Poppins;
+  --font-display: 'Dosis', sans-serif;
+  --font-body: 'Dosis', sans-serif;
 }
 
-.theme-animals {
-  --font-display: Inter;
-  --font-body: Inter;
-}
-
-.theme-astronomy {
-  --font-display: BeVietnam;
-  --font-body: BeVietnam;
+.theme-animals, .theme-astronomy {
+  --font-display: 'Dosis', sans-serif;
+  --font-body: 'Dosis', sans-serif;
 }
