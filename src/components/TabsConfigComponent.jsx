@@ -93,7 +93,7 @@ const TabsComponent = () => {
                 ))}
             </ul>
             {activeImageURL && (
-                <div className="relative w-full flex justify-center items-center mt-4">
+                <div className="relative w-full flex justify-center items-center mt-4 pb-10 pt-8">
                     {!isImageMinimized ? (
                         <div className="relative">
                             <img src={activeImageURL} alt="Active Tab" className="w-full h-auto max-h-64 object-contain" />
