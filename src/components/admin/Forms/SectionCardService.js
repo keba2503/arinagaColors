@@ -3,33 +3,87 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import axios from 'axios';
 
 const RichTextEditor = dynamic(() => import('@/components/RichTextEditor'), { ssr: false });
 
 const SectionCardService = ({ scope, data }) => {
     const [title, setTitle] = useState('');
-    const [subtitle, setSubTitle] = useState('');
+    const [subtitle, setSubtitle] = useState('');
     const [description, setDescription] = useState('');
+    const [image, setImage] = useState(null);
+    const [imagePreview, setImagePreview] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
 
     useEffect(() => {
         if (data) {
             setTitle(data.title || '');
-            setSubTitle(data.subtitle || '');
+            setSubtitle(data.subtitle || '');
             setDescription(data.description || '');
+            if (data.subtitle) {
+                const imageUrl = `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/${data.subtitle}.webp`;
+                setImagePreview(imageUrl);
+            }
         }
     }, [data]);
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImagePreview(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         setIsSubmitting(true);
         setSuccessMessage('');
 
+        let imageName = subtitle;
+
+        if (image) {
+            // Elimina la imagen anterior si existe y si se está subiendo una nueva
+            if (data && data.subtitle) {
+                try {
+                    await axios.delete('/api/cloudinaryService', {
+                        data: { public_id: data.subtitle }
+                    });
+                } catch (error) {
+                    console.error('Error deleting the previous image:', error);
+                }
+            }
+
+            // Sube la nueva imagen
+            const formData = new FormData();
+            formData.append('file', image);
+            formData.append('upload_preset', 'ml_default');
+            formData.append('folder', 'arinagacolors/service');
+
+            try {
+                const res = await axios.post(
+                    `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
+                    formData
+                );
+                imageName = res.data.public_id;
+                setSubtitle(imageName);
+            } catch (error) {
+                console.error('Error uploading the image:', error);
+                setIsSubmitting(false);
+                setSuccessMessage('Hubo un error al subir la imagen');
+                return;
+            }
+        }
+
         const payload = {
             scope_id: parseInt(scope, 10),
             title,
-            subtitle,
+            subtitle: imageName,
             description,
         };
 
@@ -49,6 +103,8 @@ const SectionCardService = ({ scope, data }) => {
                 if (!data) {
                     setTitle('');
                     setDescription('');
+                    setImage(null);
+                    setImagePreview('');
                 }
             } else {
                 console.error('Error saving data:', response.statusText);
@@ -90,14 +146,26 @@ const SectionCardService = ({ scope, data }) => {
                 />
             </div>
             <div className="mb-5">
-                <label htmlFor="title-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre de la imagen asociada</label>
-                <input
-                    type="text"
-                    id="title-input"
-                    value={subtitle}
-                    onChange={(e) => setSubTitle(e.target.value)}
-                    className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                />
+                <label htmlFor="image-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Imagen asociada</label>
+                <div className="flex items-center">
+                    <input
+                        type="file"
+                        id="image-input"
+                        onChange={handleFileChange}
+                        className="hidden"
+                    />
+                    <label
+                        htmlFor="image-input"
+                        className="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    >
+                        {data && data.subtitle ? 'Editar imagen' : 'Seleccionar imagen'}
+                    </label>
+                    {imagePreview && (
+                        <div className="ml-4">
+                            <img src={imagePreview} alt="Vista previa" className="h-20 w-20 object-cover rounded border" />
+                        </div>
+                    )}
+                </div>
             </div>
             <div className="flex items-center justify-between">
                 <button
