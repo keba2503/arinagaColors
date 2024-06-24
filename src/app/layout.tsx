@@ -17,8 +17,8 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
     title: "Arinaga Colors - Booking online",
-    description: "Booking online & rental online React Next Template",
-    keywords: "Chisfis, Booking online, React Next Template",
+    description: "Booking online",
+    keywords: "Booking online",
     viewport:
         "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no",
 };
