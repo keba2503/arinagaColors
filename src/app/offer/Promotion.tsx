@@ -1,10 +1,8 @@
 'use client';
 
 import React, {useState, useEffect} from 'react';
-import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import parse from 'html-react-parser';
-import Heading from "@/shared/Heading";
 
 interface Promotion {
     title: string;
@@ -45,7 +43,7 @@ const Promotions: React.FC = () => {
     }, []);
 
     return (
-        <div className="container mx-auto p-4 pb-32">
+        <div className="container mx-auto p-4 pb-32 ">
             <div className="relative bg-gradient-to-r from-blue-400 via-white to-yellow-400 text-white p-12 rounded-lg mb-12 max-w-full overflow-hidden mx-4">
                 <div className="absolute inset-0 bg-black opacity-25 rounded-lg"></div>
                 <div className="relative z-10">

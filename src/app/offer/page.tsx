@@ -2,7 +2,6 @@
 
 import React from "react";
 import Promotions from "@/app/offer/Promotion";
-import SectionSubscribe2 from "@/components/SectionSubscribe2";
 
 const Page = ({params, searchParams,}:
                   {
