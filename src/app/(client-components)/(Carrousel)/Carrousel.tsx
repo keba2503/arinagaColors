@@ -1,6 +1,6 @@
 'use client';
 
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import parse from 'html-react-parser';
 
@@ -50,7 +50,7 @@ const CarouselBackground: React.FC = () => {
             nextSlide();
         }, 5000);
         return () => clearInterval(interval);
-    }, []);
+    }, [images.length]);
 
     const prevSlide = () => {
         setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
@@ -64,11 +64,15 @@ const CarouselBackground: React.FC = () => {
         return <div>Loading...</div>;
     }
 
+    if (images.length === 0) {
+        return <div>No images available</div>;
+    }
+
     return (
         <div className="relative w-full h-screen" data-carousel="slide">
             <div className="relative h-full overflow-hidden">
                 {images.map((image, index) => {
-                    const apiData = data[index] || {title: "", subtitle: ""};
+                    const apiData = data[index % data.length] || { title: "", subtitle: "" };
                     const title = parse(apiData.title);
                     const subtitle = parse(apiData.subtitle);
 
@@ -125,7 +129,7 @@ const CarouselBackground: React.FC = () => {
                         fill="none"
                         viewBox="0 0 6 10"
                     >
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4"/>
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
                     </svg>
                     <span className="sr-only">Previous</span>
                 </span>
@@ -145,7 +149,7 @@ const CarouselBackground: React.FC = () => {
                         fill="none"
                         viewBox="0 0 6 10"
                     >
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4"/>
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
                     </svg>
                     <span className="sr-only">Next</span>
                 </span>
