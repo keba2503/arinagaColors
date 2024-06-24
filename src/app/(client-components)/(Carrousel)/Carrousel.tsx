@@ -50,7 +50,7 @@ const CarouselBackground: React.FC = () => {
             nextSlide();
         }, 5000);
         return () => clearInterval(interval);
-    }, []);
+    }, [images.length]);
 
     const prevSlide = () => {
         setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
@@ -64,11 +64,15 @@ const CarouselBackground: React.FC = () => {
         return <div>Loading...</div>;
     }
 
+    if (images.length === 0) {
+        return <div>No images available</div>;
+    }
+
     return (
         <div className="relative w-full h-screen" data-carousel="slide">
             <div className="relative h-full overflow-hidden">
                 {images.map((image, index) => {
-                    const apiData = data[index] || { title: "", subtitle: "" };
+                    const apiData = data[index % data.length] || { title: "", subtitle: "" };
                     const title = parse(apiData.title);
                     const subtitle = parse(apiData.subtitle);
 
