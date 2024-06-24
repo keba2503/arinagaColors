@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import { ArrowPathIcon, TrashIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
+import axios from 'axios';
 
 const TableTextConfig = ({ scope }) => {
     const [data, setData] = useState([]);
+    const [gallery, setGallery] = useState([]);
     const [feedbackMessage, setFeedbackMessage] = useState('');
 
     const fetchData = async () => {
@@ -18,12 +22,34 @@ const TableTextConfig = ({ scope }) => {
         }
     };
 
-    const handleDelete = async (id) => {
+    const fetchGallery = async () => {
+        try {
+            const res = await axios.get('/api/cloudinaryService');
+            setGallery(res.data);
+        } catch (error) {
+            console.error('Error fetching images:', error);
+        }
+    };
+
+    const handleDelete = async (id, subtitle) => {
         try {
             const response = await fetch(`/api/config/${id}`, { method: 'DELETE' });
             if (response.ok) {
+                if (subtitle) {
+                    try {
+                        const res = await axios.delete('/api/cloudinaryService', {
+                            data: { public_id: subtitle }
+                        });
+                        if (res.data.result !== 'ok') {
+                            console.error('Error deleting image:', res.data);
+                        }
+                    } catch (error) {
+                        console.error('Error deleting image:', error);
+                    }
+                }
                 setFeedbackMessage('Se ha eliminado correctamente.');
                 fetchData();
+                fetchGallery();
             } else {
                 setFeedbackMessage('Failed to delete item.');
             }
@@ -37,6 +63,7 @@ const TableTextConfig = ({ scope }) => {
 
     useEffect(() => {
         fetchData();
+        fetchGallery();
     }, [scope]);
 
     return (
@@ -71,13 +98,13 @@ const TableTextConfig = ({ scope }) => {
                         <td className="px-6 py-4">{item.id}</td>
                         <td className="px-6 py-4">{item.title}</td>
                         <td className="px-6 py-4">{item.subtitle}</td>
-                        <td className="px-6 py-4">{item.description}</td>
+                        <td className="px-6 py-4" dangerouslySetInnerHTML={{ __html: item.description }} />
                         <td className="px-6 py-4">{item.additional_text}</td>
                         <td className="flex items-center px-6 py-4">
                             <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline" href={`/admin/config/${item.id}?scope=${item.scope_id}`}>
                                 Editar
                             </Link>
-                            <button onClick={() => handleDelete(item.id)} className="text-red-600 hover:text-red-800">
+                            <button onClick={() => handleDelete(item.id, item.subtitle)} className="text-red-600 hover:text-red-800 ml-4">
                                 <TrashIcon className="h-5 w-5" />
                             </button>
                         </td>

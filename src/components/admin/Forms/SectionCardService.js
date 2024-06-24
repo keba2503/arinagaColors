@@ -12,6 +12,7 @@ const SectionCardService = ({ scope, data }) => {
     const [subtitle, setSubtitle] = useState('');
     const [description, setDescription] = useState('');
     const [image, setImage] = useState(null);
+    const [imagePreview, setImagePreview] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
 
@@ -20,11 +21,23 @@ const SectionCardService = ({ scope, data }) => {
             setTitle(data.title || '');
             setSubtitle(data.subtitle || '');
             setDescription(data.description || '');
+            if (data.subtitle) {
+                const imageUrl = `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/${data.subtitle}.webp`;
+                setImagePreview(imageUrl);
+            }
         }
     }, [data]);
 
     const handleFileChange = (e) => {
-        setImage(e.target.files[0]);
+        const file = e.target.files[0];
+        setImage(file);
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImagePreview(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
     };
 
     const handleSubmit = async (event) => {
@@ -35,6 +48,18 @@ const SectionCardService = ({ scope, data }) => {
         let imageName = subtitle;
 
         if (image) {
+            // Elimina la imagen anterior si existe y si se está subiendo una nueva
+            if (data && data.subtitle) {
+                try {
+                    await axios.delete('/api/cloudinaryService', {
+                        data: { public_id: data.subtitle }
+                    });
+                } catch (error) {
+                    console.error('Error deleting the previous image:', error);
+                }
+            }
+
+            // Sube la nueva imagen
             const formData = new FormData();
             formData.append('file', image);
             formData.append('upload_preset', 'ml_default');
@@ -79,6 +104,7 @@ const SectionCardService = ({ scope, data }) => {
                     setTitle('');
                     setDescription('');
                     setImage(null);
+                    setImagePreview('');
                 }
             } else {
                 console.error('Error saving data:', response.statusText);
@@ -132,9 +158,13 @@ const SectionCardService = ({ scope, data }) => {
                         htmlFor="image-input"
                         className="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     >
-                        Seleccionar imagen
+                        {data && data.subtitle ? 'Editar imagen' : 'Seleccionar imagen'}
                     </label>
-                    {image && <span className="ml-4 text-gray-700 dark:text-gray-300">{image.name}</span>}
+                    {imagePreview && (
+                        <div className="ml-4">
+                            <img src={imagePreview} alt="Vista previa" className="h-20 w-20 object-cover rounded border" />
+                        </div>
+                    )}
                 </div>
             </div>
             <div className="flex items-center justify-between">
