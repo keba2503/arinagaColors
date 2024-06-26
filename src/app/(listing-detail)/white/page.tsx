@@ -1,22 +1,17 @@
 "use client";
 
-import React, {FC, Fragment, useEffect, useState} from "react";
-import {Dialog, Transition} from "@headlessui/react";
-import {Squares2X2Icon} from "@heroicons/react/24/outline";
-import CommentListing from "@/components/CommentListing";
+import React, { FC, Fragment, useEffect, useState } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { Squares2X2Icon } from "@heroicons/react/24/outline";
 import Badge from "@/shared/Badge";
-import ButtonPrimary from "@/shared/ButtonPrimary";
 import ButtonSecondary from "@/shared/ButtonSecondary";
 import ButtonClose from "@/shared/ButtonClose";
 import Image from "next/image";
-import {usePathname, useRouter} from "next/navigation";
-import {Amenities_demos, PHOTOS} from "./constant";
-import StayDatesRangeInput from "./StayDatesRangeInput";
-import GuestsInput from "./GuestsInput";
-import {Route} from "next";
+import { usePathname, useRouter } from "next/navigation";
+import { Amenities_demos, PHOTOS } from "./constant";
+import { Route } from "next";
 
-export interface YellowDetailPageProps {
-}
+export interface YellowDetailPageProps {}
 
 const WhiteDetailPage: FC<YellowDetailPageProps> = ({}) => {
     let [isOpenModalAmenities, setIsOpenModalAmenities] = useState(false);
@@ -51,8 +46,7 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = ({}) => {
             <div className="listingSection__wrap !space-y-6">
                 {/* 1 */}
                 <div className="flex justify-between items-center">
-                    <Badge className="bg-white"
-                           name="White - Playa Arinaga"/>
+                    <Badge className="bg-white" name="White - Playa Arinaga" />
                 </div>
 
                 {/* 2 */}
@@ -61,34 +55,33 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = ({}) => {
                 </h2>
 
                 {/* 5 */}
-                <div className="w-full border-b border-neutral-100 dark:border-neutral-700"/>
+                <div className="w-full border-b border-neutral-100 dark:border-neutral-700" />
 
                 {/* 6 */}
-                <div
-                    className="flex items-center justify-between xl:justify-start space-x-8 xl:space-x-12 text-sm text-neutral-700 dark:text-neutral-300">
+                <div className="flex items-center justify-between xl:justify-start space-x-8 xl:space-x-12 text-sm text-neutral-700 dark:text-neutral-300">
                     <div className="flex items-center space-x-3 ">
-                        <i className=" las la-user text-2xl "></i>
+                        <i className="las la-user text-2xl "></i>
                         <span className="">
-              6 <span className="hidden sm:inline-block">huespedes</span>
-            </span>
+                            6 <span className="hidden sm:inline-block">huespedes</span>
+                        </span>
                     </div>
                     <div className="flex items-center space-x-3">
-                        <i className=" las la-bed text-2xl"></i>
-                        <span className=" ">
-              5 <span className="hidden sm:inline-block">camas</span>
-            </span>
+                        <i className="las la-bed text-2xl"></i>
+                        <span className="">
+                            5 <span className="hidden sm:inline-block">camas</span>
+                        </span>
                     </div>
                     <div className="flex items-center space-x-3">
-                        <i className=" las la-bath text-2xl"></i>
-                        <span className=" ">
-              1 <span className="hidden sm:inline-block">baño</span>
-            </span>
+                        <i className="las la-bath text-2xl"></i>
+                        <span className="">
+                            1 <span className="hidden sm:inline-block">baño</span>
+                        </span>
                     </div>
                     <div className="flex items-center space-x-3">
-                        <i className=" las la-door-open text-2xl"></i>
-                        <span className=" ">
-              3 <span className="hidden sm:inline-block">habitaciones</span>
-            </span>
+                        <i className="las la-door-open text-2xl"></i>
+                        <span className="">
+                            3 <span className="hidden sm:inline-block">habitaciones</span>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -101,18 +94,44 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = ({}) => {
                 <h2 className="text-2xl font-semibold">Información del apartamento</h2>
                 <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
                 <div className="text-neutral-6000 dark:text-neutral-300 text-justify">
-                <span className="block mb-4">
-                    Acogedora vivienda vacacional en Arinaga con vistas al mar, que consta de 3 dormitorios dobles, con capacidad para 6 personas y con pequeña terraza y balcón, ideal para tomar algo y relajarse contemplando y escuchando el sonido del mar.
-                </span>
                     <span className="block mb-4">
-                    El alojamiento tiene una superficie de 85 m², exterior con mucha luz y está situado en primera línea de playa. Está totalmente equipado con lavadora, plancha, acceso ilimitado a Internet (wifi), secador de pelo y 1 TV. La cocina, de estilo americana, cuenta con placa vitrocerámica, nevera, microondas, horno, congelador, vajilla/cubertería, utensilios/cocina, cafetera, tostadora, hervidor de agua y exprimidor. Ofrecemos cuna bajo petición, de manera gratuita.
-                </span>
+                        Acogedora vivienda vacacional en Arinaga con vistas al mar, que
+                        consta de 3 dormitorios dobles, con capacidad para 6 personas y con
+                        pequeña terraza y balcón, ideal para tomar algo y relajarse
+                        contemplando y escuchando el sonido del mar.
+                    </span>
                     <span className="block mb-4">
-                    A lo largo de la costa de Arinaga, hay un paseo de aproximadamente 2 kilómetros que recorre el pueblo de un extremo a otro. La vivienda se encuentra en el propio paseo, Hay una gran variedad de restaurantes y bares en el paseo. La playa se divide en varias zonas de baño. La gran parte es de piedra, pero hay zonas con arena. Cuenta con una piscina natural en la zona del Soco Negro, con plataformas de madera para tomar el sol. Al final del paseo se encuentra la zona del Risco Verde, ideal para tomar un baño con marea alta. También tiene plataformas de madera para tomar el sol. La playa posee la Bandera Azul desde el año 2017.
-                </span>
+                        El alojamiento tiene una superficie de 85 m², exterior con mucha
+                        luz y está situado en primera línea de playa. Está totalmente
+                        equipado con lavadora, plancha, acceso ilimitado a Internet (wifi),
+                        secador de pelo y 1 TV. La cocina, de estilo americana, cuenta con
+                        placa vitrocerámica, nevera, microondas, horno, congelador,
+                        vajilla/cubertería, utensilios/cocina, cafetera, tostadora,
+                        hervidor de agua y exprimidor. Ofrecemos cuna bajo petición, de
+                        manera gratuita.
+                    </span>
                     <span className="block mb-4">
-                    La temperatura media es de 25º a lo largo del año. Se puede practicar variedad de deportes, como ciclismo, kitesurf, windsurf, paddle surf y submarinismo. Además, la vivienda se encuentra a 5 minutos de la reserva natural Playa de Cabrón. Es de arena rubia, aunque también cuenta con algunas formaciones rocosas volcánicas. El Cabrón es uno de los enclaves favoritos para practicar el buceo en Gran Canaria, una de las actividades en Gran Canaria que te recomendamos realizar.
-                </span>
+                        A lo largo de la costa de Arinaga, hay un paseo de aproximadamente
+                        2 kilómetros que recorre el pueblo de un extremo a otro. La vivienda
+                        se encuentra en el propio paseo, Hay una gran variedad de
+                        restaurantes y bares en el paseo. La playa se divide en varias zonas
+                        de baño. La gran parte es de piedra, pero hay zonas con arena. Cuenta
+                        con una piscina natural en la zona del Soco Negro, con plataformas de
+                        madera para tomar el sol. Al final del paseo se encuentra la zona del
+                        Risco Verde, ideal para tomar un baño con marea alta. También tiene
+                        plataformas de madera para tomar el sol. La playa posee la Bandera
+                        Azul desde el año 2017.
+                    </span>
+                    <span className="block mb-4">
+                        La temperatura media es de 25º a lo largo del año. Se puede
+                        practicar variedad de deportes, como ciclismo, kitesurf, windsurf,
+                        paddle surf y submarinismo. Además, la vivienda se encuentra a 5
+                        minutos de la reserva natural Playa de Cabrón. Es de arena rubia,
+                        aunque también cuenta con algunas formaciones rocosas volcánicas. El
+                        Cabrón es uno de los enclaves favoritos para practicar el buceo en
+                        Gran Canaria, una de las actividades en Gran Canaria que te
+                        recomendamos realizar.
+                    </span>
                 </div>
             </div>
         );
@@ -165,7 +184,7 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = ({}) => {
                             leaveFrom="opacity-100"
                             leaveTo="opacity-0"
                         >
-                            <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-40"/>
+                            <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-40" />
                         </Transition.Child>
 
                         {/* This element is to trick the browser into centering the modal contents. */}
@@ -191,12 +210,15 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = ({}) => {
                                             Comodidades
                                         </h3>
                                         <span className="absolute left-3 top-3">
-                                            <ButtonClose onClick={closeModalAmenities}/>
+                                            <ButtonClose onClick={closeModalAmenities} />
                                         </span>
                                     </div>
                                     <div className="px-8 overflow-auto text-neutral-700 dark:text-neutral-300 divide-y divide-neutral-200">
                                         {Amenities_demos.filter((_, i) => i < 1212).map((item) => (
-                                            <div key={item.name} className="flex items-center py-2.5 sm:py-4 lg:py-5 space-x-5 lg:space-x-8">
+                                            <div
+                                                key={item.name}
+                                                className="flex items-center py-2.5 sm:py-4 lg:py-5 space-x-5 lg:space-x-8"
+                                            >
                                                 <i className={`text-4xl text-neutral-6000 las ${item.icon}`}></i>
                                                 <span>{item.name}</span>
                                             </div>
@@ -214,18 +236,17 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = ({}) => {
     const renderSection6 = () => {
         return (
             <div className="listingSection__wrap">
-                {/* HEADING */}
                 <h2 className="text-2xl font-semibold">Reseñas</h2>
                 <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
-
-                {/* comment
-                <div className="divide-y divide-neutral-100 dark:divide-neutral-800">
-                    <CommentListing className="py-8"/>
-                    <CommentListing className="py-8"/>
-                    <CommentListing className="py-8"/>
-                    <CommentListing className="py-8"/>
+                <div className="flex justify-center mt-6">
+                    <iframe
+                        src="https://www.avaibook.com/widgets_propietarios/opiniones.php?cod_propietario=92477&cod_alojamiento=357517&subtipo=2&color_texto=000000&lang=es"
+                        style={{ width: '100%', height: '350px', border: '0px' }}
+                        frameBorder="0"
+                    >
+                        Tu navegador no soporta iframes
+                    </iframe>
                 </div>
-                */}
             </div>
         );
     };
@@ -233,16 +254,14 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = ({}) => {
     const renderSection7 = () => {
         return (
             <div className="listingSection__wrap">
-                {/* HEADING */}
                 <div>
                     <h2 className="text-2xl font-semibold">Dirección</h2>
                     <span className="block mt-2 text-neutral-500 dark:text-neutral-400">
-            Calle Domingo de Nava, 1 2º planta, 35118 - Arinaga
-          </span>
+                        Playa de Arinaga
+                    </span>
                 </div>
-                <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"/>
+                <div className="w-14 border-b border-neutral-200 dark:border-neutral-700" />
 
-                {/* MAP */}
                 <div className="aspect-w-5 aspect-h-5 sm:aspect-h-3 ring-1 ring-black/10 rounded-xl z-0">
                     <div className="rounded-xl overflow-hidden z-0">
                         <iframe
@@ -251,7 +270,7 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = ({}) => {
                             loading="lazy"
                             allowFullScreen
                             referrerPolicy="no-referrer-when-downgrade"
-                            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3527.4659727211942!2d-15.398423824527264!3d27.856952976097137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjfCsDUxJzI1LjAiTiAxNcKwMjMnNDUuMSJX!5e0!3m2!1ses!2ses!4v1717691223359!5m2!1ses!2ses"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3527.463429938482!2d-15.398423824527264!3d27.857021230339847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc409511bd6d5d33%3A0x0!2zUGxheWEgZGUgQXJpbmFnYQ!5e0!3m2!1ses!2ses!4v1717692918943!5m2!1ses!2ses"
                         ></iframe>
                     </div>
                 </div>
@@ -262,26 +281,23 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = ({}) => {
     const renderSection8 = () => {
         return (
             <div className="listingSection__wrap">
-                {/* HEADING */}
                 <h2 className="text-2xl font-semibold">Cosas que debes saber</h2>
-                <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"/>
+                <div className="w-14 border-b border-neutral-200 dark:border-neutral-700" />
                 <div>
                     <h4 className="text-lg font-semibold">Política de cancelación</h4>
                     <span className="block mt-3 text-neutral-500 dark:text-neutral-400">
-              Cancelación flexible, si anulas 7 días antes de la entrada al alojamiento.
-              <br/>
-         </span>
+                        Cancelación flexible, si anulas 7 días antes de la entrada al
+                        alojamiento.
+                        <br />
+                    </span>
                 </div>
 
+                <div className="w-14 border-b border-neutral-200 dark:border-neutral-700" />
 
-                <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"/>
-
-                {/* CONTENT */}
                 <div>
                     <h4 className="text-lg font-semibold"></h4>
                     <div className="mt-3 text-neutral-500 dark:text-neutral-400 max-w-md text-sm sm:text-base">
-                        <div
-                            className="flex space-x-10 justify-between p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
+                        <div className="flex space-x-10 justify-between p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
                             <span>Llegada</span>
                             <span>14:00</span>
                         </div>
@@ -291,7 +307,7 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = ({}) => {
                         </div>
                     </div>
                 </div>
-                <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"/>
+                <div className="w-14 border-b border-neutral-200 dark:border-neutral-700" />
             </div>
         );
     };
@@ -299,23 +315,34 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = ({}) => {
     const renderSidebar = () => {
         return (
             <div className="listingSectionSidebar__wrap shadow-xl p-4 lg:p-6">
-                <div data-accommodation-id="357517"
-                     data-target="_self"
-                     className="avaibook-search-widget"
-                     data-widget-id="92477"
-                     data-widget-token="h5SwvFQFMU/hiog6gT4HMw=="
-                     data-background-color="#FFFFFF"
-                     data-main-color="#F0F0F0"
-                     data-border-radius="3px"
-                     data-shadow="0 2px 20px rgb(0 0 0 / 16%)"
-                     data-padding="1rem" data-language="es"></div>
+                <div
+                    data-accommodation-id="357517"
+                    data-target="_self"
+                    className="avaibook-search-widget"
+                    data-widget-id="92477"
+                    data-widget-token="h5SwvFQFMU/hiog6gT4HMw=="
+                    data-background-color="#FFFFFF"
+                    data-main-color="#F0F0F0"
+                    data-border-radius="3px"
+                    data-shadow="0 2px 20px rgb(0 0 0 / 16%)"
+                    data-padding="1rem"
+                    data-language="es"
+                ></div>
+                <div className="mt-6">
+                    <iframe
+                        src="https://www.avaibook.com/widgets_propietarios/loader.php?id=148179&lang=ES"
+                        data-target="_self"
+                        style={{width: '100%', height: '390px', border: '0', backgroundColor: 'white'}}
+                    >
+                        Tu navegador no soporta iframes
+                    </iframe>
+                </div>
             </div>
         );
     };
 
     return (
         <div className="nc-ListingStayDetailPage">
-            {/*  HEADER */}
             <header className="rounded-md sm:rounded-xl">
                 <div className="relative grid grid-cols-3 sm:grid-cols-4 gap-1 sm:gap-2">
                     <div
@@ -334,7 +361,9 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = ({}) => {
                     {PHOTOS.filter((_, i) => i >= 1 && i < 5).map((item, index) => (
                         <div
                             key={index}
-                            className={`relative rounded-md sm:rounded-xl overflow-hidden ${index >= 3 ? "hidden sm:block" : ""}`}
+                            className={`relative rounded-md sm:rounded-xl overflow-hidden ${
+                                index >= 3 ? "hidden sm:block" : ""
+                            }`}
                         >
                             <div className="aspect-w-4 aspect-h-3 sm:aspect-w-6 sm:aspect-h-5">
                                 <Image
@@ -346,8 +375,10 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = ({}) => {
                                 />
                             </div>
 
-                            {/* OVERLAY */}
-                            <div className="absolute inset-0 bg-neutral-900 bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity cursor-pointer" onClick={handleOpenModalImageGallery}/>
+                            <div
+                                className="absolute inset-0 bg-neutral-900 bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity cursor-pointer"
+                                onClick={handleOpenModalImageGallery}
+                            />
                         </div>
                     ))}
 
@@ -355,7 +386,7 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = ({}) => {
                         className="absolute hidden md:flex md:items-center md:justify-center left-3 bottom-3 px-4 py-2 rounded-xl bg-neutral-100 text-neutral-500 hover:bg-neutral-200 z-10"
                         onClick={handleOpenModalImageGallery}
                     >
-                        <Squares2X2Icon className="w-5 h-5"/>
+                        <Squares2X2Icon className="w-5 h-5" />
                         <span className="ml-2 text-neutral-800 text-sm font-medium">
                             Ver todas las fotos
                         </span>
@@ -363,14 +394,11 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = ({}) => {
                 </div>
             </header>
 
-            {/* MAIN */}
             <main className="relative z-10 mt-11 flex flex-col lg:flex-row-reverse">
-                {/* SIDEBAR */}
                 <div className="lg:block lg:w-1/4 flex-grow mt-14 lg:mt-0 mb-8 lg:ml-8">
                     <div className="sticky top-28">{renderSidebar()}</div>
                 </div>
 
-                {/* CONTENT */}
                 <div className="w-full lg:w-3/5 xl:w-2/3 space-y-8 lg:space-y-10 lg:pr-10">
                     {renderSection1()}
                     {renderSection2()}
