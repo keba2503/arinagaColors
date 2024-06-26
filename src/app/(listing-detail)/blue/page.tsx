@@ -226,18 +226,17 @@ const BlueDetailPage: FC<BlueDetailPageProps> = ({}) => {
     const renderSection6 = () => {
         return (
             <div className="listingSection__wrap">
-                {/* HEADING */}
                 <h2 className="text-2xl font-semibold">Reseñas</h2>
                 <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
-
-                {/* comment
-                <div className="divide-y divide-neutral-100 dark:divide-neutral-800">
-                    <CommentListing className="py-8"/>
-                    <CommentListing className="py-8"/>
-                    <CommentListing className="py-8"/>
-                    <CommentListing className="py-8"/>
+                <div className="flex justify-center mt-6">
+                    <iframe
+                        src="https://www.avaibook.com/widgets_propietarios/opiniones.php?cod_propietario=92477&cod_alojamiento=357500&subtipo=2&color_texto=000000&lang=es"
+                        style={{ width: '100%', height: '350px', border: '0px' }}
+                        frameBorder="0"
+                    >
+                        Tu navegador no soporta iframes
+                    </iframe>
                 </div>
-                */}
             </div>
         );
     };
@@ -249,7 +248,7 @@ const BlueDetailPage: FC<BlueDetailPageProps> = ({}) => {
                 <div>
                     <h2 className="text-2xl font-semibold">Dirección</h2>
                     <span className="block mt-2 text-neutral-500 dark:text-neutral-400">
-                    Calle Domingo de Nava, 1 3º planta, 35118 - Arinaga
+                    Playa de Arinaga
                     </span>
                 </div>
                 <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"/>
@@ -263,7 +262,8 @@ const BlueDetailPage: FC<BlueDetailPageProps> = ({}) => {
                             loading="lazy"
                             allowFullScreen
                             referrerPolicy="no-referrer-when-downgrade"
-                            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3527.4659727211942!2d-15.398423824527264!3d27.856952976097137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjfCsDUxJzI1LjAiTiAxNcKwMjMnNDUuMSJX!5e0!3m2!1ses!2ses!4v1717692918943!5m2!1ses!2ses"></iframe>
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3527.463429938482!2d-15.398423824527264!3d27.857021230339847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc409511bd6d5d33%3A0x0!2zUGxheWEgZGUgQXJpbmFnYQ!5e0!3m2!1ses!2ses!4v1717692918943!5m2!1ses!2ses"
+                        ></iframe>
                     </div>
                 </div>
             </div>
