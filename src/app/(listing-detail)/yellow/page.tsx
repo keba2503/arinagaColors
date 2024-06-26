@@ -52,7 +52,7 @@ const YellowDetailPage: FC<YellowDetailPageProps> = ({}) => {
                 {/* 1 */}
                 <div className="flex justify-between items-center">
                     <Badge className="bg-yellow-200"
-                           name="Yellow - Playa Arinaga"/>
+                           name="Yellow - Playa de Arinaga"/>
                 </div>
 
                 {/* 2 */}

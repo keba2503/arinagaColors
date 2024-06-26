@@ -46,7 +46,7 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = ({}) => {
             <div className="listingSection__wrap !space-y-6">
                 {/* 1 */}
                 <div className="flex justify-between items-center">
-                    <Badge className="bg-white" name="White - Playa Arinaga" />
+                    <Badge className="bg-white" name="White - Playa de Arinaga" />
                 </div>
 
                 {/* 2 */}

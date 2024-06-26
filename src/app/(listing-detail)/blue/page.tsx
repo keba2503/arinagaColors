@@ -49,7 +49,7 @@ const BlueDetailPage: FC<BlueDetailPageProps> = ({}) => {
             <div className="listingSection__wrap !space-y-6">
                 {/* 1 */}
                 <div className="flex justify-between items-center">
-                    <Badge name="Blue - Playa Arinaga"/>
+                    <Badge name="Blue - Playa de Arinaga"/>
                 </div>
 
                 {/* 2 */}
