@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import parse from 'html-react-parser';
+import Loading from "@/components/Loading";
 
 interface ApiResponse {
     scope_id: number;
@@ -61,7 +62,11 @@ const CarouselBackground: React.FC = () => {
     };
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <Loading />;
+    }
+
+    if (!data) {
+        return <div className="flex items-center justify-center min-h-screen">No data found</div>;
     }
 
     if (images.length === 0) {
