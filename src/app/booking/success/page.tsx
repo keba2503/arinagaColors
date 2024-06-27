@@ -3,6 +3,7 @@
 import React, { FC, useState, useEffect } from "react";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import parse from 'html-react-parser';
+import Loading from "@/components/Loading";
 
 interface ApiResponse {
     scope_id: number;
@@ -32,7 +33,7 @@ const BookingSuccess: FC<BookingPageProps> = () => {
     }, []);
 
     if (loading) {
-        return <div className="flex items-center justify-center min-h-screen">Loading...</div>;
+        return <Loading />;
     }
 
     if (!data) {
@@ -49,10 +50,10 @@ const BookingSuccess: FC<BookingPageProps> = () => {
                     <p className="text-lg mt-2">{parse(data.additional_text)}</p>
                     <div className="mt-8">
                         <a
-                            href="/"
+                            href="/guide"
                             className="inline-block px-8 py-4 bg-primary-500 text-white font-semibold rounded-full shadow-lg hover:bg-primary-600 transition-transform transform hover:scale-105"
                         >
-                            Volver a Inicio
+                            Ir a la guia del huesped
                         </a>
                     </div>
                 </div>
