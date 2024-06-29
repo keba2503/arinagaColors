@@ -81,7 +81,7 @@ const SectionHero = ({ scope, data }) => {
             </div>
             <div className="mb-5">
                 <label htmlFor="description-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Párrafo de bienvenida
+                    Subtitulo
                 </label>
                 <RichTextEditor
                     value={subtitle}
