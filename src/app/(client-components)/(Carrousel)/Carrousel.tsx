@@ -6,6 +6,7 @@ import parse from 'html-react-parser';
 import img1 from '../../../images/Exteriores/1.jpg';
 import img2 from '../../../images/Exteriores/2.jpg';
 import img3 from '../../../images/Exteriores/3.jpg';
+import Loading from "@/components/Loading";
 
 const localImages = [img1, img2, img3];
 
@@ -52,7 +53,11 @@ const CarouselBackground: React.FC = () => {
     };
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <Loading />;
+    }
+
+    if (!data) {
+        return <div className="flex items-center justify-center min-h-screen">No data found</div>;
     }
 
     return (

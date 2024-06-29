@@ -29,8 +29,8 @@ const SectionHero: React.FC = () => {
                     data-cloudfill="rgba(31, 86, 124, 0.68)"
                     style={{
                         display: "block",
-                        width: "320px", // Puedes ajustar el ancho según necesites
-                        height: "150px", // Puedes ajustar la altura según necesites
+                        width: "320px",
+                        height: "150px",
                     }}
                 >
                     Playa Arinaga
