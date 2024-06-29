@@ -10,7 +10,6 @@ interface FaqIdPageProps {
 
 const FaqIdPage: React.FC<FaqIdPageProps> = ({ params }) => {
     const { id } = params;
-    console.log(id);
 
     return <FaqClient id={id} />;
 };

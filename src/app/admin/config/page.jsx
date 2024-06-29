@@ -18,9 +18,6 @@ const Config = () => {
                 <h1 className="mb-4 text-2xl md:text-3xl text-center">
                     Secciones configurables
                 </h1>
-                <p>
-
-                </p>
                 <TabsComponent />
             </div>
         </main>

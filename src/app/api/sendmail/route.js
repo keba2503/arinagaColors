@@ -9,9 +9,6 @@ export async function POST(req) {
       throw new Error('Las credenciales de correo no están configuradas');
     }
 
-    console.log('Correo:', process.env.CORREO);
-    console.log('Contraseña:', process.env.PASS);
-
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {

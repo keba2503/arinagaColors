@@ -1,6 +1,4 @@
-'use client';
-
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect, useCallback} from "react";
 import Image from "next/image";
 import parse from 'html-react-parser';
 import Loading from "@/components/Loading";
@@ -24,49 +22,54 @@ const CarouselBackground: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const configResponse = await fetch('/api/config');
-                const configData = await configResponse.json();
-                const filteredData = configData.filter((item: ApiResponse) => item.scope_id === 2);
-                setData(filteredData);
+    const fetchData = useCallback(async () => {
+        try {
+            const configResponse = await fetch('/api/config');
+            const configData = await configResponse.json();
+            const filteredData = configData.filter((item: ApiResponse) => item.scope_id === 2);
+            setData(filteredData);
 
-                const imagesResponse = await fetch('/api/cloudinaryHero');
-                const imagesData = await imagesResponse.json();
-                setImages(imagesData);
+            const imagesResponse = await fetch('/api/cloudinaryHero');
+            const imagesData = await imagesResponse.json();
+            setImages(imagesData);
 
-                setLoading(false);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-                setLoading(false);
-            }
-        };
-
-        fetchData();
+            setLoading(false);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            setLoading(false);
+        }
     }, []);
+
+    useEffect(() => {
+        fetchData();
+    }, [fetchData]);
+
+    const prevSlide = useCallback(() => {
+        setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+    }, [images.length]);
+
+    const nextSlide = useCallback(() => {
+        setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+    }, [images.length]);
 
     useEffect(() => {
         const interval = setInterval(() => {
             nextSlide();
         }, 5000);
+
         return () => clearInterval(interval);
-    }, [images.length]);
-
-    const prevSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
-    };
-
-    const nextSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
-    };
+    }, [nextSlide, images.length]);
 
     if (loading) {
-        return <Loading />;
+        return <Loading/>;
     }
 
-    if (!data) {
-        return <div className="flex items-center justify-center min-h-screen">No data found</div>;
+    if (!data || data.length === 0) {
+        return <div className="flex items-center justify-center min-h-screen">No se encontraron datos</div>;
+    }
+
+    if (images.length === 0) {
+        return <div>No hay imágenes disponibles</div>;
     }
 
     if (images.length === 0) {
@@ -77,7 +80,7 @@ const CarouselBackground: React.FC = () => {
         <div className="relative w-full h-screen" data-carousel="slide">
             <div className="relative h-full overflow-hidden">
                 {images.map((image, index) => {
-                    const apiData = data[index % data.length] || { title: "", subtitle: "" };
+                    const apiData = data[index % data.length] || {title: "", subtitle: ""};
                     const title = parse(apiData.title);
                     const subtitle = parse(apiData.subtitle);
 
@@ -91,7 +94,6 @@ const CarouselBackground: React.FC = () => {
                                 src={image.url}
                                 alt={`Slide ${index}`}
                                 layout="fill"
-                                objectFit="cover"
                                 quality={100}
                                 priority
                             />
@@ -134,9 +136,9 @@ const CarouselBackground: React.FC = () => {
                         fill="none"
                         viewBox="0 0 6 10"
                     >
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4"/>
                     </svg>
-                    <span className="sr-only">Previous</span>
+                    <span className="sr-only">Anterior</span>
                 </span>
             </button>
 
@@ -154,9 +156,9 @@ const CarouselBackground: React.FC = () => {
                         fill="none"
                         viewBox="0 0 6 10"
                     >
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4"/>
                     </svg>
-                    <span className="sr-only">Next</span>
+                    <span className="sr-only">Siguiente</span>
                 </span>
             </button>
         </div>

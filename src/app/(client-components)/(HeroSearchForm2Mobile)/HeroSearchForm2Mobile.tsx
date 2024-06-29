@@ -2,21 +2,16 @@
 
 import React, { Fragment, useState } from "react";
 import { Dialog, Tab, Transition } from "@headlessui/react";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import ButtonSubmit from "./ButtonSubmit";
 import { useTimeoutFn } from "react-use";
 import StaySearchForm from "./(stay-search-form)/StaySearchForm";
-import CarsSearchForm from "./(car-search-form)/CarsSearchForm";
-import FlightSearchForm from "./(flight-search-form)/FlightSearchForm";
 
 const HeroSearchForm2Mobile = () => {
   const [showModal, setShowModal] = useState(false);
-
-  // FOR RESET ALL DATA WHEN CLICK CLEAR BUTTON
   const [showDialog, setShowDialog] = useState(false);
   let [, , resetIsShowingDialog] = useTimeoutFn(() => setShowDialog(true), 1);
-  //
+
   function closeModal() {
     setShowModal(false);
   }
@@ -117,12 +112,10 @@ const HeroSearchForm2Mobile = () => {
                           </Tab.Panel>
                           <Tab.Panel>
                             <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]">
-                              <CarsSearchForm />
                             </div>
                           </Tab.Panel>
                           <Tab.Panel>
                             <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]">
-                              <FlightSearchForm />
                             </div>
                           </Tab.Panel>
                         </Tab.Panels>

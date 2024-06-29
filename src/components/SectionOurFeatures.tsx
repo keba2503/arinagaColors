@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import rightImgPng from "@/images/our-features.png";
 import Image, { StaticImageData } from "next/image";
 import Badge from "@/shared/Badge";
-import parse from 'html-react-parser';
+import parse, { domToReact } from 'html-react-parser'; // Import domToReact for custom parsing
 
 export interface SectionOurFeaturesProps {
   className?: string;

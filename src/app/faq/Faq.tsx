@@ -22,7 +22,6 @@ const FaqAccordion: React.FC = () => {
                 const response = await fetch('/api/faq');
                 if (response.ok) {
                     const data: Guide[] = await response.json();
-                    console.log(data);
                     setFaqs(data);
                 } else {
                     console.error('Error fetching faqs:', response.statusText);

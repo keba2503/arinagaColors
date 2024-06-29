@@ -6,15 +6,12 @@ import { XMarkIcon } from "@heroicons/react/24/solid";
 import React, { Fragment, useState } from "react";
 import ButtonSubmit from "./ButtonSubmit";
 import { useTimeoutFn } from "react-use";
-import RealestateSearchForm from "./(real-estate-search-form)/RealestateSearchForm";
 
 const HeroSearchForm2RealEstateMobile = () => {
   const [showModal, setShowModal] = useState(false);
-
-  // FOR RESET ALL DATA WHEN CLICK CLEAR BUTTON
   const [showDialog, setShowDialog] = useState(false);
   let [, , resetIsShowingDialog] = useTimeoutFn(() => setShowDialog(true), 1);
-  //
+
   function closeModal() {
     setShowModal(false);
   }
@@ -109,17 +106,14 @@ const HeroSearchForm2RealEstateMobile = () => {
                         <Tab.Panels className="flex-1 overflow-y-auto hiddenScrollbar py-4">
                           <Tab.Panel>
                             <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]">
-                              <RealestateSearchForm />
                             </div>
                           </Tab.Panel>
                           <Tab.Panel>
                             <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]">
-                              <RealestateSearchForm />
                             </div>
                           </Tab.Panel>
                           <Tab.Panel>
                             <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]">
-                              <RealestateSearchForm />
                             </div>
                           </Tab.Panel>
                         </Tab.Panels>

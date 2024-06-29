@@ -1,6 +1,5 @@
 import { Popover, Tab, Transition } from "@headlessui/react";
 import {
-  BanknotesIcon,
   GlobeAltIcon,
   ChevronDownIcon,
 } from "@heroicons/react/24/outline";

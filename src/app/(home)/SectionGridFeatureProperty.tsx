@@ -5,9 +5,8 @@ import ButtonPrimary from "@/shared/ButtonPrimary";
 import PropertyCardH from "@/components/PropertyCardH";
 import HeaderFilter from "@/components/HeaderFilter";
 
-// OTHER DEMO WILL PASS PROPS
 const DEMO_DATA: StayDataType[] = DEMO_STAY_LISTINGS.filter((_, i) => i < 8);
-//
+
 export interface SectionGridFeaturePropertyProps {
   stayListings?: StayDataType[];
   gridClass?: string;

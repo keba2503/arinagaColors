@@ -1,5 +1,5 @@
-import React, {ReactNode, useState} from 'react';
-import type { StaticImageData } from 'next/image';
+import React, { ReactNode, useState } from 'react';
+import Image, { StaticImageData } from 'next/image';
 
 interface ServiceCardProps {
     title: string;
@@ -18,7 +18,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, ima
     return (
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
-                <img className="rounded-t-lg" src={typeof imageUrl === 'string' ? imageUrl : imageUrl.src} alt={title} />
+                <div className="rounded-t-lg">
+                    {typeof imageUrl === 'string' ? (
+                        <Image src={imageUrl} alt={title} width={600} height={400} />
+                    ) : (
+                        <Image src={imageUrl} alt={title} width={600} height={400} />
+                    )}
+                </div>
             </a>
             <div className="p-5">
                 <a href="#">
@@ -31,7 +37,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, ima
                 >
                     {showDescription ? 'Mostrar menos' : 'Leer más'}
                     <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                     </svg>
                 </button>
             </div>
