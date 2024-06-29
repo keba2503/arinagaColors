@@ -47,7 +47,6 @@ const SectionCardOffer = ({ scope, data }) => {
 
             if (response.ok) {
                 const responseData = await response.json();
-                console.log('Data saved successfully:', responseData);
                 setSuccessMessage('¡Se ha guardado correctamente, actualiza para ver los cambios!');
                 if (!data) {
                     setTitle('');

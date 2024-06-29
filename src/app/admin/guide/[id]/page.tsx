@@ -10,7 +10,6 @@ interface GuideIdPageProps {
 
 const GuideIdPage: React.FC<GuideIdPageProps> = ({ params }) => {
     const { id } = params;
-    console.log(id);
 
     return <GuideClient id={id} />;
 };

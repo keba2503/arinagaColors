@@ -90,7 +90,6 @@ const CarouselBackground: React.FC = () => {
                                 src={image.url}
                                 alt={`Slide ${index}`}
                                 layout="fill"
-                                objectFit="cover"
                                 quality={100}
                                 priority
                             />

@@ -22,7 +22,6 @@ const GuideAccordion: React.FC = () => {
                 const response = await fetch('/api/guide');
                 if (response.ok) {
                     const data: Guide[] = await response.json();
-                    console.log(data); // Verificar los datos en la consola
                     setGuides(data);
                 } else {
                     console.error('Error fetching guides:', response.statusText);

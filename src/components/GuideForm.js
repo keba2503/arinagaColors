@@ -40,7 +40,6 @@ const GuideForm = ({ guide }) => {
 
             if (response.ok) {
                 const data = await response.json();
-                console.log('Guide saved successfully:', data);
                 setSuccessMessage('¡Guía guardada correctamente!');
                 if (!guide) {
                     setTitle('');

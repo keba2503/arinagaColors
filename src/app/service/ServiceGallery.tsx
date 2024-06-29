@@ -63,12 +63,8 @@ const ServiceGallery: React.FC = () => {
     const getImageUrl = (subtitle: string | null) => {
         if (!subtitle) return '';
         const image = images.find(img => img.id.toLowerCase().includes(subtitle.toLowerCase()));
-        console.log('Finding image for:', subtitle, 'Found:', image); // Debug line
         return image ? image.url : '';
     };
-
-    console.log('Data:', data); // Debug line
-    console.log('Images:', images); // Debug line
 
     return (
         <div className="relative py-16 px-4 sm:px-6 lg:py-24 lg:px-8">

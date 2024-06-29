@@ -14,7 +14,6 @@ const TableTextConfig = ({ scope }) => {
             const result = await response.json();
             const filteredData = result.filter(item => item.scope_id === scope);
             setData(filteredData);
-            console.log(filteredData);
         } catch (error) {
             console.error('Error fetching data:', error);
         }

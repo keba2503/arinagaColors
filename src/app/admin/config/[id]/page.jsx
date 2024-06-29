@@ -58,12 +58,6 @@ const ConfigIdPage = ({ params }) => {
     const numericScope = parseInt(scope, 10);
     const ActiveComponent = componentMapping[numericScope] || null;
 
-    // Mensajes de depuración
-    console.log(`Scope recibido: ${scope}`);
-    console.log(`Scope convertido a numérico: ${numericScope}`);
-    console.log(`Componente activo encontrado: ${ActiveComponent ? ActiveComponent.name : 'Ninguno'}`);
-    console.log(`Datos cargados: ${data ? JSON.stringify(data) : 'No data'}`);
-
     if (!ActiveComponent) {
         console.error(`Componente no encontrado para el scope: ${scope}`);
     }
