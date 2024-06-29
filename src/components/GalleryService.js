@@ -1,7 +1,8 @@
-'use client';
+'use client'
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Image from 'next/image';
 import { ArrowPathIcon } from "@heroicons/react/24/solid";
 
 const GalleryService = () => {
@@ -53,7 +54,14 @@ const GalleryService = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 pt-4">
                 {gallery.map((image) => (
                     <div key={image.id} className="relative">
-                        <img className="h-auto max-w-full rounded-lg" src={image.url} alt="" />
+                        <Image
+                            src={image.url}
+                            alt=""
+                            layout="responsive"
+                            width={600}
+                            height={400}
+                            className="h-auto max-w-full rounded-lg"
+                        />
                         <button
                             onClick={() => handleDelete(image.id)}
                             className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-700"

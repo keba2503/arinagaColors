@@ -1,5 +1,8 @@
+'use client'
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Image from 'next/image';
 import SectionAbout from './admin/Forms/SectionAbout';
 import SectionFaq from './admin/Forms/SectionFaq';
 import SectionGuide from './admin/Forms/SectionGuide';
@@ -98,7 +101,14 @@ const TabsComponent = () => {
                 <div className="relative w-full flex justify-center items-center mt-4 pb-10 pt-8">
                     {!isImageMinimized ? (
                         <div className="relative">
-                            <img src={activeImageURL} alt="Active Tab" className="w-full h-auto max-h-64 object-contain" />
+                            <Image
+                                src={activeImageURL}
+                                alt="Active Tab"
+                                layout="responsive"
+                                width={600}
+                                height={400}
+                                className="w-full h-auto max-h-64 object-contain"
+                            />
                             <button
                                 onClick={() => setIsImageMinimized(true)}
                                 className="absolute top-2 right-2 bg-gray-800 text-white rounded-full p-2"

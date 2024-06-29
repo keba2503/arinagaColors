@@ -1,9 +1,10 @@
-'use client';
+'use client'
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import axios from 'axios';
+import Image from 'next/image';
 
 const RichTextEditor = dynamic(() => import('@/components/RichTextEditor'), { ssr: false });
 
@@ -162,7 +163,13 @@ const SectionCardService = ({ scope, data }) => {
                     </label>
                     {imagePreview && (
                         <div className="ml-4">
-                            <img src={imagePreview} alt="Vista previa" className="h-20 w-20 object-cover rounded border" />
+                            <Image
+                                src={imagePreview}
+                                alt="Vista previa"
+                                width={80}
+                                height={80}
+                                className="h-20 w-20 object-cover rounded border"
+                            />
                         </div>
                     )}
                 </div>

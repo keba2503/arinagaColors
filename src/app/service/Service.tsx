@@ -18,11 +18,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, ima
     return (
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
-                {typeof imageUrl === 'string' ? (
-                    <img className="rounded-t-lg" src={imageUrl} alt={title} />
-                ) : (
-                    <Image className="rounded-t-lg" src={imageUrl} alt={title} />
-                )}
+                <div className="rounded-t-lg">
+                    {typeof imageUrl === 'string' ? (
+                        <Image src={imageUrl} alt={title} width={600} height={400} />
+                    ) : (
+                        <Image src={imageUrl} alt={title} width={600} height={400} />
+                    )}
+                </div>
             </a>
             <div className="p-5">
                 <a href="#">

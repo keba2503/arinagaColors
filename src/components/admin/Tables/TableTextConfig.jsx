@@ -1,6 +1,4 @@
-'use client';
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ArrowPathIcon, TrashIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import axios from 'axios';
@@ -10,7 +8,7 @@ const TableTextConfig = ({ scope }) => {
     const [gallery, setGallery] = useState([]);
     const [feedbackMessage, setFeedbackMessage] = useState('');
 
-    const fetchData = async () => {
+    const fetchData = useCallback(async () => {
         try {
             const response = await fetch('/api/config');
             const result = await response.json();
@@ -20,16 +18,16 @@ const TableTextConfig = ({ scope }) => {
         } catch (error) {
             console.error('Error fetching data:', error);
         }
-    };
+    }, [scope]);
 
-    const fetchGallery = async () => {
+    const fetchGallery = useCallback(async () => {
         try {
             const res = await axios.get('/api/cloudinaryService');
             setGallery(res.data);
         } catch (error) {
             console.error('Error fetching images:', error);
         }
-    };
+    }, []);
 
     const handleDelete = async (id, subtitle) => {
         try {
@@ -64,7 +62,7 @@ const TableTextConfig = ({ scope }) => {
     useEffect(() => {
         fetchData();
         fetchGallery();
-    }, [scope]);
+    }, [fetchData, fetchGallery]);
 
     return (
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
