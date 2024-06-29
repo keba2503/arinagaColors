@@ -10,7 +10,7 @@ import SectionHowItWork from "@/components/SectionHowItWork";
 const DEMO_CATS: TaxonomyType[] = [
     {
         id: "1",
-        href: "/listing-stay-map",
+        href: "/",
         name: "New Yourk",
         taxonomy: "category",
         count: 188288,
@@ -19,7 +19,7 @@ const DEMO_CATS: TaxonomyType[] = [
     },
     {
         id: "2",
-        href: "/listing-stay-map",
+        href: "/",
         name: "Singapore",
         taxonomy: "category",
         count: 188288,
@@ -28,7 +28,7 @@ const DEMO_CATS: TaxonomyType[] = [
     },
     {
         id: "3",
-        href: "/listing-stay-map",
+        href: "/",
         name: "Paris",
         taxonomy: "category",
         count: 188288,
@@ -37,7 +37,7 @@ const DEMO_CATS: TaxonomyType[] = [
     },
     {
         id: "4",
-        href: "/listing-stay-map",
+        href: "/",
         name: "London",
         taxonomy: "category",
         count: 188288,
@@ -46,7 +46,7 @@ const DEMO_CATS: TaxonomyType[] = [
     },
     {
         id: "5",
-        href: "/listing-stay-map",
+        href: "/",
         name: "Tokyo",
         taxonomy: "category",
         count: 188288,
@@ -55,7 +55,7 @@ const DEMO_CATS: TaxonomyType[] = [
     },
     {
         id: "6",
-        href: "/listing-stay-map",
+        href: "/",
         name: "Maldives",
         taxonomy: "category",
         count: 188288,
@@ -64,7 +64,7 @@ const DEMO_CATS: TaxonomyType[] = [
     },
     {
         id: "7",
-        href: "/listing-stay-map",
+        href: "/",
         name: "Italy",
         taxonomy: "category",
         count: 188288,
@@ -76,7 +76,7 @@ const DEMO_CATS: TaxonomyType[] = [
 const DEMO_CATS_2: TaxonomyType[] = [
     {
         id: "1",
-        href: "/listing-stay-map",
+        href: "/",
         name: "Enjoy the great cold",
         taxonomy: "category",
         count: 188288,
@@ -85,7 +85,7 @@ const DEMO_CATS_2: TaxonomyType[] = [
     },
     {
         id: "2",
-        href: "/listing-stay-map",
+        href: "/",
         name: "Sleep in a floating way",
         taxonomy: "category",
         count: 188288,
@@ -94,7 +94,7 @@ const DEMO_CATS_2: TaxonomyType[] = [
     },
     {
         id: "3",
-        href: "/listing-stay-map",
+        href: "/",
         name: "In the billionaire's house",
         taxonomy: "category",
         count: 188288,
@@ -103,7 +103,7 @@ const DEMO_CATS_2: TaxonomyType[] = [
     },
     {
         id: "4",
-        href: "/listing-stay-map",
+        href: "/",
         name: "Cool in the deep forest",
         taxonomy: "category",
         count: 188288,
@@ -112,7 +112,7 @@ const DEMO_CATS_2: TaxonomyType[] = [
     },
     {
         id: "5",
-        href: "/listing-stay-map",
+        href: "/",
         name: "In the billionaire's house",
         taxonomy: "category",
         count: 188288,
@@ -121,7 +121,7 @@ const DEMO_CATS_2: TaxonomyType[] = [
     },
     {
         id: "6",
-        href: "/listing-stay-map",
+        href: "/",
         name: "In the billionaire's house",
         taxonomy: "category",
         count: 188288,
@@ -130,7 +130,7 @@ const DEMO_CATS_2: TaxonomyType[] = [
     },
     {
         id: "7",
-        href: "/listing-stay-map",
+        href: "/",
         name: "Cool in the deep forest",
         taxonomy: "category",
         count: 188288,

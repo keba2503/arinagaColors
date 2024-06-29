@@ -1,7 +1,6 @@
 "use client";
 
 import ListingImageGallery from "@/components/listing-image-gallery/ListingImageGallery";
-import SectionSubscribe2 from "@/components/SectionSubscribe2";
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
 import React, {ReactNode} from "react";
 import MobileFooterSticky from "./(components)/MobileFooterSticky";

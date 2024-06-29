@@ -1,6 +1,6 @@
 "use client";
 
-import React, {Fragment, useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {PathName} from "@/routers/types";
 import Link from "next/link";
 import Header from "./Header";
@@ -22,7 +22,7 @@ let OPTIONS = {
 let OBSERVER: IntersectionObserver | null = null;
 const PAGES_HIDE_HEADER_BORDER: PathName[] = [
     "/",
-    "/listing-stay-detail",
+    "/",
 ];
 
 const SiteHeader = () => {

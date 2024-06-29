@@ -5,7 +5,6 @@ import { Popover, Transition } from "@headlessui/react";
 import NcInputNumber from "@/components/NcInputNumber";
 import { FC } from "react";
 import ClearDataButton from "./ClearDataButton";
-import ButtonSubmit from "./ButtonSubmit";
 import { PathName } from "@/routers/types";
 import { UserPlusIcon } from "@heroicons/react/24/outline";
 import { GuestsObject } from "../type";
@@ -88,7 +87,6 @@ const GuestsInput: FC<GuestsInputProps> = ({
             {/* BUTTON SUBMIT OF FORM */}
             {hasButtonSubmit && (
               <div className="pr-2 xl:pr-4">
-                <ButtonSubmit href={buttonSubmitHref} />
               </div>
             )}
           </div>

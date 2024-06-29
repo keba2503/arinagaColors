@@ -9,11 +9,9 @@ import StaySearchForm from "./(stay-search-form)/StaySearchForm";
 
 const HeroSearchForm2Mobile = () => {
   const [showModal, setShowModal] = useState(false);
-
-  // FOR RESET ALL DATA WHEN CLICK CLEAR BUTTON
   const [showDialog, setShowDialog] = useState(false);
   let [, , resetIsShowingDialog] = useTimeoutFn(() => setShowDialog(true), 1);
-  //
+
   function closeModal() {
     setShowModal(false);
   }

@@ -7,8 +7,8 @@ import { usePathname } from "next/navigation";
 
 const PAGES_REAL_ESTATE: PathName[] = [
   "/",
-  "/listing-real-estate",
-  "/listing-real-estate-map",
+  "/",
+  "/",
 ];
 
 const HeroSearchForm2MobileFactory = () => {
