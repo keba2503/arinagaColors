@@ -12,7 +12,6 @@ export const metadata: Metadata = {
     title: "Arinaga Colors - Booking online",
     description: "Booking online",
     keywords: "Booking online",
-    viewport: "width=device-width, initial-scale=1.0",
 };
 
 export default function RootLayout({ children, params,}: {
