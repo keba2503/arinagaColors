@@ -64,7 +64,6 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
             sliderStyle="style2"
           />
         </div>*/}
-        <SectionSubscribe2 className="pt-24 lg:pt-32" />
       </div>
 
       {/* STICKY FOOTER MOBILE */}
