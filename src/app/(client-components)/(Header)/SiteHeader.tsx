@@ -1,11 +1,6 @@
 "use client";
 
 import React, {Fragment, useEffect, useRef, useState} from "react";
-import {
-    ShoppingBagIcon as ShoppingCartIcon,
-    Cog8ToothIcon as CogIcon,
-} from "@heroicons/react/24/outline";
-import {Popover, Transition} from "@headlessui/react";
 import {PathName} from "@/routers/types";
 import Link from "next/link";
 import Header from "./Header";
@@ -26,7 +21,7 @@ let OPTIONS = {
 };
 let OBSERVER: IntersectionObserver | null = null;
 const PAGES_HIDE_HEADER_BORDER: PathName[] = [
-    "/home-3",
+    "/",
     "/listing-stay-detail",
 ];
 
@@ -37,8 +32,8 @@ const SiteHeader = () => {
 
     let [homePages] = useState<HomePageItem[]>([
         {name: "Home Main", slug: "/"},
-        {name: "Real Estate", slug: "/home-2"},
-        {name: "Home 3", slug: "/home-3"},
+        {name: "Real Estate", slug: "/"},
+        {name: "Home 3", slug: "/"},
     ]);
     const [headerSelected, setHeaderSelected] = useState<SiteHeaders>("Header 1");
 

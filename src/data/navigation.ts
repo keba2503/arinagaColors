@@ -138,15 +138,15 @@ const templatesChildrenMenus: NavItemType[] = [
     ],
   },
   //
-  { id: ncNanoId(), href: "/checkout", name: "Checkout" },
-  { id: ncNanoId(), href: "/pay-done", name: "Pay done" },
+  { id: ncNanoId(), href: "/", name: "Checkout" },
+  { id: ncNanoId(), href: "/", name: "Pay done" },
   //
-  { id: ncNanoId(), href: "/author", name: "Author page" },
-  { id: ncNanoId(), href: "/account", name: "Account page" },
+  { id: ncNanoId(), href: "/", name: "Author page" },
+  { id: ncNanoId(), href: "/", name: "Account page" },
   //
   {
     id: ncNanoId(),
-    href: "/subscription",
+    href: "/",
     name: "Subscription",
   },
 ];
@@ -303,7 +303,7 @@ export const NAVIGATION_DEMO_2: NavItemType[] = [
       //
       {
         id: ncNanoId(),
-        href: "/listing-flights",
+        href: "/",
         name: "Flights listings",
       },
     ],
@@ -312,7 +312,7 @@ export const NAVIGATION_DEMO_2: NavItemType[] = [
   //
   {
     id: ncNanoId(),
-    href: "/author",
+    href: "/",
     name: "Templates",
     type: "dropdown",
     children: templatesChildrenMenus,

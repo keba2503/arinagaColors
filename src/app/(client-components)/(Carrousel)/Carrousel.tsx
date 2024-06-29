@@ -1,14 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import Image from "next/image";
 import parse from 'html-react-parser';
-import img1 from '../../../images/Exteriores/1.jpg';
-import img2 from '../../../images/Exteriores/2.jpg';
-import img3 from '../../../images/Exteriores/3.jpg';
-import Loading from "@/components/Loading";
-
-const localImages = [img1, img2, img3];
 
 interface ApiResponse {
     scope_id: number;
@@ -18,23 +12,37 @@ interface ApiResponse {
     additional_text: string;
 }
 
+interface ImageResponse {
+    id: string;
+    url: string;
+}
+
 const CarouselBackground: React.FC = () => {
     const [data, setData] = useState<ApiResponse[]>([]);
+    const [images, setImages] = useState<ImageResponse[]>([]);
     const [loading, setLoading] = useState(true);
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
-        fetch('/api/config')
-            .then(response => response.json())
-            .then(data => {
-                const filteredData = data.filter((item: ApiResponse) => item.scope_id === 2);
+        const fetchData = async () => {
+            try {
+                const configResponse = await fetch('/api/config');
+                const configData = await configResponse.json();
+                const filteredData = configData.filter((item: ApiResponse) => item.scope_id === 2);
                 setData(filteredData);
+
+                const imagesResponse = await fetch('/api/cloudinaryHero');
+                const imagesData = await imagesResponse.json();
+                setImages(imagesData);
+
                 setLoading(false);
-            })
-            .catch(error => {
+            } catch (error) {
                 console.error('Error fetching data:', error);
                 setLoading(false);
-            });
+            }
+        };
+
+        fetchData();
     }, []);
 
     useEffect(() => {
@@ -42,29 +50,33 @@ const CarouselBackground: React.FC = () => {
             nextSlide();
         }, 5000);
         return () => clearInterval(interval);
-    }, []);
+    }, [images.length]);
 
     const prevSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex === 0 ? localImages.length - 1 : prevIndex - 1));
+        setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
     };
 
     const nextSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex === localImages.length - 1 ? 0 : prevIndex + 1));
+        setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
     };
 
     if (loading) {
-        return <Loading />;
+        return <Loading/>;
     }
 
     if (!data) {
         return <div className="flex items-center justify-center min-h-screen">No data found</div>;
     }
 
+    if (images.length === 0) {
+        return <div>No images available</div>;
+    }
+
     return (
         <div className="relative w-full h-screen" data-carousel="slide">
             <div className="relative h-full overflow-hidden">
-                {localImages.map((image, index) => {
-                    const apiData = data[index] || { title: "", subtitle: "" };
+                {images.map((image, index) => {
+                    const apiData = data[index % data.length] || {title: "", subtitle: ""};
                     const title = parse(apiData.title);
                     const subtitle = parse(apiData.subtitle);
 
@@ -75,7 +87,7 @@ const CarouselBackground: React.FC = () => {
                             data-carousel-item
                         >
                             <Image
-                                src={image}
+                                src={image.url}
                                 alt={`Slide ${index}`}
                                 layout="fill"
                                 objectFit="cover"
@@ -94,7 +106,7 @@ const CarouselBackground: React.FC = () => {
             </div>
 
             <div className="absolute z-50 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3">
-                {localImages.map((_, index) => (
+                {images.map((_, index) => (
                     <button
                         key={index}
                         type="button"
@@ -121,7 +133,7 @@ const CarouselBackground: React.FC = () => {
                         fill="none"
                         viewBox="0 0 6 10"
                     >
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4"/>
                     </svg>
                     <span className="sr-only">Previous</span>
                 </span>
@@ -141,7 +153,7 @@ const CarouselBackground: React.FC = () => {
                         fill="none"
                         viewBox="0 0 6 10"
                     >
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4"/>
                     </svg>
                     <span className="sr-only">Next</span>
                 </span>
