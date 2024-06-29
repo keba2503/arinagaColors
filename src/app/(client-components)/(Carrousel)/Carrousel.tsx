@@ -3,6 +3,7 @@
 import React, {useState, useEffect} from "react";
 import Image from "next/image";
 import parse from 'html-react-parser';
+import Loading from "@/components/Loading";
 
 interface ApiResponse {
     scope_id: number;
