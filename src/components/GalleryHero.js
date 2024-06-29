@@ -1,8 +1,7 @@
-'use client';
-
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ArrowPathIcon } from "@heroicons/react/24/solid";
+import Image from 'next/image';
 
 const GalleryHero = () => {
     const [gallery, setGallery] = useState([]);
@@ -53,7 +52,7 @@ const GalleryHero = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 pt-4">
                 {gallery.map((image) => (
                     <div key={image.id} className="relative">
-                        <img className="h-auto max-w-full rounded-lg" src={image.url} alt="" />
+                        <Image className="h-auto max-w-full rounded-lg" src={image.url} alt="" /> {/* Reemplaza <img> con <Image /> */}
                         <button
                             onClick={() => handleDelete(image.id)}
                             className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-700"
