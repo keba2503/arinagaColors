@@ -11,7 +11,6 @@ const links = [
     { name: 'FAQ', href: '/admin/faq', icon: QuestionMarkCircleIcon },
     { name: 'Gallery', href: '/admin/gallery', icon: PhotoIcon },
     { name: 'Imagenes Home', href: '/admin/hero', icon: PhotoIcon },
-    { name: 'Imagenes de servicios', href: '/admin/service', icon: PhotoIcon },
     { name: 'Vista del cliente', href: '/', icon: ArrowLeftOnRectangleIcon }
 ];
 
