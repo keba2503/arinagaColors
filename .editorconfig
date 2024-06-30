@@ -1,0 +1,94 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+root = true
+
+[*]
+# Unix-style newlines with a newline ending every file
+end_of_line = lf
+insert_final_newline = true
+
+# 2 space indentation
+indent_style = space
+indent_size = 2
+
+# Use UTF-8 character encoding
+charset = utf-8
+
+# Trim trailing whitespace
+trim_trailing_whitespace = true
+
+[*.js]
+# 2 space indentation for JavaScript files
+indent_style = space
+indent_size = 2
+
+[*.jsx]
+# 2 space indentation for JSX files
+indent_style = space
+indent_size = 2
+
+[*.ts]
+# 2 space indentation for TypeScript files
+indent_style = space
+indent_size = 2
+
+[*.tsx]
+# 2 space indentation for TSX files
+indent_style = space
+indent_size = 2
+
+[*.json]
+# 2 space indentation for JSON files
+indent_style = space
+indent_size = 2
+
+[*.md]
+# 2 space indentation for Markdown files
+indent_style = space
+indent_size = 2
+
+[*.html]
+# 2 space indentation for HTML files
+indent_style = space
+indent_size = 2
+
+[*.css]
+# 2 space indentation for CSS files
+indent_style = space
+indent_size = 2
+
+[*.scss]
+# 2 space indentation for SCSS files
+indent_style = space
+indent_size = 2
+
+[*.yml]
+# 2 space indentation for YAML files
+indent_style = space
+indent_size = 2
+
+[*.yaml]
+# 2 space indentation for YAML files
+indent_style = space
+indent_size = 2
+
+# Configuration for specific file types
+[{*.py,*.java,*.cs}]
+# 4 space indentation for Python, Java, and C# files
+indent_style = space
+indent_size = 4
+
+# Rules for Makefiles
+[Makefile]
+indent_style = tab
+
+# Additional settings
+[*.{html,jsx,tsx}]
+# Ensure attribute quotes are consistent
+quote_style = double
+
+# For scripts, ensure newline at end of file and remove trailing spaces
+[*.{sh,bash,zsh}]
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
