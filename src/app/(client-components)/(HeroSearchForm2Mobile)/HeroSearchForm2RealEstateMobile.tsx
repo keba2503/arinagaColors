@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { Dialog, Tab, Transition } from "@headlessui/react";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { XMarkIcon } from "@heroicons/react/24/solid";
-import React, { Fragment, useState } from "react";
-import ButtonSubmit from "./ButtonSubmit";
-import { useTimeoutFn } from "react-use";
+import { Dialog, Tab, Transition } from '@headlessui/react';
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { XMarkIcon } from '@heroicons/react/24/solid';
+import React, { Fragment, useState } from 'react';
+import ButtonSubmit from './ButtonSubmit';
+import { useTimeoutFn } from 'react-use';
 
 const HeroSearchForm2RealEstateMobile = () => {
   const [showModal, setShowModal] = useState(false);
@@ -83,13 +83,13 @@ const HeroSearchForm2RealEstateMobile = () => {
                       </div>
 
                       <Tab.List className="pt-12 flex w-full justify-center font-semibold text-sm sm:text-base text-neutral-500 dark:text-neutral-400 space-x-6 sm:space-x-8">
-                        {["Buy", "Rent", "Sold"].map((item, index) => (
+                        {['Buy', 'Rent', 'Sold'].map((item, index) => (
                           <Tab key={index} as={Fragment}>
                             {({ selected }) => (
                               <div className="relative focus:outline-none focus-visible:ring-0 outline-none select-none">
                                 <div
                                   className={`${
-                                    selected ? "text-black dark:text-white" : ""
+                                    selected ? 'text-black dark:text-white' : ''
                                   }  `}
                                 >
                                   {item}
@@ -105,16 +105,13 @@ const HeroSearchForm2RealEstateMobile = () => {
                       <div className="flex-1 pt-3 px-1.5 sm:px-4 flex overflow-hidden">
                         <Tab.Panels className="flex-1 overflow-y-auto hiddenScrollbar py-4">
                           <Tab.Panel>
-                            <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]">
-                            </div>
+                            <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]"></div>
                           </Tab.Panel>
                           <Tab.Panel>
-                            <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]">
-                            </div>
+                            <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]"></div>
                           </Tab.Panel>
                           <Tab.Panel>
-                            <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]">
-                            </div>
+                            <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]"></div>
                           </Tab.Panel>
                         </Tab.Panels>
                       </div>

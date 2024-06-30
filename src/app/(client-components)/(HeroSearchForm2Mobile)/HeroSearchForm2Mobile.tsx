@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import React, { Fragment, useState } from "react";
-import { Dialog, Tab, Transition } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/solid";
-import ButtonSubmit from "./ButtonSubmit";
-import { useTimeoutFn } from "react-use";
-import StaySearchForm from "./(stay-search-form)/StaySearchForm";
+import React, { Fragment, useState } from 'react';
+import { Dialog, Tab, Transition } from '@headlessui/react';
+import { XMarkIcon } from '@heroicons/react/24/solid';
+import ButtonSubmit from './ButtonSubmit';
+import { useTimeoutFn } from 'react-use';
+import StaySearchForm from './(stay-search-form)/StaySearchForm';
 
 const HeroSearchForm2Mobile = () => {
   const [showModal, setShowModal] = useState(false);
@@ -26,9 +26,6 @@ const HeroSearchForm2Mobile = () => {
         onClick={openModal}
         className="relative flex items-center w-full border border-neutral-200 dark:border-neutral-6000 px-4 py-2 pr-11 rounded-full shadow-lg"
       >
-
-
-
         <span className="absolute right-2 top-1/2 transform -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full border border-neutral-200 dark:border-neutral-6000 dark:text-neutral-300">
           <svg
             viewBox="0 0 16 16"
@@ -75,7 +72,7 @@ const HeroSearchForm2Mobile = () => {
                       </div>
 
                       <Tab.List className="pt-12 flex w-full justify-center font-semibold text-sm sm:text-base text-neutral-500 dark:text-neutral-400 space-x-6 sm:space-x-8">
-                        {["Stay", "Experiences", "Cars", "Flights"].map(
+                        {['Stay', 'Experiences', 'Cars', 'Flights'].map(
                           (item, index) => (
                             <Tab key={index} as={Fragment}>
                               {({ selected }) => (
@@ -83,8 +80,8 @@ const HeroSearchForm2Mobile = () => {
                                   <div
                                     className={`${
                                       selected
-                                        ? "text-black dark:text-white"
-                                        : ""
+                                        ? 'text-black dark:text-white'
+                                        : ''
                                     }  `}
                                   >
                                     {item}
@@ -95,7 +92,7 @@ const HeroSearchForm2Mobile = () => {
                                 </div>
                               )}
                             </Tab>
-                          )
+                          ),
                         )}
                       </Tab.List>
                       <div className="flex-1 pt-3 px-1.5 sm:px-4 flex overflow-hidden">
@@ -111,12 +108,10 @@ const HeroSearchForm2Mobile = () => {
                             </div>
                           </Tab.Panel>
                           <Tab.Panel>
-                            <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]">
-                            </div>
+                            <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]"></div>
                           </Tab.Panel>
                           <Tab.Panel>
-                            <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]">
-                            </div>
+                            <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]"></div>
                           </Tab.Panel>
                         </Tab.Panels>
                       </div>

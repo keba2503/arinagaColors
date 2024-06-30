@@ -1,36 +1,52 @@
-import {SocialType} from "@/shared/SocialsShare";
-import React, {FC} from "react";
+import { SocialType } from '@/shared/SocialsShare';
+import React, { FC } from 'react';
 
 export interface SocialsList1Props {
-    className?: string;
+  className?: string;
 }
 
 const socials: SocialType[] = [
-    {name: "Whatsapp", icon: "lab la-whatsapp", href: "https://api.whatsapp.com/send/?phone=34640088144"},
-    {name: "Telegram", icon: "lab la-telegram", href: "https://t.me/34640088144"},
-    {name: "Instagram", icon: "lab la-instagram", href: "https://www.instagram.com/arinagacolors"},
-    {name: "Youtube", icon: "lab la-youtube", href: "https://www.youtube.com/@arinagacolors"},
+  {
+    name: 'Whatsapp',
+    icon: 'lab la-whatsapp',
+    href: 'https://api.whatsapp.com/send/?phone=34640088144',
+  },
+  {
+    name: 'Telegram',
+    icon: 'lab la-telegram',
+    href: 'https://t.me/34640088144',
+  },
+  {
+    name: 'Instagram',
+    icon: 'lab la-instagram',
+    href: 'https://www.instagram.com/arinagacolors',
+  },
+  {
+    name: 'Youtube',
+    icon: 'lab la-youtube',
+    href: 'https://www.youtube.com/@arinagacolors',
+  },
 ];
 
-const SocialsList1: FC<SocialsList1Props> = ({className = "space-y-2.5"}) => {
-    const renderItem = (item: SocialType, index: number) => {
-        return (
-            <a
-                href={item.href}
-                className="flex items-center text-2xl text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white leading-none space-x-2 group"
-                key={index}
-            >
-                <i className={item.icon}></i>
-                <span className="hidden lg:block text-sm">{item.name}</span>
-            </a>
-        );
-    };
-
+const SocialsList1: FC<SocialsList1Props> = ({ className = 'space-y-2.5' }) => {
+  const renderItem = (item: SocialType, index: number) => {
     return (
-        <div className={`nc-SocialsList1 ${className}`} data-nc-id="SocialsList1">
-            {socials.map(renderItem)}
-        </div>
+      <a
+        href={item.href}
+        className="flex items-center text-2xl text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white leading-none space-x-2 group"
+        key={index}
+      >
+        <i className={item.icon}></i>
+        <span className="hidden lg:block text-sm">{item.name}</span>
+      </a>
     );
+  };
+
+  return (
+    <div className={`nc-SocialsList1 ${className}`} data-nc-id="SocialsList1">
+      {socials.map(renderItem)}
+    </div>
+  );
 };
 
 export default SocialsList1;

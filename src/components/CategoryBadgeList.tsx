@@ -1,15 +1,15 @@
-import { PostDataType } from "@/data/types";
-import React, { FC } from "react";
-import Badge from "@/shared/Badge";
+import { PostDataType } from '@/data/types';
+import React, { FC } from 'react';
+import Badge from '@/shared/Badge';
 
 export interface CategoryBadgeListProps {
   className?: string;
   itemClass?: string;
-  categories: PostDataType["categories"];
+  categories: PostDataType['categories'];
 }
 
 const CategoryBadgeList: FC<CategoryBadgeListProps> = ({
-  className = "flex flex-wrap space-x-2",
+  className = 'flex flex-wrap space-x-2',
   itemClass,
   categories,
 }) => {

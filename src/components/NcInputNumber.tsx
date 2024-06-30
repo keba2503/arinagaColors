@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import React, { FC, useEffect, useState } from "react";
-import { MinusIcon, PlusIcon } from "@heroicons/react/24/solid";
+import React, { FC, useEffect, useState } from 'react';
+import { MinusIcon, PlusIcon } from '@heroicons/react/24/solid';
 
 export interface NcInputNumberProps {
   className?: string;
@@ -14,7 +14,7 @@ export interface NcInputNumberProps {
 }
 
 const NcInputNumber: FC<NcInputNumberProps> = ({
-  className = "w-full",
+  className = 'w-full',
   defaultValue = 0,
   min = 0,
   max,

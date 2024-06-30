@@ -1,5 +1,5 @@
-import { StarIcon } from "@heroicons/react/24/solid";
-import React, { FC } from "react";
+import { StarIcon } from '@heroicons/react/24/solid';
+import React, { FC } from 'react';
 
 export interface StartRatingProps {
   className?: string;
@@ -8,7 +8,7 @@ export interface StartRatingProps {
 }
 
 const StartRating: FC<StartRatingProps> = ({
-  className = "",
+  className = '',
   point = 4.5,
   reviewCount = 112,
 }) => {

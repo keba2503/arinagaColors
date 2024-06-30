@@ -5,10 +5,13 @@ const prisma = new PrismaClient();
 
 // Get all scopes
 export async function GET() {
-    try {
-        const scopes = await prisma.scope.findMany();
-        return NextResponse.json(scopes, { status: 200 });
-    } catch (error) {
-        return NextResponse.json({ error: 'Error fetching scopes' }, { status: 500 });
-    }
+  try {
+    const scopes = await prisma.scope.findMany();
+    return NextResponse.json(scopes, { status: 200 });
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Error fetching scopes' },
+      { status: 500 },
+    );
+  }
 }

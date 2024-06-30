@@ -1,9 +1,9 @@
-import React, { FC, ReactNode } from "react";
-import { DEMO_STAY_LISTINGS } from "@/data/listings";
-import { StayDataType } from "@/data/types";
-import HeaderFilter from "../HeaderFilter";
-import StayCard from "../cards/StayCard";
-import StayCard2 from "../cards/StayCard2";
+import React, { FC, ReactNode } from 'react';
+import { DEMO_STAY_LISTINGS } from '@/data/listings';
+import { StayDataType } from '@/data/types';
+import HeaderFilter from '../HeaderFilter';
+import StayCard from '../cards/StayCard';
+import StayCard2 from '../cards/StayCard2';
 
 // OTHER DEMO WILL PASS PROPS
 const DEMO_DATA: StayDataType[] = DEMO_STAY_LISTINGS.filter((_, i) => i < 8);
@@ -16,25 +16,25 @@ export interface SectionGridFeaturePlacesProps {
   subHeading?: ReactNode;
   headingIsCenter?: boolean;
   tabs?: string[];
-  cardType?: "card1" | "card2";
+  cardType?: 'card1' | 'card2';
 }
 
 const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
   stayListings = DEMO_DATA,
-  gridClass = "",
-  heading = "Nuestros apartamentos",
-  subHeading = "Descansa y disfruta junto al mar.",
+  gridClass = '',
+  heading = 'Nuestros apartamentos',
+  subHeading = 'Descansa y disfruta junto al mar.',
   headingIsCenter,
   tabs = [],
-  cardType = "card2",
+  cardType = 'card2',
 }) => {
   const renderCard = (stay: StayDataType) => {
     let CardName = StayCard;
     switch (cardType) {
-      case "card1":
+      case 'card1':
         CardName = StayCard;
         break;
-      case "card2":
+      case 'card2':
         CardName = StayCard2;
         break;
 
@@ -48,7 +48,7 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
   return (
     <div className="nc-SectionGridFeaturePlaces relative">
       <HeaderFilter
-        tabActive={"Playa Arinaga"}
+        tabActive={'Playa Arinaga'}
         subHeading={subHeading}
         tabs={tabs}
         heading={heading}

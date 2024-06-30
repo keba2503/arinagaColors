@@ -1,15 +1,11 @@
-"use client";
+'use client';
 
-import React from "react";
-import { PathName } from "@/routers/types";
-import HeroSearchForm2RealEstateMobile from "./HeroSearchForm2RealEstateMobile";
-import { usePathname } from "next/navigation";
+import React from 'react';
+import { PathName } from '@/routers/types';
+import HeroSearchForm2RealEstateMobile from './HeroSearchForm2RealEstateMobile';
+import { usePathname } from 'next/navigation';
 
-const PAGES_REAL_ESTATE: PathName[] = [
-  "/",
-  "/",
-  "/",
-];
+const PAGES_REAL_ESTATE: PathName[] = ['/', '/', '/'];
 
 const HeroSearchForm2MobileFactory = () => {
   const pathname = usePathname();

@@ -3,15 +3,15 @@
 import GuideClient from '../../../(client-components)/(Admin)/Guide/GuideClient';
 
 interface GuideIdPageProps {
-    params: {
-        id: string;
-    };
+  params: {
+    id: string;
+  };
 }
 
 const GuideIdPage: React.FC<GuideIdPageProps> = ({ params }) => {
-    const { id } = params;
+  const { id } = params;
 
-    return <GuideClient id={id} />;
+  return <GuideClient id={id} />;
 };
 
 export default GuideIdPage;

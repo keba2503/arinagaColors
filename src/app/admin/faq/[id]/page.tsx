@@ -3,15 +3,15 @@
 import FaqClient from '../../../(client-components)/(Admin)/Faq/FaqClient';
 
 interface FaqIdPageProps {
-    params: {
-        id: string;
-    };
+  params: {
+    id: string;
+  };
 }
 
 const FaqIdPage: React.FC<FaqIdPageProps> = ({ params }) => {
-    const { id } = params;
+  const { id } = params;
 
-    return <FaqClient id={id} />;
+  return <FaqClient id={id} />;
 };
 
 export default FaqIdPage;

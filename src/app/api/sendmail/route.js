@@ -28,6 +28,9 @@ export async function POST(req) {
     return new Response(JSON.stringify({ success: true }), { status: 200 });
   } catch (error) {
     console.error('Error al enviar el correo:', error);
-    return new Response(JSON.stringify({ error: 'Error al enviar el correo' }), { status: 500 });
+    return new Response(
+      JSON.stringify({ error: 'Error al enviar el correo' }),
+      { status: 500 },
+    );
   }
 }

@@ -1,12 +1,12 @@
-import React, { FC } from "react";
-import GallerySlider from "@/components/Gallery/GallerySlider";
-import { DEMO_STAY_LISTINGS } from "@/data/listings";
-import StartRating from "@/components/StartRating";
-import BtnLikeIcon from "@/components/BtnLikeIcon";
-import SaleOffBadge from "@/components/SaleOffBadge";
-import Badge from "@/shared/Badge";
-import { StayDataType } from "@/data/types";
-import Link from "next/link";
+import React, { FC } from 'react';
+import GallerySlider from '@/components/Gallery/GallerySlider';
+import { DEMO_STAY_LISTINGS } from '@/data/listings';
+import StartRating from '@/components/StartRating';
+import BtnLikeIcon from '@/components/BtnLikeIcon';
+import SaleOffBadge from '@/components/SaleOffBadge';
+import Badge from '@/shared/Badge';
+import { StayDataType } from '@/data/types';
+import Link from 'next/link';
 
 export interface PropertyCardHProps {
   className?: string;
@@ -16,7 +16,7 @@ export interface PropertyCardHProps {
 const DEMO_DATA = DEMO_STAY_LISTINGS[0];
 
 const PropertyCardH: FC<PropertyCardHProps> = ({
-  className = "",
+  className = '',
   data = DEMO_DATA,
 }) => {
   const {

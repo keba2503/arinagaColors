@@ -1,18 +1,17 @@
-"use client";
+'use client';
 
-import "./styles/index.css";
-import Image from "next/image";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { FC, Fragment, useEffect, useRef } from "react";
-import Modal from "./components/Modal";
-import type { ListingGalleryImage } from "./utils/types";
-import { useLastViewedPhoto } from "./utils/useLastViewedPhoto";
-import { ArrowSmallLeftIcon } from "@heroicons/react/24/outline";
-import { Dialog, Transition } from "@headlessui/react";
-import { Route } from "next";
+import './styles/index.css';
+import Image from 'next/image';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { FC, Fragment, useEffect, useRef } from 'react';
+import Modal from './components/Modal';
+import type { ListingGalleryImage } from './utils/types';
+import { useLastViewedPhoto } from './utils/useLastViewedPhoto';
+import { ArrowSmallLeftIcon } from '@heroicons/react/24/outline';
+import { Dialog, Transition } from '@headlessui/react';
+import { Route } from 'next';
 
-const PHOTOS: string[] = [
-];
+const PHOTOS: string[] = [];
 
 export const DEMO_IMAGE: ListingGalleryImage[] = [...PHOTOS].map(
   (item, index): ListingGalleryImage => {
@@ -20,11 +19,11 @@ export const DEMO_IMAGE: ListingGalleryImage[] = [...PHOTOS].map(
       id: index,
       url: item,
     };
-  }
+  },
 );
 
 export const getNewParam = ({
-  paramName = "photoId",
+  paramName = 'photoId',
   value,
 }: {
   paramName?: string;
@@ -47,7 +46,7 @@ const ListingImageGallery: FC<Props> = ({
   isShowModal,
 }) => {
   const searchParams = useSearchParams();
-  const photoId = searchParams?.get("photoId");
+  const photoId = searchParams?.get('photoId');
   const router = useRouter();
   const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto();
 
@@ -55,7 +54,7 @@ const ListingImageGallery: FC<Props> = ({
   const thisPathname = usePathname();
   useEffect(() => {
     if (lastViewedPhoto && !photoId) {
-      lastViewedPhotoRef.current?.scrollIntoView({ block: "center" });
+      lastViewedPhotoRef.current?.scrollIntoView({ block: 'center' });
       setLastViewedPhoto(null);
     }
   }, [photoId, lastViewedPhoto, setLastViewedPhoto]);
@@ -74,7 +73,7 @@ const ListingImageGallery: FC<Props> = ({
               // @ts-ignore
               setLastViewedPhoto(photoId);
               let params = new URLSearchParams(document.location.search);
-              params.delete("photoId");
+              params.delete('photoId');
               router.push(`${thisPathname}/?${params.toString()}` as Route);
             }}
           />
@@ -95,7 +94,7 @@ const ListingImageGallery: FC<Props> = ({
                 alt="chisfis listing gallery "
                 className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110 focus:outline-none"
                 style={{
-                  transform: "translate3d(0, 0, 0)",
+                  transform: 'translate3d(0, 0, 0)',
                 }}
                 src={url}
                 width={720}
