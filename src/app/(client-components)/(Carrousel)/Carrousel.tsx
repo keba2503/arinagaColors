@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import parse from 'html-react-parser';
@@ -102,9 +104,10 @@ const CarouselBackground: React.FC = () => {
               <Image
                 src={image.url}
                 alt={`Slide ${index}`}
-                layout="fill"
+                fill
                 quality={100}
                 priority
+                className="object-cover"
               />
               {currentIndex === index && (
                 <div className="absolute top-1/4 left-10 text-white text-xl font-semibold text-left animate__animated animate__fadeIn hidden sm:block">
