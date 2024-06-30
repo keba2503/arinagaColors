@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
@@ -42,7 +43,6 @@ const SectionHero = ({ scope, data }) => {
       });
 
       if (response.ok) {
-        const responseData = await response.json();
         setSuccessMessage(
           '¡Se ha guardado correctamente, actualiza para ver los cambios!',
         );
@@ -97,7 +97,7 @@ const SectionHero = ({ scope, data }) => {
       </div>
       <div className="mb-5">
         <label
-          htmlFor="description-input"
+          htmlFor="subtitle-input"
           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >
           Subtitulo
@@ -124,6 +124,15 @@ const SectionHero = ({ scope, data }) => {
       )}
     </form>
   );
+};
+
+SectionHero.propTypes = {
+  scope: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  }),
 };
 
 export default SectionHero;

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import axios from 'axios';
@@ -51,7 +52,6 @@ const SectionCardService = ({ scope, data }) => {
     let imageName = subtitle;
 
     if (image) {
-      // Elimina la imagen anterior si existe y si se está subiendo una nueva
       if (data && data.subtitle) {
         try {
           await axios.delete('/api/cloudinaryService', {
@@ -62,7 +62,6 @@ const SectionCardService = ({ scope, data }) => {
         }
       }
 
-      // Sube la nueva imagen
       const formData = new FormData();
       formData.append('file', image);
       formData.append('upload_preset', 'ml_default');
@@ -100,7 +99,7 @@ const SectionCardService = ({ scope, data }) => {
       });
 
       if (response.ok) {
-        const responseData = await response.json();
+        await response.json();
         setSuccessMessage(
           '¡Se ha guardado correctamente, actualiza para ver los cambios!',
         );
@@ -217,6 +216,17 @@ const SectionCardService = ({ scope, data }) => {
       )}
     </form>
   );
+};
+
+SectionCardService.propTypes = {
+  scope: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    description: PropTypes.string,
+    additional_text: PropTypes.string,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  }),
 };
 
 export default SectionCardService;

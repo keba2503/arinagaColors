@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
@@ -8,7 +9,7 @@ const RichTextEditor = dynamic(() => import('@/components/RichTextEditor'), {
   ssr: false,
 });
 
-const SectionCardOffer = ({ scope, data }) => {
+const SectionCardOffer = ({ data }) => {
   const [title, setTitle] = useState('');
   const [subtitle, setSubtitle] = useState('');
   const [description, setDescription] = useState('');
@@ -48,7 +49,6 @@ const SectionCardOffer = ({ scope, data }) => {
       });
 
       if (response.ok) {
-        const responseData = await response.json();
         setSuccessMessage(
           '¡Se ha guardado correctamente, actualiza para ver los cambios!',
         );
@@ -132,6 +132,16 @@ const SectionCardOffer = ({ scope, data }) => {
       )}
     </form>
   );
+};
+
+SectionCardOffer.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    description: PropTypes.string,
+    additional_text: PropTypes.string,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  }),
 };
 
 export default SectionCardOffer;

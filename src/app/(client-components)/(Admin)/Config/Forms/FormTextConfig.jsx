@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import dynamic from 'next/dynamic';
 
@@ -18,7 +19,7 @@ const FormTextConfig = ({ scope }) => {
   const handleSave = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/config', {
+      await axios.post('/api/config', {
         scope_id: scope,
         title,
         subtitle,
@@ -126,6 +127,10 @@ const FormTextConfig = ({ scope }) => {
       </button>
     </form>
   );
+};
+
+FormTextConfig.propTypes = {
+  scope: PropTypes.string.isRequired,
 };
 
 export default FormTextConfig;

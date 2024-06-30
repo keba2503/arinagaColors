@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
@@ -42,7 +43,6 @@ const SectionService = ({ scope, data }) => {
       });
 
       if (response.ok) {
-        const responseData = await response.json();
         setSuccessMessage(
           '¡Se ha guardado correctamente, actualiza para ver los cambios!',
         );
@@ -124,6 +124,15 @@ const SectionService = ({ scope, data }) => {
       )}
     </form>
   );
+};
+
+SectionService.propTypes = {
+  scope: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    description: PropTypes.string,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  }),
 };
 
 export default SectionService;
