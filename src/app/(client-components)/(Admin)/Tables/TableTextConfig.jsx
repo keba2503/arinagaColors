@@ -1,11 +1,13 @@
+'use client';
+
 import React, { useState, useEffect, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import { ArrowPathIcon, TrashIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 import axios from 'axios';
 
 const TableTextConfig = ({ scope }) => {
   const [data, setData] = useState([]);
-  const [gallery, setGallery] = useState([]);
   const [feedbackMessage, setFeedbackMessage] = useState('');
 
   const fetchData = useCallback(async () => {
@@ -18,15 +20,6 @@ const TableTextConfig = ({ scope }) => {
       console.error('Error fetching data:', error);
     }
   }, [scope]);
-
-  const fetchGallery = useCallback(async () => {
-    try {
-      const res = await axios.get('/api/cloudinaryService');
-      setGallery(res.data);
-    } catch (error) {
-      console.error('Error fetching images:', error);
-    }
-  }, []);
 
   const handleDelete = async (id, subtitle) => {
     try {
@@ -46,7 +39,6 @@ const TableTextConfig = ({ scope }) => {
         }
         setFeedbackMessage('Se ha eliminado correctamente.');
         fetchData();
-        fetchGallery();
       } else {
         setFeedbackMessage('Failed to delete item.');
       }
@@ -60,8 +52,7 @@ const TableTextConfig = ({ scope }) => {
 
   useEffect(() => {
     fetchData();
-    fetchGallery();
-  }, [fetchData, fetchGallery]);
+  }, [fetchData]);
 
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -138,6 +129,10 @@ const TableTextConfig = ({ scope }) => {
       </table>
     </div>
   );
+};
+
+TableTextConfig.propTypes = {
+  scope: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
 export default TableTextConfig;

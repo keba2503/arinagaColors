@@ -1,4 +1,3 @@
-// components/FaqTable.js
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ArrowPathIcon, TrashIcon } from '@heroicons/react/24/solid';

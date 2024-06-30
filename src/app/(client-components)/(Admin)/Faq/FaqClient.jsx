@@ -1,13 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import PropTypes from 'prop-types';
 import GuideForm from 'src/app/(client-components)/(Admin)/Faq/FaqForm';
 
 const FaqClient = ({ id }) => {
   const [faq, setFaq] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter();
 
   useEffect(() => {
     const fetchGuide = async () => {
@@ -31,10 +30,6 @@ const FaqClient = ({ id }) => {
     fetchGuide();
   }, [id]);
 
-  const handleBack = () => {
-    router.push('/admin/faq');
-  };
-
   return (
     <main className="flex flex-col items-center p-2 md:p-4 lg:p-6 min-h-screen">
       <div className="w-full max-w-7xl">
@@ -47,6 +42,10 @@ const FaqClient = ({ id }) => {
       </div>
     </main>
   );
+};
+
+FaqClient.propTypes = {
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
 export default FaqClient;

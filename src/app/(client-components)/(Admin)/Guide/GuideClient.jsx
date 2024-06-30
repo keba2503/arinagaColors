@@ -1,13 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import PropTypes from 'prop-types';
 import GuideForm from 'src/app/(client-components)/(Admin)/Guide/GuideForm';
 
 const GuideClient = ({ id }) => {
   const [guide, setGuide] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter();
 
   useEffect(() => {
     const fetchGuide = async () => {
@@ -31,10 +30,6 @@ const GuideClient = ({ id }) => {
     fetchGuide();
   }, [id]);
 
-  const handleBack = () => {
-    router.push('/admin/guide');
-  };
-
   return (
     <main className="flex flex-col items-center p-2 md:p-4 lg:p-6 min-h-screen">
       <div className="w-full max-w-7xl">
@@ -47,6 +42,10 @@ const GuideClient = ({ id }) => {
       </div>
     </main>
   );
+};
+
+GuideClient.propTypes = {
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
 export default GuideClient;

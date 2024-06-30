@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
@@ -41,7 +42,6 @@ const GuideForm = ({ faq }) => {
       });
 
       if (response.ok) {
-        const data = await response.json();
         setSuccessMessage('¡Guía guardada correctamente!');
         if (!faq) {
           setQuestion('');
@@ -71,7 +71,7 @@ const GuideForm = ({ faq }) => {
         </label>
         <input
           type="text"
-          id="title-input"
+          id="question-input"
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
           className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -79,7 +79,7 @@ const GuideForm = ({ faq }) => {
       </div>
       <div className="mb-5">
         <label
-          htmlFor="description-input"
+          htmlFor="answer-input"
           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >
           Respuesta
@@ -106,6 +106,14 @@ const GuideForm = ({ faq }) => {
       )}
     </form>
   );
+};
+
+GuideForm.propTypes = {
+  faq: PropTypes.shape({
+    question: PropTypes.string,
+    answer: PropTypes.string,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  }),
 };
 
 export default GuideForm;

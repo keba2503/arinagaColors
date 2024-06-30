@@ -23,7 +23,7 @@ const UploadImage = () => {
     formData.append('folder', 'arinagacolors/gallery');
 
     try {
-      const res = await axios.post(
+      await axios.post(
         `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
         formData,
       );
