@@ -76,17 +76,16 @@ const StayCard2: FC<StayCard2Props> = ({
           {description}
         </div>
         <div>
-          <Link href={href} legacyBehavior>
-            <a
-              className="inline-block mt-3 px-4 py-2 rounded-md"
-              style={{
-                backgroundColor: 'rgb(73, 155, 200)',
-                color: 'white',
-                textDecoration: 'none',
-              }}
-            >
-              Ver más
-            </a>
+          <Link
+            href={href}
+            className="inline-block mt-3 px-4 py-2 rounded-md"
+            style={{
+              backgroundColor: 'rgb(73, 155, 200)',
+              color: 'white',
+              textDecoration: 'none',
+            }}
+          >
+            Ver más
           </Link>
         </div>
       </div>
@@ -96,9 +95,7 @@ const StayCard2: FC<StayCard2Props> = ({
   return (
     <div className={`nc-StayCard2 group relative ${className}`}>
       {renderSliderGallery()}
-      <div>
-        <Link href={href}>{renderContent()}</Link>
-      </div>
+      <div>{renderContent()}</div>
     </div>
   );
 };

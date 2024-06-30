@@ -82,10 +82,6 @@ const CarouselBackground: React.FC = () => {
     return <div>No hay imágenes disponibles</div>;
   }
 
-  if (images.length === 0) {
-    return <div>No images available</div>;
-  }
-
   return (
     <div className="relative w-full h-screen" data-carousel="slide">
       <div className="relative h-full overflow-hidden">
@@ -112,12 +108,12 @@ const CarouselBackground: React.FC = () => {
               />
               {currentIndex === index && (
                 <div className="absolute top-1/4 left-10 text-white text-xl font-semibold text-left animate__animated animate__fadeIn hidden sm:block">
-                  <p className="uppercase text-6xl animate__animated animate__fadeIn animate__delay-1s">
+                  <div className="uppercase text-6xl animate__animated animate__fadeIn animate__delay-1s">
                     {title}
-                  </p>
-                  <p className="text-3xl animate__animated animate__fadeIn animate__delay-1s">
+                  </div>
+                  <div className="text-3xl animate__animated animate__fadeIn animate__delay-1s">
                     {subtitle}
-                  </p>
+                  </div>
                 </div>
               )}
             </div>
