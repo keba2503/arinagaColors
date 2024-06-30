@@ -2,16 +2,16 @@
 
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import SectionAbout from '../../../../components/admin/Forms/SectionAbout';
-import SectionFaq from '../../../../components/admin/Forms/SectionFaq';
-import SectionGuide from '../../../../components/admin/Forms/SectionGuide';
-import SectionHero from '../../../../components/admin/Forms/SectionHero';
-import SectionService from '../../../../components/admin/Forms/SectionService';
-import SectionCardService from '../../../../components/admin/Forms/SectionCardService';
-import SectionOurFeatures from '../../../../components/admin/Forms/SectionOurFeatures';
-import SectionCardOffer from "../../../../components/admin/Forms/SectionCardOffer";
-import SectionOffer from "../../../../components/admin/Forms/SectionOffer";
-import SectionBookingSuccess from "../../../../components/admin/Forms/SectionBookingSuccess";
+import SectionAbout from '../../../(client-components)/(Admin)/Config/Forms/SectionAbout';
+import SectionFaq from '../../../(client-components)/(Admin)/Config/Forms/SectionFaq';
+import SectionGuide from '../../../(client-components)/(Admin)/Config/Forms/SectionGuide';
+import SectionHero from '../../../(client-components)/(Admin)/Config/Forms/SectionHero';
+import SectionService from '../../../(client-components)/(Admin)/Config/Forms/SectionService';
+import SectionCardService from '../../../(client-components)/(Admin)/Config/Forms/SectionCardService';
+import SectionOurFeatures from '../../../(client-components)/(Admin)/Config/Forms/SectionOurFeatures';
+import SectionCardOffer from "../../../(client-components)/(Admin)/Config/Forms/SectionCardOffer";
+import SectionOffer from "../../../(client-components)/(Admin)/Config/Forms/SectionOffer";
+import SectionBookingSuccess from "../../../(client-components)/(Admin)/Config/Forms/SectionBookingSuccess";
 
 // Mapeo de componentes según scope
 const componentMapping = {

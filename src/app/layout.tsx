@@ -3,7 +3,7 @@ import "./globals.css";
 import "@/fonts/line-awesome-1.3.0/css/line-awesome.css";
 import "@/styles/index.scss";
 import "rc-slider/assets/index.css";
-import Footer from "@/components/Footer";
+import Footer from "@/components/footer/Footer";
 import {Metadata} from "next";
 import ClientWrapper from '../components/ClientWrapper';
 import React from "react";

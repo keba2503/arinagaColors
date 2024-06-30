@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
-const RichTextEditor = dynamic(() => import('@/components/RichTextEditor'), { ssr: false });
+const RichTextEditor = dynamic(() => import('src/components/RichTextEditor'), { ssr: false });
 
 const GuideForm = ({ faq }) => {
     const [question, setQuestion] = useState('');
@@ -86,7 +86,7 @@ const GuideForm = ({ faq }) => {
                 >
                     {isSubmitting ? 'Guardando...' : 'Guardar'}
                 </button>
-                <Link className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" href="/admin/faq">
+                <Link className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" href="/src/app/(client-components)/(Admin)/faq">
                     Volver
                 </Link>
             </div>

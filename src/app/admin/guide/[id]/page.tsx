@@ -1,6 +1,6 @@
 // src/app/dashboard/guide/[id]/page.tsx
 
-import GuideClient from '../../../../components/GuideClient';
+import GuideClient from '../../../(client-components)/(Admin)/Guide/GuideClient';
 
 interface GuideIdPageProps {
     params: {

@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import TabsComponent from '../../../components/TabsConfigComponent';
-import TableTextConfig from '../../../components/admin/Tables/TableTextConfig';
-import FormTextConfig from '../../../components/admin/Forms/FormTextConfig';
+import TabsComponent from '../../(client-components)/(Admin)/Config/TabsConfigComponent';
+import TableTextConfig from '../../(client-components)/(Admin)/Tables/TableTextConfig';
+import FormTextConfig from '../../(client-components)/(Admin)/Config/Forms/FormTextConfig';
 
 const Config = () => {
     const [scopeId, setScopeId] = useState('');

@@ -1,6 +1,6 @@
 import {fetchRevenue} from "@/lib/data";
-import UploadImageHero from "@/components/UploadImageHero";
-import GalleryHero from "@/components/GalleryHero";
+import UploadImageHero from "@/app/(client-components)/(Admin)/Hero/UploadImageHero";
+import GalleryHero from "@/components/Gallery/GalleryHero";
 
 export default async function Page() {
     const revenue = await fetchRevenue();

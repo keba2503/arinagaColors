@@ -1,6 +1,6 @@
 // src/app/dashboard/guide/[id]/page.tsx
 
-import FaqClient from '../../../../components/FaqClient';
+import FaqClient from '../../../(client-components)/(Admin)/Faq/FaqClient';
 
 interface FaqIdPageProps {
     params: {

@@ -1,9 +1,9 @@
 'use client';
 
-import DonutChart from '@/components/DonutChart';
-import ColumnChart from '@/components/ColumnChart';
-import DataSeriesChart from '@/components/DataSeriesChart';
-import Map from '@/components/Map';
+import DonutChart from '@/app/(client-components)/(Admin)/Home/DonutChart';
+import ColumnChart from '@/app/(client-components)/(Admin)/Home/ColumnChart';
+import DataSeriesChart from '@/app/(client-components)/(Admin)/Home/DataSeriesChart';
+import Map from '@/app/(client-components)/(Admin)/Home/Map';
 
 export default function Page() {
     return (
