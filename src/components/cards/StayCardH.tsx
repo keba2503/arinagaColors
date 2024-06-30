@@ -3,7 +3,6 @@ import GallerySlider from '@/components/Gallery/GallerySlider';
 import { DEMO_STAY_LISTINGS } from '@/data/listings';
 import { StayDataType } from '@/data/types';
 import BtnLikeIcon from '@/components/BtnLikeIcon';
-import SaleOffBadge from '@/components/SaleOffBadge';
 import Link from 'next/link';
 
 export interface StayCardHProps {
@@ -17,16 +16,7 @@ const StayCardH: FC<StayCardHProps> = ({
   className = '',
   data = DEMO_DATA,
 }) => {
-  const {
-    galleryImgs,
-    listingCategory,
-    address,
-    title,
-    href,
-    like,
-    saleOff,
-    id,
-  } = data;
+  const { galleryImgs, listingCategory, address, title, href, like, id } = data;
 
   const renderSliderGallery = () => {
     return (
@@ -38,7 +28,6 @@ const StayCardH: FC<StayCardHProps> = ({
           href={href}
         />
         <BtnLikeIcon isLiked={like} className="absolute right-3 top-3" />
-        {saleOff && <SaleOffBadge className="absolute left-3 top-3" />}
       </div>
     );
   };

@@ -14,7 +14,7 @@ export interface GallerySliderProps {
   galleryImgs: (StaticImageData | string)[];
   ratioClass?: string;
   uniqueID: string;
-  href?: Route<string>;
+  href?: Route;
   imageClass?: string;
   galleryClass?: string;
   navigation?: boolean;
