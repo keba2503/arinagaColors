@@ -59,7 +59,7 @@ const Button: FC<ButtonProps> = ({
     );
   };
 
-  if (!!href) {
+  if (href) {
     return (
       <Link
         href={href}

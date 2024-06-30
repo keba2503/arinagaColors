@@ -17,22 +17,7 @@ const StayCard2: FC<StayCard2Props> = ({
   className = '',
   data = DEMO_DATA,
 }) => {
-  const {
-    galleryImgs,
-    description,
-    listingCategory,
-    address,
-    title,
-    bedrooms,
-    href,
-    like,
-    saleOff,
-    isAds,
-    price,
-    reviewStart,
-    reviewCount,
-    id,
-  } = data;
+  const { galleryImgs, description, address, title, href, id } = data;
 
   const renderSliderGallery = () => {
     return (
@@ -111,9 +96,9 @@ const StayCard2: FC<StayCard2Props> = ({
   return (
     <div className={`nc-StayCard2 group relative ${className}`}>
       {renderSliderGallery()}
-      <Link href={href} legacyBehavior>
-        <a>{renderContent()}</a>
-      </Link>
+      <div>
+        <Link href={href}>{renderContent()}</Link>
+      </div>
     </div>
   );
 };

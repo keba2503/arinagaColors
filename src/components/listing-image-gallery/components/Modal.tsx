@@ -17,12 +17,12 @@ export default function Modal({
   images: ListingGalleryImage[];
   onClose?: () => void;
 }) {
-  let overlayRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
   const searchParams = useSearchParams();
   const router = useRouter();
   const thisPathname = usePathname();
   const photoId = searchParams?.get('photoId');
-  let index = Number(photoId);
+  const index = Number(photoId);
 
   const [direction, setDirection] = useState(0);
   const [curIndex, setCurIndex] = useState(index);

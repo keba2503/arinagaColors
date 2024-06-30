@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import SocialsList from '@/shared/SocialsList';
 import Label from '@/components/Label';
 import Input from '@/shared/Input';

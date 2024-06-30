@@ -3,7 +3,6 @@
 import React, { Fragment, useState, FC } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { CalendarIcon } from '@heroicons/react/24/outline';
-import DatePicker from 'react-datepicker';
 import ClearDataButton from '@/app/(client-components)/(HeroSearchForm)/ClearDataButton';
 
 export interface StayDatesRangeInputProps {
@@ -17,7 +16,6 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
     new Date('2023/02/06'),
   );
   const [endDate, setEndDate] = useState<Date | null>(new Date('2023/02/23'));
-  //
 
   const onChangeDate = (dates: [Date | null, Date | null]) => {
     const [start, end] = dates;

@@ -3,7 +3,6 @@
 import React, { Fragment, useState, FC } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { CalendarIcon } from '@heroicons/react/24/outline';
-import DatePicker from 'react-datepicker';
 import ClearDataButton from '../ClearDataButton';
 
 export interface StayDatesRangeInputProps {

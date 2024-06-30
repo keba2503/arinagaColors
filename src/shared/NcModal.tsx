@@ -7,7 +7,7 @@ import Button from '@/shared/Button';
 
 export interface NcModalProps {
   renderContent: () => ReactNode;
-  renderTrigger?: (openModal: Function) => ReactNode;
+  renderTrigger?: (openModal: () => void) => ReactNode;
   contentExtraClass?: string;
   contentPaddingClass?: string;
   triggerText?: ReactNode;
@@ -26,20 +26,20 @@ const NcModal: FC<NcModalProps> = ({
   isOpenProp,
   onCloseModal,
 }) => {
-  let [isOpen, setIsOpen] = useState(!!isOpenProp);
+  const [isOpen, setIsOpen] = useState(!!isOpenProp);
 
-  function closeModal() {
+  const closeModal = () => {
     if (typeof isOpenProp !== 'boolean') {
       setIsOpen(false);
     }
     onCloseModal && onCloseModal();
-  }
+  };
 
-  function openModal() {
+  const openModal = () => {
     if (typeof isOpenProp !== 'boolean') {
       setIsOpen(true);
     }
-  }
+  };
 
   useEffect(() => {
     setIsOpen(!!isOpenProp);

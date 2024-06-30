@@ -14,7 +14,7 @@ const authOptions = {
     jwt: true,
   },
   callbacks: {
-    async session({ session, token, user }) {
+    async session({ session, user }) {
       session.userId = user.id;
       return session;
     },

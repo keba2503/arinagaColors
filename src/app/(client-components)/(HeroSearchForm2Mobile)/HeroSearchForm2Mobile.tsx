@@ -5,12 +5,11 @@ import { Dialog, Tab, Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import ButtonSubmit from './ButtonSubmit';
 import { useTimeoutFn } from 'react-use';
-import StaySearchForm from './(stay-search-form)/StaySearchForm';
 
 const HeroSearchForm2Mobile = () => {
   const [showModal, setShowModal] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
-  let [, , resetIsShowingDialog] = useTimeoutFn(() => setShowDialog(true), 1);
+  const [, , resetIsShowingDialog] = useTimeoutFn(() => setShowDialog(true), 1);
 
   function closeModal() {
     setShowModal(false);
@@ -98,14 +97,10 @@ const HeroSearchForm2Mobile = () => {
                       <div className="flex-1 pt-3 px-1.5 sm:px-4 flex overflow-hidden">
                         <Tab.Panels className="flex-1 overflow-y-auto hiddenScrollbar py-4">
                           <Tab.Panel>
-                            <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]">
-                              <StaySearchForm />
-                            </div>
+                            <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]"></div>
                           </Tab.Panel>
                           <Tab.Panel>
-                            <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]">
-                              <StaySearchForm />
-                            </div>
+                            <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]"></div>
                           </Tab.Panel>
                           <Tab.Panel>
                             <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]"></div>

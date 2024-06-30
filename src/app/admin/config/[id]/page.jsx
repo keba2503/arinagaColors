@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { useSearchParams } from 'next/navigation';
 import SectionAbout from '../../../(client-components)/(Admin)/Config/Forms/SectionAbout';
 import SectionFaq from '../../../(client-components)/(Admin)/Config/Forms/SectionFaq';
@@ -13,7 +14,6 @@ import SectionCardOffer from '../../../(client-components)/(Admin)/Config/Forms/
 import SectionOffer from '../../../(client-components)/(Admin)/Config/Forms/SectionOffer';
 import SectionBookingSuccess from '../../../(client-components)/(Admin)/Config/Forms/SectionBookingSuccess';
 
-// Mapeo de componentes según scope
 const componentMapping = {
   8: SectionAbout,
   10: SectionFaq,
@@ -54,7 +54,6 @@ const ConfigIdPage = ({ params }) => {
     }
   }, [id]);
 
-  // Convertir scope a número para el mapeo
   const numericScope = parseInt(scope, 10);
   const ActiveComponent = componentMapping[numericScope] || null;
 
@@ -71,6 +70,12 @@ const ConfigIdPage = ({ params }) => {
       )}
     </>
   );
+};
+
+ConfigIdPage.propTypes = {
+  params: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default ConfigIdPage;

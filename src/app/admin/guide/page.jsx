@@ -1,4 +1,3 @@
-// src/app/dashboard/guide/page.jsx
 'use client';
 
 import GuideForm from '../../(client-components)/(Admin)/Guide/GuideForm';

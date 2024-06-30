@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Badge from '@/shared/Badge';
 import FAQAccordion from '@/app/faq/Faq';
 import parse from 'html-react-parser';
 
@@ -12,13 +11,7 @@ interface ApiResponse {
   additional_text: string;
 }
 
-const Page = ({
-  params,
-  searchParams,
-}: {
-  params: { stepIndex: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}) => {
+const Page = () => {
   const [data, setData] = useState<ApiResponse | null>(null);
   const [loading, setLoading] = useState(true);
 

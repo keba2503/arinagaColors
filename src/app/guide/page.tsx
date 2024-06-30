@@ -11,13 +11,7 @@ interface ApiResponse {
   additional_text: string;
 }
 
-const Page = ({
-  params,
-  searchParams,
-}: {
-  params: { stepIndex: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}) => {
+const Page = () => {
   const [data, setData] = useState<ApiResponse | null>(null);
   const [loading, setLoading] = useState(true);
 

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import NcInputNumber from '@/components/NcInputNumber';
 import { FC } from 'react';
@@ -19,7 +19,6 @@ export interface GuestsInputProps {
 const GuestsInput: FC<GuestsInputProps> = ({
   fieldClassName = '[ nc-hero-field-padding ]',
   className = '[ nc-flex-1 ]',
-  buttonSubmitHref = '/listing-stay-map',
   hasButtonSubmit = true,
 }) => {
   const [guestAdultsInputValue, setGuestAdultsInputValue] = useState(2);
@@ -27,7 +26,7 @@ const GuestsInput: FC<GuestsInputProps> = ({
   const [guestInfantsInputValue, setGuestInfantsInputValue] = useState(1);
 
   const handleChangeData = (value: number, type: keyof GuestsObject) => {
-    let newValue = {
+    const newValue = {
       guestAdults: guestAdultsInputValue,
       guestChildren: guestChildrenInputValue,
       guestInfants: guestInfantsInputValue,

@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import PropTypes from 'prop-types';
 
 const RichTextEditor = dynamic(() => import('src/components/RichTextEditor'), {
   ssr: false,
@@ -41,7 +42,7 @@ const GuideForm = ({ guide }) => {
       });
 
       if (response.ok) {
-        const data = await response.json();
+        await response.json();
         setSuccessMessage('¡Guía guardada correctamente!');
         if (!guide) {
           setTitle('');
@@ -106,6 +107,14 @@ const GuideForm = ({ guide }) => {
       )}
     </form>
   );
+};
+
+GuideForm.propTypes = {
+  guide: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    description: PropTypes.string,
+  }),
 };
 
 export default GuideForm;

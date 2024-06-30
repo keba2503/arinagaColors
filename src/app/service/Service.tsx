@@ -4,14 +4,12 @@ import Image, { StaticImageData } from 'next/image';
 interface ServiceCardProps {
   title: string;
   description: ReactNode;
-  icon: string;
   imageUrl: string | StaticImageData;
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({
   title,
   description,
-  icon,
   imageUrl,
 }) => {
   const [showDescription, setShowDescription] = useState(false);
@@ -22,23 +20,17 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <a href="#">
-        <div className="rounded-t-lg">
-          {typeof imageUrl === 'string' ? (
-            <Image src={imageUrl} alt={title} width={600} height={400} />
-          ) : (
-            <Image src={imageUrl} alt={title} width={600} height={400} />
-          )}
-        </div>
-      </a>
+      <div className="rounded-t-lg">
+        <Image src={imageUrl} alt={title} width={600} height={400} />
+      </div>
       <div className="p-5">
-        <a href="#">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            {title}
-          </h5>
-        </a>
+        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          {title}
+        </h5>
         <p
-          className={`text-justify mb-3 font-normal text-gray-700 dark:text-gray-400 ${showDescription ? '' : 'hidden'}`}
+          className={`text-justify mb-3 font-normal text-gray-700 dark:text-gray-400 ${
+            showDescription ? '' : 'hidden'
+          }`}
         >
           {description}
         </p>
@@ -48,7 +40,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         >
           {showDescription ? 'Mostrar menos' : 'Leer más'}
           <svg
-            className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+            key="toggle-icon"
+            className={`w-3.5 h-3.5 ms-2 ${showDescription ? 'rotate-180' : ''}`}
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

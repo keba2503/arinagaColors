@@ -33,7 +33,7 @@ const pool = mysql.createPool(dbConfig);
 
 export async function fetchAllUsers() {
   try {
-    const [rows, fields] = await pool.query('SELECT * FROM user');
+    const [rows] = await pool.query('SELECT * FROM user');
 
     return rows;
   } catch (error) {

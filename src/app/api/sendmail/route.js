@@ -4,7 +4,6 @@ export async function POST(req) {
   try {
     const { name, email, message } = await req.json();
 
-    // Verifica que las variables de entorno estén presentes
     if (!process.env.CORREO || !process.env.PASS) {
       throw new Error('Las credenciales de correo no están configuradas');
     }

@@ -40,7 +40,7 @@ export default function SharedModal({
 }: SharedModalProps) {
   const [loaded, setLoaded] = useState(false);
 
-  let filteredImages = images?.filter((img: ListingGalleryImage) =>
+  const filteredImages = images?.filter((img: ListingGalleryImage) =>
     range(index - 15, index + 15).includes(img.id),
   );
 
@@ -58,7 +58,7 @@ export default function SharedModal({
     trackMouse: true,
   });
 
-  let currentImage = images ? images[index] : currentPhoto;
+  const currentImage = images ? images[index] : currentPhoto;
 
   return (
     <MotionConfig

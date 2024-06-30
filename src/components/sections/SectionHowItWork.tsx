@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import {
   CurrencyEuroIcon,
-  CheckCircleIcon,
   CalendarDaysIcon,
   ReceiptPercentIcon,
   XCircleIcon,

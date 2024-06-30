@@ -36,7 +36,7 @@ const GuestsInput: FC<GuestsInputProps> = ({
   }, [autoFocus]);
 
   const handleChangeData = (value: number, type: keyof GuestsObject) => {
-    let newValue = {
+    const newValue = {
       guestAdults: guestAdultsInputValue,
       guestChildren: guestChildrenInputValue,
       guestInfants: guestInfantsInputValue,

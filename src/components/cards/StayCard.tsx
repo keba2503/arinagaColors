@@ -3,7 +3,6 @@ import { DEMO_STAY_LISTINGS } from '@/data/listings';
 import { StayDataType } from '@/data/types';
 import StartRating from '@/components/StartRating';
 import BtnLikeIcon from '@/components/BtnLikeIcon';
-import SaleOffBadge from '@/components/SaleOffBadge';
 import Link from 'next/link';
 import GallerySlider from '../Gallery/GallerySlider';
 
@@ -28,9 +27,6 @@ const StayCard: FC<StayCardProps> = ({
     bedrooms,
     href,
     like,
-    saleOff,
-    isAds,
-    price,
     reviewStart,
     reviewCount,
     id,
@@ -47,7 +43,6 @@ const StayCard: FC<StayCardProps> = ({
           galleryClass={size === 'default' ? undefined : ''}
         />
         <BtnLikeIcon isLiked={like} className="absolute right-3 top-3 z-[1]" />
-        {saleOff && <SaleOffBadge className="absolute left-3 top-3" />}
       </div>
     );
   };

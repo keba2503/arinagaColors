@@ -1,6 +1,6 @@
-// components/RichTextEditor.js
-import React, { useState } from 'react';
+import React from 'react';
 import ReactQuill from 'react-quill';
+import PropTypes from 'prop-types';
 import 'react-quill/dist/quill.snow.css';
 
 const RichTextEditor = ({ value, onChange }) => {
@@ -41,6 +41,11 @@ const RichTextEditor = ({ value, onChange }) => {
       theme="snow"
     />
   );
+};
+
+RichTextEditor.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default RichTextEditor;

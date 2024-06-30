@@ -15,7 +15,7 @@ interface ApiResponse {
   additional_text: string;
 }
 
-const PageAbout: FC<PageAboutProps> = ({}) => {
+const PageAbout: FC<PageAboutProps> = () => {
   const [data, setData] = useState<ApiResponse[]>([]);
   const [loading, setLoading] = useState(true);
 

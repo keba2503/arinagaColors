@@ -3,13 +3,7 @@
 import React from 'react';
 import Promotions from '@/app/offer/Promotion';
 
-const Page = ({
-  params,
-  searchParams,
-}: {
-  params: { stepIndex: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}) => {
+const Page = () => {
   const renderHeader = () => {
     return (
       <header className="container rounded-3xl px-4 lg:px-8">

@@ -6,11 +6,7 @@ interface Props {
   onClick?: () => void;
   href?: PathName;
 }
-const ButtonSubmit: FC<Props> = ({
-  className = '',
-  onClick = () => {},
-  href = '/listing-stay',
-}) => {
+const ButtonSubmit: FC<Props> = ({ className = '', onClick = () => {} }) => {
   return (
     <button
       type="submit"

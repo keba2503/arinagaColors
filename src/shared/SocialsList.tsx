@@ -32,7 +32,6 @@ const socialsDemo: SocialType[] = [
 
 const SocialsList: FC<SocialsListProps> = ({
   className = '',
-  itemClass = 'block',
   socials = socialsDemo,
 }) => {
   return (

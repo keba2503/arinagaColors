@@ -1,7 +1,5 @@
-// pages/index.tsx
 import React from 'react';
 import ServiceGallery from '@/app/service/ServiceGallery';
-import SectionSubscribe2 from '@/components/sections/SectionSubscribe2';
 
 const Home: React.FC = () => {
   return (

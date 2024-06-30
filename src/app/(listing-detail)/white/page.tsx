@@ -13,8 +13,8 @@ import { Route } from 'next';
 
 export interface YellowDetailPageProps {}
 
-const WhiteDetailPage: FC<YellowDetailPageProps> = ({}) => {
-  let [isOpenModalAmenities, setIsOpenModalAmenities] = useState(false);
+const WhiteDetailPage: FC<YellowDetailPageProps> = () => {
+  const [isOpenModalAmenities, setIsOpenModalAmenities] = useState(false);
 
   const thisPathname = usePathname();
   const router = useRouter();

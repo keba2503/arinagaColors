@@ -17,7 +17,7 @@ const GuestsInput: FC<GuestsInputProps> = ({ className = 'flex-1' }) => {
   const [guestInfantsInputValue, setGuestInfantsInputValue] = useState(1);
 
   const handleChangeData = (value: number, type: keyof GuestsObject) => {
-    let newValue = {
+    const newValue = {
       guestAdults: guestAdultsInputValue,
       guestChildren: guestChildrenInputValue,
       guestInfants: guestInfantsInputValue,

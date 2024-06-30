@@ -2,10 +2,8 @@ import React, { FC } from 'react';
 import GallerySlider from '@/components/Gallery/GallerySlider';
 import { DEMO_STAY_LISTINGS } from '@/data/listings';
 import { StayDataType } from '@/data/types';
-import StartRating from '@/components/StartRating';
 import BtnLikeIcon from '@/components/BtnLikeIcon';
 import SaleOffBadge from '@/components/SaleOffBadge';
-import Badge from '@/shared/Badge';
 import Link from 'next/link';
 
 export interface StayCardHProps {
@@ -27,10 +25,6 @@ const StayCardH: FC<StayCardHProps> = ({
     href,
     like,
     saleOff,
-    isAds,
-    price,
-    reviewStart,
-    reviewCount,
     id,
   } = data;
 

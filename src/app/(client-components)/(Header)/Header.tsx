@@ -2,11 +2,10 @@ import React, { FC } from 'react';
 import MainNav1 from './MainNav1';
 
 export interface HeaderProps {
-  navType?: 'MainNav1' | 'MainNav2';
   className?: string;
 }
 
-const Header: FC<HeaderProps> = ({ navType = 'MainNav1', className = '' }) => {
+const Header: FC<HeaderProps> = ({ className = '' }) => {
   const renderNav = () => {
     return <MainNav1 />;
   };

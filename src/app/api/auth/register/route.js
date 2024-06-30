@@ -32,7 +32,7 @@ export async function POST(request) {
     if (usernameFound) {
       return NextResponse.json(
         {
-          message: 'username already exists',
+          message: 'Username already exists',
         },
         {
           status: 400,
@@ -49,9 +49,10 @@ export async function POST(request) {
       },
     });
 
-    const { password: _, ...user } = newUser;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password, ...userWithoutPassword } = newUser;
 
-    return NextResponse.json(user);
+    return NextResponse.json(userWithoutPassword);
   } catch (error) {
     return NextResponse.json(
       {

@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import prisma from '../../../../lib/db'; // Asegúrate de que esta ruta sea correcta
+import prisma from '../../../../lib/db';
 import bcrypt from 'bcrypt';
 
 const authOptions = {
@@ -15,7 +15,7 @@ const authOptions = {
         },
         password: { label: 'Password', type: 'password', placeholder: '*****' },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         const userFound = await prisma.user.findUnique({
           where: {
             email: credentials.email,
@@ -46,7 +46,7 @@ const authOptions = {
     jwt: true,
   },
   callbacks: {
-    async session({ session, token, user }) {
+    async session({ session, token }) {
       session.userId = token.id;
       return session;
     },

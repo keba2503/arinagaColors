@@ -3,7 +3,6 @@ import { NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
 
-// Get all scopes
 export async function GET() {
   try {
     const scopes = await prisma.scope.findMany();

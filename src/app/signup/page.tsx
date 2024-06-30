@@ -27,7 +27,7 @@ const loginSocials = [
   },
 ];
 
-const PageSignUp: FC<PageSignUpProps> = ({}) => {
+const PageSignUp: FC<PageSignUpProps> = () => {
   return (
     <div className={`nc-PageSignUp  `}>
       <div className="container mb-24 lg:mb-32">

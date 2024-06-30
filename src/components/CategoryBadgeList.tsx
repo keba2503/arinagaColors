@@ -1,4 +1,4 @@
-import { PostDataType } from '@/data/types';
+import { PostDataType, TwMainColor } from '@/data/types';
 import React, { FC } from 'react';
 import Badge from '@/shared/Badge';
 
@@ -7,6 +7,21 @@ export interface CategoryBadgeListProps {
   itemClass?: string;
   categories: PostDataType['categories'];
 }
+
+const validColors: TwMainColor[] = [
+  'pink',
+  'red',
+  'gray',
+  'green',
+  'purple',
+  'indigo',
+  'yellow',
+  'blue',
+];
+
+const isTwMainColor = (color: string): color is TwMainColor => {
+  return validColors.includes(color as TwMainColor);
+};
 
 const CategoryBadgeList: FC<CategoryBadgeListProps> = ({
   className = 'flex flex-wrap space-x-2',
@@ -24,7 +39,11 @@ const CategoryBadgeList: FC<CategoryBadgeListProps> = ({
           key={index}
           name={item.name}
           href={item.href}
-          color={item.color as any}
+          color={
+            isTwMainColor(item.color ?? '')
+              ? (item.color as TwMainColor)
+              : undefined
+          }
         />
       ))}
     </div>

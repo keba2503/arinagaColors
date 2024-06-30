@@ -24,7 +24,6 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
   gridClass = '',
   heading = 'Nuestros apartamentos',
   subHeading = 'Descansa y disfruta junto al mar.',
-  headingIsCenter,
   tabs = [],
   cardType = 'card2',
 }) => {

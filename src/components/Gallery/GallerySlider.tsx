@@ -25,7 +25,6 @@ export default function GallerySlider({
   galleryImgs,
   ratioClass = 'aspect-w-4 aspect-h-3',
   imageClass = '',
-  uniqueID = 'uniqueID',
   galleryClass = 'rounded-xl',
   href = '/',
   navigation = true,
@@ -58,7 +57,7 @@ export default function GallerySlider({
     trackMouse: true,
   });
 
-  let currentImage = images[index];
+  const currentImage = images[index];
 
   return (
     <MotionConfig

@@ -10,7 +10,7 @@ import { useTimeoutFn } from 'react-use';
 const HeroSearchForm2RealEstateMobile = () => {
   const [showModal, setShowModal] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
-  let [, , resetIsShowingDialog] = useTimeoutFn(() => setShowDialog(true), 1);
+  const [, , resetIsShowingDialog] = useTimeoutFn(() => setShowDialog(true), 1);
 
   function closeModal() {
     setShowModal(false);

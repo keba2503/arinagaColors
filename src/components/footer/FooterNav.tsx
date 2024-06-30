@@ -10,7 +10,7 @@ import { usePathname } from 'next/navigation';
 interface NavItem {
   name: string;
   link?: PathName;
-  icon: any;
+  icon: React.ElementType;
 }
 
 const NAV: NavItem[] = [
@@ -60,7 +60,7 @@ const FooterNav = () => {
           isActive ? 'text-neutral-900 dark:text-neutral-100' : ''
         }`}
       >
-        <item.icon iconClassName="w-6 h-6" className={``} />
+        <item.icon className="w-6 h-6" />
         <span className="text-[11px] leading-none mt-1">{item.name}</span>
       </div>
     );

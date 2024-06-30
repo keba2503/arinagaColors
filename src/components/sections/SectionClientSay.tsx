@@ -76,7 +76,7 @@ const SectionClientSay: FC<SectionClientSayProps> = ({
     trackMouse: true,
   });
 
-  let currentItem = data[index];
+  const currentItem = data[index];
 
   const renderBg = () => {
     return (

@@ -29,7 +29,7 @@ export const getNewParam = ({
   paramName?: string;
   value: string | number;
 }) => {
-  let params = new URLSearchParams(document.location.search);
+  const params = new URLSearchParams(document.location.search);
   params.set(paramName, String(value));
   return params.toString();
 };
@@ -70,9 +70,10 @@ const ListingImageGallery: FC<Props> = ({
           <Modal
             images={images}
             onClose={() => {
-              // @ts-ignore
-              setLastViewedPhoto(photoId);
-              let params = new URLSearchParams(document.location.search);
+              if (photoId) {
+                setLastViewedPhoto(photoId);
+              }
+              const params = new URLSearchParams(document.location.search);
               params.delete('photoId');
               router.push(`${thisPathname}/?${params.toString()}` as Route);
             }}

@@ -24,10 +24,6 @@ const ServiceGallery: React.FC = () => {
     title: string;
     description: string;
   } | null>(null);
-  const [servicesHeader, setServicesHeader] = useState<{
-    title: string;
-    description: string;
-  } | null>(null);
   const [images, setImages] = useState<ImageResponse[]>([]);
 
   useEffect(() => {
@@ -46,14 +42,6 @@ const ServiceGallery: React.FC = () => {
         setHeader(
           headerData
             ? { title: headerData.title, description: headerData.description }
-            : null,
-        );
-        setServicesHeader(
-          filteredServices.length > 0
-            ? {
-                title: filteredServices[0].title,
-                description: filteredServices[0].description,
-              }
             : null,
         );
         setData(filteredServices);
@@ -102,7 +90,6 @@ const ServiceGallery: React.FC = () => {
             <ServiceCard
               title={service.title}
               description={parse(service.description)}
-              icon={''}
               imageUrl={getImageUrl(service.subtitle)}
             />
           </div>

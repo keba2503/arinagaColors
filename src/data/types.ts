@@ -53,13 +53,13 @@ export interface PostDataType {
 
 export type TwMainColor =
   | 'pink'
-  | 'green'
-  | 'yellow'
   | 'red'
-  | 'indigo'
-  | 'blue'
+  | 'gray'
+  | 'green'
   | 'purple'
-  | 'gray';
+  | 'indigo'
+  | 'yellow'
+  | 'blue';
 
 //
 export interface StayDataType {
