@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import GuideForm from '@/components/GuideForm';
+import GuideForm from 'src/app/(client-components)/(Admin)/Guide/GuideForm';
 
 const GuideClient = ({ id }) => {
     const [guide, setGuide] = useState(null);

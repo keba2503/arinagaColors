@@ -2,7 +2,7 @@ import React, { FC, ReactNode } from "react";
 import { DEMO_STAY_LISTINGS } from "@/data/listings";
 import { StayDataType } from "@/data/types";
 import ButtonPrimary from "@/shared/ButtonPrimary";
-import PropertyCardH from "@/components/PropertyCardH";
+import PropertyCardH from "@/components/cards/PropertyCardH";
 import HeaderFilter from "@/components/HeaderFilter";
 
 const DEMO_DATA: StayDataType[] = DEMO_STAY_LISTINGS.filter((_, i) => i < 8);

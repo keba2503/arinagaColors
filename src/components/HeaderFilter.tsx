@@ -4,8 +4,6 @@ import React, {FC, useEffect, useState, ReactNode} from "react";
 import Heading from "@/shared/Heading";
 import Nav from "@/shared/Nav";
 import NavItem from "@/shared/NavItem";
-import ButtonSecondary from "@/shared/ButtonSecondary";
-import {ArrowRightIcon} from "@heroicons/react/24/outline";
 
 export interface HeaderFilterProps {
     tabActive: string;

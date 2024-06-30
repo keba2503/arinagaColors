@@ -5,7 +5,7 @@ import StartRating from "@/components/StartRating";
 import BtnLikeIcon from "@/components/BtnLikeIcon";
 import SaleOffBadge from "@/components/SaleOffBadge";
 import Link from "next/link";
-import GallerySlider from "./GallerySlider";
+import GallerySlider from "../Gallery/GallerySlider";
 
 export interface StayCardProps {
   className?: string;

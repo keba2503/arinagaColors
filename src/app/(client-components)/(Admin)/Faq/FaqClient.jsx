@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import GuideForm from '@/components/FaqForm';
+import GuideForm from 'src/app/(client-components)/(Admin)/Faq/FaqForm';
 
 const FaqClient = ({ id }) => {
     const [faq, setFaq] = useState(null);

@@ -2,9 +2,9 @@ import React from "react";
 import SectionHero from "@/app/(server-components)/SectionHero";
 import BgGlassmorphism from "@/components/BgGlassmorphism";
 import {TaxonomyType} from "@/data/types";
-import SectionOurFeatures from "@/components/SectionOurFeatures";
-import SectionGridFeaturePlaces from "@/components/SectionGridFeaturePlaces";
-import SectionHowItWork from "@/components/SectionHowItWork";
+import SectionOurFeatures from "@/components/sections/SectionOurFeatures";
+import SectionGridFeaturePlaces from "@/components/sections/SectionGridFeaturePlaces";
+import SectionHowItWork from "@/components/sections/SectionHowItWork";
 
 function PageHome() {
     return (

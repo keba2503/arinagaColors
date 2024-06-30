@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useCallback} from "react";
 import Image from "next/image";
 import parse from 'html-react-parser';
-import Loading from "@/components/Loading";
+import Loading from "@/components/loading/Loading";
 
 interface ApiResponse {
     scope_id: number;
