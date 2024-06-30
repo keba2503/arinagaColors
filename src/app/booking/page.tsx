@@ -1,7 +1,7 @@
 "use client";
 
 import React, {FC} from "react";
-import SectionGridFeaturePlaces from "@/components/SectionGridFeaturePlaces";
+import SectionGridFeaturePlaces from "@/components/sections/SectionGridFeaturePlaces";
 import HeroSearchForm from "@/app/(client-components)/(HeroSearchForm)/HeroSearchForm";
 
 export interface BookingPageProps {

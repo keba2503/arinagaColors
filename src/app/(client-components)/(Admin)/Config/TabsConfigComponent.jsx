@@ -3,17 +3,17 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
-import SectionAbout from './admin/Forms/SectionAbout';
-import SectionFaq from './admin/Forms/SectionFaq';
-import SectionGuide from './admin/Forms/SectionGuide';
-import SectionHero from './admin/Forms/SectionHero';
-import SectionOurFeatures from './admin/Forms/SectionOurFeatures';
-import SectionService from './admin/Forms/SectionService';
-import TableTextConfig from "./admin/Tables/TableTextConfig";
-import SectionCardService from "./admin/Forms/SectionCardService";
-import SectionCardOffer from "./admin/Forms/SectionCardOffer";
-import SectionOffer from "./admin/Forms/SectionOffer";
-import SectionBookingSuccess from "./admin/Forms/SectionBookingSuccess";
+import SectionAbout from './Forms/SectionAbout';
+import SectionFaq from './Forms/SectionFaq';
+import SectionGuide from './Forms/SectionGuide';
+import SectionHero from './Forms/SectionHero';
+import SectionOurFeatures from './Forms/SectionOurFeatures';
+import SectionService from './Forms/SectionService';
+import TableTextConfig from "../Tables/TableTextConfig";
+import SectionCardService from "./Forms/SectionCardService";
+import SectionCardOffer from "./Forms/SectionCardOffer";
+import SectionOffer from "./Forms/SectionOffer";
+import SectionBookingSuccess from "./Forms/SectionBookingSuccess";
 
 const TabsComponent = () => {
     const [scopes, setScopes] = useState([]);

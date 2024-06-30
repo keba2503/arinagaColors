@@ -2,14 +2,14 @@
 
 import React, { FC, useEffect, useState } from "react";
 import { TaxonomyType } from "@/data/types";
-import CardCategory3 from "@/components/CardCategory3";
-import CardCategory4 from "@/components/CardCategory4";
-import CardCategory5 from "@/components/CardCategory5";
+import CardCategory3 from "@/components/cards/CardCategory3";
+import CardCategory4 from "@/components/cards/CardCategory4";
+import CardCategory5 from "@/components/cards/CardCategory5";
 import Heading from "@/shared/Heading";
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import { useSwipeable } from "react-swipeable";
-import PrevBtn from "./PrevBtn";
-import NextBtn from "./NextBtn";
+import PrevBtn from "../PrevBtn";
+import NextBtn from "../NextBtn";
 import { variants } from "@/utils/animationVariants";
 import { useWindowSize } from "react-use";
 

@@ -3,7 +3,7 @@
 import React, { FC, useState, useEffect } from "react";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import parse from 'html-react-parser';
-import Loading from "@/components/Loading";
+import Loading from "@/components/loading/Loading";
 
 interface ApiResponse {
     scope_id: number;
