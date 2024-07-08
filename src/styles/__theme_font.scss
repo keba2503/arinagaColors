@@ -1,73 +1,108 @@
-/* styles/theme_font.css */
-
-/* Importación de la fuente Dosis desde Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap');
-
-/* Definición de clases para Dosis con diferentes pesos */
-.dosis-unique-200 {
-  font-family: 'Dosis', sans-serif;
+/* FONT FACE -- DOSIS */
+@font-face {
+  font-family: 'Dosis';
   font-weight: 200;
+  src: url('https://fonts.gstatic.com/s/dosis/v16/HhyFslEN3kFh8FJ0CwNaaEE.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Dosis';
+  font-weight: 300;
+  src: url('https://fonts.gstatic.com/s/dosis/v16/HhyFslEN3kFh8FJ0CwNaaEE.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Dosis';
+  font-weight: 400;
+  src: url('https://fonts.gstatic.com/s/dosis/v16/HhyFslEN3kFh8FJ0CwNaaEE.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Dosis';
+  font-weight: 500;
+  src: url('https://fonts.gstatic.com/s/dosis/v16/HhyFslEN3kFh8FJ0CwNaaEE.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Dosis';
+  font-weight: 600;
+  src: url('https://fonts.gstatic.com/s/dosis/v16/HhyFslEN3kFh8FJ0CwNaaEE.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Dosis';
+  font-weight: 700;
+  src: url('https://fonts.gstatic.com/s/dosis/v16/HhyFslEN3kFh8FJ0CwNaaEE.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Dosis';
+  font-weight: 800;
+  src: url('https://fonts.gstatic.com/s/dosis/v16/HhyFslEN3kFh8FJ0CwNaaEE.woff2') format('woff2');
+}
+
+/* Uso de clases con la fuente Dosis */
+.dosis-unique-200 {
+  font-family: "Dosis", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
 }
 
 .dosis-unique-300 {
-  font-family: 'Dosis', sans-serif;
+  font-family: "Dosis", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 300;
+  font-style: normal;
 }
 
 .dosis-unique-400 {
-  font-family: 'Dosis', sans-serif;
+  font-family: "Dosis", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 400;
+  font-style: normal;
 }
 
 .dosis-unique-500 {
-  font-family: 'Dosis', sans-serif;
+  font-family: "Dosis", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 500;
+  font-style: normal;
 }
 
 .dosis-unique-600 {
-  font-family: 'Dosis', sans-serif;
+  font-family: "Dosis", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 600;
+  font-style: normal;
 }
 
 .dosis-unique-700 {
-  font-family: 'Dosis', sans-serif;
+  font-family: "Dosis", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 700;
+  font-style: normal;
 }
 
 .dosis-unique-800 {
-  font-family: 'Dosis', sans-serif;
+  font-family: "Dosis", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 800;
+  font-style: normal;
 }
 
-/* Aplicación global de la fuente Dosis */
-html,
-body {
-  font-family: 'Dosis', sans-serif;
+
+html, body {
+  font-family: "Dosis", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-a,
-span,
-div {
-  font-family: 'Dosis', sans-serif;
+h1, h2, h3, h4, h5, h6, p, a, span, div {
+  font-family: "Dosis", sans-serif;
 }
 
-/* Aplicando variables de fuente si es necesario */
+/* Aplicando variables de fuente */
 :root {
   --font-display: 'Dosis', sans-serif;
   --font-body: 'Dosis', sans-serif;
 }
 
-.theme-animals,
-.theme-astronomy {
+.theme-animals, .theme-astronomy {
   --font-display: 'Dosis', sans-serif;
   --font-body: 'Dosis', sans-serif;
 }
