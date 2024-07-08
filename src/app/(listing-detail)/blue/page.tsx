@@ -343,6 +343,19 @@ const BlueDetailPage: FC<BlueDetailPageProps> = () => {
           data-padding="1rem"
           data-language="es"
         ></div>
+        <div className="mt-6">
+          <iframe
+            src="https://www.avaibook.com/widgets_propietarios/loader.php?id=148179&lang=ES"
+            style={{
+              width: '100%',
+              height: '390px',
+              border: '0',
+              backgroundColor: 'white',
+            }}
+          >
+            Tu navegador no soporta iframes
+          </iframe>
+        </div>
       </div>
     );
   };

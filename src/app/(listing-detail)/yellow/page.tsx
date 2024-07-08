@@ -342,6 +342,20 @@ const YellowDetailPage: FC<YellowDetailPageProps> = () => {
           data-padding="1rem"
           data-language="es"
         ></div>
+        <div className="mt-6">
+          <iframe
+            src="https://www.avaibook.com/widgets_propietarios/loader.php?id=148918&lang=ES"
+            data-target="_self"
+            style={{
+              width: '100%',
+              height: '390px',
+              border: '0',
+              backgroundColor: 'white',
+            }}
+          >
+            Tu navegador no soporta iframes
+          </iframe>
+        </div>
       </div>
     );
   };

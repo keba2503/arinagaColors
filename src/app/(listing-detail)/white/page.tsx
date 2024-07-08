@@ -332,7 +332,7 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = () => {
         ></div>
         <div className="mt-6">
           <iframe
-            src="https://www.avaibook.com/widgets_propietarios/loader.php?id=148179&lang=ES"
+            src="https://www.avaibook.com/widgets_propietarios/loader.php?id=148916&lang=ES"
             data-target="_self"
             style={{
               width: '100%',
