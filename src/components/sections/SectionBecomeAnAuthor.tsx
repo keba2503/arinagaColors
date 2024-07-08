@@ -1,8 +1,8 @@
-import React, { FC } from "react";
-import rightImgDemo from "@/images/BecomeAnAuthorImg.png";
-import ButtonPrimary from "@/shared/ButtonPrimary";
-import Logo from "@/shared/Logo";
-import Image from "next/image";
+import React, { FC } from 'react';
+import rightImgDemo from '@/images/BecomeAnAuthorImg.png';
+import ButtonPrimary from '@/shared/ButtonPrimary';
+import Logo from '@/shared/Logo';
+import Image from 'next/image';
 
 export interface SectionBecomeAnAuthorProps {
   className?: string;
@@ -10,7 +10,7 @@ export interface SectionBecomeAnAuthorProps {
 }
 
 const SectionBecomeAnAuthor: FC<SectionBecomeAnAuthorProps> = ({
-  className = "",
+  className = '',
   rightImg = rightImgDemo,
 }) => {
   return (

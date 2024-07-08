@@ -1,8 +1,8 @@
-import React, { FC } from "react";
-import { TaxonomyType } from "@/data/types";
-import convertNumbThousand from "@/utils/convertNumbThousand";
-import Link from "next/link";
-import Image from "next/image";
+import React, { FC } from 'react';
+import { TaxonomyType } from '@/data/types';
+import convertNumbThousand from '@/utils/convertNumbThousand';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export interface CardCategory5Props {
   className?: string;
@@ -10,10 +10,10 @@ export interface CardCategory5Props {
 }
 
 const CardCategory5: FC<CardCategory5Props> = ({
-  className = "",
+  className = '',
   taxonomy,
 }) => {
-  const { count, name, href = "/", thumbnail } = taxonomy;
+  const { count, name, href = '/', thumbnail } = taxonomy;
   return (
     <Link
       href={href}
@@ -26,7 +26,7 @@ const CardCategory5: FC<CardCategory5Props> = ({
         <Image
           fill
           alt=""
-          src={thumbnail || ""}
+          src={thumbnail || ''}
           className="object-cover w-full h-full rounded-2xl"
           sizes="(max-width: 400px) 100vw, 400px"
         />

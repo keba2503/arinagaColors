@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import Button, { ButtonProps } from "./Button";
-import React from "react";
+import Button, { ButtonProps } from './Button';
+import React from 'react';
 
 export interface ButtonSecondaryProps extends ButtonProps {}
 
 const ButtonSecondary: React.FC<ButtonSecondaryProps> = ({
-  className = " ",
+  className = ' ',
   ...args
 }) => {
   return (

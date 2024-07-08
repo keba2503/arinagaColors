@@ -1,11 +1,9 @@
-
 export type User = {
   id: string;
   name: string;
   email: string;
   password: string;
 };
-
 
 export type Revenue = {
   month: string;
@@ -67,4 +65,3 @@ export type InvoiceForm = {
   amount: number;
   status: 'pending' | 'paid';
 };
-

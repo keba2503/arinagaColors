@@ -1,10 +1,10 @@
-import { Route } from "@/routers/types";
-import { StaticImageData } from "next/image";
+import { Route } from '@/routers/types';
+import { StaticImageData } from 'next/image';
 
 //  ######  CustomLink  ######## //
 export interface CustomLink {
   label: string;
-  href: Route<string> | string;
+  href: Route | string;
   targetBlank?: boolean;
 }
 
@@ -12,13 +12,13 @@ export interface CustomLink {
 export interface TaxonomyType {
   id: string | number;
   name: string;
-  href: Route<string>;
+  href: Route;
   count?: number;
   thumbnail?: string;
   desc?: string;
   color?: TwMainColor | string;
-  taxonomy: "category" | "tag";
-  listingType?: "stay" | "experiences" | "car";
+  taxonomy: 'category' | 'tag';
+  listingType?: 'stay' | 'experiences' | 'car';
 }
 
 export interface AuthorType {
@@ -32,7 +32,7 @@ export interface AuthorType {
   count: number;
   desc: string;
   jobName: string;
-  href: Route<string>;
+  href: Route;
   starRating?: number;
 }
 
@@ -40,7 +40,7 @@ export interface PostDataType {
   id: string | number;
   author: AuthorType;
   date: string;
-  href: Route<string>;
+  href: Route;
   categories: TaxonomyType[];
   title: string;
   featuredImage: StaticImageData | string;
@@ -48,18 +48,18 @@ export interface PostDataType {
   commentCount: number;
   viewdCount: number;
   readingTime: number;
-  postType?: "standard" | "video" | "gallery" | "audio";
+  postType?: 'standard' | 'video' | 'gallery' | 'audio';
 }
 
 export type TwMainColor =
-  | "pink"
-  | "green"
-  | "yellow"
-  | "red"
-  | "indigo"
-  | "blue"
-  | "purple"
-  | "gray";
+  | 'pink'
+  | 'red'
+  | 'gray'
+  | 'green'
+  | 'purple'
+  | 'indigo'
+  | 'yellow'
+  | 'blue';
 
 //
 export interface StayDataType {
@@ -67,7 +67,7 @@ export interface StayDataType {
   author: AuthorType;
   date: string;
   description: string;
-  href: Route<string>;
+  href: Route;
   title: string;
   featuredImage: StaticImageData | string;
   commentCount: number;
@@ -95,7 +95,7 @@ export interface ExperiencesDataType {
   id: string | number;
   author: AuthorType;
   date: string;
-  href: Route<string>;
+  href: Route;
   title: string;
   featuredImage: StaticImageData | string;
   commentCount: number;
@@ -121,7 +121,7 @@ export interface CarDataType {
   id: string | number;
   author: AuthorType;
   date: string;
-  href: Route<string>;
+  href: Route;
   title: string;
   featuredImage: StaticImageData | string;
   commentCount: number;

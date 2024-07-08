@@ -1,9 +1,9 @@
-import React, { FC } from "react";
-import { TaxonomyType } from "@/data/types";
-import Badge from "@/shared/Badge";
-import convertNumbThousand from "@/utils/convertNumbThousand";
-import Link from "next/link";
-import Image from "next/image";
+import React, { FC } from 'react';
+import { TaxonomyType } from '@/data/types';
+import Badge from '@/shared/Badge';
+import convertNumbThousand from '@/utils/convertNumbThousand';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export interface CardCategoryBox1Props {
   className?: string;
@@ -11,10 +11,10 @@ export interface CardCategoryBox1Props {
 }
 
 const CardCategoryBox1: FC<CardCategoryBox1Props> = ({
-  className = "",
+  className = '',
   taxonomy,
 }) => {
-  const { count, name, thumbnail, href = "/" } = taxonomy;
+  const { count, name, thumbnail, href = '/' } = taxonomy;
   return (
     <Link
       href={href}
@@ -28,7 +28,7 @@ const CardCategoryBox1: FC<CardCategoryBox1Props> = ({
 
       <div className="relative flex-shrink-0 w-24 h-24 rounded-full overflow-hidden">
         <Image
-          src={thumbnail || ""}
+          src={thumbnail || ''}
           fill
           alt=""
           sizes="(max-width: 400px) 100vw, 400px"

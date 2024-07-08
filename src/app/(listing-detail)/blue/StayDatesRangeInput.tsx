@@ -1,23 +1,21 @@
-"use client";
+'use client';
 
-import React, { Fragment, useState, FC } from "react";
-import { Popover, Transition } from "@headlessui/react";
-import { CalendarIcon } from "@heroicons/react/24/outline";
-import DatePicker from "react-datepicker";
-import ClearDataButton from "@/app/(client-components)/(HeroSearchForm)/ClearDataButton";
+import React, { Fragment, useState, FC } from 'react';
+import { Popover, Transition } from '@headlessui/react';
+import { CalendarIcon } from '@heroicons/react/24/outline';
+import ClearDataButton from '@/app/(client-components)/(HeroSearchForm)/ClearDataButton';
 
 export interface StayDatesRangeInputProps {
   className?: string;
 }
 
 const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
-  className = "flex-1",
+  className = 'flex-1',
 }) => {
   const [startDate, setStartDate] = useState<Date | null>(
-    new Date("2023/02/06")
+    new Date('2023/02/06'),
   );
-  const [endDate, setEndDate] = useState<Date | null>(new Date("2023/02/23"));
-  //
+  const [endDate, setEndDate] = useState<Date | null>(new Date('2023/02/23'));
 
   const onChangeDate = (dates: [Date | null, Date | null]) => {
     const [start, end] = dates;
@@ -33,20 +31,20 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
         </div>
         <div className="flex-grow text-left">
           <span className="block xl:text-lg font-semibold">
-            {startDate?.toLocaleDateString("en-US", {
-              month: "short",
-              day: "2-digit",
-            }) || "Add dates"}
+            {startDate?.toLocaleDateString('en-US', {
+              month: 'short',
+              day: '2-digit',
+            }) || 'Add dates'}
             {endDate
-              ? " - " +
-                endDate?.toLocaleDateString("en-US", {
-                  month: "short",
-                  day: "2-digit",
+              ? ' - ' +
+                endDate?.toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: '2-digit',
                 })
-              : ""}
+              : ''}
           </span>
           <span className="block mt-1 text-sm text-neutral-400 leading-none font-light">
-            {"Check in - Check out"}
+            {'Check in - Check out'}
           </span>
         </div>
       </>
@@ -59,7 +57,7 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
         <>
           <Popover.Button
             className={`flex-1 flex relative p-3 items-center space-x-3 focus:outline-none ${
-              open ? "shadow-lg" : ""
+              open ? 'shadow-lg' : ''
             }`}
           >
             {renderInput()}
@@ -78,9 +76,7 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
             leaveTo="opacity-0 translate-y-1"
           >
             <Popover.Panel className="absolute left-auto xl:-right-10 right-0 z-10 mt-3 top-full w-screen max-w-sm px-4 sm:px-0 lg:max-w-3xl">
-              <div className="overflow-hidden rounded-3xl shadow-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-neutral-800 p-8">
-
-              </div>
+              <div className="overflow-hidden rounded-3xl shadow-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-neutral-800 p-8"></div>
             </Popover.Panel>
           </Transition>
         </>

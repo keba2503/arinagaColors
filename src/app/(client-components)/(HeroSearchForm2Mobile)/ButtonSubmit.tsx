@@ -1,16 +1,12 @@
-import React, { FC } from "react";
-import { PathName } from "@/routers/types";
+import React, { FC } from 'react';
+import { PathName } from '@/routers/types';
 
 interface Props {
   className?: string;
   onClick?: () => void;
   href?: PathName;
 }
-const ButtonSubmit: FC<Props> = ({
-  className = "",
-  onClick = () => {},
-  href = "/listing-stay",
-}) => {
+const ButtonSubmit: FC<Props> = ({ className = '', onClick = () => {} }) => {
   return (
     <button
       type="submit"

@@ -1,33 +1,32 @@
-"use client";
+'use client';
 
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import { AnimatePresence, motion, MotionConfig } from "framer-motion";
-import Image, { StaticImageData } from "next/image";
-import { useState } from "react";
-import { useSwipeable } from "react-swipeable";
-import { variants } from "@/utils/animationVariants";
-import Link from "next/link";
-import { Route } from "@/routers/types";
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+import { AnimatePresence, motion, MotionConfig } from 'framer-motion';
+import Image, { StaticImageData } from 'next/image';
+import { useState } from 'react';
+import { useSwipeable } from 'react-swipeable';
+import { variants } from '@/utils/animationVariants';
+import Link from 'next/link';
+import { Route } from '@/routers/types';
 
 export interface GallerySliderProps {
   className?: string;
   galleryImgs: (StaticImageData | string)[];
   ratioClass?: string;
   uniqueID: string;
-  href?: Route<string>;
+  href?: Route;
   imageClass?: string;
   galleryClass?: string;
   navigation?: boolean;
 }
 
 export default function GallerySlider({
-  className = "",
+  className = '',
   galleryImgs,
-  ratioClass = "aspect-w-4 aspect-h-3",
-  imageClass = "",
-  uniqueID = "uniqueID",
-  galleryClass = "rounded-xl",
-  href = "/",
+  ratioClass = 'aspect-w-4 aspect-h-3',
+  imageClass = '',
+  galleryClass = 'rounded-xl',
+  href = '/',
   navigation = true,
 }: GallerySliderProps) {
   const [loaded, setLoaded] = useState(false);
@@ -58,12 +57,12 @@ export default function GallerySlider({
     trackMouse: true,
   });
 
-  let currentImage = images[index];
+  const currentImage = images[index];
 
   return (
     <MotionConfig
       transition={{
-        x: { type: "spring", stiffness: 300, damping: 30 },
+        x: { type: 'spring', stiffness: 300, damping: 30 },
         opacity: { duration: 0.2 },
       }}
     >
@@ -88,7 +87,7 @@ export default function GallerySlider({
                 className="absolute inset-0"
               >
                 <Image
-                  src={currentImage || ""}
+                  src={currentImage || ''}
                   fill
                   alt="listing card gallery"
                   className={`object-cover ${imageClass}`}
@@ -108,7 +107,7 @@ export default function GallerySlider({
               {index > 0 && (
                 <button
                   className="absolute w-8 h-8 left-3 top-[calc(50%-16px)] bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-6000 dark:hover:border-neutral-500 rounded-full flex items-center justify-center hover:border-neutral-300 focus:outline-none"
-                  style={{ transform: "translate3d(0, 0, 0)" }}
+                  style={{ transform: 'translate3d(0, 0, 0)' }}
                   onClick={() => changePhotoId(index - 1)}
                 >
                   <ChevronLeftIcon className="h-4 w-4" />
@@ -117,7 +116,7 @@ export default function GallerySlider({
               {index + 1 < images.length && (
                 <button
                   className="absolute w-8 h-8 right-3 top-[calc(50%-16px)] bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-6000 dark:hover:border-neutral-500 rounded-full flex items-center justify-center hover:border-neutral-300 focus:outline-none"
-                  style={{ transform: "translate3d(0, 0, 0)" }}
+                  style={{ transform: 'translate3d(0, 0, 0)' }}
                   onClick={() => changePhotoId(index + 1)}
                 >
                   <ChevronRightIcon className="h-4 w-4" />
@@ -132,7 +131,7 @@ export default function GallerySlider({
             {images.map((_, i) => (
               <button
                 className={`w-1.5 h-1.5 rounded-full ${
-                  i === index ? "bg-white" : "bg-white/60 "
+                  i === index ? 'bg-white' : 'bg-white/60 '
                 }`}
                 onClick={() => changePhotoId(i)}
                 key={i}

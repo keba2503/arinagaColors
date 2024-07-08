@@ -1,9 +1,9 @@
-import React, { FC, ReactNode } from "react";
-import { DEMO_STAY_LISTINGS } from "@/data/listings";
-import { StayDataType } from "@/data/types";
-import ButtonPrimary from "@/shared/ButtonPrimary";
-import PropertyCardH from "@/components/cards/PropertyCardH";
-import HeaderFilter from "@/components/HeaderFilter";
+import React, { FC, ReactNode } from 'react';
+import { DEMO_STAY_LISTINGS } from '@/data/listings';
+import { StayDataType } from '@/data/types';
+import ButtonPrimary from '@/shared/ButtonPrimary';
+import PropertyCardH from '@/components/cards/PropertyCardH';
+import HeaderFilter from '@/components/HeaderFilter';
 
 const DEMO_DATA: StayDataType[] = DEMO_STAY_LISTINGS.filter((_, i) => i < 8);
 
@@ -18,11 +18,10 @@ export interface SectionGridFeaturePropertyProps {
 
 const SectionGridFeatureProperty: FC<SectionGridFeaturePropertyProps> = ({
   stayListings = DEMO_DATA,
-  gridClass = "",
-  heading = "Nuestros apartamentos",
-  subHeading = "Popular places to stay that Chisfis recommends for you",
-  headingIsCenter,
-  tabs = ["New York", "Tokyo", "Paris", "London"],
+  gridClass = '',
+  heading = 'Nuestros apartamentos',
+  subHeading = 'Popular places to stay that Chisfis recommends for you',
+  tabs = ['New York', 'Tokyo', 'Paris', 'London'],
 }) => {
   const renderCard = (stay: StayDataType, index: number) => {
     return <PropertyCardH key={index} className="h-full" data={stay} />;
@@ -31,7 +30,7 @@ const SectionGridFeatureProperty: FC<SectionGridFeaturePropertyProps> = ({
   return (
     <div className="nc-SectionGridFeatureProperty relative">
       <HeaderFilter
-        tabActive={"New York"}
+        tabActive={'New York'}
         subHeading={subHeading}
         tabs={tabs}
         heading={heading}

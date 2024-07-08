@@ -1,14 +1,14 @@
-"use client";
-import "client-only";
+'use client';
+import 'client-only';
 
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 /**
  * Hook that alerts clicks outside of the passed ref
  */
 function useOutsideAlerter(
   ref: React.RefObject<HTMLDivElement>,
-  handleClickOutsideCallback: () => void
+  handleClickOutsideCallback: () => void,
 ) {
   useEffect(() => {
     /**
@@ -20,12 +20,12 @@ function useOutsideAlerter(
       }
     }
     // Bind the event listener
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
       // Unbind the event listener on clean up
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [ref]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [ref]);
 }
 
 export default useOutsideAlerter;

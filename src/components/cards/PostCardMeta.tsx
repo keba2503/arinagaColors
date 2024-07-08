@@ -1,26 +1,26 @@
-import React, { FC } from "react";
-import Avatar from "@/shared/Avatar";
-import { PostDataType } from "@/data/types";
-import Link from "next/link";
+import React, { FC } from 'react';
+import Avatar from '@/shared/Avatar';
+import { PostDataType } from '@/data/types';
+import Link from 'next/link';
 
 export interface PostCardMetaProps {
   className?: string;
-  meta: Pick<PostDataType, "date" | "author">;
+  meta: Pick<PostDataType, 'date' | 'author'>;
   hiddenAvatar?: boolean;
-  size?: "large" | "normal";
+  size?: 'large' | 'normal';
 }
 
 const PostCardMeta: FC<PostCardMetaProps> = ({
-  className = "leading-none",
+  className = 'leading-none',
   meta,
   hiddenAvatar = false,
-  size = "normal",
+  size = 'normal',
 }) => {
   const { date, author } = meta;
   return (
     <div
       className={`nc-PostCardMeta inline-flex items-center fledx-wrap text-neutral-800 dark:text-neutral-200 ${
-        size === "normal" ? "text-sm" : "text-base"
+        size === 'normal' ? 'text-sm' : 'text-base'
       } ${className}`}
       data-nc-id="PostCardMeta"
     >
@@ -32,7 +32,7 @@ const PostCardMeta: FC<PostCardMetaProps> = ({
           <Avatar
             radius="rounded-full"
             sizeClass={
-              size === "normal" ? "h-7 w-7 text-sm" : "h-10 w-10 text-xl"
+              size === 'normal' ? 'h-7 w-7 text-sm' : 'h-10 w-10 text-xl'
             }
             imgUrl={author.avatar}
             userName={author.displayName}

@@ -1,12 +1,9 @@
-import React, { FC } from "react";
-import GallerySlider from "@/components/Gallery/GallerySlider";
-import { DEMO_STAY_LISTINGS } from "@/data/listings";
-import { StayDataType } from "@/data/types";
-import StartRating from "@/components/StartRating";
-import BtnLikeIcon from "@/components/BtnLikeIcon";
-import SaleOffBadge from "@/components/SaleOffBadge";
-import Badge from "@/shared/Badge";
-import Link from "next/link";
+import React, { FC } from 'react';
+import GallerySlider from '@/components/Gallery/GallerySlider';
+import { DEMO_STAY_LISTINGS } from '@/data/listings';
+import { StayDataType } from '@/data/types';
+import BtnLikeIcon from '@/components/BtnLikeIcon';
+import Link from 'next/link';
 
 export interface StayCardHProps {
   className?: string;
@@ -16,23 +13,10 @@ export interface StayCardHProps {
 const DEMO_DATA = DEMO_STAY_LISTINGS[0];
 
 const StayCardH: FC<StayCardHProps> = ({
-  className = "",
+  className = '',
   data = DEMO_DATA,
 }) => {
-  const {
-    galleryImgs,
-    listingCategory,
-    address,
-    title,
-    href,
-    like,
-    saleOff,
-    isAds,
-    price,
-    reviewStart,
-    reviewCount,
-    id,
-  } = data;
+  const { galleryImgs, listingCategory, address, title, href, like, id } = data;
 
   const renderSliderGallery = () => {
     return (
@@ -44,7 +28,6 @@ const StayCardH: FC<StayCardHProps> = ({
           href={href}
         />
         <BtnLikeIcon isLiked={like} className="absolute right-3 top-3" />
-        {saleOff && <SaleOffBadge className="absolute left-3 top-3" />}
       </div>
     );
   };
@@ -116,7 +99,6 @@ const StayCardH: FC<StayCardHProps> = ({
         <div className="hidden sm:block w-14 border-b border-neutral-100 dark:border-neutral-800 my-4"></div>
         {renderTienIch()}
         <div className="w-14 border-b border-neutral-100 dark:border-neutral-800 my-4"></div>
-
       </div>
     );
   };

@@ -1,6 +1,6 @@
-import React from "react";
-import { XMarkIcon } from "@heroicons/react/24/solid";
-import twFocusClass from "@/utils/twFocusClass";
+import React from 'react';
+import { XMarkIcon } from '@heroicons/react/24/solid';
+import twFocusClass from '@/utils/twFocusClass';
 
 export interface ButtonCloseProps {
   className?: string;
@@ -8,7 +8,7 @@ export interface ButtonCloseProps {
 }
 
 const ButtonClose: React.FC<ButtonCloseProps> = ({
-  className = "",
+  className = '',
   onClick = () => {},
 }) => {
   return (

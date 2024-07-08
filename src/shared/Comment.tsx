@@ -1,6 +1,6 @@
-import React from "react";
-import { FC } from "react";
-import Avatar from "@/shared/Avatar";
+import React from 'react';
+import { FC } from 'react';
+import Avatar from '@/shared/Avatar';
 
 export interface CommentProps {
   isSmall?: boolean;
@@ -10,7 +10,7 @@ const Comment: FC<CommentProps> = ({ isSmall }) => {
   return (
     <div className="nc-CommentCard flex ">
       <div className="pt-1">
-        <Avatar sizeClass={`w-6 h-6 ${!isSmall ? "sm:h-8 sm:w-8 " : ""}`} />
+        <Avatar sizeClass={`w-6 h-6 ${!isSmall ? 'sm:h-8 sm:w-8 ' : ''}`} />
       </div>
       <div className="flex-grow flex flex-col p-4 ml-2 text-sm border border-neutral-200 rounded-xl sm:ml-3 sm:text-base dark:border-neutral-700">
         <div className="relative flex items-center pr-6">

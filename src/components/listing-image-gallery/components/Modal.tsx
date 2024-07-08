@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { Dialog } from "@headlessui/react";
-import { motion } from "framer-motion";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useRef, useState } from "react";
-import useKeypress from "react-use-keypress";
-import { getNewParam } from "../ListingImageGallery";
-import type { ListingGalleryImage } from "../utils/types";
-import SharedModal from "./SharedModal";
-import { Route } from "next";
+import { Dialog } from '@headlessui/react';
+import { motion } from 'framer-motion';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useRef, useState } from 'react';
+import useKeypress from 'react-use-keypress';
+import { getNewParam } from '../ListingImageGallery';
+import type { ListingGalleryImage } from '../utils/types';
+import SharedModal from './SharedModal';
+import { Route } from 'next';
 
 export default function Modal({
   images,
@@ -17,12 +17,12 @@ export default function Modal({
   images: ListingGalleryImage[];
   onClose?: () => void;
 }) {
-  let overlayRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
   const searchParams = useSearchParams();
   const router = useRouter();
   const thisPathname = usePathname();
-  const photoId = searchParams?.get("photoId");
-  let index = Number(photoId);
+  const photoId = searchParams?.get('photoId');
+  const index = Number(photoId);
 
   const [direction, setDirection] = useState(0);
   const [curIndex, setCurIndex] = useState(index);
@@ -41,13 +41,13 @@ export default function Modal({
     router.push(`${thisPathname}/?${getNewParam({ value: newVal })}` as Route);
   }
 
-  useKeypress("ArrowRight", () => {
+  useKeypress('ArrowRight', () => {
     if (index + 1 < images.length) {
       changePhotoId(index + 1);
     }
   });
 
-  useKeypress("ArrowLeft", () => {
+  useKeypress('ArrowLeft', () => {
     if (index > 0) {
       changePhotoId(index - 1);
     }
