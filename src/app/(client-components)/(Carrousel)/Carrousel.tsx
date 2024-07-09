@@ -109,6 +109,8 @@ const CarouselBackground: React.FC = () => {
                 priority
                 className="object-cover"
               />
+              <div className="absolute inset-0 bg-black opacity-20"></div>{' '}
+              {/* Overlay */}
               {currentIndex === index && (
                 <div className="absolute top-1/4 left-10 text-white text-xl font-semibold text-left animate__animated animate__fadeIn hidden sm:block">
                   <div className="uppercase text-6xl animate__animated animate__fadeIn animate__delay-1s">

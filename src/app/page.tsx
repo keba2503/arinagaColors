@@ -12,8 +12,8 @@ function PageHome() {
       <div className="relative space-y-24 mb-24 lg:space-y-28 lg:mb-28">
         <SectionHero />
         <div className="container relative space-y-24 mb-24 lg:space-y-28 lg:mb-28">
-          <SectionOurFeatures />
           <SectionGridFeaturePlaces cardType="card2" />
+          <SectionOurFeatures />
           <SectionHowItWork />
         </div>
       </div>

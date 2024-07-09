@@ -34,3 +34,18 @@
 .custom-html-styles strong {
   font-weight: bold;
 }
+
+/* Estilo personalizado para el widget */
+#c_ee0371e1974d1cf28afb74b3d19d9c06
+{
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: white !important;
+}
+
+.widget-container #widget.widget-normal.
+{
+  color: white  !important;
+}
+

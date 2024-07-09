@@ -1,6 +1,6 @@
 import React from 'react';
 import Image, { StaticImageData } from 'next/image';
-import logoImg from '@/images/logos/6.png';
+import logoImg from '@/images/logo-light.png';
 import logoLightImg from '@/images/logo-light.png';
 import Link from 'next/link';
 

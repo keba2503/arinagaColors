@@ -47,7 +47,7 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
   return (
     <div className="nc-SectionGridFeaturePlaces relative">
       <HeaderFilter
-        tabActive={'Playa Arinaga'}
+        tabActive={'Playa de Arinaga'}
         subHeading={subHeading}
         tabs={tabs}
         heading={heading}

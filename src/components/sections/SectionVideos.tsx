@@ -127,7 +127,7 @@ const SectionVideos: FC<SectionVideosProps> = ({
 
   return (
     <div className={`nc-SectionVideos ${className}`}>
-      <Heading desc="Playa Arinaga y sus alrededores">
+      <Heading desc="Playa de Arinaga y sus alrededores">
         🎬 Contenido multimedia
       </Heading>
 
