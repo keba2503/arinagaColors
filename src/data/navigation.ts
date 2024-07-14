@@ -121,7 +121,7 @@ export const NAVIGATION_DEMO: NavItemType[] = [
       },
       {
         id: ncNanoId(),
-        href: '/',
+        href: '/sustainability',
         name: 'Sostenibilidad',
       },
     ],
