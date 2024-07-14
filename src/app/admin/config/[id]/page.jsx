@@ -14,6 +14,8 @@ import SectionCardOffer from '../../../(client-components)/(Admin)/Config/Forms/
 import SectionOffer from '../../../(client-components)/(Admin)/Config/Forms/SectionOffer';
 import SectionBookingSuccess from '../../../(client-components)/(Admin)/Config/Forms/SectionBookingSuccess';
 import SectionImageOurFeatures from '../../../(client-components)/(Admin)/Config/Forms/SectionImageOurFeatures';
+import SectionSustainability from '../../../(client-components)/(Admin)/Config/Forms/SectionSustainability';
+import SectionCardSustainability from '../../../(client-components)/(Admin)/Config/Forms/SectionCardSustainability';
 
 const componentMapping = {
   8: SectionAbout,
@@ -27,6 +29,8 @@ const componentMapping = {
   13: SectionOffer,
   14: SectionBookingSuccess,
   15: SectionImageOurFeatures,
+  16: SectionSustainability,
+  17: SectionCardSustainability,
 };
 
 const ConfigIdPage = ({ params }) => {

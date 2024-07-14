@@ -11,11 +11,10 @@ const RichTextEditor = dynamic(() => import('@/components/RichTextEditor'), {
   ssr: false,
 });
 
-const SectionAbout = ({ scope, data }) => {
+const SectionCardSustainability = ({ scope, data }) => {
   const [title, setTitle] = useState('');
   const [subtitle, setSubtitle] = useState('');
   const [description, setDescription] = useState('');
-  const [additionalText, setAdditionalText] = useState('');
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -26,7 +25,6 @@ const SectionAbout = ({ scope, data }) => {
       setTitle(data.title || '');
       setSubtitle(data.subtitle || '');
       setDescription(data.description || '');
-      setAdditionalText(data.additional_text || '');
       if (data.subtitle) {
         const imageUrl = `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/${data.subtitle}.webp`;
         setImagePreview(imageUrl);
@@ -56,7 +54,7 @@ const SectionAbout = ({ scope, data }) => {
     if (image) {
       if (data && data.subtitle) {
         try {
-          await axios.delete('/api/cloudinaryConfig', {
+          await axios.delete('/api/cloudinarySustainability', {
             data: { public_id: data.subtitle },
           });
         } catch (error) {
@@ -67,7 +65,7 @@ const SectionAbout = ({ scope, data }) => {
       const formData = new FormData();
       formData.append('file', image);
       formData.append('upload_preset', 'ml_default');
-      formData.append('folder', 'arinagacolors/configs');
+      formData.append('folder', 'arinagacolors/sustainability');
 
       try {
         const res = await axios.post(
@@ -89,7 +87,6 @@ const SectionAbout = ({ scope, data }) => {
       title,
       subtitle: imageName,
       description,
-      additional_text: additionalText,
     };
 
     try {
@@ -108,9 +105,7 @@ const SectionAbout = ({ scope, data }) => {
         );
         if (!data) {
           setTitle('');
-          setSubtitle('');
           setDescription('');
-          setAdditionalText('');
           setImage(null);
           setImagePreview('');
         }
@@ -131,10 +126,25 @@ const SectionAbout = ({ scope, data }) => {
     >
       <div className="mb-5">
         <label
+          htmlFor="scope-input"
+          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Id De la sección
+        </label>
+        <input
+          type="text"
+          id="scope-input"
+          value={scope}
+          readOnly
+          className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-200 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
+      </div>
+      <div className="mb-5">
+        <label
           htmlFor="title-input"
           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >
-          Título
+          Titulo
         </label>
         <input
           type="text"
@@ -208,7 +218,7 @@ const SectionAbout = ({ scope, data }) => {
   );
 };
 
-SectionAbout.propTypes = {
+SectionCardSustainability.propTypes = {
   scope: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   data: PropTypes.shape({
     title: PropTypes.string,
@@ -219,4 +229,4 @@ SectionAbout.propTypes = {
   }),
 };
 
-export default SectionAbout;
+export default SectionCardSustainability;

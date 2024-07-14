@@ -25,6 +25,10 @@ import TableCardOffer from '../Tables/TableCardOffer';
 import TableOffer from '../Tables/TableOffer';
 import TableBookingSuccess from '../Tables/TableBookingSuccess';
 import TableImageOurFeatures from '../Tables/TableImageOurFeatures';
+import SectionSustainability from './Forms/SectionSustainability';
+import SectionCardSustainability from './Forms/SectionCardSustainability';
+import TableSustainability from '../Tables/TableSustainability';
+import TableCardSustainability from '../Tables/TableCardSustainability';
 
 const TabsComponent = () => {
   const [scopes, setScopes] = useState([]);
@@ -83,6 +87,8 @@ const TabsComponent = () => {
     13: SectionOffer,
     14: SectionBookingSuccess,
     15: SectionImageOurFeatures,
+    16: SectionSustainability,
+    17: SectionCardSustainability,
   };
 
   const tableComponentMapping = {
@@ -97,6 +103,8 @@ const TabsComponent = () => {
     13: TableOffer,
     14: TableBookingSuccess,
     15: TableImageOurFeatures,
+    16: TableSustainability,
+    17: TableCardSustainability,
   };
 
   const ActiveFormComponent = formComponentMapping[activeTab] || null;

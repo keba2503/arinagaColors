@@ -11,7 +11,7 @@ const RichTextEditor = dynamic(() => import('@/components/RichTextEditor'), {
   ssr: false,
 });
 
-const SectionAbout = ({ scope, data }) => {
+const SectionSustainability = ({ scope, data }) => {
   const [title, setTitle] = useState('');
   const [subtitle, setSubtitle] = useState('');
   const [description, setDescription] = useState('');
@@ -208,7 +208,7 @@ const SectionAbout = ({ scope, data }) => {
   );
 };
 
-SectionAbout.propTypes = {
+SectionSustainability.propTypes = {
   scope: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   data: PropTypes.shape({
     title: PropTypes.string,
@@ -219,4 +219,4 @@ SectionAbout.propTypes = {
   }),
 };
 
-export default SectionAbout;
+export default SectionSustainability;
