@@ -3,49 +3,42 @@
 @tailwind utilities;
 
 .custom-html-styles p {
-  margin: 0 0 1em;
-  line-height: 1.6;
+    margin: 0 0 1em;
+    line-height: 1.6;
 }
 
 .custom-html-styles a {
-  color: blue;
-  text-decoration: underline;
+    color: blue;
+    text-decoration: underline;
 }
 
 .custom-html-styles ul,
 .custom-html-styles ol {
-  margin: 1em 0;
-  padding-left: 2em;
-  list-style: initial;
+    margin: 1em 0;
+    padding-left: 2em;
+    list-style: initial;
 }
 
 .custom-html-styles ul {
-  list-style-type: disc;
+    list-style-type: disc;
 }
 
 .custom-html-styles ol {
-  list-style-type: decimal;
+    list-style-type: decimal;
 }
 
 .custom-html-styles li {
-  margin-bottom: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 .custom-html-styles strong {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 /* Estilo personalizado para el widget */
-#c_ee0371e1974d1cf28afb74b3d19d9c06
-{
-  border: none !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  color: white !important;
+#c_feee89ffddbb1e5a6056b0eaa6cb4ec4 {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: white !important;
 }
-
-.widget-container #widget.widget-normal.
-{
-  color: white  !important;
-}
-
