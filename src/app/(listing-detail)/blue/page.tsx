@@ -329,33 +329,18 @@ const BlueDetailPage: FC<BlueDetailPageProps> = () => {
 
   const renderSidebar = () => {
     return (
-      <div className="listingSectionSidebar__wrap shadow-xl p-4 lg:p-6">
-        <div
-          data-accommodation-id="357500"
-          data-target="_self"
-          className="avaibook-search-widget"
-          data-widget-id="92477"
-          data-widget-token="h5SwvFQFMU/hiog6gT4HMw=="
-          data-background-color="#FFFFFF"
-          data-main-color="#499BC8"
-          data-border-radius="3px"
-          data-shadow="0 2px 20px rgb(0 0 0 / 16%)"
-          data-padding="1rem"
-          data-language="es"
-        ></div>
-        <div className="mt-6">
-          <iframe
-            src="https://www.avaibook.com/widgets_propietarios/loader.php?id=148179&lang=ES"
-            style={{
-              width: '100%',
-              height: '390px',
-              border: '0',
-              backgroundColor: 'white',
-            }}
-          >
-            Tu navegador no soporta iframes
-          </iframe>
-        </div>
+      <div className="mt-6">
+        <iframe
+          src="https://www.avaibook.com/widgets_propietarios/loader.php?id=148179&lang=ES"
+          style={{
+            width: '100%',
+            height: '390px',
+            border: '0',
+            backgroundColor: 'white',
+          }}
+        >
+          Tu navegador no soporta iframes
+        </iframe>
       </div>
     );
   };
