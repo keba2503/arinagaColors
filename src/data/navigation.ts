@@ -139,7 +139,7 @@ export const NAVIGATION_DEMO: NavItemType[] = [
       },
       {
         id: ncNanoId(),
-        href: '/',
+        href: '/granCanaria',
         name: 'Explora Gran Canaria',
       },
     ],
