@@ -9,11 +9,22 @@ import SectionGuide from './Forms/SectionGuide';
 import SectionHero from './Forms/SectionHero';
 import SectionOurFeatures from './Forms/SectionOurFeatures';
 import SectionService from './Forms/SectionService';
-import TableTextConfig from '../Tables/TableTextConfig';
 import SectionCardService from './Forms/SectionCardService';
 import SectionCardOffer from './Forms/SectionCardOffer';
 import SectionOffer from './Forms/SectionOffer';
 import SectionBookingSuccess from './Forms/SectionBookingSuccess';
+import SectionImageOurFeatures from './Forms/SectionImageOurFeatures';
+import TableAbout from '../Tables/TableAbout';
+import TableFaq from '../Tables/TableFaq';
+import TableGuide from '../Tables/TableGuide';
+import TableHero from '../Tables/TableHero';
+import TableOurFeatures from '../Tables/TableOurFeatures';
+import TableService from '../Tables/TableService';
+import TableCardService from '../Tables/TableCardService';
+import TableCardOffer from '../Tables/TableCardOffer';
+import TableOffer from '../Tables/TableOffer';
+import TableBookingSuccess from '../Tables/TableBookingSuccess';
+import TableImageOurFeatures from '../Tables/TableImageOurFeatures';
 
 const TabsComponent = () => {
   const [scopes, setScopes] = useState([]);
@@ -60,7 +71,7 @@ const TabsComponent = () => {
     }
   }, [activeTab, scopes, imageURLs]);
 
-  const componentMapping = {
+  const formComponentMapping = {
     8: SectionAbout,
     10: SectionFaq,
     9: SectionGuide,
@@ -71,9 +82,25 @@ const TabsComponent = () => {
     12: SectionCardOffer,
     13: SectionOffer,
     14: SectionBookingSuccess,
+    15: SectionImageOurFeatures,
   };
 
-  const ActiveComponent = componentMapping[activeTab] || null;
+  const tableComponentMapping = {
+    8: TableAbout,
+    10: TableFaq,
+    9: TableGuide,
+    2: TableHero,
+    3: TableOurFeatures,
+    7: TableService,
+    11: TableCardService,
+    12: TableCardOffer,
+    13: TableOffer,
+    14: TableBookingSuccess,
+    15: TableImageOurFeatures,
+  };
+
+  const ActiveFormComponent = formComponentMapping[activeTab] || null;
+  const ActiveTableComponent = tableComponentMapping[activeTab] || null;
 
   return (
     <>
@@ -128,8 +155,8 @@ const TabsComponent = () => {
           )}
         </div>
       )}
-      {ActiveComponent && <ActiveComponent scope={activeTab} />}
-      <TableTextConfig scope={activeTab} />
+      {ActiveFormComponent && <ActiveFormComponent scope={activeTab} />}
+      {ActiveTableComponent && <ActiveTableComponent scope={activeTab} />}
     </>
   );
 };

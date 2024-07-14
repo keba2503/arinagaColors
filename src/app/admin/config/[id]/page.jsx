@@ -13,6 +13,7 @@ import SectionOurFeatures from '../../../(client-components)/(Admin)/Config/Form
 import SectionCardOffer from '../../../(client-components)/(Admin)/Config/Forms/SectionCardOffer';
 import SectionOffer from '../../../(client-components)/(Admin)/Config/Forms/SectionOffer';
 import SectionBookingSuccess from '../../../(client-components)/(Admin)/Config/Forms/SectionBookingSuccess';
+import SectionImageOurFeatures from '../../../(client-components)/(Admin)/Config/Forms/SectionImageOurFeatures';
 
 const componentMapping = {
   8: SectionAbout,
@@ -25,6 +26,7 @@ const componentMapping = {
   12: SectionCardOffer,
   13: SectionOffer,
   14: SectionBookingSuccess,
+  15: SectionImageOurFeatures,
 };
 
 const ConfigIdPage = ({ params }) => {

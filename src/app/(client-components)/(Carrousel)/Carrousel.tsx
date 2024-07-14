@@ -3,7 +3,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import parse from 'html-react-parser';
-import Loading from '@/components/loading/Loading';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 interface ApiResponse {
   scope_id: number;
@@ -69,7 +70,17 @@ const CarouselBackground: React.FC = () => {
   }, [nextSlide, images.length]);
 
   if (loading) {
-    return <Loading />;
+    return (
+      <div className="relative w-full h-screen" data-carousel="slide">
+        <div className="relative h-full overflow-hidden">
+          <Skeleton height="100%" width="100%" />
+          <div className="absolute top-1/4 left-10 text-white text-xl font-semibold text-left animate__animated animate__fadeIn hidden sm:block">
+            <Skeleton width={300} height={60} />
+            <Skeleton width={200} height={40} />
+          </div>
+        </div>
+      </div>
+    );
   }
 
   if (!data || data.length === 0) {
@@ -98,7 +109,9 @@ const CarouselBackground: React.FC = () => {
           return (
             <div
               key={index}
-              className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${currentIndex === index ? 'opacity-100' : 'opacity-0'}`}
+              className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                currentIndex === index ? 'opacity-100' : 'opacity-0'
+              }`}
               data-carousel-item
             >
               <Image
