@@ -82,7 +82,7 @@ const TableTextConfig = ({ scope }) => {
               Titulo
             </th>
             <th scope="col" className="px-6 py-3">
-              Parrafo inicial
+              Id de imagen
             </th>
             <th scope="col" className="px-6 py-3">
               Descripción
@@ -100,11 +100,11 @@ const TableTextConfig = ({ scope }) => {
             >
               <td className="px-6 py-4">{item.id}</td>
               <td className="px-6 py-4">{item.title}</td>
+              <td className="px-6 py-4">{item.subtitle}</td>
               <td
                 className="px-6 py-4"
                 dangerouslySetInnerHTML={{ __html: item.description }}
               />
-              <td className="px-6 py-4">{item.additional_text}</td>
               <td className="flex items-center px-6 py-4">
                 <Link
                   className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
