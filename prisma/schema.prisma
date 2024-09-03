@@ -44,14 +44,28 @@ model Scope {
 model Config {
   id               Int      @id @default(autoincrement())
   scope_id         Int
-  title            String?  @db.Text // Renamed and made Text
-  subtitle         String?  @db.Text // Renamed and made Text
-  description      String?  @db.Text // Renamed and made Text
-  additional_text  String?  @db.Text // Renamed and made Text
+  title            String?  @db.Text
+  subtitle         String?  @db.Text
+  description      String?  @db.Text
+  additional_text  String?  @db.Text
   updated_at       DateTime @updatedAt
 
   scope            Scope    @relation(fields: [scope_id], references: [id])
 
   @@index([scope_id])
+}
+
+model Event {
+  id                Int       @id @default(autoincrement())
+  name              String
+  date              DateTime
+  location          String
+  description       String?   @db.Text
+  image             String
+  fullDescription   String?   @db.Text
+  exactLocation     String
+  mainActivities    String?   @db.Text
+  recommendations   String?   @db.Text
+  moreInfoLink      String?   @db.Text
 }
 
