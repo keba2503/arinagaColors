@@ -8,6 +8,7 @@ import {
   PhotoIcon,
   ArrowLeftOnRectangleIcon,
   CogIcon,
+  SparklesIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -16,6 +17,7 @@ const links = [
   { name: 'Home', href: '/admin', icon: HomeIcon },
   { name: 'Secciones configurables', href: '/admin/config', icon: CogIcon },
   { name: 'Guía del huésped', href: '/admin/guide', icon: BookOpenIcon },
+  { name: 'Gran Canaria', href: '/admin/event', icon: SparklesIcon },
   { name: 'FAQ', href: '/admin/faq', icon: QuestionMarkCircleIcon },
   { name: 'Gallery', href: '/admin/gallery', icon: PhotoIcon },
   { name: 'Imagenes Home', href: '/admin/hero', icon: PhotoIcon },

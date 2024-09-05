@@ -69,3 +69,10 @@ model Event {
   moreInfoLink      String?   @db.Text
 }
 
+model PlaceOfInterest {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?   @db.Text
+  imageUrl    String
+  location    String
+}
