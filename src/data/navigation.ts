@@ -134,7 +134,7 @@ export const NAVIGATION_DEMO: NavItemType[] = [
     children: [
       {
         id: ncNanoId(),
-        href: '/',
+        href: '/playaArinaga',
         name: 'Playa de Arinaga',
       },
       {

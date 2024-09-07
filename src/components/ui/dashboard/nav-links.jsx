@@ -23,6 +23,16 @@ const links = [
     href: '/admin/places',
     icon: SparklesIcon,
   },
+  {
+    name: 'Playa de Arinaga - Eventos',
+    href: '/admin/eventArinaga',
+    icon: SparklesIcon,
+  },
+  {
+    name: 'Playa de Arinaga - Sitios de interes',
+    href: '/admin/placesArinaga',
+    icon: SparklesIcon,
+  },
   { name: 'FAQ', href: '/admin/faq', icon: QuestionMarkCircleIcon },
   { name: 'Gallery', href: '/admin/gallery', icon: PhotoIcon },
   { name: 'Imagenes Home', href: '/admin/hero', icon: PhotoIcon },

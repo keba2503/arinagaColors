@@ -76,3 +76,25 @@ model PlaceOfInterest {
   imageUrl    String
   location    String
 }
+
+model PlaceOfInterestArinaga {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?   @db.Text
+  imageUrl    String?   @db.Text
+  location    String
+}
+
+model EventArinaga {
+  id                Int       @id @default(autoincrement())
+  name              String
+  date              DateTime
+  location          String
+  description       String?   @db.Text
+  image             String
+  fullDescription   String?   @db.Text
+  exactLocation     String
+  mainActivities    String?   @db.Text
+  recommendations   String?   @db.Text
+  moreInfoLink      String?   @db.Text
+}
