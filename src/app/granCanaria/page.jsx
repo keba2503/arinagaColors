@@ -29,7 +29,12 @@ const getFormattedDate = (dateStr) => {
 };
 
 const fetchEvents = async () => {
-  const response = await fetch('/api/events');
+  const response = await fetch('/api/event');
+  return response.json();
+};
+
+const fetchPlaces = async () => {
+  const response = await fetch('/api/places');
   return response.json();
 };
 
@@ -47,19 +52,21 @@ const Card = ({ title, description, imageUrl, location, date }) => {
   return (
     <>
       <div className="relative w-60 h-80 m-4 bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105">
-        <div
-          className="absolute top-0 left-0"
-          style={{
-            backgroundColor: 'rgb(73, 155, 200)',
-            color: 'white',
-            padding: '0.25rem 0.5rem',
-            textTransform: 'uppercase',
-            fontSize: '0.875rem',
-            fontWeight: 'bold',
-          }}
-        >
-          {getFormattedDate(date).split(' ')[2]}
-        </div>
+        {date && (
+          <div
+            className="absolute top-0 left-0"
+            style={{
+              backgroundColor: 'rgb(73, 155, 200)',
+              color: 'white',
+              padding: '0.25rem 0.5rem',
+              textTransform: 'uppercase',
+              fontSize: '0.875rem',
+              fontWeight: 'bold',
+            }}
+          >
+            {getFormattedDate(date).split(' ')[2]}
+          </div>
+        )}
         <img
           src={imageUrl}
           alt={title}
@@ -93,9 +100,11 @@ const Card = ({ title, description, imageUrl, location, date }) => {
             <p className="mt-2">
               <strong>Ubicación:</strong> {location}
             </p>
-            <p>
-              <strong>Fecha:</strong> {getFormattedDate(date)}
-            </p>
+            {date && (
+              <p>
+                <strong>Fecha:</strong> {getFormattedDate(date)}
+              </p>
+            )}
             <div className="mt-2 flex items-center pt-5">
               <MapPinIcon className="w-5 h-5 text-gray-800 mr-1" />
               <a
@@ -119,19 +128,27 @@ Card.propTypes = {
   description: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
+  date: PropTypes.string, // Opcional porque no todos los lugares tienen fecha
 };
 
 const HeroVideo = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [events, setEvents] = useState([]);
+  const [places, setPlaces] = useState([]);
 
   useEffect(() => {
     const loadEvents = async () => {
       const data = await fetchEvents();
       setEvents(data);
     };
+
+    const loadPlaces = async () => {
+      const data = await fetchPlaces();
+      setPlaces(data);
+    };
+
     loadEvents();
+    loadPlaces();
   }, []);
 
   const handlePlay = () => {
@@ -183,7 +200,18 @@ const HeroVideo = () => {
                 }`
               }
             >
-              Eventos
+              Fiestas
+            </Tab>
+            <Tab
+              className={({ selected }) =>
+                `w-full py-2.5 text-lg leading-6 font-bold rounded-lg ${
+                  selected
+                    ? 'bg-white shadow text-[rgb(73,155,200)]'
+                    : 'text-white hover:bg-white/[0.12] hover:text-white'
+                }`
+              }
+            >
+              Lugares
             </Tab>
           </Tab.List>
           <Tab.Panels>
@@ -196,6 +224,17 @@ const HeroVideo = () => {
                   imageUrl={event.image}
                   location={event.location}
                   date={event.date}
+                />
+              ))}
+            </Tab.Panel>
+            <Tab.Panel className="p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {places.map((place) => (
+                <Card
+                  key={place.id}
+                  title={place.title}
+                  description={place.description}
+                  imageUrl={place.imageUrl}
+                  location={place.location}
                 />
               ))}
             </Tab.Panel>
