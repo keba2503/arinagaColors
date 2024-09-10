@@ -1,15 +1,54 @@
-import React, { FC, useEffect } from 'react';
+'use client';
+
+import React, { FC, useEffect, useContext } from 'react';
+import { LanguageContext } from '@/context/LanguageContext';
 
 const StaySearchForm: FC = () => {
+  const context = useContext(LanguageContext);
+
+  if (!context) {
+    throw new Error('LanguageContext must be used within a LanguageProvider');
+  }
+
+  const { language } = context;
+
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://bookonline.pro/widgets/search/dist/index.js';
-    script.defer = true;
-    document.body.appendChild(script);
+    const insertScript = () => {
+      const script = document.createElement('script');
+      script.src = 'https://bookonline.pro/widgets/search/dist/index.js';
+      script.defer = true;
+      document.body.appendChild(script);
+
+      return () => {
+        document.body.removeChild(script);
+      };
+    };
+
+    const removeScript = insertScript();
+
     return () => {
-      document.body.removeChild(script);
+      removeScript();
     };
   }, []);
+
+  useEffect(() => {
+    const insertScript = () => {
+      const script = document.createElement('script');
+      script.src = 'https://bookonline.pro/widgets/search/dist/index.js';
+      script.defer = true;
+      document.body.appendChild(script);
+
+      return () => {
+        document.body.removeChild(script);
+      };
+    };
+
+    const removeScript = insertScript();
+
+    return () => {
+      removeScript();
+    };
+  }, [language]);
 
   return (
     <form className="w-full relative mt-8 flex rounded-full dark:bg-neutral-800">
@@ -28,7 +67,7 @@ const StaySearchForm: FC = () => {
           data-border-radius="30px"
           data-shadow="0 2px 20px rgb(0 0 0 / 16%)"
           data-padding="1rem"
-          data-language="es"
+          data-language={language}
         ></div>
       </div>
     </form>

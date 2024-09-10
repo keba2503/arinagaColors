@@ -1,4 +1,6 @@
-import React, { FC } from 'react';
+'use client';
+
+import React, { FC, useContext, useEffect, useState } from 'react';
 import {
   CurrencyEuroIcon,
   CalendarDaysIcon,
@@ -10,6 +12,8 @@ import VectorImg from '@/images/VectorHIW.svg';
 import Image from 'next/image';
 import Heading from '@/shared/Heading';
 import { TagIcon } from '@heroicons/react/24/solid';
+import { LanguageContext } from '@/context/LanguageContext';
+import { translateText } from '@/utils/translate';
 
 export interface SectionHowItWorkProps {
   className?: string;
@@ -20,6 +24,7 @@ export interface SectionHowItWorkProps {
     Icon: FC;
   }[];
 }
+
 const CombinedIcon: FC = () => (
   <div className="relative w-24 h-24 text-gray-600">
     <CalendarDaysIcon className="absolute w-20 h-20" />
@@ -40,19 +45,19 @@ const DEMO_DATA: SectionHowItWorkProps['data'] = [
     id: 1,
     Icon: CombinedIcon,
     title: 'Ofertas exclusivas en reservas',
-    desc: '',
+    desc: 'Disfruta de las mejores ofertas al reservar con nosotros.',
   },
   {
     id: 2,
     Icon: CurrencyEuroIcon,
     title: 'Mejor precio online',
-    desc: '',
+    desc: 'Garantizamos los precios más bajos.',
   },
   {
     id: 3,
     Icon: CancelIcon,
     title: 'Política de cancelación flexible',
-    desc: '',
+    desc: 'Cancelación sin complicaciones.',
   },
 ];
 
@@ -60,6 +65,52 @@ const SectionHowItWork: FC<SectionHowItWorkProps> = ({
   className = '',
   data = DEMO_DATA,
 }) => {
+  const context = useContext(LanguageContext);
+
+  if (!context) {
+    throw new Error('LanguageContext must be used within a LanguageProvider');
+  }
+
+  const { language } = context;
+  const [translatedData, setTranslatedData] = useState(data);
+  const [translatedHeading, setTranslatedHeading] = useState(
+    '¿Por qué reservar en Arinaga Colors?',
+  );
+  const [translatedDesc, setTranslatedDesc] = useState(
+    'Relájate y disfruta de la estadía',
+  );
+
+  useEffect(() => {
+    const translateData = async () => {
+      const newData = await Promise.all(
+        data.map(async (item) => {
+          const translatedTitle = await translateText(item.title, language);
+          const translatedDesc = await translateText(item.desc, language);
+          return {
+            ...item,
+            title: translatedTitle,
+            desc: translatedDesc,
+          };
+        }),
+      );
+
+      const translatedHeadingText = await translateText(
+        '¿Por qué reservar en Arinaga Colors?',
+        language,
+      );
+      const translatedDescText = await translateText(
+        'Relájate y disfruta de la estadía',
+        language,
+      );
+
+      setTranslatedData(newData);
+      setTranslatedHeading(translatedHeadingText);
+      setTranslatedDesc(translatedDescText);
+    };
+
+    translateData();
+  }, [language, data]);
+
   return (
     <div
       className={`nc-SectionHowItWork ${className}`}
@@ -67,10 +118,10 @@ const SectionHowItWork: FC<SectionHowItWorkProps> = ({
     >
       <Heading
         isCenter
-        desc="Relájate y disfruta de la estadía"
+        desc={translatedDesc}
         className="text-lg leading-tight tracking-tight"
       >
-        ¿Por qué reservar en Arinaga Colors?
+        {translatedHeading}
       </Heading>
 
       <div className="mt-20 relative grid md:grid-cols-3 gap-20">
@@ -79,7 +130,7 @@ const SectionHowItWork: FC<SectionHowItWorkProps> = ({
           src={VectorImg}
           alt=""
         />
-        {data.map((item) => (
+        {translatedData.map((item) => (
           <div
             key={item.id}
             className="relative flex flex-col items-center max-w-xs mx-auto"

@@ -30,7 +30,7 @@ const LangDropdown = ({
         {({ open, close }) => (
           <>
             <Popover.Button
-              className={`group px-3 py-1.5 border-neutral-300 hover:border-neutral-400 dark:border-neutral-700 rounded-full inline-flex items-center text-sm text-gray-700 dark:text-neutral-300 font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 ${open ? 'text-opacity-100' : 'text-opacity-80'}`}
+              className={`group px-3 py-1.5 border-neutral-300 hover:border-neutral-400 dark:border-neutral-700 rounded-full inline-flex items-center text-sm text-gray-700 dark:text-neutral-300 font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 ${open ? 'text-opacity-100' : 'text-opacity-80'} pl-4`}
             >
               <GlobeAltIcon className="w-[18px] h-[18px] opacity-80" />
               <span className="ml-2 select-none">

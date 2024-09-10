@@ -1,10 +1,12 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import Image from 'next/image';
 import parse from 'html-react-parser';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import { LanguageContext } from '@/context/LanguageContext';
+import { translateText } from '@/utils/translate';
 
 interface ApiResponse {
   scope_id: number;
@@ -25,14 +27,40 @@ const CarouselBackground: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const context = useContext(LanguageContext);
+
+  if (!context) {
+    throw new Error('LanguageContext must be used within a LanguageProvider');
+  }
+
+  const { language } = context;
+
   const fetchData = useCallback(async () => {
     try {
       const configResponse = await fetch('/api/config');
       const configData = await configResponse.json();
+
       const filteredData = configData.filter(
         (item: ApiResponse) => item.scope_id === 2,
       );
-      setData(filteredData);
+
+      const translatedData = await Promise.all(
+        filteredData.map(async (item: ApiResponse) => {
+          const translatedTitle = await translateText(item.title, language);
+          const translatedSubtitle = await translateText(
+            item.subtitle,
+            language,
+          );
+
+          return {
+            ...item,
+            title: translatedTitle,
+            subtitle: translatedSubtitle,
+          };
+        }),
+      );
+
+      setData(translatedData);
 
       const imagesResponse = await fetch('/api/cloudinaryHero');
       const imagesData = await imagesResponse.json();
@@ -43,7 +71,7 @@ const CarouselBackground: React.FC = () => {
       console.error('Error fetching data:', error);
       setLoading(false);
     }
-  }, []);
+  }, [language]);
 
   useEffect(() => {
     fetchData();
@@ -122,8 +150,7 @@ const CarouselBackground: React.FC = () => {
                 priority
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-black opacity-20"></div>{' '}
-              {/* Overlay */}
+              <div className="absolute inset-0 bg-black opacity-20"></div>
               {currentIndex === index && (
                 <div className="absolute top-1/4 left-10 text-white text-xl font-semibold text-left animate__animated animate__fadeIn hidden sm:block">
                   <div className="uppercase text-6xl animate__animated animate__fadeIn animate__delay-1s">
@@ -144,7 +171,9 @@ const CarouselBackground: React.FC = () => {
           <button
             key={index}
             type="button"
-            className={`w-3 h-3 rounded-full ${currentIndex === index ? 'bg-white' : 'bg-gray-400'}`}
+            className={`w-3 h-3 rounded-full ${
+              currentIndex === index ? 'bg-white' : 'bg-gray-400'
+            }`}
             aria-current={currentIndex === index}
             aria-label={`Slide ${index + 1}`}
             onClick={() => setCurrentIndex(index)}
