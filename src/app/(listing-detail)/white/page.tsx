@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, Fragment, useEffect, useState } from 'react';
+import React, { FC, Fragment, useContext, useEffect, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { Squares2X2Icon } from '@heroicons/react/24/outline';
 import Badge from '@/shared/Badge';
@@ -10,11 +10,26 @@ import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { Amenities_demos, PHOTOS } from './constant';
 import { Route } from 'next';
+import parse from 'html-react-parser';
+import { LanguageContext } from '@/context/LanguageContext';
+import { translateText } from '@/utils/translate';
 
 export interface YellowDetailPageProps {}
 
 const WhiteDetailPage: FC<YellowDetailPageProps> = () => {
   const [isOpenModalAmenities, setIsOpenModalAmenities] = useState(false);
+
+  const [translatedTexts, setTranslatedTexts] = useState<{
+    [key: string]: string | React.ReactNode;
+  }>({});
+
+  const context = useContext(LanguageContext);
+
+  if (!context) {
+    throw new Error('LanguageContext must be used within a LanguageProvider');
+  }
+
+  const { language } = context;
 
   const thisPathname = usePathname();
   const router = useRouter();
@@ -28,6 +43,82 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = () => {
       document.body.removeChild(script);
     };
   }, []);
+
+  useEffect(() => {
+    const translateContent = async () => {
+      const translations = {
+        title: 'The White House',
+        guests: await translateText('huespedes', language),
+        beds: await translateText('camas', language),
+        bath: await translateText('baño', language),
+        rooms: await translateText('habitaciones', language),
+        infoTitle: await translateText('Información del apartamento', language),
+        photos: await translateText('Ver todas las fotos', language),
+        more: await translateText('Ver más', language),
+        description: parse(
+          await translateText(
+            '<span className="block mb-4">' +
+              'Acogedora vivienda vacacional en Arinaga con vistas al mar, que ' +
+              'consta de 3 dormitorios dobles, con capacidad para 6 personas y con ' +
+              'pequeña terraza y balcón, ideal para tomar algo y relajarse ' +
+              'contemplando y escuchando el sonido del mar.' +
+              '</span>' +
+              '<span className="block mb-4">' +
+              'El alojamiento tiene una superficie de 85 m², exterior con mucha luz ' +
+              'y está situado en primera línea de playa. Está totalmente equipado ' +
+              'con lavadora, plancha, acceso ilimitado a Internet (wifi), secador ' +
+              'de pelo y 1 TV. La cocina, de estilo americana, cuenta con placa ' +
+              'vitrocerámica, nevera, microondas, horno, congelador, ' +
+              'vajilla/cubertería, utensilios/cocina, cafetera, tostadora, hervidor ' +
+              'de agua y exprimidor. Ofrecemos cuna bajo petición, de manera ' +
+              'gratuita.' +
+              '</span>' +
+              '<span className="block mb-4">' +
+              'A lo largo de la costa de Arinaga, hay un paseo de aproximadamente 2 ' +
+              'kilómetros que recorre el pueblo de un extremo a otro. La vivienda ' +
+              'se encuentra en el propio paseo, Hay una gran variedad de ' +
+              'restaurantes y bares en el paseo. La playa se divide en varias zonas ' +
+              'de baño. La gran parte es de piedra, pero hay zonas con arena. ' +
+              'Cuenta con una piscina natural en la zona del Soco Negro, con ' +
+              'plataformas de madera para tomar el sol. Al final del paseo se ' +
+              'encuentra la zona del Risco Verde, ideal para tomar un baño con ' +
+              'marea alta. También tiene plataformas de madera para tomar el sol. ' +
+              'La playa posee la Bandera Azul desde el año 2017.' +
+              '</span>' +
+              '<span className="block mb-4">' +
+              'La temperatura media es de 25º a lo largo del año. Se puede ' +
+              'practicar variedad de deportes, como ciclismo, kitesurf, windsurf, ' +
+              'paddle surf y submarinismo. Además, la vivienda se encuentra a 5 ' +
+              'minutos de la reserva natural Playa de Cabrón. Es de arena rubia, ' +
+              'aunque también cuenta con algunas formaciones rocosas volcánicas. El ' +
+              'Cabrón es uno de los enclaves favoritos para practicar el buceo en ' +
+              'Gran Canaria, una de las actividades en Gran Canaria que te ' +
+              'recomendamos realizar.' +
+              '</span>',
+            language,
+          ),
+        ),
+        amenitiesTitle: await translateText('Comodidades', language),
+        reviews: await translateText('Reseñas', language),
+        address: await translateText('Dirección', language),
+        thingsToKnow: await translateText('Cosas que debes saber', language),
+        cancellationPolicy: await translateText(
+          'Política de cancelación',
+          language,
+        ),
+        cancellationPolicyText: await translateText(
+          ' Cancelación flexible, si anulas 7 días antes de la entrada al\n' +
+            '            alojamiento.',
+          language,
+        ),
+        checkIn: await translateText('Llegada', language),
+        checkOut: await translateText('Salida', language),
+      };
+      setTranslatedTexts(translations);
+    };
+
+    translateContent();
+  }, [language]);
 
   function closeModalAmenities() {
     setIsOpenModalAmenities(false);
@@ -51,7 +142,7 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = () => {
 
         {/* 2 */}
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
-          The White House
+          {translatedTexts.title || 'The White House'}
         </h2>
 
         {/* 5 */}
@@ -61,26 +152,38 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = () => {
         <div className="flex items-center justify-between xl:justify-start space-x-8 xl:space-x-12 text-sm text-neutral-700 dark:text-neutral-300">
           <div className="flex items-center space-x-3 ">
             <i className="las la-user text-2xl "></i>
-            <span className="">
-              6 <span className="hidden sm:inline-block">huespedes</span>
+            <span>
+              6{' '}
+              <span className="hidden sm:inline-block">
+                {translatedTexts.guests || 'huespedes'}
+              </span>
             </span>
           </div>
           <div className="flex items-center space-x-3">
             <i className="las la-bed text-2xl"></i>
-            <span className="">
-              5 <span className="hidden sm:inline-block">camas</span>
+            <span>
+              5{' '}
+              <span className="hidden sm:inline-block">
+                {translatedTexts.beds || 'camas'}
+              </span>
             </span>
           </div>
           <div className="flex items-center space-x-3">
             <i className="las la-bath text-2xl"></i>
-            <span className="">
-              1 <span className="hidden sm:inline-block">baño</span>
+            <span>
+              1{' '}
+              <span className="hidden sm:inline-block">
+                {translatedTexts.bath || 'baño'}
+              </span>
             </span>
           </div>
           <div className="flex items-center space-x-3">
             <i className="las la-door-open text-2xl"></i>
-            <span className="">
-              3 <span className="hidden sm:inline-block">habitaciones</span>
+            <span>
+              3{' '}
+              <span className="hidden sm:inline-block">
+                {translatedTexts.rooms || 'habitaciones'}
+              </span>
             </span>
           </div>
         </div>
@@ -91,47 +194,12 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = () => {
   const renderSection2 = () => {
     return (
       <div className="listingSection__wrap">
-        <h2 className="text-2xl font-semibold">Información del apartamento</h2>
+        <h2 className="text-2xl font-semibold">
+          {translatedTexts.infoTitle || 'Información del apartamento'}
+        </h2>
         <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
         <div className="text-neutral-6000 dark:text-neutral-300 text-justify">
-          <span className="block mb-4">
-            Acogedora vivienda vacacional en Arinaga con vistas al mar, que
-            consta de 3 dormitorios dobles, con capacidad para 6 personas y con
-            pequeña terraza y balcón, ideal para tomar algo y relajarse
-            contemplando y escuchando el sonido del mar.
-          </span>
-          <span className="block mb-4">
-            El alojamiento tiene una superficie de 85 m², exterior con mucha luz
-            y está situado en primera línea de playa. Está totalmente equipado
-            con lavadora, plancha, acceso ilimitado a Internet (wifi), secador
-            de pelo y 1 TV. La cocina, de estilo americana, cuenta con placa
-            vitrocerámica, nevera, microondas, horno, congelador,
-            vajilla/cubertería, utensilios/cocina, cafetera, tostadora, hervidor
-            de agua y exprimidor. Ofrecemos cuna bajo petición, de manera
-            gratuita.
-          </span>
-          <span className="block mb-4">
-            A lo largo de la costa de Arinaga, hay un paseo de aproximadamente 2
-            kilómetros que recorre el pueblo de un extremo a otro. La vivienda
-            se encuentra en el propio paseo, Hay una gran variedad de
-            restaurantes y bares en el paseo. La playa se divide en varias zonas
-            de baño. La gran parte es de piedra, pero hay zonas con arena.
-            Cuenta con una piscina natural en la zona del Soco Negro, con
-            plataformas de madera para tomar el sol. Al final del paseo se
-            encuentra la zona del Risco Verde, ideal para tomar un baño con
-            marea alta. También tiene plataformas de madera para tomar el sol.
-            La playa posee la Bandera Azul desde el año 2017.
-          </span>
-          <span className="block mb-4">
-            La temperatura media es de 25º a lo largo del año. Se puede
-            practicar variedad de deportes, como ciclismo, kitesurf, windsurf,
-            paddle surf y submarinismo. Además, la vivienda se encuentra a 5
-            minutos de la reserva natural Playa de Cabrón. Es de arena rubia,
-            aunque también cuenta con algunas formaciones rocosas volcánicas. El
-            Cabrón es uno de los enclaves favoritos para practicar el buceo en
-            Gran Canaria, una de las actividades en Gran Canaria que te
-            recomendamos realizar.
-          </span>
+          <span className="block mb-4">{translatedTexts.description}</span>
         </div>
       </div>
     );
@@ -140,25 +208,20 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = () => {
   const renderSection3 = () => {
     return (
       <div className="listingSection__wrap">
-        <div>
-          <h2 className="text-2xl font-semibold">Comodidades</h2>
-          <span className="block mt-2 text-neutral-500 dark:text-neutral-400">
-            {`Acerca de los servicios y comodidades de la propiedad`}
-          </span>
-        </div>
+        <div>{translatedTexts.amenitiesTitle || 'Comodidades'} </div>
         <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 text-sm text-neutral-700 dark:text-neutral-300">
           {Amenities_demos.filter((_, i) => i < 12).map((item) => (
             <div key={item.name} className="flex items-center space-x-3">
               <i className={`text-3xl las ${item.icon}`}></i>
-              <span className="">{item.name}</span>
+              <span className="">{translateText(item.name, language)}</span>
             </div>
           ))}
         </div>
         <div className="w-14 border-b border-neutral-200"></div>
         <div>
           <ButtonSecondary onClick={openModalAmenities}>
-            Ver más
+            {translatedTexts.more || 'Ver mas'}{' '}
           </ButtonSecondary>
         </div>
         {renderMotalAmenities()}
@@ -187,7 +250,6 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = () => {
               <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-40" />
             </Transition.Child>
 
-            {/* This element is to trick the browser into centering the modal contents. */}
             <span
               className="inline-block h-screen align-middle"
               aria-hidden="true"
@@ -222,7 +284,7 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = () => {
                         <i
                           className={`text-4xl text-neutral-6000 las ${item.icon}`}
                         ></i>
-                        <span>{item.name}</span>
+                        <span>{translateText(item.name, language)}</span>
                       </div>
                     ))}
                   </div>
@@ -238,11 +300,13 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = () => {
   const renderSection6 = () => {
     return (
       <div className="listingSection__wrap">
-        <h2 className="text-2xl font-semibold">Reseñas</h2>
+        <h2 className="text-2xl font-semibold">
+          {translatedTexts.reviews || 'Reseñas'}
+        </h2>
         <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
         <div className="flex justify-center mt-6">
           <iframe
-            src="https://www.avaibook.com/widgets_propietarios/opiniones.php?cod_propietario=92477&cod_alojamiento=357517&subtipo=2&color_texto=000000&lang=es"
+            src={`https://www.avaibook.com/widgets_propietarios/opiniones.php?cod_propietario=92477&cod_alojamiento=357517&subtipo=2&color_texto=000000&lang=${language}`}
             style={{ width: '100%', height: '350px', border: '0px' }}
             frameBorder="0"
           >
@@ -257,7 +321,10 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = () => {
     return (
       <div className="listingSection__wrap">
         <div>
-          <h2 className="text-2xl font-semibold">Dirección</h2>
+          <h2 className="text-2xl font-semibold">
+            {' '}
+            {translatedTexts.address || 'Dirección'}
+          </h2>
           <span className="block mt-2 text-neutral-500 dark:text-neutral-400">
             Playa de Arinaga
           </span>
@@ -283,13 +350,21 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = () => {
   const renderSection8 = () => {
     return (
       <div className="listingSection__wrap">
-        <h2 className="text-2xl font-semibold">Cosas que debes saber</h2>
+        <h2 className="text-2xl font-semibold">
+          {' '}
+          {translatedTexts.thingsToKnow || 'Cosas que debes saber'}
+        </h2>
         <div className="w-14 border-b border-neutral-200 dark:border-neutral-700" />
         <div>
-          <h4 className="text-lg font-semibold">Política de cancelación</h4>
+          <h4 className="text-lg font-semibold">
+            {' '}
+            {translatedTexts.cancellationPolicy || 'Política de cancelación'}
+          </h4>
           <span className="block mt-3 text-neutral-500 dark:text-neutral-400">
-            Cancelación flexible, si anulas 7 días antes de la entrada al
-            alojamiento.
+            {' '}
+            {translatedTexts.cancellationPolicyText ||
+              'Cancelación flexible, si anulas 7 días antes de la entrada al\n' +
+                '            alojamiento.'}
             <br />
           </span>
         </div>
@@ -300,11 +375,11 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = () => {
           <h4 className="text-lg font-semibold"></h4>
           <div className="mt-3 text-neutral-500 dark:text-neutral-400 max-w-md text-sm sm:text-base">
             <div className="flex space-x-10 justify-between p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
-              <span>Llegada</span>
+              <span> {translatedTexts.checkIn || 'Llegada'}</span>
               <span>14:00</span>
             </div>
             <div className="flex space-x-10 justify-between p-3">
-              <span>Salida</span>
+              <span>{translatedTexts.checkOut || 'Salida'}</span>
               <span>11:00</span>
             </div>
           </div>
@@ -318,7 +393,7 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = () => {
     return (
       <div className="mt-6">
         <iframe
-          src="https://www.avaibook.com/widgets_propietarios/loader.php?id=148916&lang=ES"
+          src={`https://www.avaibook.com/widgets_propietarios/loader.php?id=148916&lang=${language}`}
           data-target="_self"
           style={{
             width: '100%',
@@ -380,7 +455,7 @@ const WhiteDetailPage: FC<YellowDetailPageProps> = () => {
           >
             <Squares2X2Icon className="w-5 h-5" />
             <span className="ml-2 text-neutral-800 text-sm font-medium">
-              Ver todas las fotos
+              {translatedTexts.photos || 'Ver todas las fotos'}{' '}
             </span>
           </button>
         </div>
