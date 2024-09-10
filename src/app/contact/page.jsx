@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Image from 'next/image';
 import SocialsList from '@/shared/SocialsList';
 import Label from '@/components/Label';
@@ -8,21 +8,11 @@ import Input from '@/shared/Input';
 import Textarea from '@/shared/Textarea';
 import ButtonPrimary from '@/shared/ButtonPrimary';
 import ArinagaImage from '../../images/arinaga.jpeg';
-
-const info = [
-  {
-    title: 'Dirección',
-    desc: 'Playa de Arinaga, Las Palmas, España',
-    icon: '📍', // Puedes usar un icono apropiado aquí
-  },
-  {
-    title: 'Correo electrónico',
-    desc: 'arinagacolors@gmail.com',
-    icon: '✉️', // Puedes usar un icono apropiado aquí
-  },
-];
+import { LanguageContext } from '@/context/LanguageContext';
+import { translateText } from '@/utils/translate'; // Función de traducción
 
 const PageContact = () => {
+  const { language } = useContext(LanguageContext); // Obtener el idioma actual
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -31,6 +21,98 @@ const PageContact = () => {
 
   const [responseMessage, setResponseMessage] = useState('');
   const [isError, setIsError] = useState(false);
+
+  const [translatedTexts, setTranslatedTexts] = useState({
+    title: '',
+    description: '',
+    formTitle: '',
+    nameLabel: '',
+    emailLabel: '',
+    messageLabel: '',
+    sendButton: '',
+    successMessage: '',
+    errorMessage: '',
+    addressTitle: '',
+    addressDesc: '',
+    emailTitle: '',
+    emailDesc: '',
+    socialTitle: '',
+  });
+
+  useEffect(() => {
+    // Traducir el contenido estático
+    const fetchTranslations = async () => {
+      const translatedTitle = await translateText(
+        'Contacta con nosotros',
+        language,
+      );
+      const translatedDescription = await translateText(
+        'Estamos aquí para resolver cualquier duda o consulta que tengas. No dudes en contactarnos para obtener más información sobre nuestros apartamentos vacacionales, tarifas y disponibilidad.',
+        language,
+      );
+      const translatedFormTitle = await translateText(
+        'Formulario de contacto',
+        language,
+      );
+      const translatedNameLabel = await translateText(
+        'Nombre completo',
+        language,
+      );
+      const translatedEmailLabel = await translateText(
+        'Dirección de correo',
+        language,
+      );
+      const translatedMessageLabel = await translateText('Mensaje', language);
+      const translatedSendButton = await translateText(
+        'Enviar mensaje',
+        language,
+      );
+      const translatedSuccessMessage = await translateText(
+        'Mensaje enviado con éxito!',
+        language,
+      );
+      const translatedErrorMessage = await translateText(
+        'Error al enviar el mensaje.',
+        language,
+      );
+      const translatedAddressTitle = await translateText('Dirección', language);
+      const translatedAddressDesc = await translateText(
+        'Playa de Arinaga, Las Palmas, España',
+        language,
+      );
+      const translatedEmailTitle = await translateText(
+        'Correo electrónico',
+        language,
+      );
+      const translatedEmailDesc = await translateText(
+        'arinagacolors@gmail.com',
+        language,
+      );
+      const translatedSocialTitle = await translateText(
+        'Redes sociales',
+        language,
+      );
+
+      setTranslatedTexts({
+        title: translatedTitle,
+        description: translatedDescription,
+        formTitle: translatedFormTitle,
+        nameLabel: translatedNameLabel,
+        emailLabel: translatedEmailLabel,
+        messageLabel: translatedMessageLabel,
+        sendButton: translatedSendButton,
+        successMessage: translatedSuccessMessage,
+        errorMessage: translatedErrorMessage,
+        addressTitle: translatedAddressTitle,
+        addressDesc: translatedAddressDesc,
+        emailTitle: translatedEmailTitle,
+        emailDesc: translatedEmailDesc,
+        socialTitle: translatedSocialTitle,
+      });
+    };
+
+    fetchTranslations();
+  }, [language]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -53,7 +135,7 @@ const PageContact = () => {
 
     const result = await res.json();
     if (result.success) {
-      setResponseMessage('Mensaje enviado con éxito!');
+      setResponseMessage(translatedTexts.successMessage);
       setIsError(false);
       setFormData({
         name: '',
@@ -61,7 +143,7 @@ const PageContact = () => {
         message: '',
       });
     } else {
-      setResponseMessage('Error al enviar el mensaje.');
+      setResponseMessage(translatedTexts.errorMessage);
       setIsError(true);
     }
 
@@ -87,28 +169,35 @@ const PageContact = () => {
             <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
             <div className="relative p-10 z-20 text-white">
               <h2 className="text-2xl font-semibold mb-4">
-                Contacta con nosotros
+                {translatedTexts.title}
               </h2>
-              <p className="mb-8">
-                Estamos aquí para resolver cualquier duda o consulta que tengas.
-                No dudes en contactarnos para obtener más información sobre
-                nuestros apartamentos vacacionales, tarifas y disponibilidad.
-              </p>
+              <p className="mb-8">{translatedTexts.description}</p>
               <div className="space-y-4">
-                {info.map((item, index) => (
-                  <div key={index} className="flex items-start space-x-4">
-                    <span className="text-3xl">{item.icon}</span>
-                    <div>
-                      <h3 className="uppercase font-semibold text-sm tracking-wider">
-                        {item.title}
-                      </h3>
-                      <span className="block mt-2 text-white">{item.desc}</span>
-                    </div>
+                <div className="flex items-start space-x-4">
+                  <span className="text-3xl">📍</span>
+                  <div>
+                    <h3 className="uppercase font-semibold text-sm tracking-wider">
+                      {translatedTexts.addressTitle}
+                    </h3>
+                    <span className="block mt-2 text-white">
+                      {translatedTexts.addressDesc}
+                    </span>
                   </div>
-                ))}
+                </div>
+                <div className="flex items-start space-x-4">
+                  <span className="text-3xl">✉️</span>
+                  <div>
+                    <h3 className="uppercase font-semibold text-sm tracking-wider">
+                      {translatedTexts.emailTitle}
+                    </h3>
+                    <span className="block mt-2 text-white">
+                      {translatedTexts.emailDesc}
+                    </span>
+                  </div>
+                </div>
               </div>
               <h3 className="uppercase font-semibold text-sm tracking-wider mt-8">
-                Redes sociales
+                {translatedTexts.socialTitle}
               </h3>
               <div className="pl-10 mt-2">
                 <SocialsList className="text-white" />
@@ -117,11 +206,11 @@ const PageContact = () => {
           </div>
           <div className="w-full md:w-1/2 p-10 shadow-lg rounded-tr-2xl rounded-br-2xl">
             <h2 className="text-2xl font-semibold mb-6">
-              Formulario de contacto
+              {translatedTexts.formTitle}
             </h2>
             <form className="grid grid-cols-1 gap-6" onSubmit={handleSubmit}>
               <label className="block">
-                <Label>Nombre completo</Label>
+                <Label>{translatedTexts.nameLabel}</Label>
                 <Input
                   name="name"
                   type="text"
@@ -131,7 +220,7 @@ const PageContact = () => {
                 />
               </label>
               <label className="block">
-                <Label>Dirección de correo</Label>
+                <Label>{translatedTexts.emailLabel}</Label>
                 <Input
                   name="email"
                   type="email"
@@ -141,7 +230,7 @@ const PageContact = () => {
                 />
               </label>
               <label className="block">
-                <Label>Mensaje</Label>
+                <Label>{translatedTexts.messageLabel}</Label>
                 <Textarea
                   name="message"
                   rows={6}
@@ -151,7 +240,9 @@ const PageContact = () => {
                 />
               </label>
               <div>
-                <ButtonPrimary type="submit">Enviar mensaje</ButtonPrimary>
+                <ButtonPrimary type="submit">
+                  {translatedTexts.sendButton}
+                </ButtonPrimary>
               </div>
             </form>
             {responseMessage && (

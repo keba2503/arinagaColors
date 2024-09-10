@@ -1,7 +1,9 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import parse, { domToReact } from 'html-react-parser';
+import { LanguageContext } from '@/context/LanguageContext';
+import { translateText } from '@/utils/translate';
 
 const Skeleton = () => {
   return (
@@ -19,26 +21,45 @@ const PageAbout = () => {
   const [data, setData] = useState(null);
   const [imageUrl, setImageUrl] = useState('');
   const [loading, setLoading] = useState(true);
+  const { language } = useContext(LanguageContext);
 
   useEffect(() => {
-    fetch('/api/config')
-      .then((response) => response.json())
-      .then((data) => {
-        const filteredData = data.find((item) => item.scope_id === 8);
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/config');
+        const configData = await response.json();
+        const filteredData = configData.find((item) => item.scope_id === 8);
+
         if (filteredData) {
-          setData(filteredData);
+          const translatedTitle = await translateText(
+            filteredData.title,
+            language,
+          );
+          const translatedDescription = await translateText(
+            filteredData.description,
+            language,
+          );
+
+          setData({
+            ...filteredData,
+            title: translatedTitle,
+            description: translatedDescription,
+          });
+
           if (filteredData.subtitle) {
             const imageUrl = `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/${filteredData.subtitle}.webp`;
             setImageUrl(imageUrl);
           }
         }
         setLoading(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error('Error fetching data:', error);
         setLoading(false);
-      });
-  }, []);
+      }
+    };
+
+    fetchData();
+  }, [language]);
 
   if (loading) {
     return (

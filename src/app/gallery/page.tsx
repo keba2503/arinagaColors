@@ -1,13 +1,22 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Image from 'next/image';
 import axios from 'axios';
+import { LanguageContext } from '@/context/LanguageContext';
+import { translateText } from '@/utils/translate';
 
 const FeaturedImageGallery: React.FC = () => {
   const [gallery, setGallery] = useState([]);
   const [active, setActive] = useState('');
+  const [translatedTitle, setTranslatedTitle] = useState('');
+  const context = useContext(LanguageContext);
 
+  if (!context) {
+    throw new Error('LanguageContext must be used within a LanguageProvider');
+  }
+
+  const { language } = context;
   useEffect(() => {
     const fetchImages = async () => {
       try {
@@ -24,6 +33,15 @@ const FeaturedImageGallery: React.FC = () => {
     fetchImages();
   }, []);
 
+  useEffect(() => {
+    const translateGalleryTitle = async () => {
+      const translated = await translateText('Nuestra Galería', language);
+      setTranslatedTitle(translated);
+    };
+
+    translateGalleryTitle();
+  }, [language]);
+
   return (
     <>
       <div className="max-w-screen-lg mx-auto space-y-5 pt-10 text-center">
@@ -31,7 +49,7 @@ const FeaturedImageGallery: React.FC = () => {
           className="text-neutral-900 font-semibold text-3xl md:text-4xl md:!leading-[120%] lg:text-4xl dark:text-neutral-100 max-w-4xl"
           title="Preguntas frecuentes sobre el alquiler de apartamentos vacacionales"
         >
-          Nuestra Galería
+          {translatedTitle} {/* Mostrar el título traducido */}
         </h1>
       </div>
       <div className="w-full max-w-6xl mx-auto pt-12 p-6 pb-20">

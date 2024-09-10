@@ -1,7 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import parse from 'html-react-parser';
+import { LanguageContext } from '@/context/LanguageContext';
+import { translateText } from '@/utils/translate';
 
 interface Promotion {
   title: string;
@@ -20,6 +22,13 @@ const Promotions: React.FC = () => {
   const [promotions, setPromotions] = useState<Promotion[]>([]);
   const [headerTitle, setHeaderTitle] = useState('');
   const [headerDescription, setHeaderDescription] = useState('');
+  const context = useContext(LanguageContext);
+
+  if (!context) {
+    throw new Error('LanguageContext must be used within a LanguageProvider');
+  }
+
+  const { language } = context;
   const promotionScopeId = 12;
   const headerScopeId = 13;
 
@@ -29,13 +38,15 @@ const Promotions: React.FC = () => {
         const response = await fetch('/api/config');
         const configData: ConfigData[] = await response.json();
 
-        const filteredPromotions = configData
-          .filter((item) => item.scope_id === promotionScopeId)
-          .map((item) => ({
-            title: item.title,
-            description: item.description,
-            subtitle: item.additional_text,
-          }));
+        const filteredPromotions = await Promise.all(
+          configData
+            .filter((item) => item.scope_id === promotionScopeId)
+            .map(async (item) => ({
+              title: await translateText(item.title, language),
+              description: await translateText(item.description, language),
+              subtitle: await translateText(item.additional_text, language),
+            })),
+        );
 
         const headerData = configData.find(
           (item) => item.scope_id === headerScopeId,
@@ -44,8 +55,10 @@ const Promotions: React.FC = () => {
         setPromotions(filteredPromotions);
 
         if (headerData) {
-          setHeaderTitle(headerData.title);
-          setHeaderDescription(headerData.description);
+          setHeaderTitle(await translateText(headerData.title, language));
+          setHeaderDescription(
+            await translateText(headerData.description, language),
+          );
         }
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -53,7 +66,7 @@ const Promotions: React.FC = () => {
     };
 
     fetchPromotions();
-  }, []);
+  }, [language]);
 
   return (
     <div className="container mx-auto p-4 pb-32 ">

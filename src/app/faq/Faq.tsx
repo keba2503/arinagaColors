@@ -1,7 +1,9 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import parse from 'html-react-parser';
+import { LanguageContext } from '@/context/LanguageContext';
+import { translateText } from '@/utils/translate';
 
 interface Guide {
   question: string;
@@ -11,18 +13,33 @@ interface Guide {
 const FaqAccordion: React.FC = () => {
   const [faqs, setFaqs] = useState<Guide[]>([]);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const context = useContext(LanguageContext);
 
+  if (!context) {
+    throw new Error('LanguageContext must be used within a LanguageProvider');
+  }
+
+  const { language } = context;
   const toggleAccordion = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
   useEffect(() => {
-    const fetchGuides = async () => {
+    const fetchAndTranslateFaqs = async () => {
       try {
         const response = await fetch('/api/faq');
         if (response.ok) {
           const data: Guide[] = await response.json();
-          setFaqs(data);
+
+          // Traducir preguntas y respuestas
+          const translatedFaqs = await Promise.all(
+            data.map(async (faq) => ({
+              question: await translateText(faq.question, language),
+              answer: await translateText(faq.answer, language),
+            })),
+          );
+
+          setFaqs(translatedFaqs);
         } else {
           console.error('Error fetching faqs:', response.statusText);
         }
@@ -31,8 +48,8 @@ const FaqAccordion: React.FC = () => {
       }
     };
 
-    fetchGuides();
-  }, []);
+    fetchAndTranslateFaqs();
+  }, [language]); // Volver a traducir si cambia el idioma
 
   return (
     <div className="w-full max-w-6xl mx-auto pt-12 p-6">

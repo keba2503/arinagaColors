@@ -1,7 +1,9 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import parse from 'html-react-parser';
+import { LanguageContext } from '@/context/LanguageContext';
+import { translateText } from '@/utils/translate';
 
 interface Guide {
   title: string;
@@ -11,7 +13,13 @@ interface Guide {
 const GuideAccordion: React.FC = () => {
   const [guides, setGuides] = useState<Guide[]>([]);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const context = useContext(LanguageContext);
 
+  if (!context) {
+    throw new Error('LanguageContext must be used within a LanguageProvider');
+  }
+
+  const { language } = context;
   const toggleAccordion = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
@@ -22,7 +30,16 @@ const GuideAccordion: React.FC = () => {
         const response = await fetch('/api/guide');
         if (response.ok) {
           const data: Guide[] = await response.json();
-          setGuides(data);
+
+          // Traducir el título y la descripción de cada guía
+          const translatedGuides = await Promise.all(
+            data.map(async (guide) => ({
+              title: await translateText(guide.title, language),
+              description: await translateText(guide.description, language),
+            })),
+          );
+
+          setGuides(translatedGuides);
         } else {
           console.error('Error fetching guides:', response.statusText);
         }
@@ -32,7 +49,7 @@ const GuideAccordion: React.FC = () => {
     };
 
     fetchGuides();
-  }, []);
+  }, [language]);
 
   return (
     <div className="w-full max-w-6xl mx-auto pt-12 p-6">

@@ -1,9 +1,11 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import ServiceCard from '@/app/service/Service';
 import Heading from '@/shared/Heading';
 import parse from 'html-react-parser';
+import { LanguageContext } from '@/context/LanguageContext';
+import { translateText } from '@/utils/translate';
 
 interface ApiResponse {
   scope_id: number;
@@ -25,26 +27,45 @@ const ServiceGallery: React.FC = () => {
     description: string;
   } | null>(null);
   const [images, setImages] = useState<ImageResponse[]>([]);
+  const context = useContext(LanguageContext);
+
+  if (!context) {
+    throw new Error('LanguageContext must be used within a LanguageProvider');
+  }
+
+  const { language } = context;
 
   useEffect(() => {
     const fetchConfig = async () => {
       try {
         const response = await fetch('/api/config');
-        const configData = await response.json();
+        const configData: ApiResponse[] = await response.json();
 
-        const filteredServices = configData.filter(
-          (item: ApiResponse) => item.scope_id === 11,
+        const filteredServices = await Promise.all(
+          configData
+            .filter((item) => item.scope_id === 11)
+            .map(async (item) => ({
+              scope_id: item.scope_id,
+              title: await translateText(item.title, language),
+              description: await translateText(item.description, language),
+              subtitle: item.subtitle,
+            })),
         );
-        const headerData = configData.find(
-          (item: ApiResponse) => item.scope_id === 7,
-        );
+
+        const headerData = configData.find((item) => item.scope_id === 7);
 
         setHeader(
           headerData
-            ? { title: headerData.title, description: headerData.description }
+            ? {
+                title: await translateText(headerData.title, language),
+                description: await translateText(
+                  headerData.description,
+                  language,
+                ),
+              }
             : null,
         );
-        setData(filteredServices);
+        setData(filteredServices as ApiResponse[]);
       } catch (error) {
         console.error('Error fetching config data:', error);
       }
@@ -63,7 +84,7 @@ const ServiceGallery: React.FC = () => {
     fetchConfig();
     fetchImages();
     setLoading(false);
-  }, []);
+  }, [language]);
 
   if (loading) {
     return <div>Loading...</div>;

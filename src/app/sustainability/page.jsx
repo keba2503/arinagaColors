@@ -1,9 +1,11 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import Image from 'next/image';
 import parse, { domToReact } from 'html-react-parser';
 import PropTypes from 'prop-types';
+import { LanguageContext } from '@/context/LanguageContext';
+import { translateText } from '@/utils/translate';
 
 const SkeletonCard = () => (
   <div className="bg-white shadow-md p-6 rounded-2xl animate-pulse">
@@ -15,7 +17,7 @@ const SkeletonCard = () => (
 
 const SkeletonBanner = () => (
   <div className="relative w-full h-96 bg-gray-200 animate-pulse">
-    <div className="absolute bottom-5 left-5  bg-opacity-50 p-4 text-white rounded-2xl w-1/2">
+    <div className="absolute bottom-5 left-5 bg-opacity-50 p-4 text-white rounded-2xl w-1/2">
       <div className="w-full h-12 bg-gray-300 rounded mb-4"></div>
       <div className="w-full h-24 bg-gray-300 rounded"></div>
     </div>
@@ -47,40 +49,72 @@ const SustainabilitySection = () => {
   const [bannerData, setBannerData] = useState({});
   const [loading, setLoading] = useState(true);
 
+  const context = useContext(LanguageContext);
+  if (!context) {
+    throw new Error('LanguageContext must be used within a LanguageProvider');
+  }
+  const { language } = context;
+
   useEffect(() => {
-    fetch('/api/config')
-      .then((response) => response.json())
-      .then((data) => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/config');
+        const data = await response.json();
+
         const banner = data.find((item) => item.scope_id === 16);
         const cards = data.filter((item) => item.scope_id === 17);
 
         if (banner) {
           const bannerImageUrl = `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/${banner.subtitle}.webp`;
-          setBannerData({ ...banner, bannerImageUrl });
+          const translatedBannerTitle = await translateText(
+            banner.title,
+            language,
+          );
+          const translatedBannerDescription = await translateText(
+            banner.description,
+            language,
+          );
+
+          setBannerData({
+            ...banner,
+            title: translatedBannerTitle,
+            description: translatedBannerDescription,
+            bannerImageUrl,
+          });
         }
 
-        const parsedCards = cards.map((card) => ({
-          ...card,
-          imageUrl: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/${card.subtitle}.webp`,
-          description: parse(card.description, {
-            replace: (domNode) => {
-              if (domNode.name === 'p') {
-                return (
-                  <p className="text-justify">{domToReact(domNode.children)}</p>
-                );
-              }
-            },
-          }),
-        }));
+        const parsedCards = await Promise.all(
+          cards.map(async (card) => ({
+            ...card,
+            title: await translateText(card.title, language),
+            description: parse(
+              await translateText(card.description, language),
+              {
+                replace: (domNode) => {
+                  if (domNode.name === 'p') {
+                    return (
+                      <p className="text-justify">
+                        {domToReact(domNode.children)}
+                      </p>
+                    );
+                  }
+                },
+              },
+            ),
+            imageUrl: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/${card.subtitle}.webp`,
+          })),
+        );
 
         setCardsData(parsedCards);
         setLoading(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error('Error fetching data:', error);
         setLoading(false);
-      });
-  }, []);
+      }
+    };
+
+    fetchData();
+  }, [language]);
 
   if (loading) {
     return (

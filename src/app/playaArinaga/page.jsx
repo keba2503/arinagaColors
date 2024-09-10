@@ -1,10 +1,12 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { PlayIcon, XMarkIcon, MapPinIcon } from '@heroicons/react/24/outline';
 import { Tab } from '@headlessui/react';
 import PropTypes from 'prop-types';
 import parse from 'html-react-parser';
+import { LanguageContext } from '@/context/LanguageContext';
+import { translateText } from '@/utils/translate';
 
 const months = [
   'Enero',
@@ -21,25 +23,49 @@ const months = [
   'Diciembre',
 ];
 
-const getFormattedDate = (dateStr) => {
+const getFormattedDate = async (dateStr, language) => {
   const date = new Date(dateStr);
   const day = date.getDate();
-  const month = months[date.getMonth()];
+
+  // Traduce el mes según el idioma
+  const month = await translateText(months[date.getMonth()], language);
   return `${day} de ${month}`;
 };
 
-const fetchEvents = async () => {
+const fetchEvents = async (language) => {
   const response = await fetch('/api/eventArinaga');
-  return response.json();
+  const events = await response.json();
+
+  // Traducir el contenido de los eventos
+  return Promise.all(
+    events.map(async (event) => ({
+      ...event,
+      name: await translateText(event.name, language),
+      description: await translateText(event.description, language),
+    })),
+  );
 };
 
-const fetchPlaces = async () => {
+const fetchPlaces = async (language) => {
   const response = await fetch('/api/placesArinaga');
-  return response.json();
+  const places = await response.json();
+
+  // Traducir el contenido de los lugares
+  return Promise.all(
+    places.map(async (place) => ({
+      ...place,
+      title: await translateText(place.title, language),
+      description: await translateText(place.description, language),
+    })),
+  );
 };
 
-const Card = ({ title, description, imageUrl, location, date }) => {
+const Card = ({ title, description, imageUrl, location, date, language }) => {
   const [showModal, setShowModal] = useState(false);
+  const [formattedDate, setFormattedDate] = useState('');
+  const [viewMoreText, setViewMoreText] = useState('');
+  const [translatedLocation, setTranslatedLocation] = useState('');
+  const [translatedDate, setTranslatedDate] = useState('');
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -48,6 +74,41 @@ const Card = ({ title, description, imageUrl, location, date }) => {
   const getGoogleMapsLink = () => {
     return `https://www.google.com/maps?q=${location}`;
   };
+
+  useEffect(() => {
+    const translateLocation = async () => {
+      const translated = await translateText('Ubicación', language); // Traduce "Ubicación"
+      setTranslatedLocation(translated);
+    };
+
+    translateLocation();
+  }, [language]);
+
+  useEffect(() => {
+    const translatedDate = async () => {
+      const translated = await translateText('Fecha', language);
+      setTranslatedDate(translated);
+    };
+
+    translatedDate();
+  }, [language]);
+
+  useEffect(() => {
+    if (date) {
+      const formatDate = async () => {
+        const newFormattedDate = await getFormattedDate(date, language);
+        setFormattedDate(newFormattedDate);
+      };
+      formatDate();
+    }
+
+    // Traducir "Ver más"
+    const translateViewMore = async () => {
+      const translatedViewMore = await translateText('Ver más', language);
+      setViewMoreText(translatedViewMore);
+    };
+    translateViewMore();
+  }, [date, language]);
 
   return (
     <>
@@ -64,7 +125,7 @@ const Card = ({ title, description, imageUrl, location, date }) => {
               fontWeight: 'bold',
             }}
           >
-            {getFormattedDate(date).split(' ')[2]}
+            {formattedDate.split(' ')[2]} {/* Obtén el mes formateado */}
           </div>
         )}
         <img
@@ -81,7 +142,7 @@ const Card = ({ title, description, imageUrl, location, date }) => {
             className="mt-2 px-4 py-2 rounded-lg"
             style={{ backgroundColor: 'rgb(73, 155, 200)', color: 'white' }}
           >
-            Ver más
+            {viewMoreText} {/* Texto traducido "Ver más" */}
           </button>
         </div>
       </div>
@@ -98,11 +159,11 @@ const Card = ({ title, description, imageUrl, location, date }) => {
             <h3 className="text-lg font-bold mb-2">{title}</h3>
             <div className="text-justify pb-5 pt-5">{parse(description)}</div>
             <p className="mt-2">
-              <strong>Ubicación:</strong> {location}
+              <strong>{translatedLocation}:</strong> {location}
             </p>
             {date && (
               <p>
-                <strong>Fecha:</strong> {getFormattedDate(date)}
+                <strong>{translatedDate}:</strong> {formattedDate}
               </p>
             )}
             <div className="mt-2 flex items-center pt-5">
@@ -129,27 +190,47 @@ Card.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
   date: PropTypes.string, // Opcional porque no todos los lugares tienen fecha
+  language: PropTypes.string.isRequired, // Añadimos language como prop para la traducción
 };
 
 const HeroVideo = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [events, setEvents] = useState([]);
   const [places, setPlaces] = useState([]);
+  const [playVideoText, setPlayVideoText] = useState('');
+  const [fiestasText, setFiestasText] = useState('');
+  const [lugaresText, setLugaresText] = useState('');
+
+  const { language } = useContext(LanguageContext);
 
   useEffect(() => {
     const loadEvents = async () => {
-      const data = await fetchEvents();
+      const data = await fetchEvents(language);
       setEvents(data);
     };
 
     const loadPlaces = async () => {
-      const data = await fetchPlaces();
+      const data = await fetchPlaces(language);
       setPlaces(data);
+    };
+
+    const translateTexts = async () => {
+      const translatedPlayVideo = await translateText(
+        'Reproducir video',
+        language,
+      );
+      const translatedFiestas = await translateText('Fiestas', language);
+      const translatedLugares = await translateText('Lugares', language);
+
+      setPlayVideoText(translatedPlayVideo);
+      setFiestasText(translatedFiestas);
+      setLugaresText(translatedLugares);
     };
 
     loadEvents();
     loadPlaces();
-  }, []);
+    translateTexts();
+  }, [language]);
 
   const handlePlay = () => {
     setIsPlaying(true);
@@ -183,7 +264,7 @@ const HeroVideo = () => {
               className="absolute inset-0 flex flex-col items-center justify-center text-white bg-black bg-opacity-50"
             >
               <PlayIcon className="w-16 h-16" />
-              <span className="mt-2 text-xl">Reproducir video</span>
+              <span className="mt-2 text-xl">{playVideoText}</span>
             </button>
           </div>
         )}
@@ -200,7 +281,7 @@ const HeroVideo = () => {
                 }`
               }
             >
-              Fiestas
+              {fiestasText}
             </Tab>
             <Tab
               className={({ selected }) =>
@@ -211,7 +292,7 @@ const HeroVideo = () => {
                 }`
               }
             >
-              Lugares
+              {lugaresText}
             </Tab>
           </Tab.List>
           <Tab.Panels>
@@ -224,6 +305,7 @@ const HeroVideo = () => {
                   imageUrl={event.image}
                   location={event.location}
                   date={event.date}
+                  language={language}
                 />
               ))}
             </Tab.Panel>
@@ -235,6 +317,7 @@ const HeroVideo = () => {
                   description={place.description}
                   imageUrl={place.imageUrl}
                   location={place.location}
+                  language={language}
                 />
               ))}
             </Tab.Panel>
