@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { createGlobalState } from 'react-hooks-global-state';
 
 const initialState = { language: 'es' };
@@ -18,7 +18,7 @@ export const useLanguageMode = () => {
     }
   }, [setLanguage]);
 
-  const switchLanguage = (newLanguage: string) => {
+  const switchLanguage = (newLanguage) => {
     setLanguage(newLanguage);
     localStorage.setItem('language', newLanguage);
   };
