@@ -1,4 +1,4 @@
-// RootLayout.tsx o RootLayout.js
+// RootLayout.tsx
 import ClientCommons from './ClientCommons';
 import './globals.css';
 import '@/fonts/line-awesome-1.3.0/css/line-awesome.css';
@@ -9,6 +9,7 @@ import { Metadata } from 'next';
 import ClientWrapper from '../components/ClientWrapper';
 import React from 'react';
 import Script from 'next/script';
+import { LanguageProvider } from '@/context/LanguageContext'; // Importa tu contexto de idioma
 
 export const metadata: Metadata = {
   title: 'Arinaga Colors - Booking online',
@@ -24,9 +25,11 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className="bg-custom text-base dark:bg-neutral-900 text-neutral-900 dark:text-neutral-200">
-        <ClientCommons />
-        <ClientWrapper>{children}</ClientWrapper>
-        <Footer />
+        <LanguageProvider>
+          <ClientCommons />
+          <ClientWrapper>{children}</ClientWrapper>
+          <Footer />
+        </LanguageProvider>
 
         {/* Script de Google Analytics */}
         <Script

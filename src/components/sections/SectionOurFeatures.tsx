@@ -1,11 +1,13 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import Image from 'next/image';
 import Badge from '@/shared/Badge';
 import parse from 'html-react-parser';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import { LanguageContext } from '@/context/LanguageContext';
+import { translateText } from '@/utils/translate'; // Ajusta según la ruta de tu función de traducción
 
 export interface SectionOurFeaturesProps {
   className?: string;
@@ -32,6 +34,15 @@ const SectionOurFeatures: React.FC<SectionOurFeaturesProps> = ({
   const [features, setFeatures] = useState<ApiResponse[]>([]);
   const [loading, setLoading] = useState(true);
   const [rightImgUrl, setRightImgUrl] = useState<string>('');
+  const [translatedBenefits, setTranslatedBenefits] = useState<string>('');
+
+  const context = useContext(LanguageContext);
+
+  if (!context) {
+    throw new Error('LanguageContext must be used within a LanguageProvider');
+  }
+
+  const { language } = context;
 
   useEffect(() => {
     const fetchConfig = async () => {
@@ -42,7 +53,33 @@ const SectionOurFeatures: React.FC<SectionOurFeaturesProps> = ({
         const filteredFeatures = configData.filter(
           (item: ApiResponse) => item.scope_id === 3,
         );
-        setFeatures(filteredFeatures);
+
+        // Translate each feature's properties
+        const translatedFeatures = await Promise.all(
+          filteredFeatures.map(async (feature: ApiResponse) => {
+            const translatedTitle = await translateText(
+              feature.title,
+              language,
+            );
+            const translatedSubtitle = await translateText(
+              feature.subtitle,
+              language,
+            );
+            const translatedDescription = await translateText(
+              feature.description,
+              language,
+            );
+
+            return {
+              ...feature,
+              title: translatedTitle,
+              subtitle: translatedSubtitle,
+              description: translatedDescription,
+            };
+          }),
+        );
+
+        setFeatures(translatedFeatures);
 
         const imageConfig = configData.find(
           (item: ApiResponse) => item.scope_id === 15,
@@ -63,6 +100,13 @@ const SectionOurFeatures: React.FC<SectionOurFeaturesProps> = ({
           }
         }
 
+        // Translate the "BENEFICIOS" text
+        const translatedBenefitsText = await translateText(
+          'BENEFICIOS',
+          language,
+        );
+        setTranslatedBenefits(translatedBenefitsText);
+
         setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -71,7 +115,7 @@ const SectionOurFeatures: React.FC<SectionOurFeaturesProps> = ({
     };
 
     fetchConfig();
-  }, []);
+  }, [language]);
 
   if (loading) {
     return (
@@ -90,7 +134,7 @@ const SectionOurFeatures: React.FC<SectionOurFeaturesProps> = ({
           }`}
         >
           <span className="uppercase text-sm text-gray-400 tracking-widest">
-            BENEFICIOS
+            {translatedBenefits || 'BENEFICIOS'}
           </span>
           <ul className="space-y-10 mt-16">
             {[...Array(3)].map((_, index) => (
@@ -123,10 +167,10 @@ const SectionOurFeatures: React.FC<SectionOurFeaturesProps> = ({
         }`}
       >
         <span className="uppercase text-sm text-gray-400 tracking-widest">
-          BENEFICIOS
+          {translatedBenefits || 'BENEFICIOS'}
         </span>
         <ul className="space-y-10 mt-16">
-          {features.map((feature, index) => (
+          {features.map((feature: ApiResponse, index) => (
             <li key={index} className="space-y-4">
               <Badge name={feature.title} />
               <span className="block text-xl font-semibold text-gray-dark">
