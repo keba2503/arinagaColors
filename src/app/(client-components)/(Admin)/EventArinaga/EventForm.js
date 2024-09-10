@@ -91,9 +91,7 @@ const EventForm = ({ event }) => {
         );
         imageUrl = res.data.secure_url;
 
-        // Delete the old image if it exists
         if (oldImagePublicId) {
-          console.log(`Deleting old image with public_id: ${oldImagePublicId}`);
           try {
             await axios.delete('/api/cloudinaryEventArinag', {
               headers: { 'Content-Type': 'application/json' },

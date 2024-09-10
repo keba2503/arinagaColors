@@ -25,7 +25,6 @@ const PageAbout = () => {
       .then((response) => response.json())
       .then((data) => {
         const filteredData = data.find((item) => item.scope_id === 8);
-        console.log(filteredData);
         if (filteredData) {
           setData(filteredData);
           if (filteredData.subtitle) {

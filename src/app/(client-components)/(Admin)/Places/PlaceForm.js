@@ -12,8 +12,6 @@ const RichTextEditor = dynamic(() => import('src/components/RichTextEditor'), {
 });
 
 const PlaceForm = ({ place }) => {
-  console.log('Componente PlaceForm renderizado');
-  console.log('Prop place recibido:', place);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
@@ -25,7 +23,6 @@ const PlaceForm = ({ place }) => {
 
   useEffect(() => {
     if (place) {
-      console.log();
       setTitle(place.title);
       setDescription(place.description);
       setLocation(place.location);
@@ -62,7 +59,6 @@ const PlaceForm = ({ place }) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSuccessMessage('');
-    console.log('Submitting form with data:', { title, description, location });
 
     let imageUrl = imagePreview;
 

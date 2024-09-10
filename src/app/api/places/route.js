@@ -7,7 +7,6 @@ const prisma = new PrismaClient();
 export async function POST(request) {
   try {
     const body = await request.json();
-    console.log('Request Body:', body);
     const { title, description, imageUrl, location } = body;
 
     if (!title || !description || !imageUrl || !location) {
