@@ -61,7 +61,6 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
         // Translate each stay's properties
         const translatedListings = await Promise.all(
           stayListings.map(async (stay) => {
-            const translatedTitle = await translateText(stay.title, language);
             const translatedDescription = await translateText(
               stay.description,
               language,
@@ -69,7 +68,7 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
 
             return {
               ...stay,
-              title: translatedTitle,
+              title: stay.title,
               description: translatedDescription,
             };
           }),
