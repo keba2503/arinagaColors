@@ -1,6 +1,7 @@
 export async function translateText(text, targetLanguage) {
   console.log('entro aqui');
-  const apiKey = 'AIzaSyDoDiSePb9d_ZGJCZx7kw-fc4ihzc-OEK4';
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
+  console.log(apiKey);
   const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
 
   const response = await fetch(url, {
