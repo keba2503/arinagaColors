@@ -1,8 +1,10 @@
-import React, { FC } from 'react';
+import React, { FC, useContext, useEffect, useState } from 'react';
 import GallerySlider from '@/components/Gallery/GallerySlider';
 import { DEMO_STAY_LISTINGS } from '@/data/listings';
 import { StayDataType } from '@/data/types';
 import Link from 'next/link';
+import { LanguageContext } from '@/context/LanguageContext'; // Asegúrate de que este sea el path correcto
+import { translateText } from '@/utils/translate';
 
 export interface StayCard2Props {
   className?: string;
@@ -18,6 +20,27 @@ const StayCard2: FC<StayCard2Props> = ({
   data = DEMO_DATA,
 }) => {
   const { galleryImgs, description, address, title, href, id } = data;
+
+  // Obtén el idioma desde el contexto
+  const context = useContext(LanguageContext);
+  if (!context) {
+    throw new Error(
+      'LanguageContext debe usarse dentro de un LanguageProvider',
+    );
+  }
+
+  const { language } = context;
+  const [translatedViewMore, setTranslatedViewMore] = useState('Ver más');
+
+  // Usa useEffect para traducir el texto de "Ver más"
+  useEffect(() => {
+    const translateViewMore = async () => {
+      const translated = await translateText('Ver más', language);
+      setTranslatedViewMore(translated);
+    };
+
+    translateViewMore();
+  }, [language]);
 
   const renderSliderGallery = () => {
     return (
@@ -85,7 +108,7 @@ const StayCard2: FC<StayCard2Props> = ({
               textDecoration: 'none',
             }}
           >
-            Ver más
+            {translatedViewMore}
           </Link>
         </div>
       </div>

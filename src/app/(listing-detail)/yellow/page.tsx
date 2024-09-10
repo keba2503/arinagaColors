@@ -212,9 +212,6 @@ const YellowDetailPage: FC<YellowDetailPageProps> = () => {
       <div className="listingSection__wrap">
         <div>
           <div>{translatedTexts.amenitiesTitle || 'Comodidades'} </div>
-          <span className="block mt-2 text-neutral-500 dark:text-neutral-400">
-            {` Acerca de los servicios y comodidades de la propiedad`}
-          </span>
         </div>
         <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
         {/* 6 */}
