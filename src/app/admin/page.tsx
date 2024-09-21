@@ -1,7 +1,5 @@
 'use client';
 
-import Map from '@/app/(client-components)/(Admin)/Home/Map';
-
 export default function Page() {
   return (
     <main className="space-y-8 p-4">
