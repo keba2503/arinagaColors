@@ -33,7 +33,13 @@ const NAV_ITEMS: NavItem[] = [
 ];
 
 const FooterNav = () => {
-  const { language } = useContext(LanguageContext);
+  const context = useContext(LanguageContext);
+
+  if (!context) {
+    throw new Error('LanguageContext must be used within a LanguageProvider');
+  }
+
+  const { language } = context;
   const pathname = usePathname();
   const [translatedNavItems, setTranslatedNavItems] =
     useState<NavItem[]>(NAV_ITEMS);
@@ -44,7 +50,7 @@ const FooterNav = () => {
         const translatedItems = await Promise.all(
           NAV_ITEMS.map(async (item) => ({
             ...item,
-            name: await translateText(item.name, language), // Traducir el nombre del item
+            name: await translateText(item.name, language),
           })),
         );
         setTranslatedNavItems(translatedItems);
@@ -92,7 +98,6 @@ const FooterNav = () => {
   return (
     <div className="FooterNav block md:!hidden p-2 bg-white dark:bg-neutral-800 fixed bottom-0 inset-x-0 z-30 border-t border-neutral-300 dark:border-neutral-700">
       <div className="w-full max-w-lg flex justify-around mx-auto text-sm text-center ">
-        {/* MENU */}
         {translatedNavItems.map(renderItem)}
       </div>
     </div>
