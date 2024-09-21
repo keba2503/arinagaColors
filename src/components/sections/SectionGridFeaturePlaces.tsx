@@ -3,7 +3,6 @@
 import React, { FC, ReactNode, useContext, useEffect, useState } from 'react';
 import { DEMO_STAY_LISTINGS } from '@/data/listings';
 import { StayDataType } from '@/data/types';
-import HeaderFilter from '../HeaderFilter';
 import StayCard from '../cards/StayCard';
 import StayCard2 from '../cards/StayCard2';
 import { LanguageContext } from '@/context/LanguageContext';
@@ -27,7 +26,6 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
   gridClass = '',
   heading = 'Apartamentos en Playa de Arinaga',
   subHeading = 'Descansa y disfruta junto al mar.',
-  tabs = [],
   cardType = 'card2',
 }) => {
   const context = useContext(LanguageContext);
