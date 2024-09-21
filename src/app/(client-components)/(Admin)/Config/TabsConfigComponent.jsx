@@ -107,6 +107,22 @@ const TabsComponent = () => {
     17: TableCardSustainability,
   };
 
+  const tabNamesMapping = {
+    8: 'Acerca de Nosotros',
+    10: 'Preguntas Frecuentes',
+    9: 'Guía',
+    2: 'Sección de Bienvenida',
+    3: 'Características',
+    7: 'Servicios',
+    11: 'Tarjetas de Servicios',
+    12: 'Tarjetas de Ofertas',
+    13: 'Ofertas',
+    14: 'Reserva Exitosa',
+    15: 'Imágenes de Características',
+    16: 'Sostenibilidad',
+    17: 'Tarjetas de Sostenibilidad',
+  };
+
   const ActiveFormComponent = formComponentMapping[activeTab] || null;
   const ActiveTableComponent = tableComponentMapping[activeTab] || null;
 
@@ -127,7 +143,7 @@ const TabsComponent = () => {
                   : 'hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300'
               }`}
             >
-              {scope.name}
+              {tabNamesMapping[scope.id] || scope.name}
             </a>
           </li>
         ))}
@@ -168,5 +184,4 @@ const TabsComponent = () => {
     </>
   );
 };
-
 export default TabsComponent;

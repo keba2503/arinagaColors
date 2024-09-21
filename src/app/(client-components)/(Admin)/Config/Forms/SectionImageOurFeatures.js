@@ -166,6 +166,9 @@ const SectionImageOurFeatures = ({ scope, data }) => {
             </div>
           )}
         </div>
+        <p className="mt-2 text-sm text-gray-500">
+          Tamaño recomendado: 600 x 900 px o 800 x 1200 px.
+        </p>
       </div>
       <div className="flex items-center justify-between">
         <button

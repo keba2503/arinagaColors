@@ -201,6 +201,9 @@ const PlaceForm = ({ place }) => {
             </div>
           )}
         </div>
+        <p className="mt-2 text-sm text-gray-500">
+          Tamaño recomendado: 400 x 300 px o 600 x 400 px.
+        </p>
       </div>
 
       <div className="mb-5">

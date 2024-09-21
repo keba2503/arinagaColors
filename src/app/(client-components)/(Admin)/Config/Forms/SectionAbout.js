@@ -185,6 +185,9 @@ const SectionAbout = ({ scope, data }) => {
             </div>
           )}
         </div>
+        <p className="mt-2 text-sm text-gray-500">
+          Tamaño recomendado: 1920x1080 px para imágenes de fondo.
+        </p>
       </div>
       <div className="flex items-center justify-between">
         <button

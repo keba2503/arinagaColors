@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 const UploadImage = () => {
@@ -63,6 +63,9 @@ const UploadImage = () => {
               Buscar
             </button>
           </div>
+          <p className="mt-2 text-sm text-gray-500">
+            Tamaño recomendado: 800 x 600 px.
+          </p>
         </label>
       </div>
       <div
