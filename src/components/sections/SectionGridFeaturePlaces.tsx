@@ -25,7 +25,7 @@ export interface SectionGridFeaturePlacesProps {
 const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
   stayListings = DEMO_DATA,
   gridClass = '',
-  heading = 'Nuestros apartamentos',
+  heading = 'Apartamentos en Playa de Arinaga',
   subHeading = 'Descansa y disfruta junto al mar.',
   tabs = [],
   cardType = 'card2',
@@ -103,12 +103,12 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
 
   return (
     <div className="nc-SectionGridFeaturePlaces relative">
-      <HeaderFilter
-        tabActive={'Playa de Arinaga'}
-        subHeading={translatedSubHeading}
-        tabs={tabs}
-        heading={translatedHeading}
-      />
+      <h1 className="text-3xl md:text-4xl font-semibold">
+        {translatedHeading}
+      </h1>
+      <span className="block mt-2 md:mt-3 font-normal text-base sm:text-lg text-neutral-500 dark:text-neutral-40 pb-8">
+        {translatedSubHeading}
+      </span>
       <div
         className={`grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 ${gridClass}`}
       >

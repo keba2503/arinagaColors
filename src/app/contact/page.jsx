@@ -40,7 +40,6 @@ const PageContact = () => {
   });
 
   useEffect(() => {
-    // Traducir el contenido estático
     const fetchTranslations = async () => {
       const translatedTitle = await translateText(
         'Contacta con nosotros',
@@ -147,7 +146,6 @@ const PageContact = () => {
       setIsError(true);
     }
 
-    // Ocultar el mensaje de respuesta después de 3 segundos
     setTimeout(() => {
       setResponseMessage('');
     }, 3000);
@@ -168,9 +166,9 @@ const PageContact = () => {
             />
             <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
             <div className="relative p-10 z-20 text-white">
-              <h2 className="text-2xl font-semibold mb-4">
+              <h1 className="text-2xl font-semibold mb-4">
                 {translatedTexts.title}
-              </h2>
+              </h1>
               <p className="mb-8">{translatedTexts.description}</p>
               <div className="space-y-4">
                 <div className="flex items-start space-x-4">

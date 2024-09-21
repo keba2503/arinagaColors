@@ -110,9 +110,9 @@ const PageAbout = () => {
         >
           <div className="nc-SectionFounder relative">
             <div className="text-gray-500 sm:text-lg dark:text-gray-400">
-              <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-black">
+              <h1 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-black">
                 {data.title}
-              </h2>
+              </h1>
               {parsedDescription}
             </div>
           </div>

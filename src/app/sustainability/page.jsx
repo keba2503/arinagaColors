@@ -140,7 +140,7 @@ const SustainabilitySection = () => {
           priority
         />
         <div className="absolute bottom-5 left-5 bg-black bg-opacity-50 p-4 text-white rounded-2xl w-1/2">
-          <h2 className="text-3xl md:text-4xl">{parse(bannerData.title)}</h2>
+          <h1 className="text-3xl md:text-4xl">{parse(bannerData.title)}</h1>
           <p className="mt-2 text-base md:text-lg">
             {parse(bannerData.description)}
           </p>

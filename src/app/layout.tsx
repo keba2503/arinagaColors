@@ -1,4 +1,3 @@
-// RootLayout.tsx
 import ClientCommons from './ClientCommons';
 import './globals.css';
 import '@/fonts/line-awesome-1.3.0/css/line-awesome.css';
@@ -9,12 +8,14 @@ import { Metadata } from 'next';
 import ClientWrapper from '../components/ClientWrapper';
 import React from 'react';
 import Script from 'next/script';
-import { LanguageProvider } from '@/context/LanguageContext'; // Importa tu contexto de idioma
+import { LanguageProvider } from '@/context/LanguageContext';
 
 export const metadata: Metadata = {
-  title: 'Arinaga Colors - Booking online',
-  description: 'Booking online',
-  keywords: 'Booking online',
+  title: 'Apartamentos Vacacionales en Playa de Arinaga - Reserva Online',
+  description:
+    'Alquila apartamentos vacacionales en Playa de Arinaga, Gran Canaria. Disfruta de la playa y reserva online fácilmente con Arinaga Colors.',
+  keywords:
+    'apartamentos vacacionales, Playa de Arinaga, Gran Canaria, alquiler, reserva online, vacaciones, alojamiento en Gran Canaria',
 };
 
 export default function RootLayout({

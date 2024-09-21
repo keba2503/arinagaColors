@@ -73,7 +73,7 @@ const Promotions: React.FC = () => {
       <div className="relative bg-gradient-to-r from-blue-400 via-white to-yellow-400 text-white p-12 rounded-lg mb-12 max-w-full overflow-hidden mx-4">
         <div className="absolute inset-0 bg-black opacity-25 rounded-lg"></div>
         <div className="relative z-10">
-          <h2 className="text-4xl font-bold mb-4">{headerTitle}</h2>
+          <h1 className="text-4xl font-bold mb-4">{headerTitle}</h1>
           <p className="text-lg">{parse(headerDescription)}</p>
         </div>
       </div>

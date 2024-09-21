@@ -102,7 +102,7 @@ const SectionOurFeatures: React.FC<SectionOurFeaturesProps> = ({
 
         // Translate the "BENEFICIOS" text
         const translatedBenefitsText = await translateText(
-          'BENEFICIOS',
+          'BENEFICIOS DE RESERVAR CON ARINAGA COLORS',
           language,
         );
         setTranslatedBenefits(translatedBenefitsText);
@@ -166,9 +166,9 @@ const SectionOurFeatures: React.FC<SectionOurFeaturesProps> = ({
           type === 'type1' ? 'lg:pl-16' : 'lg:pr-16'
         }`}
       >
-        <span className="uppercase text-sm text-gray-400 tracking-widest">
+        <h1 className="uppercase text-sm text-gray-400 tracking-widest">
           {translatedBenefits || 'BENEFICIOS'}
-        </span>
+        </h1>
         <ul className="space-y-10 mt-16">
           {features.map((feature: ApiResponse, index) => (
             <li key={index} className="space-y-4">
