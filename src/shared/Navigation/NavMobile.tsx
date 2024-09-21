@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ButtonClose from '@/shared/ButtonClose';
 import Logo from '@/shared/Logo';
 import { Disclosure } from '@headlessui/react';
@@ -12,6 +12,8 @@ import { ChevronDownIcon } from '@heroicons/react/24/solid';
 import SwitchDarkMode from '@/shared/SwitchDarkMode';
 import Link from 'next/link';
 import LangDropdown from '@/app/(client-components)/(Header)/LangDropdown';
+import { LanguageContext } from '@/context/LanguageContext';
+import { translateText } from '@/utils/translate';
 
 export interface NavMobileProps {
   data?: NavItemType[];
@@ -22,6 +24,70 @@ const NavMobile: React.FC<NavMobileProps> = ({
   data = NAVIGATION_DEMO,
   onClickClose,
 }) => {
+  const context = useContext(LanguageContext);
+
+  if (!context) {
+    throw new Error('LanguageContext must be used within a LanguageProvider');
+  }
+
+  const { language } = context;
+
+  const [translatedWelcome, setTranslatedWelcome] = useState<string>(
+    '¡Bienvenido a Arinaga Colors! Disfruta de una estancia acogedora en nuestras viviendas vacacionales.',
+  );
+  const [translatedBooking, setTranslatedBooking] = useState<string>(
+    'Reserva con nosotros',
+  );
+  const [translatedData, setTranslatedData] = useState<NavItemType[]>(data);
+
+  const translateNavItems = async (): Promise<NavItemType[]> => {
+    return await Promise.all(
+      data.map(async (item) => {
+        const translatedName = await translateText(item.name, language);
+
+        const translatedChildren = item.children
+          ? await Promise.all(
+              item.children.map(async (child) => ({
+                ...child,
+                name: await translateText(child.name, language),
+              })),
+            )
+          : undefined;
+
+        return {
+          ...item,
+          name: translatedName,
+          children: translatedChildren,
+        };
+      }),
+    );
+  };
+
+  useEffect(() => {
+    const translateContent = async () => {
+      try {
+        const welcomeTranslation = await translateText(
+          '¡Bienvenido a Arinaga Colors! Disfruta de una estancia acogedora en nuestras viviendas vacacionales.',
+          language,
+        );
+        const bookingTranslation = await translateText(
+          'Reserva con nosotros',
+          language,
+        );
+
+        const translatedNavItems = await translateNavItems();
+
+        setTranslatedWelcome(welcomeTranslation);
+        setTranslatedBooking(bookingTranslation);
+        setTranslatedData(translatedNavItems);
+      } catch (error) {
+        console.error('Error translating text:', error);
+      }
+    };
+
+    translateContent();
+  }, [language, data]);
+
   const _renderMenuChild = (item: NavItemType) => {
     return (
       <ul className="nav-mobile-sub-menu pl-6 pb-1 text-base">
@@ -108,10 +174,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
       <div className="py-6 px-5 relative">
         <Logo />
         <div className="flex flex-col mt-5 text-neutral-700 dark:text-neutral-300 text-sm">
-          <span>
-            ¡Bienvenido a Arinaga Colors! Disfruta de una estancia acogedora en
-            nuestras viviendas vacacionales.
-          </span>
+          <span>{translatedWelcome}</span>
           <div className="flex justify-left mt-4 ml-12">
             <SocialsList itemClass="w-9 h-9 flex items-center justify-center rounded-full bg-neutral-100 text-xl dark:bg-neutral-800 dark:text-neutral-300" />
           </div>
@@ -126,7 +189,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
         </span>
       </div>
       <ul className="flex flex-col py-6 px-2 space-y-1">
-        {data.map(_renderItem)}
+        {translatedData.map(_renderItem)}
       </ul>
       <div className="flex items-center justify-between py-6 px-5">
         <a
@@ -135,7 +198,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
           target="_blank"
           rel="noopener noreferrer"
         >
-          <ButtonPrimary>Reserva con nosotros</ButtonPrimary>
+          <ButtonPrimary>{translatedBooking}</ButtonPrimary>
         </a>
 
         <LangDropdown

@@ -1,11 +1,13 @@
 'use client';
 
 import { HomeIcon, CalendarIcon } from '@heroicons/react/24/outline';
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { PathName } from '@/routers/types';
 import MenuBar from '@/shared/MenuBar';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { LanguageContext } from '@/context/LanguageContext';
+import { translateText } from '@/utils/translate';
 
 interface NavItem {
   name: string;
@@ -13,7 +15,7 @@ interface NavItem {
   icon: React.ElementType;
 }
 
-const NAV: NavItem[] = [
+const NAV_ITEMS: NavItem[] = [
   {
     name: 'Inicio',
     link: '/',
@@ -31,7 +33,28 @@ const NAV: NavItem[] = [
 ];
 
 const FooterNav = () => {
+  const { language } = useContext(LanguageContext);
   const pathname = usePathname();
+  const [translatedNavItems, setTranslatedNavItems] =
+    useState<NavItem[]>(NAV_ITEMS);
+
+  useEffect(() => {
+    const translateNavItems = async () => {
+      try {
+        const translatedItems = await Promise.all(
+          NAV_ITEMS.map(async (item) => ({
+            ...item,
+            name: await translateText(item.name, language), // Traducir el nombre del item
+          })),
+        );
+        setTranslatedNavItems(translatedItems);
+      } catch (error) {
+        console.error('Error translating nav items:', error);
+      }
+    };
+
+    translateNavItems();
+  }, [language]);
 
   const renderItem = (item: NavItem, index: number) => {
     const isActive = pathname === item.link;
@@ -70,7 +93,7 @@ const FooterNav = () => {
     <div className="FooterNav block md:!hidden p-2 bg-white dark:bg-neutral-800 fixed bottom-0 inset-x-0 z-30 border-t border-neutral-300 dark:border-neutral-700">
       <div className="w-full max-w-lg flex justify-around mx-auto text-sm text-center ">
         {/* MENU */}
-        {NAV.map(renderItem)}
+        {translatedNavItems.map(renderItem)}
       </div>
     </div>
   );
