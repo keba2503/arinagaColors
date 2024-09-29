@@ -1,3 +1,4 @@
+import WhatsAppButton from '@/components/WhatsappButton';
 import ClientCommons from './ClientCommons';
 import './globals.css';
 import '@/fonts/line-awesome-1.3.0/css/line-awesome.css';
@@ -32,7 +33,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-
   twitter: {
     card: 'summary_large_image',
     site: '@arinagaColors',
@@ -41,7 +41,6 @@ export const metadata: Metadata = {
       'Alquila apartamentos vacacionales en Playa de Arinaga, Gran Canaria. Disfruta de la playa y reserva online fácilmente con Arinaga Colors.',
     images: ['https://www.arinagacolors.com/images/arinagacolors.png'],
   },
-
   alternates: {
     canonical: 'https://www.arinagacolors.com',
   },
@@ -59,11 +58,13 @@ export default function RootLayout({
           <ClientCommons />
           <ClientWrapper>{children}</ClientWrapper>
           <Footer />
+          {/* Botón flotante de WhatsApp */}
+          <WhatsAppButton />
         </LanguageProvider>
 
         {/* Script de Google Analytics */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-KC046K851R"
+          src="https://www.googletagmanager.com/gtag/js?id=G-X2B4K4RS6V"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -71,7 +72,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-KC046K851R');
+            gtag('config', 'G-X2B4K4RS6V');
           `}
         </Script>
       </body>
